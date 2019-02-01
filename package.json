@@ -1,0 +1,33 @@
+{
+  "name": "azimut",
+  "version": "1.0.1",
+  "description": "RadioClub",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KilloBITS/azimut.git"
+  },
+  "author": "Ihor Kalenyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KilloBITS/azimut/issues"
+  },
+  "homepage": "https://github.com/KilloBITS/azimut#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.8",
+    "request": "^2.88.0"
+  }
+}
