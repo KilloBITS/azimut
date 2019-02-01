@@ -207,6 +207,28 @@ p {
 	margin-bottom: -25px;
 }
 
+.nav_wrapper a.none_text{
+	margin: 0;
+	padding: 0;
+}
+
+.a_btn{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: 0.3s;
+    color: black;
+}
+
+.a_btn:hover{
+	color: blue;
+	font-size: 22px;
+}
+
 .nav_wrapper a:hover{
 	color: white;
 	background-color: black;
