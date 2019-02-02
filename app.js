@@ -31,8 +31,13 @@ app.use(cookieParser());
 app.use(bParser.raw({limit: '50mb'}));
 
 //routes pages
+const get404 = require('./routes/get404');
 const index = require('./routes/getIndex');
+const register = require('./routes/getRegister');
+
 app.use('/', index);
+app.use('/register', register);
+app.get('*', get404);
 
 app.listen(80, function(){
   global.baseName = 'AZIMUT';

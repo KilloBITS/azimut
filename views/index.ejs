@@ -6,9 +6,9 @@
 	<title>Ридиоклуб "Азимут"</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-
+	<link rel="stylesheet" type="text/css" href="/style/loader.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
-	<!-- <link href='https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300' rel='stylesheet' type='text/css'> -->
+	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
@@ -17,17 +17,34 @@
 	<script type="text/javascript" src="/script/index.js"></script>
 	
 </head>
-<body>
+<body>	
+	<div class="wrapper">
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+
+		</div>
+	</div>
 	<header>	
-		<img src="../../../img/logo.png" id="logotype">
-		<!-- <h1>Радиоклуб "Азимут"</h1> -->
+		<canvas id="canvas"></canvas>
+		<a href="/">
+			<img src="../../../img/logo1.png" id="logotype">
+		</a>				
+		<h1>Радиоклуб <b>Азимут</b></h1>		
+		<div class="toScroll">
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+		</div>
+		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
 			<a href="#">Про нас</a> 
 			<a href="#">Новости</a> 
 			<a href="#">VHF</a> 
-			<a href="#">HF</a> 
-			<a href="#">Форум</a> 
+			<a href="#" class="menu_to_left">HF</a> 
+			<a href="#" class="menu_to_right">Форум</a> 
 			<a href="#">Барахолка</a> 
 			<a href="#">Контакты</a> 
 		</nav>
@@ -49,6 +66,15 @@
 			</div>
 		</div>
 		<div class="nav_menu right">
+			<div class="nav_wrapper">
+				<div class="wrapper_title">Авторизация</div>
+				<div class="pre_line"></div>
+				<input type="text" name="emailRadio" class="authdata" placeholder="Логин">
+				<input type="password" name="passwordRadio" class="authdata" placeholder="Пароль">
+				<input type="button" value="Авторизация" class="auth_btn" >
+				<a href="/register" class="NewPassLink">Регистрация</a>
+				<a href="#" class="NewPassLink">Забыли пароль?</a>
+			</div>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
@@ -82,41 +108,43 @@
 				</a>
 			</div>
 		</div>
-		<section id="section_01">
-			<h2> This is section 1</h2>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia 
-			dolor sit amet</p>
-			<p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur</p>
-			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-			<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
-			<p>Nullam id mollis arcu. Ut eget tempus massa. Etiam eu mauris id justo posuere elementum. Etiam venenatis semper massa vitae congue. Mauris tristique lorem pulvinar tellus tempus, et viverra nulla pellentesque. Donec convallis nulla risus, eu facilisis tortor laoreet ut. Vivamus sagittis, magna et tincidunt imperdiet, augue metus aliquam leo</p>
+		<section id="section_01" class="section_data">
+			<h2>Солнечная электростанция UX1RX.</h2>
+			<p>В селе Дмитровка Черниговской области предприниматель и радиолюбитель Анатолий Савченко UX1RX установил солнечную электростанцию мощностью 8 кВт и за первые две недели, благодаря продаже электроэнергии по «зеленому» тарифу, заработал 4000 гривен. О собственной СЭС рационализатор мечтал давно — дождался, когда цены на панели значительно снизились, и реализовал проект. «Солнечная станция, состоящая из 36 панелей, занимает площадь 12х6 м. Смонтировала СЭС киевская фирма, в которой были приобретены солнечные панели.» Компьютерная программа показывает общее количество произведенной электроэнергии, то, что потребил дом, и продано на энергорынок, -рассказывает Анатолий Савченко. — Диаграмма на мониторе доказывает, что солнечная станция работает даже в пасмурную погоду и в дождь — электроэнергии вырабатывается меньше, но на внутренние нужды хватит, а вот в снежный день СЭС производит совсем мало, но надеюсь на поддержание комфортной температуры в утепленном доме». 
+				Если же поставить 30-киловаттную СЭС, то даже снег не помешает производить электроэнергию на продажу, уверен он.
+				«В Дмитровке нельзя установить СЭС мощностью 30 кВт через устаревшие линии, которые просто» не потянут «передачу производимой электроэнергии, — объясняет предприниматель. — ОАО «Черниговоблэнерго» достаточно оперативно подключило солнечную электростанцию: заявление написал — и они приехали — даже не ожидал, что это будет так быстро ».
+				Анатолий Савченко старался заключить договор в 2018 году. «Теперь мне до 2030 года будут платить по 18 центов за киловатт-час (это 5,91 грн, а за минусом налогов — 4,75 грн — авт.), — объясняет он. — В следующем году было бы уже по 16 центов за кВт-ч ».
+			Солнечная станция Анатолия Савченко начала работать 15 августа. За две первые недели работы СЭС после вычета стоимости потребленной электроэнергии, а также около 20% налога Анатолий Савченко заработал 4000 гривен. «Когда смотришь, как от солнца деньги капают, на душе становится теплее, — улыбается он. — Это — пассивный доход и за ним — будущее ».</p>
 
 			<div class="section_date">
 				01.02.2019 22:43
 				<span>Admin</span>
 			</div>
 		</section>
-		<section id="section_02">
-			<h2> This is section 2</h2>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia 
-			dolor sit amet</p>
-			<p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur</p>
-			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-			<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
-			<p>Nullam id mollis arcu. Ut eget tempus massa. Etiam eu mauris id justo posuere elementum. Etiam venenatis semper massa vitae congue. Mauris tristique lorem pulvinar tellus tempus, et viverra nulla pellentesque. Donec convallis nulla risus, eu facilisis tortor laoreet ut. Vivamus sagittis, magna et tincidunt imperdiet, augue metus aliquam leo</p>
+		<section id="section_02" class="section_data">
+			<h2>О дипломной программе DXCC.</h2>
+			<p>Получение престижных наград программы DXCC — это результат огромного опыта работы в эфире и создания комплекса технических и программных средств для проведения дальних радиосвязей, в том числе применения эффективных антенн и приёмо-передающих устройств, современных цифровых методов обработки сигналов и новейших интернет-технологий. Дипломы и доски программы DXCC являются одним из наиболее значимых подтверждений достижений их владельца в области радиолюбительской связи. 
+				В 1935 году W1CBD, Clinton B. DeSoto, в своей статье «Как считать сработанные страны — новая система учёта», опубликованной в журнале QST, издаваемом национальной организацией радиолюбителей США (ARRL), предложил исходить из того, что любое географическое и политическое образование необходимо рассматривать как «страну» в радиолюбительском понимании этого слова, исходя из устанавливаемых критериев. В 1937 году список стран (DXCC List), сформированный по этому принципу, впервые был опубликован и с тех пор уже более 60 лет является стандартом для радиолюбителей всего мира.
+			Вершиной дипломной программы DXCC по праву является Кубок “The DeSoto Cup”, которым ежегодно награждается обладатель высшего результата в DXCC Challenge.</p>
 			<div class="section_date">
 				01.02.2019 22:43
 				<span>Admin</span>
 			</div>
 		</section>
-		<section id="section_03">
-			<h2> This is section 3</h2>
-			<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia 
-			dolor sit amet</p>
-			<p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur</p>
-			<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-			<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat</p>
-			<p>Nullam id mollis arcu. Ut eget tempus massa. Etiam eu mauris id justo posuere elementum. Etiam venenatis semper massa vitae congue. Mauris tristique lorem pulvinar tellus tempus, et viverra nulla pellentesque. Donec convallis nulla risus, eu facilisis tortor laoreet ut. Vivamus sagittis, magna et tincidunt imperdiet, augue metus aliquam leo</p>
+		<section id="section_03" class="section_data">
+			<h2>Достижения по программе DXCC в LoTW.</h2>
+			<p>
+				<img class="alignleft size-thumbnail wp-image-622" src="http://krrc.org.ua/wp-content/uploads/2018/04/lotw-150x104.jpg" alt="" width="150" height="104" srcset="http://krrc.org.ua/wp-content/uploads/2018/04/lotw-150x104.jpg 150w, http://krrc.org.ua/wp-content/uploads/2018/04/lotw.jpg 250w" sizes="(max-width: 150px) 100vw, 150px">
+				Обновление результатов происходит два раза в год: 31 декабря и 30 июня.
+				Для того, чтобы ваши результаты были в таблице делаем следующее:
+				• заходим на свой аккаунт в LoTW и нажимаем Awards;
+				• нажимаем Select DXCC Award Accaunt;
+				• щелкаем правой кнопкой мыши и выбираем «Сохранить как»;
+				• внизу открывшегося окна должно быть: «Тип файла» (веб-страница полностью);
+				• нажимаем кнопку «Сохранить».
+				Файлы присылаем на Клубный имеил: krrc@i.ua
+			Достижениях радиолюбителей Кировоградской области по дипломной программе DXCC в LoTW на 01.01.2019г.</p>
+			<img src="http://krrc.org.ua/wp-content/uploads/2019/01/cc-lt-768x436.jpg">
 			<div class="section_date">
 				01.02.2019 22:43
 				<span>Admin</span>
@@ -131,58 +159,57 @@
 	<footer class="flex-rw">
 		<ul class="footer-list-top">
 			<li>
-				<h4 class="footer-list-header">About Pavilion</h4></li>
-				<li><a href='/shop/about-mission' class="generic-anchor footer-list-anchor" itemprop="significantLink">GET TO KNOW US</a></li>
-				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">PROMOS</a></li>
-				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">BECOME A RETAILER</a></li>
-
-				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">JOB OPENINGS</a></li>
-
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">EVENTS</a></li>
+				<h4 class="footer-list-header">Навигация</h4></li>
+				<li><a href='/shop/about-mission' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
 			</ul>
-			<ul class="footer-list-top">
+			<!-- <ul class="footer-list-top">
 				<li>
-					<h4 class="footer-list-header">The Gift Selection</h4></li>
+					<h4 class="footer-list-header">The Gift Selection</h4>
+				</li>
 
 
-					<li><a href='/Angels/cat/id/70' class="generic-anchor footer-list-anchor">ANGEL FIGURINES</a></li>
-					<li><a href='/Home-Decor/cat/id/64' class="generic-anchor footer-list-anchor">HOME DECOR</a></li>
-					<li><a href='/Mugs/cat/id/32' class="generic-anchor footer-list-anchor">MUGS</a></li>
-					<li><a href='/Pet-Lover/cat/id/108' class="generic-anchor footer-list-anchor">PET LOVER</a></li>
-					<li><a href='/Ladies-Accessories/cat/id/117' class="generic-anchor footer-list-anchor" target="_blank">HANDBAGS & JEWELRY</a></li>
+				<li><a href='/Angels/cat/id/70' class="generic-anchor footer-list-anchor">ANGEL FIGURINES</a></li>
+				<li><a href='/Home-Decor/cat/id/64' class="generic-anchor footer-list-anchor">HOME DECOR</a></li>
+				<li><a href='/Mugs/cat/id/32' class="generic-anchor footer-list-anchor">MUGS</a></li>
+				<li><a href='/Pet-Lover/cat/id/108' class="generic-anchor footer-list-anchor">PET LOVER</a></li>
+				<li><a href='/Ladies-Accessories/cat/id/117' class="generic-anchor footer-list-anchor" target="_blank">HANDBAGS & JEWELRY</a></li>
+			</ul> -->
+			<ul class="footer-list-top">
+				<li id='help'>
+					<h4 class="footer-list-header">Помощь</h4></li>
+					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
 				</ul>
-				<ul class="footer-list-top">
-					<li id='help'>
-						<h4 class="footer-list-header">Please Help Me</h4></li>
-						<li><a href='/shop/about-contact' class="generic-anchor footer-list-anchor" itemprop="significantLink">CONTACT</a></li>
-						<li><a href='/faq.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-						<li id='find-a-store'><a href='/shop/store-locator' class="generic-anchor footer-list-anchor" itemprop="significantLink">STORE LOCATOR</a></li>
-						<li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">NEW USERS</a></li>
-						<li id='order-tracking'><a href='/shop/order-status' itemprop="significantLink" class="generic-anchor footer-list-anchor">ORDER STATUS</a></li>
-					</ul>
-					<section class="footer-social-section flex-rw">
-						<span class="footer-social-overlap footer-social-connect">
-							Мы <span class="footer-social-small">в</span> Соц. Сетях
-						</span>
-						<span class="footer-social-overlap footer-social-icons-wrapper">
-							<a href="https://www.pinterest.com/paviliongift/" class="generic-anchor" target="_blank" title="Pinterest" itemprop="significantLink"><i class="fa fa-pinterest"></i></a>
-							<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>
-							<a href="https://twitter.com/PavilionGiftCo" class="generic-anchor" target="_blank" title="Twitter" itemprop="significantLink"><i class="fa fa-twitter"></i></a>
-							<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-							<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-							<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
-						</span>
-					</section>
-					<section class="footer-bottom-section flex-rw">
-						<div class="footer-bottom-wrapper">   
-							<i class="fa fa-copyright" role="copyright">
+				<section class="footer-social-section flex-rw">
+					<span class="footer-social-overlap footer-social-connect">
+						Мы в Соц. Сетях
+					</span>
+					<span class="footer-social-overlap footer-social-icons-wrapper">						
+						<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+						<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+						<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+						<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+					</span>
+				</section>
+				<section class="footer-bottom-section flex-rw">
+					<div class="footer-bottom-wrapper">   
+						<i class="fa fa-copyright" role="copyright">
 
-							</i> 2019 Azimut <address class="footer-address" role="company address">Lviv, UA</address><span class="footer-bottom-rights"></span>
-						</div>
-						<div class="footer-bottom-wrapper">
-							<a href="/terms-of-use.html" class="generic-anchor" rel="nofollow">Terms</a> | <a href="/privacy-policy.html" class="generic-anchor" rel="nofollow">Privacy</a>
-						</div>
-					</section>
-				</footer>
-			</body>
-			</html>
+						</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+					</div>
+					<div class="footer-bottom-wrapper">
+						
+					</div>
+				</section>
+			</footer>
+		</body>
+		</html>

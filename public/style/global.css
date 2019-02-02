@@ -15,7 +15,7 @@ body {
 	/*background-image: url(../../../img/overlay.png);*/
 	font-family: 'Didact Gothic', sans-serif;
 	font-size: 16px;
-	padding-top: 330px;
+	padding-top: 430px;
 	-moz-transition: padding-top 0.5s ease;
 	-o-transition: padding-top 0.5s ease;
 	-webkit-transition: padding-top 0.5s ease;
@@ -25,9 +25,9 @@ body {
 
 header {
     width: 100%;
-    height: 300px;
+    height: 400px;
     background-color: #ffffff;
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/World_map_without_Antarctica.svg/2000px-World_map_without_Antarctica.svg.png);
+    background-image: url(https://i0.wp.com/961bobfm.com/wp-content/uploads/2018/02/best-radio-station-theme-header-2.jpg?ssl=1);
     z-index: 10;
     text-align: center;
     position: relative;
@@ -38,32 +38,86 @@ header {
     -o-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
 }
 header h1 {
 	font-size: 42px;
-	color: #666;
-	line-height: 230px;
-	text-transform: uppercase;
-	font-weight: 100;
-	-moz-transition: all 0.3s ease;
-	-o-transition: all 0.3s ease;
-	-webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
+    color: #fff;
+    line-height: 0;
+    text-transform: uppercase;
+    font-weight: 100;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translate(-50%);
+    border-top: 2px white solid;
+    border-bottom: 2px white solid;
+    line-height: 58px;
+}
+.menu_to_left,.menu_to_right{
+	transition: 0.3s;
+}
+.sticky-header .menu_to_left{
+	margin-right: 50px;	
 }
 
+.sticky-header .menu_to_right{
+    margin-left: 50px;
+}
+
+.toScroll{
+    position: absolute;	
+    left: 50%;
+    bottom: 18px;
+    transform: translate(-50%, 0);
+}
+
+.scroll-arrow {
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  animation: arrow-wave 1s infinite;
+  animation-direction: alternate;
+}
+.scroll-arrow:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.scroll-arrow:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.scroll-arrow:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes arrow-wave {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 header img{
-    max-width: 200px;
-    top: 20px;
+    max-width: 150px;
+    top: 80px;
     position: absolute;
-    left: 20px;
+    left: 50%;
     transition: 0.5s;
-    /*left: 50%;*/
-    /*transform: translate(-50%);*/
-    background-color: rgba(255, 255, 255, 0.81);
     border-radius: 10px;
+    z-index: 1;
+    transform: translate(-50%);
 }
 
 body.sticky-header header img{
@@ -74,11 +128,16 @@ body.sticky-header header img{
 
 header nav {
     position: absolute;
-    bottom: 0;
+    top: 0;
     height: 60px;
     line-height: 60px;
     width: 100%;
-    background-color: rgb(0, 21, 48);
+    background-color: rgba(0, 0, 0, 0);
+    transition: 0.3s;
+}
+
+.sticky-header header nav{
+    background-color: rgb(0, 0, 0);
 }
 header nav a {
 	color: #dfdfdf;
@@ -114,9 +173,10 @@ p {
     position: absolute;
     right: 10px;
     top: 10px;
-    color: #001530;
+    color: #ffffff;
     z-index: 1;
     font-size: 18px;
+    text-shadow: 1px 1px 1px blue;
 }
 
 .wrapper {
@@ -146,7 +206,7 @@ p {
     padding-top: 20px;
     padding-bottom: 20px;
     float: left;
-    border: 1px solid rgba(0, 0, 0, 0.19);
+    border: 1px solid rgb(0, 45, 99);
     margin-bottom: 30px;
     border-radius: 5px;
     position: relative;
@@ -158,9 +218,21 @@ p {
     left: 50%;
     transform: translate(-50%, 0);
     padding: 2px 15px;
-    border-radius: 5px;
+    border-radius: 3px;
     z-index: 1;
-    background-color: silver;
+    /* background-color: silver; */
+    background-image: url(http://www.tudorhouse.nsw.edu.au/wp-content/uploads/2017/03/background-title.png);
+    background-size: contain;
+    width: calc(100% - 81px);
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    line-height: 23px;
+    background-position: center;
+}
+
+.auth_btn{
+	cursor: pointer;
 }
 
 .pre_line{
@@ -190,15 +262,15 @@ p {
 }
 
 .nav_wrapper a{
-	display: inline-block;
-	width: 100%;
-	padding-left: 35px;
-	color: black;
-	text-decoration: none;
-	background-repeat: no-repeat;
-	background-position: 16px 4px;
-	background-size: 14px;
-	transition: 0.3s;
+    display: inline-block;
+    width: 100%;
+    padding: 2px 0 2px 35px;
+    color: black;
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: 16px 7px;
+    background-size: 14px;
+    transition: 0.3s;
 }
 
 .nav_wrapper img{
@@ -334,6 +406,7 @@ body.sticky-header header h1 {
 	height: 60px;
 	background-repeat: no-repeat;
 	background-position: center;
+	z-index: 100;
 }
 
 
@@ -351,7 +424,9 @@ a {
 }
 
 .generic-anchor {
-	color: #8DB9ED;
+    color: #8DB9ED;
+    font-size: 15px;
+    line-height: 10px;
 }
 .generic-anchor:visited {
 	color: #8DB9ED;
@@ -391,13 +466,16 @@ footer {
 }
 
 .footer-list-header {
-	padding: 10px 0 5px 0;
-	color: #fff;
-	font: 2.3vw "Oswald", sans-serif;
+    padding: 0px 0 0px 0;
+    color: #fff;
+    font-size: 24px ;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
 .footer-list-anchor {
-	font: 1.3em "Open Sans", sans-serif;
+    font-family: 'Didact Gothic', sans-serif;
+	/*font: 1.3em "Open Sans", sans-serif;*/
 }
 
 .footer-social-section {
@@ -426,10 +504,10 @@ footer {
 }
 
 .footer-social-connect {
-	display: flex;
-	align-items: center;
-	font: 3.5em "Oswald", sans-serif;
-	color: #fff;
+    display: flex;
+    align-items: center;
+    font: 30px "Oswald", sans-serif;
+    color: #fff;
 }
 
 .footer-social-small {
@@ -576,25 +654,42 @@ footer {
 	}
 }
 
+.auth_block{
+	width: 200px;
+    position: absolute;
+    right: 40px;
+    top: 60px;
+    background-color: rgba(0, 0, 0, 0.28);
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #b2b2b2;
+    box-shadow: inset 0px 0px 8px 0px black;
+}
+
+.nav_wrapper input{
+    width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 10px;
+    margin-bottom: 5px;
+    border: 1px solid silver;
+    border-radius: 3px;
+    text-align: center;
+    padding: 5px;
+}
+
+a.NewPassLink{
+    text-align: center;
+    padding-left: 0;
+}
+
+.NewPassLink:hover{
+	background-color: transparent;
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.section_data img{
+    float: left;
+    margin-right: 10px;
+}
