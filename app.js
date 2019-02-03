@@ -17,7 +17,7 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({
-        url: 'mongodb://localhost:27017/LM_SHOP'
+        url: 'mongodb://localhost:27017/AZIMUT'
     }),
     cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 // two weeks
@@ -39,6 +39,12 @@ app.use('/', index);
 app.use('/register', register);
 app.get('*', get404);
 
+/* POSTS */
+const auth = require('./controllers/logInController');
+app.post('/signin', auth);
+
+
+/* Started server */
 app.listen(80, function(){
   global.baseName = 'AZIMUT';
   global.baseIP = 'mongodb://localhost:27017/';

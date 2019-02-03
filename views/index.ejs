@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
+	<script type="text/javascript" src="/script/loginMethod.js"></script>
 	
 </head>
 <body>	
@@ -69,9 +70,10 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
-				<input type="text" name="emailRadio" class="authdata" placeholder="Логин">
-				<input type="password" name="passwordRadio" class="authdata" placeholder="Пароль">
-				<input type="button" value="Авторизация" class="auth_btn" >
+				<div class="nav_loader"></div>
+				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
+				<input type="button" value="Авторизация" class="auth_btn" id="signIn">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
 			</div>
