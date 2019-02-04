@@ -11,13 +11,11 @@
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" type="text/css" href="/style/register/style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>
-	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 </head>
 <body>	
 	<div class="wrapper">
@@ -118,28 +116,28 @@
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
 							Имя
-							<input class="c-input" type=email />
+							<input class="c-input" type="text" class="checkYou" id="checkText">
 						</label>
 					</div>
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
 							Фамилия
-							<input class="c-input" type=email />
+							<input class="c-input" type="text" class="checkYou" id="checkText2"/>
 						</label>
 					</div>
 				</div>
 				<label class="c-label">
 					Email
-					<input class="c-input" type=email />
+					<input class="c-input" type="email">
 				</label>
 				<label class="c-label">
 					Пароль
-					<input class="c-input" type=email />
+					<input class="c-input" type="password" />
 				</label>
-				<input type=submit class="c-btn c-btn--primary c-btn--full c-btn--big" value="Зарегистрировать" />
+				<input type=submit class="c-btn c-btn--primary c-btn--full c-btn--big" id="signUpUser" value="Зарегистрировать" />
 			</form>
 
-			<p class="u-font-center u-font-meta"><a href="/">На главную</a></p>
+			<p class="u-font-center u-font-meta"><a href="/" class="toMain">На главную</a></p>
 		</div>
 		
 	</main>

@@ -641,8 +641,9 @@ a,
     color: white;
     border-color: #0071ce;
     background-color: #007ee5;
-    background: -webkit-linear-gradient(#007ee5, #0071ce);
-    background: linear-gradient(#007ee5, #0071ce); }
+    /*background: -webkit-linear-gradient(#007ee5, #0071ce);
+    background: linear-gradient(#007ee5, #0071ce);*/ 
+  }
     .c-btn.c-btn--primary:hover:not(:disabled) {
       background: #007ee5; }
     .c-btn.c-btn--primary:active:not(:disabled) {
