@@ -3,22 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title>Ридиоклуб "Азимут"</title>
+	<title>Про нас</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/css/lightgallery.css">
+	<link rel="stylesheet" type="text/css" href="/style/about/about.css">
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/picturefill/2.3.1/picturefill.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.11/js/lightgallery-all.min.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>
-	
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#lightgallery').lightGallery({
+				pager: true
+			});
+		});
+	</script>
 </head>
-<body>	
+<body>
 	<div class="wrapper">
 		<div id="loader-wrapper">
 			<div id="loader">
@@ -43,7 +57,8 @@
 		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
-			<a href="/about">Про нас</a> 
+			<a href="/">Главная</a> 
+			<a href="#">Про нас</a> 
 			<a href="#">Новости</a> 
 			<a href="#">VHF</a> 
 			<a href="#" class="menu_to_left">HF</a> 
@@ -128,26 +143,86 @@
 				</a>
 			</div>
 		</div>
-		<% for(var i = 0; i < NEWS.length; i++){ %>
-		<section id="section_<%= i %>" class="section_data">
-			<h2><%= NEWS[i].title %></h2>
-			<p>
-				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-			</p>
-			<% for(var ii = 0; ii < NEWS[i].CONTENT_IMAGE.length; ii++){ %>
-			<img src="<%= NEWS[i].CONTENT_IMAGE[ii] %>">
-			<% } %>
-			
-			<div class="section_date">
-				<%= NEWS[i].DATE %>
-				<span><%= NEWS[i].AUTHOR %></span>
-			</div>
-		</section>	
-		<% } %>
 		
+		<section id="section_01" class="section_data">
+			<h2>О нас</h2>
+			<p>
+				Наше расположение: ул. Чкалова 17. Техшкола. г. Токмак, Запорожской обл.
 
-		<div class="addOldNews">Показать больше...</div>	
+				QTH locator : г. Токмак - KN77UG: Long : 35.72067 E (35° 43' 14'' E); Lat : 47.25593 N (47° 15' 21'' N) 
+				URDA award list: ZP-28 г. Токмак; ZP-29 Токмакский р-н.
+
+				Радиоклуб создан в День Радио - 7 мая 2009 г. В этот же день в городе была открыта коллективная р/станция UR3QXX. Членами радиоклуба являются более 70-и человек из разных регионов Запорожской области.
+
+				р/к "Сармат" использует символику ЛРУ, ЗОО ЛРУ и собственную, для размещения на личной QSL карточке, аппаратуре, и любой другой персональной атрибутике.
+
+				Клубной символикой имеют право пользоваться только члены RCS, и Совет Клуба для проведения своих мероприятий.
+
+				р/к "Сармат" (RCS), добровольный Клуб радиолюбителей. 
+
+				Членство в р/к "Сармат" индивидуальное. 
+
+				Членами р/к "Сармат" могут быть граждане независимо от национальности, партийности, вероисповедания, социального положения, имеющие радиолюбительский позывной сигнал, выданный ГИЭ, признающие настоящий Устав и поддерживающие материально, выполняющим требования Кодекса чести, общечеловеческой и радиолюбительской этики,
+
+				Прием в члены р/к "Сармат" производится в соответствии с заявлением вступающего на общем собрании радиоклуба открытым голосованием.
+
+				Цель р/к «Сармат» - обеспечение заинтересованности своих членов в развитии радиолюбительства и технического творчества в области радио, расширения связей и контактов с радиолюбителями Украины и других стран мира, утверждение идеалов мира и дружбы между народами всего мира.
+
+				Задачи р/к «Сармат»:
+				- популяризация идей Радио, помощь, распространение и популяризация научных и технических знаний по радиотехнике;
+				- содействие развитию любительского коротковолнового (КВ), ультракоротковолнового (УКВ), спутникового, цифрового и других видов связи;
+				- помощь государственным органам при стихийных бедствиях, авариях и других чрезвычайных ситуациях.
+
+				Основными направлениями работы Клуба выбраны: экспедиции, работа в соревнованиях, охота за дипломами. 
+			</p>			
+		</section>	
+
+		<div class="cont">
+				<div class="page-head">
+					<h1>Фотогалерея</h1>
+				
+					<div class="demo-gallery">
+						<ul id="lightgallery">
+							<li data-responsive="https://sachinchoolur.github.io/lightGallery/static/img/1-375.jpg 375, https://sachinchoolur.github.io/lightGallery/static/img/1-480.jpg 480, https://sachinchoolur.github.io/lightGallery/static/img/1.jpg 800" data-src="https://sachinchoolur.github.io/lightGallery/static/img/1-1600.jpg"
+							data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>" data-pinterest-text="Pin it" data-tweet-text="share on twitter ">
+							<a href="">
+								<img class="img-responsive" src="https://sachinchoolur.github.io/lightGallery/static/img/thumb-1.jpg">
+								<div class="demo-gallery-poster">
+									<img src="https://sachinchoolur.github.io/lightGallery/static/img/zoom.png">
+								</div>
+							</a>
+						</li>
+						<li data-responsive="https://sachinchoolur.github.io/lightGallery/static/img/2-375.jpg 375, https://sachinchoolur.github.io/lightGallery/static/img/2-480.jpg 480, https://sachinchoolur.github.io/lightGallery/static/img/2.jpg 800" data-src="https://sachinchoolur.github.io/lightGallery/static/img/2-1600.jpg"
+						data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>" data-pinterest-text="Pin it" data-tweet-text="share on twitter ">
+						<a href="">
+							<img class="img-responsive" src="https://sachinchoolur.github.io/lightGallery/static/img/thumb-2.jpg">
+							<div class="demo-gallery-poster">
+								<img src="https://sachinchoolur.github.io/lightGallery/static/img/zoom.png">
+							</div>
+						</a>
+					</li>
+					<li data-responsive="https://sachinchoolur.github.io/lightGallery/static/img/13-375.jpg 375, https://sachinchoolur.github.io/lightGallery/static/img/13-480.jpg 480, https://sachinchoolur.github.io/lightGallery/static/img/13.jpg 800" data-src="https://sachinchoolur.github.io/lightGallery/static/img/13-1600.jpg"
+					data-sub-html="<h4>Sunset Serenity</h4><p>A gorgeous Sunset tonight captured at Coniston Water....</p>" data-pinterest-text="Pin it" data-tweet-text="share on twitter ">
+					<a href="">
+						<img class="img-responsive" src="https://sachinchoolur.github.io/lightGallery/static/img/thumb-13.jpg">
+						<div class="demo-gallery-poster">
+							<img src="https://sachinchoolur.github.io/lightGallery/static/img/zoom.png">
+						</div>
+					</a>
+				</li>
+				<li data-responsive="https://sachinchoolur.github.io/lightGallery/static/img/4-375.jpg 375, https://sachinchoolur.github.io/lightGallery/static/img/4-480.jpg 480, https://sachinchoolur.github.io/lightGallery/static/img/4.jpg 800" data-src="https://sachinchoolur.github.io/lightGallery/static/img/4-1600.jpg"
+				data-sub-html="<h4>Coniston Calmness</h4><p>Beautiful morning</p>" data-pinterest-text="Pin it" data-tweet-text="share on twitter ">
+				<a href="">
+					<img class="img-responsive" src="https://sachinchoolur.github.io/lightGallery/static/img/thumb-4.jpg">
+					<div class="demo-gallery-poster">
+						<img src="https://sachinchoolur.github.io/lightGallery/static/img/zoom.png">
+					</div>
+				</a>
+			</li>
+		</ul>
+		<span class="small">Нажмите на изображение для просмотра</span>
+	</div>
+</div>
 	</main>
 
 	<div id="stop" class="scrollTop"></div>
