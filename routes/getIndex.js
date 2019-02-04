@@ -11,7 +11,7 @@ router.get('/', function(req, res, next){
 	     const db = client.db(global.baseName);
            const news = db.collection("NEWS");
 
-           news.find().toArray(function(err, resNews){
+           news.find().sort({AI: -1}).toArray(function(err, resNews){
                 res.render('index.ejs',
                 {
                     NEWS: resNews,
