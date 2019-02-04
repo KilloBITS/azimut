@@ -13,13 +13,13 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 
 app.use(session({
-    secret: '2C44-4D44-WppQ38S',
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({
-        url: 'mongodb://localhost:27017/AZIMUT'
-    }),
-    cookie: {
+	secret: '2C44-4D44-WppQ38S',
+	resave: true,
+	saveUninitialized: true,
+	store: new MongoStore({
+		url: 'mongodb://localhost:27017/AZIMUT'
+	}),
+	cookie: {
         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 // two weeks
     }
 }));
@@ -45,9 +45,9 @@ app.post('/signin', auth);
 
 
 /* Started server */
-app.listen(80, function(){
-  global.baseName = 'AZIMUT';
-  global.baseIP = 'mongodb://localhost:27017/';
-  global.online = 0;
-  console.log('Started server on "Azimut" from port: 80');
+app.listen(4334, function(){
+	global.baseName = 'AZIMUT';
+	global.baseIP = 'mongodb://localhost:27017/';
+	global.online = 0;
+	console.log('Started server on "Azimut" from port: 4334');
 });
