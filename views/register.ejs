@@ -30,11 +30,11 @@
 		<canvas id="canvas"></canvas>
 		<img src="../../../img/logo1.png" id="logotype">		
 		<h1>Радиоклуб <b>Азимут</b></h1>		
-		<div class="toScroll">
+<!-- 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
-		</div>
+		</div> -->
 		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
@@ -65,16 +65,33 @@
 			</div>
 		</div>
 		<div class="nav_menu right">
+
+			<% if(sessionUser !== undefined){ %>
+			<div class="nav_wrapper" id="users_wraper">
+				<div class="wrapper_title">Пользователь</div>
+				<div class="pre_line"></div>
+				<div class="nav_loader"></div>
+				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
+				<div class="userDATA">
+					<div class="userLogin"><%= sessionUser %></div>
+					<a href="/getProfile" class="userButton">Профиль</a>
+				</div>
+				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+			</div>
+			<% } else { %>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
 				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
-				<input type="button" value="Авторизация" class="auth_btn" id="signIn">
+				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
 			</div>
+			<% } %>      
+
+			
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
@@ -128,14 +145,49 @@
 				</div>
 				<label class="c-label">
 					Email
-					<input class="c-input" type="email">
+					<input class="c-input" type="email" id="checkEmail">
 				</label>
+				<div class="o-grid">
+					<div class="o-grid__col o-grid__col--1-of-2">
+						<label class="c-label">
+							Пароль
+							<input class="c-input" type="text" class="checkYou" id="checkPass">
+						</label>
+					</div>
+					<div class="o-grid__col o-grid__col--1-of-2">
+						<label class="c-label">
+							Повторите пароль
+							<input class="c-input" type="text" class="checkYou" id="checkPAss2"/>
+						</label>
+					</div>
+				</div>
 				<label class="c-label">
-					Пароль
-					<input class="c-input" type="password" />
+					Номер телефона
+					<input class="c-input" type="text" id="checkNumber">
 				</label>
-				<input type=submit class="c-btn c-btn--primary c-btn--full c-btn--big" id="signUpUser" value="Зарегистрировать" />
+
+				<input type="button" class="c-btn c-btn--primary c-btn--full c-btn--big" id="signUpUser" value="Зарегистрировать" />
 			</form>
+
+			<script type="text/javascript">
+				$('#signUpUser').click(function(){
+					if($('#checkPass').val() === $('#checkPAss2').val()){
+						var NEW_USER = {};					
+						NEW_USER.name =  $('#checkText').val(),
+						NEW_USER.surname = $('#checkText2').val()
+						NEW_USER.email = $('#checkEmail').val(),
+						NEW_USER.phone_number = $('#checkNumber').val(),					
+						NEW_USER.password = $('#checkPass').val()
+						$.post('signup', NEW_USER, function(res){							
+							createUser(res)
+						})
+					}else{
+						console.warn('Логин и пароль не совпадают');
+						createError('nError','Логин и пароль не совпадают')
+					}
+					
+				});
+			</script>
 
 			<p class="u-font-center u-font-meta"><a href="/" class="toMain">На главную</a></p>
 		</div>

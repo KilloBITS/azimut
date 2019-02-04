@@ -1,9 +1,18 @@
-$(document).ready(function(){
-	$('#signIn').click(function(){
-		$('.nav_loader').show();
-		$.post('/signin',{l: $('#emailRadio').val() , p: $('#passwordRadio').val()},function(result){
-			console.log(result);
+var signIn = function(){
+	$('.nav_loader').show();
+	var log = $('#emailRadio').val();
+	var pas = $('#passwordRadio').val();
+	var logObj = {
+		login: log,
+		password: pas
+	}
+	$.post('/signIn', logObj, function(res){
+		if(res.code === 500){
 			$('.nav_loader').hide();
-		});
+			location.reload();
+		}else{
+			$('.nav_loader').hide();
+			createError('nError', res.message)
+		}
 	});
-});
+};

@@ -37,11 +37,19 @@ const register = require('./routes/getRegister');
 
 app.use('/', index);
 app.use('/register', register);
-app.get('*', get404);
 
+app.get('/logout', function(req, res) {
+    req.session.destroy(function(err) {})
+    res.redirect('/');
+});
+
+app.get('*', get404);
 /* POSTS */
 const auth = require('./controllers/logInController');
 app.post('/signin', auth);
+
+const signUp = require('./controllers/registerController');
+app.post('/signup', signUp);
 
 
 /* Started server */

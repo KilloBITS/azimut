@@ -142,8 +142,12 @@ init();
 requestAnimationFrame(update);
 /** Login **/
 
-setTimeout(function() {
-  $('.wrapper').addClass('loaded');
-
-}, 1000);
+  setTimeout(function() {
+    $('.wrapper').addClass('loaded');
+  }, 3000);
 });
+
+var createError = function(type, text){
+  console.log(text)
+}
+

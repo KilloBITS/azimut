@@ -21,7 +21,9 @@
 <body>	
 	<div class="wrapper">
 		<div id="loader-wrapper">
-			<div id="loader"></div>
+			<div id="loader">
+				<div class="pulse"></div>
+			</div>
 			<div class="loader-section section-left"></div>
 			<div class="loader-section section-right"></div>
 
@@ -33,11 +35,11 @@
 			<img src="../../../img/logo1.png" id="logotype">
 		</a>				
 		<h1>Радиоклуб <b>Азимут</b></h1>		
-		<div class="toScroll">
+		<!-- <div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
-		</div>
+		</div> -->
 		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
@@ -67,16 +69,32 @@
 			</div>
 		</div>
 		<div class="nav_menu right">
+			<% if(sessionUser !== undefined){ %>
+			<div class="nav_wrapper" id="users_wraper">
+				<div class="wrapper_title">Пользователь</div>
+				<div class="pre_line"></div>
+				<div class="nav_loader"></div>
+				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
+				<div class="userDATA">
+					<div class="userLogin"><%= sessionUser %></div>
+					<a href="/getProfile" class="userButton">Профиль</a>
+				</div>
+				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+			</div>
+			<% } else { %>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
 				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
-				<input type="button" value="Авторизация" class="auth_btn" id="signIn">
+				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
 			</div>
+			<% } %>   
+			
+			
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
@@ -110,48 +128,24 @@
 				</a>
 			</div>
 		</div>
-		<section id="section_01" class="section_data">
-			<h2>Солнечная электростанция UX1RX.</h2>
-			<p>В селе Дмитровка Черниговской области предприниматель и радиолюбитель Анатолий Савченко UX1RX установил солнечную электростанцию мощностью 8 кВт и за первые две недели, благодаря продаже электроэнергии по «зеленому» тарифу, заработал 4000 гривен. О собственной СЭС рационализатор мечтал давно — дождался, когда цены на панели значительно снизились, и реализовал проект. «Солнечная станция, состоящая из 36 панелей, занимает площадь 12х6 м. Смонтировала СЭС киевская фирма, в которой были приобретены солнечные панели.» Компьютерная программа показывает общее количество произведенной электроэнергии, то, что потребил дом, и продано на энергорынок, -рассказывает Анатолий Савченко. — Диаграмма на мониторе доказывает, что солнечная станция работает даже в пасмурную погоду и в дождь — электроэнергии вырабатывается меньше, но на внутренние нужды хватит, а вот в снежный день СЭС производит совсем мало, но надеюсь на поддержание комфортной температуры в утепленном доме». 
-				Если же поставить 30-киловаттную СЭС, то даже снег не помешает производить электроэнергию на продажу, уверен он.
-				«В Дмитровке нельзя установить СЭС мощностью 30 кВт через устаревшие линии, которые просто» не потянут «передачу производимой электроэнергии, — объясняет предприниматель. — ОАО «Черниговоблэнерго» достаточно оперативно подключило солнечную электростанцию: заявление написал — и они приехали — даже не ожидал, что это будет так быстро ».
-				Анатолий Савченко старался заключить договор в 2018 году. «Теперь мне до 2030 года будут платить по 18 центов за киловатт-час (это 5,91 грн, а за минусом налогов — 4,75 грн — авт.), — объясняет он. — В следующем году было бы уже по 16 центов за кВт-ч ».
-			Солнечная станция Анатолия Савченко начала работать 15 августа. За две первые недели работы СЭС после вычета стоимости потребленной электроэнергии, а также около 20% налога Анатолий Савченко заработал 4000 гривен. «Когда смотришь, как от солнца деньги капают, на душе становится теплее, — улыбается он. — Это — пассивный доход и за ним — будущее ».</p>
-
-			<div class="section_date">
-				01.02.2019 22:43
-				<span>Admin</span>
-			</div>
-		</section>
-		<section id="section_02" class="section_data">
-			<h2>О дипломной программе DXCC.</h2>
-			<p>Получение престижных наград программы DXCC — это результат огромного опыта работы в эфире и создания комплекса технических и программных средств для проведения дальних радиосвязей, в том числе применения эффективных антенн и приёмо-передающих устройств, современных цифровых методов обработки сигналов и новейших интернет-технологий. Дипломы и доски программы DXCC являются одним из наиболее значимых подтверждений достижений их владельца в области радиолюбительской связи. 
-				В 1935 году W1CBD, Clinton B. DeSoto, в своей статье «Как считать сработанные страны — новая система учёта», опубликованной в журнале QST, издаваемом национальной организацией радиолюбителей США (ARRL), предложил исходить из того, что любое географическое и политическое образование необходимо рассматривать как «страну» в радиолюбительском понимании этого слова, исходя из устанавливаемых критериев. В 1937 году список стран (DXCC List), сформированный по этому принципу, впервые был опубликован и с тех пор уже более 60 лет является стандартом для радиолюбителей всего мира.
-			Вершиной дипломной программы DXCC по праву является Кубок “The DeSoto Cup”, которым ежегодно награждается обладатель высшего результата в DXCC Challenge.</p>
-			<div class="section_date">
-				01.02.2019 22:43
-				<span>Admin</span>
-			</div>
-		</section>
-		<section id="section_03" class="section_data">
-			<h2>Достижения по программе DXCC в LoTW.</h2>
+		<% for(var i = 0; i < NEWS.length; i++){ %>
+		<section id="section_<%= i %>" class="section_data">
+			<h2><%= NEWS[i].title %></h2>
 			<p>
-				<img class="alignleft size-thumbnail wp-image-622" src="http://krrc.org.ua/wp-content/uploads/2018/04/lotw-150x104.jpg" alt="" width="150" height="104" srcset="http://krrc.org.ua/wp-content/uploads/2018/04/lotw-150x104.jpg 150w, http://krrc.org.ua/wp-content/uploads/2018/04/lotw.jpg 250w" sizes="(max-width: 150px) 100vw, 150px">
-				Обновление результатов происходит два раза в год: 31 декабря и 30 июня.
-				Для того, чтобы ваши результаты были в таблице делаем следующее:
-				• заходим на свой аккаунт в LoTW и нажимаем Awards;
-				• нажимаем Select DXCC Award Accaunt;
-				• щелкаем правой кнопкой мыши и выбираем «Сохранить как»;
-				• внизу открывшегося окна должно быть: «Тип файла» (веб-страница полностью);
-				• нажимаем кнопку «Сохранить».
-				Файлы присылаем на Клубный имеил: krrc@i.ua
-			Достижениях радиолюбителей Кировоградской области по дипломной программе DXCC в LoTW на 01.01.2019г.</p>
-			<img src="http://krrc.org.ua/wp-content/uploads/2019/01/cc-lt-768x436.jpg">
+				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
+				<%= NEWS[i].TEXT %>	
+			</p>
+			<% for(var ii = 0; ii < NEWS[i].CONTENT_IMAGE.length; ii++){ %>
+			<img src="<%= NEWS[i].CONTENT_IMAGE[ii] %>">
+			<% } %>
+			
 			<div class="section_date">
-				01.02.2019 22:43
-				<span>Admin</span>
+				<%= NEWS[i].DATE %>
+				<span><%= NEWS[i].AUTHOR %></span>
 			</div>
 		</section>	
+		<% } %>
+		
 
 		<div class="addOldNews">Показать больше...</div>	
 	</main>
