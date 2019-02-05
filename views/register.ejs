@@ -15,7 +15,9 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% if(sessionUser === undefined){ %>
+		<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% } %>	
 </head>
 <body>	
 	<div class="wrapper">
@@ -41,8 +43,8 @@
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
 			<a href="/">Главная</a> 
-			<a href="/about">Про нас</a> 
-			<a href="#">Новости</a> 
+			<a href="/about">О нас</a> 
+			<a href="/news">Новости</a> 
 			<a href="#" class="menu_to_left">VHF</a> 
 			<a href="#" class="menu_to_right">HF</a> 
 			<a href="#">Форум</a> 

@@ -697,6 +697,8 @@ a.NewPassLink{
 .section_data .alignleft{
     float: left;
     margin-right: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .section_data h2{
@@ -705,10 +707,33 @@ a.NewPassLink{
 
 .section_data{
     text-align: center;
+    position: relative;
+}
+
+.shadow_transparent{
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    bottom: 58px;
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), 2%,rgb(255, 255, 255));
+    left: 0;
 }
 
 .section_data p {
     text-align: left;
+    line-height: 20px;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.title_news_link{
+    color: black;
+    transition: 0.3s;
+}
+
+.title_news_link:hover{
+    color: #271765;
+    text-decoration: underline;
 }
 
 .nav_loader{

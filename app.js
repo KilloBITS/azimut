@@ -35,10 +35,12 @@ const get404 = require('./routes/get404');
 const index = require('./routes/getIndex');
 const register = require('./routes/getRegister');
 const about = require('./routes/getAbout');
+const news = require('./routes/getNews');
 
 app.use('/', index);
 app.use('/register', register);
 app.use('/about', about);
+app.use('/news', news);
 
 app.get('/logout', function(req, res) {
     req.session.destroy(function(err) {})

@@ -118,6 +118,7 @@ h1 {
   height: 80px;
   border-radius: 500px;
   position: absolute;
+  box-sizing: initial;
 }
 .pulse:before {
   -webkit-animation: pulse-outer 0.8s ease-in infinite;

@@ -15,7 +15,9 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>
+	<% if(sessionUser === undefined){ %>
+		<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% } %>
 	
 </head>
 <body>	
@@ -43,8 +45,8 @@
 		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
-			<a href="/about">Про нас</a> 
-			<a href="#">Новости</a> 
+			<a href="/about">О нас</a> 
+			<a href="/news">Новости</a> 
 			<a href="#">VHF</a> 
 			<a href="#" class="menu_to_left">HF</a> 
 			<a href="#" class="menu_to_right">Форум</a> 
@@ -130,24 +132,21 @@
 		</div>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
-			<h2><%= NEWS[i].title %></h2>
+			<h2><a class="title_news_link" href="/detailsnews&ai=<%= i %>"><%= NEWS[i].title %></a></h2>
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
 				<%= NEWS[i].TEXT %>	
+				<div class="shadow_transparent"></div>
 			</p>
-			<% for(var ii = 0; ii < NEWS[i].CONTENT_IMAGE.length; ii++){ %>
+			<!-- <% for(var ii = 0; ii < NEWS[i].CONTENT_IMAGE.length; ii++){ %>
 			<img src="<%= NEWS[i].CONTENT_IMAGE[ii] %>">
-			<% } %>
+			<% } %> -->
 			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
 				<span><%= NEWS[i].AUTHOR %></span>
 			</div>
 		</section>	
-		<% } %>
-		
-		<% if( NEWS.length > 6){ %>
-		<div class="addOldNews">Показать больше...</div>	
 		<% } %>
 	</main>
 
