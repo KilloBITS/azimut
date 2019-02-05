@@ -47,6 +47,7 @@
 	</div>
 	<header>	
 		<canvas id="canvas"></canvas>
+		<canvas id="spectr"></canvas>
 		<a href="/">
 			<img src="../../../img/logo1.png" id="logotype">
 		</a>				
@@ -62,9 +63,9 @@
 			<a href="/">Главная</a> 
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#">VHF</a> 
-			<a href="#" class="menu_to_left">HF</a> 
-			<a href="#" class="menu_to_right">Форум</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
 			<a href="#">Барахолка</a> 
 			<a href="#">Контакты</a> 
 		</nav>
@@ -81,8 +82,30 @@
 				<a href="#" id="Round_tables">Круглые столы</a>
 				<a href="#" id="market">Барахолка</a>
 				<a href="#" id="miscellanea">Разное</a>
-				<a href="#" id="Technical_section">Технический раздел</a>
-				
+				<a href="#" id="Technical_section">Технический раздел</a>				
+			</div>
+			<div class="nav_wrapper">
+				<div class="wrapper_title">Информация</div>
+				<div class="pre_line"></div>
+				<div class="info_div">Действующие репитеры:</div>
+				<div class="ii_div">Тест репитер 1</div>
+				<div class="ii_div">Тест репитер 2</div>
+				<div class="ii_div">Тест репитер 3</div>
+				<div class="ii_div">Тест репитер 4</div>
+				<div class="info_div">Действующие частоты:</div>
+				<div class="ii_div">27.1100</div>
+				<div class="ii_div">37.7750</div>
+				<div class="ii_div">42.7500</div>
+				<div class="ii_div">42.9875</div>
+				<div class="ii_div">145.2000</div>
+				<div class="ii_div">145.3500</div>
+				<div class="ii_div">145.4250</div>
+				<div class="ii_div">148.4250</div>
+				<div class="info_div">Круглые столы (Львов):</div>
+				<div class="ii_div">Тест стол</div>
+				<div class="ii_div">Рыцари</div>
+				<div class="ii_div">MicroGIS</div>
+				<div class="ii_div">Phalcon</div>
 			</div>
 		</div>
 		<div class="nav_menu right">
@@ -109,32 +132,7 @@
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
 			</div>
-			<% } %>   
-			
-			
-			<div class="nav_wrapper">
-				<div class="wrapper_title">Информация</div>
-				<div class="pre_line"></div>
-				<div class="info_div">Действующие репитеры:</div>
-				<div class="ii_div">Тест репитер 1</div>
-				<div class="ii_div">Тест репитер 2</div>
-				<div class="ii_div">Тест репитер 3</div>
-				<div class="ii_div">Тест репитер 4</div>
-				<div class="info_div">Действующие частоты:</div>
-				<div class="ii_div">27.1100</div>
-				<div class="ii_div">37.7750</div>
-				<div class="ii_div">42.7500</div>
-				<div class="ii_div">42.9875</div>
-				<div class="ii_div">145.2000</div>
-				<div class="ii_div">145.3500</div>
-				<div class="ii_div">145.4250</div>
-				<div class="ii_div">148.4250</div>
-				<div class="info_div">Круглые столы (Львов):</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
-			</div>
+			<% } %>  		
 
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
@@ -145,7 +143,13 @@
 				</a>
 			</div>
 		</div>
-		
+
+		<div class="navigator">
+			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="/about" id="nav_about" class="navigator_btn selected_nav">О нас</a>
+		</div>		
+
+
 		<section id="section_01" class="section_data">
 			<h2>О нас</h2>
 			<p>

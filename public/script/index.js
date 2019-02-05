@@ -142,12 +142,123 @@ init();
 requestAnimationFrame(update);
 /** Login **/
 
-  setTimeout(function() {
-    $('.wrapper').addClass('loaded');
-  }, 3000);
+setTimeout(function() {
+  $('.wrapper').addClass('loaded');
+}, 3000);
+
+
+/** Spqctr **/ 
+let intervalX = $('#spectr').width();
+let intervalY = $('#spectr').height();
+
+// for(var il = 0; il < (intervalX / 2) - 1; il++){
+//   var lineSpectr = document.createElement('div');
+//   lineSpectr.className = 'lineSpectr';
+//   lineSpectr.style.height = randomInteger(25, 100) + 'px'
+//   $('#spectrLineArray').append(lineSpectr);
+// }  
+// for(let i = 0; i < intervalY; i++){
+
+// }
+// setInterval(function(){
+  drawGrid(intervalX, intervalY, "spectr");  
+// },100)
+
 });
 
-var createError = function(type, text){
-  console.log(text)
+function randomInteger(min, max) {
+  var rand = min + Math.random() * (max + 1 - min);
+  rand = Math.floor(rand);
+  return rand;
 }
+var textArray = ['+50','+45','+40','+35','+30','+25','+20','+15','+10','+5'];
+
+var drawGrid = function(w, h, id) {
+  var canvas = document.getElementById(id);
+  var ctx = canvas.getContext('2d');
+  ctx.canvas.width  = w;
+  ctx.canvas.height = h;
+  ctx.clearRect(0, 0, w, h);
+  var data = '<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"> \
+  <defs> \
+  <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse"> \
+  <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5" /> \
+  </pattern> \
+  <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse"> \
+  <rect width="80" height="80" fill="url(#smallGrid)" /> \
+  <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1" /> \
+  </pattern> \
+  </defs> \
+  <rect width="100%" height="100%" fill="url(#smallGrid)" /> \
+  </svg>';
+
+  var DOMURL = window.URL || window.webkitURL || window;
+
+  var img = new Image();
+  var svg = new Blob([data], {type: 'image/svg+xml;charset=utf-8'});
+  var url = DOMURL.createObjectURL(svg);
+  
+  img.onload = function () {
+    ctx.drawImage(img, 0, 0);
+    DOMURL.revokeObjectURL(url);
+
+    ctx.beginPath();
+    ctx.lineWidth = 0.5;
+    ctx.strokeStyle = 'white';
+    ctx.moveTo(0, 125);
+    ctx.lineTo(w, 125);
+    ctx.stroke();
+    ctx.closePath();
+
+    for(var it = 0; it < (h / 25); it++){
+      ctx.beginPath();
+      ctx.strokeStyle = "silver";
+      ctx.fillStyle = "silver";
+      ctx.font = "16px sans-serif";
+      ctx.fillText(textArray[it], 10, it*25);
+      ctx.closePath();
+      // indText = indText+1;
+    }
+    for(var il = 0; il < w; il++){
+          // grd = ctx.createLinearGradient(1, 1, h, w);
+      
+      // // Add colors
+      // grd.addColorStop(0, 'rgba(0, 13, 119, 1)');
+      // grd.addColorStop(1, 'rgba(255, 255, 255, 1)');
+      
+      // // Fill with gradient
+      // ctx.fillStyle = grd;
+      // ctx.strokeStyle = grd;
+      var lllH = randomInteger(180, 230);
+
+      ctx.beginPath();
+      ctx.lineWidth = 1;  
+      ctx.strokeStyle = 'white';
+      ctx.moveTo(il, lllH - 2);
+      ctx.lineTo(il, h);
+      ctx.stroke();
+      ctx.closePath();
+
+      ctx.beginPath();
+      ctx.lineWidth = 1;  
+      ctx.strokeStyle = '#125b8d';
+      ctx.moveTo(il, lllH);
+      ctx.lineTo(il, h);
+      ctx.stroke();
+      ctx.closePath();
+    }
+
+    }
+    img.src = url;
+  }
+
+
+  var createError = function(type, text){
+    console.log(text)
+  }
+
+
+
+
+
 
