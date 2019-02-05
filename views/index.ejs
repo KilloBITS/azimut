@@ -127,10 +127,10 @@
 		</div>
 
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="/" id="nav_home" class="navigator_btn noBefore">Главная</a>
 		</div>	
 
-		
+
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
 			<h2><a class="title_news_link" href="/detailsnews&ai=<%= i %>"><%= NEWS[i].title %></a></h2>

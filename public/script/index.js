@@ -219,17 +219,17 @@ var drawGrid = function(w, h, id) {
       ctx.closePath();
       // indText = indText+1;
     }
+
+    var test = '230,230,229,229,228,228,227,226,225,224,222,220,218,217,216,220,221,215,210,200,198,190,195,200,205,208';
+
+    var coords = test.split(',')
     for(var il = 0; il < w; il++){
-          // grd = ctx.createLinearGradient(1, 1, h, w);
+      if(il < coords.length){
+          var lllH = coords[il];
+      }else{
+        var lllH = randomInteger(180, 230);
+      }
       
-      // // Add colors
-      // grd.addColorStop(0, 'rgba(0, 13, 119, 1)');
-      // grd.addColorStop(1, 'rgba(255, 255, 255, 1)');
-      
-      // // Fill with gradient
-      // ctx.fillStyle = grd;
-      // ctx.strokeStyle = grd;
-      var lllH = randomInteger(180, 230);
 
       ctx.beginPath();
       ctx.lineWidth = 1;  

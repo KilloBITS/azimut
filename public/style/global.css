@@ -910,6 +910,15 @@ a.userlogoutInBlock{
     right: -13px;
 }
 
+
+#nav_home.noBefore:before{
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 0px;
+    right: -13px;
+}
+
 a.selected_nav{
     opacity: 0.8;
     pointer-events: none;
