@@ -2,14 +2,14 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title>Ридиоклуб "Азимут"</title>
+	<meta name="Description" content="<%= NEWS.title %>">
+	<title><%= NEWS.title %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
+	<link rel="stylesheet" type="text/css" href="/style/news/news.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
@@ -19,7 +19,6 @@
 	<% if(sessionUser === undefined){ %>
 		<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
-	
 </head>
 <body>	
 	<div class="wrapper">
@@ -32,23 +31,19 @@
 
 		</div>
 	</div>
-	<header>
+	<header>	
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
-		<div class="spec_graph"></div>
-		<div class="spectrLineArray" id="spectrLineArray"></div>
-		<a href="/">
-			<img src="../../../img/logo1.png" id="logotype">
-		</a>				
-		<h1>Радиоклуб <b>Азимут</b></h1>	
-	
+		<img src="../../../img/logo1.png" id="logotype">		
+		<h1>Радиоклуб <b>Азимут</b></h1>		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
+			<a href="/">Главная</a> 
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#">VHF</a> 
-			<a href="#" class="menu_to_left">HF</a> 
-			<a href="#" class="menu_to_right">Форум</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
 			<a href="#">Барахолка</a> 
 			<a href="#">Контакты</a> 
 		</nav>
@@ -67,7 +62,6 @@
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>				
 			</div>
-
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
@@ -116,8 +110,8 @@
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
 			</div>
-			<% } %>   
-			
+			<% } %>      
+
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -127,72 +121,70 @@
 				</a>
 			</div>
 		</div>
-
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn noBefore">Главная</a>
+			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="#" id="nav_news" class="navigator_btn selected_nav"><%= NEWS.title %></a>
 		</div>	
-
-
-		<% for(var i = 0; i < NEWS.length; i++){ %>
-		<section id="section_<%= i %>" class="section_data">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+		<section id="section_0" class="section_data">
+			<h2><%= NEWS.title %></h2>
 			<p>
-				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews&ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
-			</p>			
+				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS.NEWS_LOGO %>" alt="" width="150" height="104">
+				<%= NEWS.TEXT %>					
+			</p>
+			<% for(var ii = 0; ii < NEWS.CONTENT_IMAGE.length; ii++){ %>
+				<img src="<%= NEWS.CONTENT_IMAGE[ii] %>">
+			<% } %>
+			
 			<div class="section_date">
-				<%= NEWS[i].DATE %>
-				<span><%= NEWS[i].AUTHOR %></span>
+				<%= NEWS.DATE %>
+				<span><%= NEWS.AUTHOR %></span>
 			</div>
-		</section>	
-		<% } %>
+		</section>			
 	</main>
-
 	<div id="stop" class="scrollTop"></div>
-
 	<footer class="flex-rw">
-		<ul class="footer-list-top">
-			<li>
-				<h4 class="footer-list-header">Навигация</h4></li>
-				<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
-				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
-				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
-				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-			</ul>
+	<ul class="footer-list-top">
+		<li>
+			<h4 class="footer-list-header">Навигация</h4></li>
+			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+			<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+			<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+			<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+		</ul>
 			<ul class="footer-list-top">
 				<li id='help'>
-					<h4 class="footer-list-header">Помощь</h4></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
-				</ul>
-				<section class="footer-social-section flex-rw">
-					<span class="footer-social-overlap footer-social-connect">
-						Мы в Соц. Сетях
-					</span>
-					<span class="footer-social-overlap footer-social-icons-wrapper">						
-						<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
-						<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-						<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-						<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
-					</span>
-				</section>
-				<section class="footer-bottom-section flex-rw">
-					<div class="footer-bottom-wrapper">   
-						<i class="fa fa-copyright" role="copyright">
+					<h4 class="footer-list-header">Помощь</h4>
+				</li>
+				<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+				<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+			</ul>
+			<section class="footer-social-section flex-rw">
+				<span class="footer-social-overlap footer-social-connect">
+					Мы в Соц. Сетях
+				</span>
+				<span class="footer-social-overlap footer-social-icons-wrapper">
+					<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+					<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+					<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+					<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+				</span>
+			</section>
+			<section class="footer-bottom-section flex-rw">
+				<div class="footer-bottom-wrapper">   
+					<i class="fa fa-copyright" role="copyright">
 
-						</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
-					</div>
-					<div class="footer-bottom-wrapper">
-						
-					</div>
-				</section>
-			</footer>
-		</body>
-		</html>
+					</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+				</div>
+				<div class="footer-bottom-wrapper">
+					
+				</div>
+			</section>
+		</footer>
+	</body>
+</html>
