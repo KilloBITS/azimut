@@ -120,9 +120,15 @@
 					<a href="/getProfile" class="userButton">Профиль</a>
 				</div>
 				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>
 			</div>
 			<% } else { %>
-			<div class="nav_wrapper">
+			<div class="nav_wrapper" id="users_wraper">
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
@@ -131,6 +137,12 @@
 				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>
 			</div>
 			<% } %>  		
 

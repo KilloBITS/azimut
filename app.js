@@ -38,6 +38,7 @@ const about = require('./routes/getAbout');
 const news = require('./routes/getNews');
 const opennews = require('./routes/getOpenNews');
 const market = require('./routes/getFlea_market');
+const getTovar = require('./routes/getDetailsTovar');
 
 
 app.use('/', index);
@@ -46,6 +47,7 @@ app.use('/about', about);
 app.use('/news', news);
 app.use('/market',  market);
 app.use('/detailsnews*', opennews);
+app.use('/getDetailsTovar*', getTovar);
 
 app.get('/logout', function(req, res) {
     req.session.destroy(function(err) {})

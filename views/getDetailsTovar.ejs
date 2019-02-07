@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="Description" content="<%= TOVAR.Title %>">
+  <title><%= TOVAR.Title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="/style/loader.css">
+  <link rel="stylesheet" type="text/css" href="/style/global.css">
+  <link rel="stylesheet" type="text/css" href="/style/global.min.css">
+  <link rel="stylesheet" type="text/css" href="/style/news/news.css">
+  <link rel="stylesheet" type="text/css" href="/style/swiper.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="./data/header.json"></script>
+  <script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/script/jquery-ui.js"></script>
+  <script type="text/javascript" src="/script/swiper.js"></script>
+  <script type="text/javascript" src="/script/index.js"></script>
+  <script type="text/javascript" src="/script/gallery-slide.js"></script>
+
+  <% if(sessionUser === undefined){ %>
+  <script type="text/javascript" src="/script/loginMethod.js"></script> 
+  <% } %>
+</head>
+<body>  
+  <div class="wrapper">
+    <div id="loader-wrapper">
+      <div id="loader">
+        <div class="pulse"></div>
+      </div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+
+    </div>
+  </div>
+  <header>  
+    <canvas id="canvas"></canvas>
+    <canvas id="spectr"></canvas>
+    <img src="../../../img/logo1.png" id="logotype">    
+    <h1>Радиоклуб <b>Азимут</b></h1>    
+    <div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
+    <nav> 
+      <a href="/">Главная</a> 
+      <a href="/about">О нас</a> 
+      <a href="/news">Новости</a> 
+      <a href="#" class="menu_to_left">VHF</a> 
+      <a href="#" class="menu_to_right">HF</a> 
+      <a href="#">Форум</a> 
+      <a href="/market">Барахолка</a> 
+      <a href="#">Контакты</a> 
+    </nav>
+  </header>
+  <main class="wrapper">
+    <div class="nav_menu left">
+      <div class="nav_wrapper">
+        <div class="wrapper_title">Навигация</div>
+        <div class="pre_line"></div>
+        <a href="#" id="activity">Мероприятия</a>
+        <a href="#" id="calendar">Календарь</a>
+        <a href="#" id="Numeral">Цифра</a>
+        <a href="#" id="Communities">Сообщества</a>
+        <a href="#" id="Round_tables">Круглые столы</a>
+        <a href="/market id="market">Барахолка</a>
+        <a href="#" id="miscellanea">Разное</a>
+        <a href="#" id="Technical_section">Технический раздел</a>       
+      </div>
+      <div class="nav_wrapper">
+        <div class="wrapper_title">Информация</div>
+        <div class="pre_line"></div>
+        <div class="info_div">Действующие репитеры:</div>
+        <div class="ii_div">Тест репитер 1</div>
+        <div class="ii_div">Тест репитер 2</div>
+        <div class="ii_div">Тест репитер 3</div>
+        <div class="ii_div">Тест репитер 4</div>
+        <div class="info_div">Действующие частоты:</div>
+        <div class="ii_div">27.1100</div>
+        <div class="ii_div">37.7750</div>
+        <div class="ii_div">42.7500</div>
+        <div class="ii_div">42.9875</div>
+        <div class="ii_div">145.2000</div>
+        <div class="ii_div">145.3500</div>
+        <div class="ii_div">145.4250</div>
+        <div class="ii_div">148.4250</div>
+        <div class="info_div">Круглые столы (Львов):</div>
+        <div class="ii_div">Тест стол</div>
+        <div class="ii_div">Рыцари</div>
+        <div class="ii_div">MicroGIS</div>
+        <div class="ii_div">Phalcon</div>
+      </div>
+    </div>
+    <div class="nav_menu right">
+      <% if(sessionUser !== undefined){ %>
+      <div class="nav_wrapper" id="users_wraper">
+        <div class="wrapper_title">Пользователь</div>
+        <div class="pre_line"></div>
+        <div class="nav_loader"></div>
+        <div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
+        <div class="userDATA">
+          <div class="userLogin"><%= sessionUser %></div>
+          <a href="/getProfile" class="userButton">Профиль</a>
+        </div>
+        <a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a> 
+
+        <div class="localisation">
+          <div class="localIcon" id="ru" title="Русский"></div>
+          <div class="localIcon" id="ua" title="Українська"></div>
+          <div class="localIcon" id="en" title="English"></div>
+        </div>  
+      </div>
+      <% } else { %>
+      <div class="nav_wrapper" id="users_wraper">
+        <div class="wrapper_title">Авторизация</div>
+        <div class="pre_line"></div>
+        <div class="nav_loader"></div>
+        <input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+        <input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
+        <input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
+        <a href="/register" class="NewPassLink">Регистрация</a>
+        <a href="#" class="NewPassLink">Забыли пароль?</a>
+
+        <div class="localisation">
+          <div class="localIcon" id="ru" title="Русский"></div>
+          <div class="localIcon" id="ua" title="Українська"></div>
+          <div class="localIcon" id="en" title="English"></div>
+        </div>
+      </div>
+      <% } %>      
+
+      <div class="nav_wrapper">
+        <div class="wrapper_title">APRS</div>
+        <div class="pre_line"></div>
+        <a class="none_text" href="https://www.aprsdirect.com/center/49.82786,24.03119/zoom/11/time/60" target="_blank">
+          <img src="../../../img/aprs.png" width="228">
+          <div class="a_btn">Открыть карту</div>
+        </a>
+      </div>
+    </div>
+    <div class="navigator">
+      <a href="/" id="nav_home" class="navigator_btn">Главная</a>
+      <a href="/market" id="nav_market" class="navigator_btn">Барахолка</a>
+      <a href="#" id="nav_news" class="navigator_btn selected_nav"><%= TOVAR.Title %></a>
+    </div>  
+    <section id="section_0" class="section_data" style="box-shadow: none;">
+      <h2><%= TOVAR.Title %></h2>
+      <p>
+        <%= TOVAR.Description %>          
+      </p>
+      <div class="cashData">Цена: <%= TOVAR.Price %> </div>
+      <div class="authorData">Автор объявления: <%= TOVAR.User %></div>
+      <div class="NumberData" secret="<%= TOVAR.Number %>" onclick="getSecret(this)">Показать номер +380...</div>
+      <div class="EmailData" secret="<%= TOVAR.Email %>" onclick="getSecret(this)">Показать E-Mail</div>
+      <script type="text/javascript">
+        var getSecret = function(secret){
+          $(secret).html($(secret).attr('secret'));
+        };
+      </script>
+      <div class="product-gallery">
+        <div class="product-photo-main">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
+              <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                  <img src="<%= TOVAR.Images[ii] %>">
+                </div>
+              </div>
+              <% } %>           
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+        <div class="product-photos-side">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
+              <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                  <img src="<%= TOVAR.Images[ii] %>">
+                </div>
+              </div>
+              <% } %> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="product-gallery-full-screen">
+    <div class="swiper-container gallery-top">
+      <div class="swiper-wrapper">
+
+        <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
+        <div class="swiper-slide">
+          <div class="swiper-zoom-container">
+            <img src="<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
+          </div>
+        </div>
+        <% } %> 
+
+
+
+      </div>
+      <div class="swiper-button-next swiper-button-white">
+        <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </div>
+      <div class="swiper-button-prev swiper-button-white">
+        <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+      </div>
+      <div class="gallery-nav">
+        <div class="swiper-pagination"></div>
+        <ul class="gallery-menu">
+          <li class="zoom">
+            <svg class="zoom-icon-zoom-in" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+              <path d="M0 0h24v24H0V0z" fill="none"/>
+              <path d="M12 10h-2v2H9v-2H7V9h2V7h1v2h2v1z"/>
+            </svg>
+            <svg class="zoom-icon-zoom-out" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0V0z" fill="none"/>
+              <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14zM7 9h5v1H7z"/>
+            </svg>
+          </li>
+          <li class="fullscreen">
+            <svg class="fs-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+            </svg>
+            <svg class="fs-icon-exit" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v24H0z" fill="none"/>
+              <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/>
+            </svg>
+          </li>
+          <li class="close">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </li>
+        </ul>
+      </div>
+
+
+      
+      <div class="section_date">
+        <%= TOVAR.Date %>
+        <span><%= TOVAR.User %></span>
+      </div>
+    </section>      
+  </main>
+  <div id="stop" class="scrollTop"></div>
+  <footer class="flex-rw">
+    <ul class="footer-list-top">
+      <li>
+        <h4 class="footer-list-header">Навигация</h4></li>
+        <li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+        <li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+        <li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+        <li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+        <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+        <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+        <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+      </ul>
+      <ul class="footer-list-top">
+        <li id='help'>
+          <h4 class="footer-list-header">Помощь</h4>
+        </li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+        <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+        <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+        <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+        <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+      </ul>
+      <section class="footer-social-section flex-rw">
+        <span class="footer-social-overlap footer-social-connect">
+          Мы в Соц. Сетях
+        </span>
+        <span class="footer-social-overlap footer-social-icons-wrapper">
+          <a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>       
+          <a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+          <a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+          <a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+        </span>
+      </section>
+      <section class="footer-bottom-section flex-rw">
+        <div class="footer-bottom-wrapper">   
+          <i class="fa fa-copyright" role="copyright">
+
+          </i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+        </div>
+        <div class="footer-bottom-wrapper">
+
+        </div>
+      </section>
+    </footer>
+  </body>
+  </html>

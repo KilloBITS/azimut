@@ -105,10 +105,16 @@
 					<div class="userLogin"><%= sessionUser %></div>
 					<a href="/getProfile" class="userButton">Профиль</a>
 				</div>
-				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>	
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>	
 			</div>
 			<% } else { %>
-			<div class="nav_wrapper">
+			<div class="nav_wrapper" id="users_wraper">
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
@@ -117,8 +123,52 @@
 				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>
 			</div>
-			<% } %>      
+			<% } %> 
+
+			<div class="nav_wrapper">
+				<div class="wrapper_title">Фильтр</div>
+				<div class="pre_line"></div>
+				<div class="selectLabel">Тип объяввления:</div>
+				<select class="minimal" id="selectType">
+			  		<option value="0">• Все объявления</option>
+			  		<option value="1">• Продам</option>
+			 		<option value="2">• Куплю</option>
+			  		<option value="18">• Подарю / Отдам даром</option>
+				</select>
+
+				<div class="selectLabel">Тип товаров:</div>
+				<select class="minimal" id="selectTovar">
+			  		<option value="0">• Все товары</option>
+			  		<option value="1">• Антенны</option>
+			 		<option value="2">• ТРАНСИВЕРЫ КВ</option>
+			  		<option value="3">• ТРАНСИВЕРЫ УКВ</option>
+			  		<option value="4">• ТРАНСИВЕРЫ SDR</option>
+			  		<option value="5">• ПРИЕМНИКИ</option>
+			  		<option value="6">• ВСЕ ДЛЯ СВ</option>
+			  		<option value="7">• Радио</option>
+			  		<option value="8">• УСИЛИТЕЛИ</option>
+			  		<option value="9">• БЛОКИ ПИТАНИЯ</option>
+			  		<option value="10">• ЛАМПЫ</option>
+			  		<option value="11">• ЦИФРОВАЯ СВЯЗЬ</option>
+			  		<option value="12">• АКСЕССУАРЫ</option>
+			  		<option value="13">• ИЗМЕРИТЕЛЬНАЯ ТЕХНИКА</option>
+			  		<option value="14">• ПРИБОРЫ СВЧ</option>
+			  		<option value="15">• РАДИОДЕТАЛИ</option>
+			  		<option value="16">• КЛЮЧИ</option>
+			  		<option value="17">• ЛИТЕРАТУРА, ДИСКИ</option>
+			  		<option disabled>--------------------------</option>
+			  		<option value="18">• Подарю / Отдам даром</option>
+				</select>
+
+			</div>
+
 
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
@@ -132,13 +182,12 @@
 
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
-			<a href="/market" id="nav_market" class="navigator_btn selected_nav">Новости</a>
+			<a href="/market" id="nav_market" class="navigator_btn selected_nav">Барахолка</a>
 		</div>	
-
+		<div class="tovarLength">Найдено: <%= TOVAR.length %> объявлений</div>
 		<% for(var i = 0; i < TOVAR.length; i++){ %>
 		<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
-			<section id="section_<%= i %>" class="section_data">
-				
+			<section id="section_<%= i %>" class="section_data">				
 				<div class="preImage" style="background-image: url(<%= TOVAR[i].Images[0] %>)"></div>
 				<h4><%= TOVAR[i].Title %></h4>
 				<div class="description"><%= TOVAR[i].Description %></div>
