@@ -49,7 +49,7 @@
 			<a href="#">VHF</a> 
 			<a href="#" class="menu_to_left">HF</a> 
 			<a href="#" class="menu_to_right">Форум</a> 
-			<a href="#">Барахолка</a> 
+			<a href="/market">Барахолка</a> 
 			<a href="#">Контакты</a> 
 		</nav>
 	</header>
@@ -63,7 +63,7 @@
 				<a href="#" id="Numeral">Цифра</a>
 				<a href="#" id="Communities">Сообщества</a>
 				<a href="#" id="Round_tables">Круглые столы</a>
-				<a href="#" id="market">Барахолка</a>
+				<a href="/market" id="market">Барахолка</a>
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>				
 			</div>
@@ -139,7 +139,7 @@
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
 				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews&ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
+				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
 			</p>			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
