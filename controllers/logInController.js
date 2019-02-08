@@ -18,7 +18,9 @@ router.post('/signin', function(req, res, next){
 			if(err) return console.log(err);
 			users.find({email: req.body.login}).toArray(function(err, results_users){
 				if((results_users.length !== 0) && (req.body.login === results_users[0].email && req.body.password === results_users[0].password)) {
-					req.session.user = results_users[0].nick;
+					req.session.user = results_users[0].name;
+					req.session.email = results_users[0].email;
+					req.session.nick = results_users[0].nick;
 					req.session.admin = results_users[0].isAdmin;
 					global.online = global.online + 1;
 					res.send({code:500, data: results_users});

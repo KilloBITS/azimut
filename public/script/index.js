@@ -155,13 +155,15 @@ drawGrid(intervalX, intervalY, "spectr");
 
   $('.sendComment').click( function(){
     $('.loader_new_comment').show();
+    $('.sendComment').hide();
     var commentData = {
       text: $('#newComment').val()
     }
     $.post('/newComment', commentData, function(res){
-      console.log(res);
       $('.loader_new_comment').hide();
-      
+      $('#newComment').val('');
+      var newComment = '<div class="comment-wrap"><div class="comment-block"><p class="comment-text">'+res.data.text+'</p><div class="bottom-comment"><div class="comment-date">'+res.data.date+'</div></div><div class="commentAuthor">'+res.data.user+'</div></div></div>';
+      $('.comments').append(newComment);
     });
   });
 });

@@ -201,7 +201,7 @@
 						NEW_USER.phone_number = $('#checkNumber').val(),					
 						NEW_USER.password = $('#checkPass').val()
 						$.post('signup', NEW_USER, function(res){							
-							createUser(res)
+							createUsers(res)
 						})
 					}else{
 						console.warn('Логин и пароль не совпадают');
