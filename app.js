@@ -62,6 +62,9 @@ app.post('/signin', auth);
 const signUp = require('./controllers/registerController');
 app.post('/signup', signUp);
 
+const newComment = require('./controllers/setNewComment');
+app.post('/newComment', newComment);
+
 
 /* Started server */
 app.listen(4334, function(){

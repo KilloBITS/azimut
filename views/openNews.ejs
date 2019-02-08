@@ -159,6 +159,64 @@
 				<%= NEWS.DATE %>
 				<span><%= NEWS.AUTHOR %></span>
 			</div>
+
+			<div class="comments">
+				
+					
+					
+					<% if(sessionUser !== undefined){ %>
+					<div class="comment-wrap">
+						<div class="loader_new_comment"></div>						
+						<div class="comment-block">
+							<form action="">
+								<textarea name="newComment" id="newComment" cols="30" rows="3" placeholder="Написать комментарий..."></textarea>
+								<script type="text/javascript">
+									$('#newComment').on('keyup', function(){
+										if($('#newComment').val().length > 3){
+											$('.sendComment').fadeIn(300);
+										}else{
+											$('.sendComment').fadeOut(300);
+										}
+									});
+								</script>
+								<div class="sendComment" >Отправить</div>
+							</form>
+						</div>
+					</div>
+					<% } else { %>
+					<div class="noneCommentAuth">
+						<div class="noneCommentAuthText">
+							Для того чтобы оставлять комментарии нужно <a href="#" onclick="modalAuth()">авторизироватся</a>!
+						</div>
+					</div>
+
+					<script type="text/javascript">
+						var modalAuth = function(){
+							$('#users_wraper').addClass('blink');
+							$('html, body').animate({
+						  		scrollTop: 0
+						  	}, 800);							  	
+							setTimeout(function(){
+								$('#users_wraper').removeClass('blink');
+							},6000);
+							return false;
+						}
+					</script>
+					<% } %>    
+			
+				<% for(var ii = 0; ii < COMMENTS.length; ii++){ %>
+				<div class="comment-wrap">			
+					<div class="comment-block">
+						<p class="comment-text"><%= COMMENTS[ii].text %></p>
+						<div class="bottom-comment">
+							<div class="comment-date"><%= COMMENTS[ii].date %></div>
+						</div>
+						<div class="commentAuthor"><%= COMMENTS[ii].user %></div>
+					</div>
+				</div>
+			<% } %>			
+			</div>			
+		</div>
 		</section>			
 	</main>
 	<div id="stop" class="scrollTop"></div>

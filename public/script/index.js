@@ -65,7 +65,7 @@ var Dot = function(x, y, dx, dy) {
 function updtMouse(e) {
 	mx = e.x;
 	my = e.y;
-	console.log(mx + " " + my);
+	// console.log(mx + " " + my);
 }
 
 function init() {
@@ -86,7 +86,6 @@ function init() {
 }
 
 function update() {
-
 	c.clearRect(0, 0, innerWidth, innerHeight);
 
 	for(let i=0; i<dots_num; i++) {
@@ -152,6 +151,19 @@ let intervalX = $('#spectr').width();
 let intervalY = $('#spectr').height();
 
 drawGrid(intervalX, intervalY, "spectr");  
+
+
+  $('.sendComment').click( function(){
+    $('.loader_new_comment').show();
+    var commentData = {
+      text: $('#newComment').val()
+    }
+    $.post('/newComment', commentData, function(res){
+      console.log(res);
+      $('.loader_new_comment').hide();
+      
+    });
+  });
 });
 
 function randomInteger(min, max) {
@@ -209,33 +221,6 @@ var drawGrid = function(w, h, id) {
     }
 
     var coords = head.spectr;
-
-    
-    // for(var il = 0; il < w; il++){
-    //   if(il < coords.length){
-    //       var lllH = coords[il];
-    //   }else{
-    //     var lllH = randomInteger(220, 230);
-    //   }
-      
-
-    //   ctx.beginPath();
-    //   ctx.lineWidth = 1;  
-    //   ctx.strokeStyle = 'white';
-    //   ctx.moveTo(il, lllH - 2);
-    //   ctx.lineTo(il, h);
-    //   ctx.stroke();
-    //   ctx.closePath();
-
-    //   ctx.beginPath();
-    //   ctx.lineWidth = 1;  
-    //   ctx.strokeStyle = '#125b8d';
-    //   ctx.moveTo(il, lllH);
-    //   ctx.lineTo(il, h);
-    //   ctx.stroke();
-    //   ctx.closePath();
-    // }
-
     }
     img.src = url;
     var backSpectr = new Image();

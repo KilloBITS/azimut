@@ -10,15 +10,18 @@ router.get('/*', function(req, res, next) {
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
     const news = db.collection("NEWS");
+    const comments = db.collection("COMMENTS");
 
     news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){
-      console.log(resNews)
-      res.render('openNews.ejs',
-      {
-        NEWS: resNews[0],
-        sessionUser: req.session.user,
-        isAdm: req.session.admin
-      });
+      comments.find({newsAI: getNews}).toArray(function(err, resComment){
+        res.render('openNews.ejs',
+        {
+          NEWS: resNews[0],
+          COMMENTS: resComment,
+          sessionUser: req.session.user,
+          isAdm: req.session.admin
+        });
+      });    
     });   
    });  
 });
