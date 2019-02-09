@@ -1,39 +1,41 @@
 $(function(){
+  if ($(window).width() <= 800) {
+    $('header').css({
+      width: $(window).width() + 'px',
+      height: $(window).height() + 'px'
+    });    
+  }
+
 	$(window).scroll(function(){
 		var winTop = $(window).scrollTop();
-		if(winTop >= 30){
-			$("body").addClass("sticky-header");
-		}else{
-			$("body").removeClass("sticky-header");
-		}
+      
+    if ($(window).width() > 800) {
+      if(winTop >= 30){
+        $("body").addClass("sticky-header");
+      }else{
+        $("body").removeClass("sticky-header");
+      }
+    }
 	})
 
-  // declare variable
   var scrollTop = $(".scrollTop");
-
   $(window).scroll(function() {
-    // declare variable
-    var topPos = $(this).scrollTop();
+    if ($(window).width() > 800) {
+      var topPos = $(this).scrollTop();
+      if (topPos > 100) {
+        $(scrollTop).css("opacity", "1");
+      } else {
+        $(scrollTop).css("opacity", "0");
+      }
+    }   
+  });
 
-    // if user scrolls down - show scroll to top button
-    if (topPos > 100) {
-    	$(scrollTop).css("opacity", "1");
-
-    } else {
-    	$(scrollTop).css("opacity", "0");
-    }
-
-  }); // scroll END
-
-  //Click event to scroll to top
   $(scrollTop).click(function() {
   	$('html, body').animate({
   		scrollTop: 0
   	}, 800);
   	return false;
-
-  }); // click() scroll top EM
-
+  });
 })
 
 $(document).ready(function(){
@@ -49,12 +51,9 @@ $(document).ready(function(){
 	var max_speed = 1;
 	var max_ms_opac = 1;
 	var max_dots_opac = 1;
-var uni_divs = 30;  // ensures that dots are evenly spread across the canvas initially
-
+var uni_divs = 30;  
 window.addEventListener('mousemove', updtMouse);
-
 var dots = new Array();
-
 var Dot = function(x, y, dx, dy) {
 	this.x = x;
 	this.y = y;
@@ -65,11 +64,9 @@ var Dot = function(x, y, dx, dy) {
 function updtMouse(e) {
 	mx = e.x;
 	my = e.y;
-	// console.log(mx + " " + my);
 }
 
 function init() {
-
 	for(let i=0; i<dots_num; i++) {
 		let x = Math.floor((Math.random()*innerWidth/uni_divs)+(parseInt(i/(dots_num/uni_divs))*(innerWidth/uni_divs)));
 		let y = Math.floor(Math.random()*innerHeight);
@@ -82,31 +79,23 @@ function init() {
 		let temp = new Dot(x, y, dx, dy);
 		dots.push(temp);
 	}
-
 }
 
 function update() {
 	c.clearRect(0, 0, innerWidth, innerHeight);
-
 	for(let i=0; i<dots_num; i++) {
-
 		let dy = dots[i].dy;
 		let dx = dots[i].dx;
-
 		dots[i].x += dx;
 		dots[i].y += dy;
-
-    // rebounce form walls
     if(dots[i].x>innerWidth || dots[i].x<0) {
     	dots[i].dx *= -1;
     }
     if(dots[i].y>innerHeight || dots[i].y<0) {
     	dots[i].dy *= -1;
     }
-
     let x = dots[i].x;
     let y = dots[i].y;
-    // draw its line to mouse
     let d = Math.sqrt((x-mx)*(x-mx)+(y-my)*(y-my));
     if(d<mouse_ol) {
     	c.strokeStyle = `rgba(100, 180, 255, ${max_ms_opac*(mouse_ol-d)/mouse_ol})`;
@@ -116,42 +105,33 @@ function update() {
     	c.lineTo(mx, my);
     	c.stroke();
     }
-
-    // for(let i=0; i<dots_num; i++) {
-    	for(let j=i+1; j<dots_num; j++) {
-    		let x1 = dots[j].x;
-    		let y1 = dots[j].y;
-    		let d = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
-    		if(d<dots_ol) {
-    			c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d)/dots_ol})`;
-    			c.lineWidth = 1;
-    			c.beginPath();
-    			c.moveTo(x1, y1);
-    			c.lineTo(x, y);
-    			c.stroke();
-        // }
+  	for(let j=i+1; j<dots_num; j++) {
+  		let x1 = dots[j].x;
+  		let y1 = dots[j].y;
+  		let d = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+  		if(d<dots_ol) {
+  			c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d)/dots_ol})`;
+  			c.lineWidth = 1;
+  			c.beginPath();
+  			c.moveTo(x1, y1);
+  			c.lineTo(x, y);
+  			c.stroke();
       }
     }
   }
   requestAnimationFrame(update);
 }
-
 init();
-
 requestAnimationFrame(update);
-/** Login **/
 
 setTimeout(function() {
   $('.wrapper').addClass('loaded');
 }, 3000);
 
-
-/** Spqctr **/ 
 let intervalX = $('#spectr').width();
 let intervalY = $('#spectr').height();
 
 drawGrid(intervalX, intervalY, "spectr");  
-
 
   $('.sendComment').click( function(){
     $('.loader_new_comment').show();
@@ -218,20 +198,35 @@ var drawGrid = function(w, h, id) {
       ctx.strokeStyle = "silver";
       ctx.fillStyle = "silver";
       ctx.font = "16px sans-serif";
-      ctx.fillText(textArray[it], 10, it*25);
+      if ($(window).width() > 800) {
+        ctx.fillText(textArray[it], 10, it*25);
+      }else{
+        var posLine = $(window).height() / textArray.length;
+        ctx.fillText(textArray[it], 10, it*posLine);
+      }
+      
       ctx.closePath();
     }
 
     var coords = head.spectr;
     }
     img.src = url;
-    var backSpectr = new Image();
-    backSpectr.onload = function(){
-      for(var il = 0; il < w/660; il++){    
-          ctx.drawImage(backSpectr, (660 * il), 70, 660, 180);
-      }
-    };
-    backSpectr.src = '../../../img/header.png'
+
+    
+      var backSpectr = new Image();
+        backSpectr.onload = function(){
+          if ($(window).width() > 800) {
+            for(var il = 0; il < w/660; il++){    
+                ctx.drawImage(backSpectr, (660 * il), 70, 660, 180);
+            }
+          }else{
+            ctx.drawImage(backSpectr, (660 * il), 70, 660, 0);
+          }
+          
+        };
+      backSpectr.src = '../../../img/header.png'
+     
+    
   }
 
 
