@@ -225,8 +225,6 @@ var drawGrid = function(w, h, id) {
           
         };
       backSpectr.src = '../../../img/header.png'
-     
-    
   }
 
 
