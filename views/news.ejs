@@ -35,7 +35,7 @@
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
 		<img src="../../../img/logo1.png" id="logotype">		
-		<h1>Радиоклуб <b>Азимут</b></h1>		
+		<h1>НАШИ <b>НОВОСТИ</b></h1>		
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
@@ -44,12 +44,15 @@
 		
 		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
 		<nav> 
-			<a href="/">Главная</a> 
+			<h1>Радиоклуб <b>Азимут</b></h1>	
+			<div class="mobileWrapper">
+				<a class="menu-2" data-menu="2"></a>
+			</div>
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#" class="menu_to_left">VHF</a> 
-			<a href="#" class="menu_to_right">HF</a> 
-			<a href="#">Форум</a> 
+			<a href="#">VHF</a> 
+			<a href="#" class="menu_to_left">HF</a> 
+			<a href="#" class="menu_to_right">Форум</a> 
 			<a href="/market">Барахолка</a> 
 			<a href="#">Контакты</a> 
 		</nav>
@@ -149,19 +152,26 @@
 		</div>	
 
 
-		<% for(var i = 0; i < NEWS.length; i++){ %>
-		<section id="section_<%= i %>" class="section_data">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
-			<p>
-				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
-			</p>			
-			<div class="section_date">
-				<%= NEWS[i].DATE %>
-				<span><%= NEWS[i].AUTHOR %></span>
+		<% if(NEWS.length > 0){ %>
+			<% for(var i = 0; i < NEWS.length; i++){ %>
+			<section id="section_<%= i %>" class="section_data">
+				<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+				<p>
+					<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
+					<%= NEWS[i].TEXT %>	
+					<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
+				</p>			
+				<div class="section_date">
+					<%= NEWS[i].DATE %>
+					<span><%= NEWS[i].AUTHOR %></span>
+				</div>
+			</section>	
+			<% } %>
+		<% }else{ %>
+			<div class="NoDataPage" style="text-align: center;">
+				<img src="../../../img/giphy.gif">
+				<h2>Нет данных</h2>
 			</div>
-		</section>	
 		<% } %>
 		
 		<% if( NEWS.length > 6){ %>

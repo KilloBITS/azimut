@@ -1,26 +1,46 @@
 $(function(){
-  if ($(window).width() <= 800) {
+  if ($(window).width() <= 812) {
     $('header').css({
       width: $(window).width() + 'px',
       height: $(window).height() + 'px'
-    });    
+    });   
+
+    var menu = $('.mobileWrapper a');
+
+    menu.on('click', function() {
+      var menuNum = $(this).data('menu');
+      $(this).toggleClass('menu-'+ menuNum +'-active');
+
+      if($(this).hasClass('menu-'+ menuNum +'-active')){
+        $('nav').addClass('openNav');
+      }else{
+        $('nav').removeClass('openNav');
+      }
+    }) 
   }
 
 	$(window).scroll(function(){
-		var winTop = $(window).scrollTop();
-      
-    if ($(window).width() > 800) {
+		var winTop = $(window).scrollTop();      
+    if ($(window).width() > 812) {
       if(winTop >= 30){
         $("body").addClass("sticky-header");
       }else{
         $("body").removeClass("sticky-header");
       }
+    }else{
+      // if(winTop >= 30){
+      //   $("body").addClass("sticky-mob-header");
+      //   $('header').css({'height': '60px'});
+      // }else{
+      //   $("body").removeClass("sticky-mob-header");
+      //   $('header').css({'height': $(window).height() + 'px'});
+      // }
     }
 	})
 
   var scrollTop = $(".scrollTop");
   $(window).scroll(function() {
-    if ($(window).width() > 800) {
+    if ($(window).width() > 812) {
       var topPos = $(this).scrollTop();
       if (topPos > 100) {
         $(scrollTop).css("opacity", "1");
@@ -198,7 +218,7 @@ var drawGrid = function(w, h, id) {
       ctx.strokeStyle = "silver";
       ctx.fillStyle = "silver";
       ctx.font = "16px sans-serif";
-      if ($(window).width() > 800) {
+      if ($(window).width() > 812) {
         ctx.fillText(textArray[it], 10, it*25);
       }else{
         var posLine = $(window).height() / textArray.length;
@@ -215,7 +235,7 @@ var drawGrid = function(w, h, id) {
     
       var backSpectr = new Image();
         backSpectr.onload = function(){
-          if ($(window).width() > 800) {
+          if ($(window).width() > 812) {
             for(var il = 0; il < w/660; il++){    
                 ctx.drawImage(backSpectr, (660 * il), 70, 660, 180);
             }
