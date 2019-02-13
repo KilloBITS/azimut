@@ -8,7 +8,6 @@ var signIn = function(){
 	}
 	$.post('/signIn', logObj, function(res){
 		if(res.code === 500){
-			// $('.nav_loader').hide();
 			location.reload();
 		}else{
 			$('.nav_loader').hide();

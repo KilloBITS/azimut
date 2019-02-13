@@ -43,6 +43,7 @@ const market = require('./routes/getFlea_market');
 const getTovar = require('./routes/getDetailsTovar');
 const contacts = require('./routes/getContacts');
 const roundtables = require('./routes/getRoundtables');
+const authAcc = require('./routes/getsData/authificateAccaunt');
 
 
 app.use('/', index);
@@ -54,6 +55,7 @@ app.use('/detailsnews*', opennews);
 app.use('/getDetailsTovar*', getTovar);
 app.use('/contacts', contacts);
 app.use('/roundtables', roundtables);
+app.use('/activate-accaunt*', authAcc);
 
 
 app.get('/logout', function(req, res) {
@@ -69,16 +71,19 @@ app.get('/captcha*', function (req, res) {
     res.status(200).send(captcha.data);
 });
 
+
+
+app.get('*', get404);
+/* POSTS */
+
 app.post('/checkedCaptcha', function(req, res){
 	if(req.body.currentCaptcha === req.session.captcha){
 		res.send({code: 500});
 	}else{
-		res.send({code:450, message: 'nevernaya captcha!'});
+		res.send({code:450,className:'nError', message: 'Неверная капча!'});
 	}
 });
 
-app.get('*', get404);
-/* POSTS */
 const auth = require('./controllers/logInController');
 app.post('/signin', auth);
 
@@ -96,5 +101,3 @@ app.listen(4334,'localhost' ,function(){
 	console.log('Started server on "Azimut" from port: 4334');
 });
 
-//azimutbot@gmail.com
-//qazwsx159357

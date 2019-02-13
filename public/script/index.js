@@ -19,8 +19,8 @@ $(function(){
     }) 
   }
 
-	$(window).scroll(function(){
-		var winTop = $(window).scrollTop();      
+  $(window).scroll(function(){
+    var winTop = $(window).scrollTop();      
     if ($(window).width() > 812) {
       if(winTop >= 30){
         $("body").addClass("sticky-header");
@@ -36,7 +36,7 @@ $(function(){
       //   $('header').css({'height': $(window).height() + 'px'});
       // }
     }
-	})
+  })
 
   var scrollTop = $(".scrollTop");
   $(window).scroll(function() {
@@ -71,34 +71,34 @@ $(document).ready(function(){
 	var max_speed = 1;
 	var max_ms_opac = 1;
 	var max_dots_opac = 1;
-var uni_divs = 30;  
-window.addEventListener('mousemove', updtMouse);
-var dots = new Array();
-var Dot = function(x, y, dx, dy) {
-	this.x = x;
-	this.y = y;
-	this.dx = dx;
-	this.dy = dy;
-}
+  var uni_divs = 30;  
+  window.addEventListener('mousemove', updtMouse);
+  var dots = new Array();
+  var Dot = function(x, y, dx, dy) {
+   this.x = x;
+   this.y = y;
+   this.dx = dx;
+   this.dy = dy;
+ }
 
-function updtMouse(e) {
-	mx = e.x;
-	my = e.y;
-}
+ function updtMouse(e) {
+   mx = e.x;
+   my = e.y;
+ }
 
-function init() {
-	for(let i=0; i<dots_num; i++) {
-		let x = Math.floor((Math.random()*innerWidth/uni_divs)+(parseInt(i/(dots_num/uni_divs))*(innerWidth/uni_divs)));
-		let y = Math.floor(Math.random()*innerHeight);
-		let dx = Math.random()*max_speed+0.1;
-		let dy = Math.random()*max_speed+0.1;
-		if(i%2==0) {
-			dx*=-1;
-			dy*=-1;
-		}
-		let temp = new Dot(x, y, dx, dy);
-		dots.push(temp);
-	}
+ function init() {
+   for(let i=0; i<dots_num; i++) {
+    let x = Math.floor((Math.random()*innerWidth/uni_divs)+(parseInt(i/(dots_num/uni_divs))*(innerWidth/uni_divs)));
+    let y = Math.floor(Math.random()*innerHeight);
+    let dx = Math.random()*max_speed+0.1;
+    let dy = Math.random()*max_speed+0.1;
+    if(i%2==0) {
+     dx*=-1;
+     dy*=-1;
+   }
+   let temp = new Dot(x, y, dx, dy);
+   dots.push(temp);
+ }
 }
 
 function update() {
@@ -125,21 +125,21 @@ function update() {
     	c.lineTo(mx, my);
     	c.stroke();
     }
-  	for(let j=i+1; j<dots_num; j++) {
-  		let x1 = dots[j].x;
-  		let y1 = dots[j].y;
-  		let d = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
-  		if(d<dots_ol) {
-  			c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d)/dots_ol})`;
-  			c.lineWidth = 1;
-  			c.beginPath();
-  			c.moveTo(x1, y1);
-  			c.lineTo(x, y);
-  			c.stroke();
-      }
-    }
-  }
-  requestAnimationFrame(update);
+    for(let j=i+1; j<dots_num; j++) {
+      let x1 = dots[j].x;
+      let y1 = dots[j].y;
+      let d = Math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y));
+      if(d<dots_ol) {
+       c.strokeStyle = `rgba(157, 210, 255, ${max_dots_opac*(dots_ol-d)/dots_ol})`;
+       c.lineWidth = 1;
+       c.beginPath();
+       c.moveTo(x1, y1);
+       c.lineTo(x, y);
+       c.stroke();
+     }
+   }
+ }
+ requestAnimationFrame(update);
 }
 init();
 requestAnimationFrame(update);
@@ -153,19 +153,19 @@ let intervalY = $('#spectr').height();
 
 drawGrid(intervalX, intervalY, "spectr");  
 
-  $('.sendComment').click( function(){
-    $('.loader_new_comment').show();
-    $('.sendComment').hide();
-    var commentData = {
-      text: $('#newComment').val()
-    }
-    $.post('/newComment', commentData, function(res){
-      $('.loader_new_comment').hide();
-      $('#newComment').val('');
-      var newComment = '<div class="comment-wrap"><div class="comment-block"><p class="comment-text">'+res.data.text+'</p><div class="bottom-comment"><div class="comment-date">'+res.data.date+'</div></div><div class="commentAuthor">'+res.data.user+'</div></div></div>';
-      $('.comments').append(newComment);
-    });
+$('.sendComment').click( function(){
+  $('.loader_new_comment').show();
+  $('.sendComment').hide();
+  var commentData = {
+    text: $('#newComment').val()
+  }
+  $.post('/newComment', commentData, function(res){
+    $('.loader_new_comment').hide();
+    $('#newComment').val('');
+    var newComment = '<div class="comment-wrap"><div class="comment-block"><p class="comment-text">'+res.data.text+'</p><div class="bottom-comment"><div class="comment-date">'+res.data.date+'</div></div><div class="commentAuthor">'+res.data.user+'</div></div></div>';
+    $('.comments').append(newComment);
   });
+});
 });
 
 function randomInteger(min, max) {
@@ -229,28 +229,53 @@ var drawGrid = function(w, h, id) {
     }
 
     var coords = head.spectr;
+  }
+  img.src = url;    
+  var backSpectr = new Image();
+  backSpectr.onload = function(){
+    if ($(window).width() > 812) {
+      for(var il = 0; il < w/660; il++){    
+        ctx.drawImage(backSpectr, (660 * il), 70, 660, 180);
+      }
+    }else{
+      ctx.drawImage(backSpectr, (660 * il), 70, 660, 0);
     }
-    img.src = url;
 
-    
-      var backSpectr = new Image();
-        backSpectr.onload = function(){
-          if ($(window).width() > 812) {
-            for(var il = 0; il < w/660; il++){    
-                ctx.drawImage(backSpectr, (660 * il), 70, 660, 180);
-            }
-          }else{
-            ctx.drawImage(backSpectr, (660 * il), 70, 660, 0);
-          }
-          
-        };
-      backSpectr.src = '../../../img/header.png'
+  };
+  backSpectr.src = '../../../img/header.png'
+}
+
+var createError = function(type, text){
+  var pop = document.createElement('div');
+  if(type == 'nError'){
+    pop.className = 'notify rd';
+    pop.innerHTML = '<div class="circle"> <i class="icon-ok"></i> </div> <div class="info"> <span>Ошибка</span> <span>'+text+'</span> </div>';
+  }
+  if(type == 'nSuccess'){
+    pop.className = 'notify gr';
+    pop.innerHTML = '<div class="circle"> <i class="icon-ok"></i> </div> <div class="info"> <span>Успешно</span> <span>'+text+'</span> </div>';
+  }
+  if(type == 'nWarning'){
+    pop.className = 'notify or';
+    pop.innerHTML = '<div class="circle"> <i class="icon-ok"></i> </div> <div class="info"> <span>Внимание</span> <span>'+text+'</span> </div>';
+  }
+  if(type == 'nMessage'){
+    pop.className = 'notify bl';
+    pop.innerHTML = '<div class="circle"> <i class="icon-ok"></i> </div> <div class="info"> <span>Информация</span> <span>'+text+'</span> </div>';
   }
 
+  pop.onclick = function(){
+    $(this).remove();
+  };
 
-  var createError = function(type, text){
-    console.log(text)
-  }
+  $('.notifications').prepend(pop)
+
+  setTimeout(function(){
+    $(pop).remove();
+  },5000)
+
+  console.log(text);
+}
 
 
 

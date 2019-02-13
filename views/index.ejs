@@ -11,15 +11,21 @@
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<% if(sessionUser === undefined){ %>
-		<script type="text/javascript" src="/script/loginMethod.js"></script>	
-	<% } %>
-	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% } %>	
+	<style type="text/css">
+		.section_data p {
+			max-height: 220px;
+		}
+		
+	</style>
 </head>
 <body>	
 	<div class="wrapper">
@@ -47,8 +53,7 @@
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 		</div>
-		<div id="head_banner">QTH: Lviv, UA, KN29AU</div>
-		<!-- QTH: Lviv, UA, KN29AU -->
+		<div id="head_banner"><%= locator %></div>
 		<nav> 
 			<h1>Радиоклуб <b>Азимут</b></h1>	
 			<div class="mobileWrapper">
@@ -81,34 +86,35 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
-
 				<div class="info_div">Действующие репитеры:</div>
-				<div class="ii_div">Тест репитер 1</div>
-				<div class="ii_div">Тест репитер 2</div>
-				<div class="ii_div">Тест репитер 3</div>
-				<div class="ii_div">Тест репитер 4</div>
+				<div class="ii_div">145.650/145.050 UR0WVA аналог;</div>
+				<div class="ii_div">438.800/431.200 UR0WUA CTCSS 82.5, аналог + цифра Yaesu C4FM;</div>
+				<div class="ii_div">439.450/431.850 UR0WUB цифровой DMR;</div>
+				<div class="ii_div">433.425 CTCSS 82.5, ECHO аналог;</div>
+				<div class="ii_div">27.110 FM СиБи ECHO.</div>
 
 				<div class="info_div">Действующие частоты:</div>
-				<div class="ii_div">27.1100</div>
-				<div class="ii_div">37.7750</div>
-				<div class="ii_div">42.7500</div>
-				<div class="ii_div">42.9875</div>
-				<div class="ii_div">145.2000</div>
-				<div class="ii_div">145.3500</div>
-				<div class="ii_div">145.4250</div>
-				<div class="ii_div">148.4250</div>
+				<div class="ii_div">145.500 аналог FM - вызывной канал；</div>
+				<div class="ii_div">145.450 аналог FM - прямой канал；</div>
+				<div class="ii_div">432.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">433.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">144.800 APRS.</div>
 
 				<div class="info_div">Разговорные группы:</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
+				<div class="ii_div">DMR:</div>
+				<div class="ii_div">2555 TS2 - Украина;</div>
+				<div class="ii_div">25514 TS1 - Львов.</div>
 
-				<div class="info_div">Круглые столы (Львов):</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
+				<div class="info_div">Wires-X C4FM:</div>
+				<div class="ii_div">41270 - Комната Украина;</div>
+				<div class="ii_div">27053 - Шлюз в ДМР/Д-Стар;</div>
+				<div class="ii_div">31270 - Львовский узел.</div>
+
+				<div class="info_div">Круглые столы:</div>
+				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
+				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
+				<div class="ii_div">3.612 LSB  8.00 воскресене；</div>
+				<div class="ii_div">27.110 FM - 20.45 вечерг (спринт).</div>
 			</div>
 		</div>
 		<div class="nav_menu right">
@@ -165,25 +171,25 @@
 		</div>	
 
 		<% if(NEWS.length > 0){ %>
-			<% for(var i = 0; i < NEWS.length; i++){ %>
-			<section id="section_<%= i %>" class="section_data">
-				<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
-				<p>
-					<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-					<%= NEWS[i].TEXT %>	
-					<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
-				</p>			
-				<div class="section_date">
-					<%= NEWS[i].DATE %>
-					<span><%= NEWS[i].AUTHOR %></span>
-				</div>
-			</section>	
-			<% } %>
-		<% }else{ %>
-			<div class="NoDataPage" style="text-align: center;">
-				<img src="../../../img/giphy.gif">
-				<h2>Нет данных</h2>
+		<% for(var i = 0; i < NEWS.length; i++){ %>
+		<section id="section_<%= i %>" class="section_data">
+			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+			<p>
+				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
+				<%= NEWS[i].TEXT %>	
+				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
+			</p>			
+			<div class="section_date">
+				<%= NEWS[i].DATE %>
+				<span><%= NEWS[i].AUTHOR %></span>
 			</div>
+		</section>	
+		<% } %>
+		<% }else{ %>
+		<div class="NoDataPage" style="text-align: center;">
+			<img src="../../../img/giphy.gif">
+			<h2>Нет данных</h2>
+		</div>
 		<% } %>
 		
 	</main>
@@ -192,46 +198,43 @@
 
 	<footer class="flex-rw">
 		<ul class="footer-list-top">
-			<li>
-				<h4 class="footer-list-header">Навигация</h4></li>
-				<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
-				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
-				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
-				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-			</ul>
-			<ul class="footer-list-top">
-				<li id='help'>
-					<h4 class="footer-list-header">Помощь</h4></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
-				</ul>
-				<section class="footer-social-section flex-rw">
-					<span class="footer-social-overlap footer-social-connect">
-						Мы в Соц. Сетях
-					</span>
-					<span class="footer-social-overlap footer-social-icons-wrapper">						
-						<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
-						<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-						<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-						<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
-					</span>
-				</section>
-				<section class="footer-bottom-section flex-rw">
-					<div class="footer-bottom-wrapper">   
-						<i class="fa fa-copyright" role="copyright">
+			<li><h4 class="footer-list-header">Навигация</h4></li>
+			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+			<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+			<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+			<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+		</ul>
+		<ul class="footer-list-top">
+			<li id='help'><h4 class="footer-list-header">Помощь</h4></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+		</ul>
+		<section class="footer-social-section flex-rw">
+			<span class="footer-social-overlap footer-social-connect">
+				Мы в Соц. Сетях
+			</span>
+			<span class="footer-social-overlap footer-social-icons-wrapper">						
+				<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+				<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+				<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+				<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+			</span>
+		</section>
+		<section class="footer-bottom-section flex-rw">
+			<div class="footer-bottom-wrapper">   
+				<i class="fa fa-copyright" role="copyright">
 
-						</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
-					</div>
-					<div class="footer-bottom-wrapper">
-						
-					</div>
-				</section>
-			</footer>
-		</body>
-		</html>
+				</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+			</div>
+			<div class="footer-bottom-wrapper"></div>
+		</section>
+	</footer>
+	<div class="notifications"></div> 
+</body>
+</html>

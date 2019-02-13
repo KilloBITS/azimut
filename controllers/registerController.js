@@ -4,6 +4,16 @@ const router = express.Router();
 const cookieParser = require('cookie-parser');
 const mongoClient = require("mongodb").MongoClient;
 const bParser = require('body-parser');
+const base64 = require('base-64');
+
+const nodemailer = require('nodemailer');
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: 'azimutbot@gmail.com',
+        pass: 'qazwsx159357'
+    }
+});
 
 router.use(cookieParser());
 
@@ -16,7 +26,6 @@ router.post('/signup', function(req, res, next){
 
 		users.find({email: req.body.newEmail}).toArray(function(err, results_usersEmail ){
 			if(results_usersEmail.length === 0){
-				// users.find().sort({AI:-1}).limit(1).toArray(function(err, results_users ){
 					var today = new Date();
 					var dd = today.getDate();
 					var mm = today.getMonth()+1;
@@ -34,32 +43,41 @@ router.post('/signup', function(req, res, next){
 					NEW_LOGS.type = 'Новый пользователь';
 					NEW_LOGS.text = 'Зарегистрирован новый пользователь: '+req.body.email.split('@')[0];
 					LOGS.insertOne(NEW_LOGS);
-
+					var bEnc = base64.encode('azimut_'+req.body.poziv+today);
 					var mainData = req.body;
-					// var NEXT_AI = results_users[0].AI + 1;
 					var NEW_USER = {};
 					NEW_USER.nick = req.body.email.split('@')[0],
 					NEW_USER.name =  req.body.name,
 					NEW_USER.email = req.body.email,
-					NEW_USER.phone_number = null,
+					NEW_USER.phone_number = req.body.phone_number,
 					NEW_USER.secret = null,
 					NEW_USER.password = req.body.password,
 					NEW_USER.rank = 0,
 					NEW_USER.stars = 0,
 					NEW_USER.pozivnoy = req.body.poziv,
-					// NEW_USER.AI = NEXT_AI,
 					NEW_USER.isAdmin = false,
 					NEW_USER.ava = "default.gif";
 					NEW_USER.regiter_date = today;
 					NEW_USER.official = false;
+					NEW_USER.regLink = bEnc;//shasum.digest('azimut_'+req.body.poziv+today).toString();
+					NEW_USER.activity = false;
 					users.insertOne(NEW_USER);
 
-					req.session.user = NEW_USER.nick;
-					req.session.admin = false;
-					global.online = global.online + 1;
-					
+					// req.session.user = NEW_USER.nick;
+					// req.session.admin = false;
+					// global.online = global.online + 1;					
 					res.send({code: 500, data: NEW_USER});
-				// });
+
+					let mailOptions = {
+				        from: "azimutbot@gmail.com", // sender address
+				        to: req.body.email, // list of receivers
+				        subject: 'Регистрация', // Subject line
+				        text:  "Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://localhost:4334/activate-accaunt?akeyAct="+bEnc, // plain text body
+				        // html: SHABLON_MESSAGE // html body
+				    };
+
+				  // let ml = new mailOptions("message.from.the.site.lm@gmail.com", "lm.store.shop@gmail.com", req.body.myTheme, SHABLON_MESSAGE + "]");
+				  transporter.sendMail(mailOptions, function (error, info) {});
 			}else{
 				res.send({code: 450, message: 'Ошибка регистрации'})
 			}

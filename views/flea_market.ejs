@@ -17,7 +17,7 @@
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<% if(sessionUser === undefined){ %>
-		<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
 </head>
 <body>	
@@ -42,7 +42,7 @@
 			<div class="scroll-arrow"></div>
 		</div>
 		
-		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
+		<div id="head_banner"><%= locator %></div>
 		<nav> 
 			<h1>Радиоклуб <b>Азимут</b></h1>	
 			<div class="mobileWrapper">
@@ -76,24 +76,34 @@
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
 				<div class="info_div">Действующие репитеры:</div>
-				<div class="ii_div">Тест репитер 1</div>
-				<div class="ii_div">Тест репитер 2</div>
-				<div class="ii_div">Тест репитер 3</div>
-				<div class="ii_div">Тест репитер 4</div>
+				<div class="ii_div">145.650/145.050 UR0WVA аналог;</div>
+				<div class="ii_div">438.800/431.200 UR0WUA CTCSS 82.5, аналог + цифра Yaesu C4FM;</div>
+				<div class="ii_div">439.450/431.850 UR0WUB цифровой DMR;</div>
+				<div class="ii_div">433.425 CTCSS 82.5, ECHO аналог;</div>
+				<div class="ii_div">27.110 FM СиБи ECHO.</div>
+
 				<div class="info_div">Действующие частоты:</div>
-				<div class="ii_div">27.1100</div>
-				<div class="ii_div">37.7750</div>
-				<div class="ii_div">42.7500</div>
-				<div class="ii_div">42.9875</div>
-				<div class="ii_div">145.2000</div>
-				<div class="ii_div">145.3500</div>
-				<div class="ii_div">145.4250</div>
-				<div class="ii_div">148.4250</div>
-				<div class="info_div">Круглые столы (Львов):</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
+				<div class="ii_div">145.500 аналог FM - вызывной канал；</div>
+				<div class="ii_div">145.450 аналог FM - прямой канал；</div>
+				<div class="ii_div">432.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">433.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">144.800 APRS.</div>
+
+				<div class="info_div">Разговорные группы:</div>
+				<div class="ii_div">DMR:</div>
+				<div class="ii_div">2555 TS2 - Украина;</div>
+				<div class="ii_div">25514 TS1 - Львов.</div>
+
+				<div class="info_div">Wires-X C4FM:</div>
+				<div class="ii_div">41270 - Комната Украина;</div>
+				<div class="ii_div">27053 - Шлюз в ДМР/Д-Стар;</div>
+				<div class="ii_div">31270 - Львовский узел.</div>
+
+				<div class="info_div">Круглые столы:</div>
+				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
+				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
+				<div class="ii_div">3.612 LSB  8.00 воскресене；</div>
+				<div class="ii_div">27.110 FM - 20.45 вечерг (спринт).</div>
 			</div>
 		</div>
 		<div class="nav_menu right">
@@ -122,7 +132,7 @@
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
-				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
 				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
@@ -141,34 +151,34 @@
 				<div class="pre_line"></div>
 				<div class="selectLabel">Тип объяввления:</div>
 				<select class="minimal" id="selectType">
-			  		<option value="0">• Все объявления</option>
-			  		<option value="1">• Продам</option>
-			 		<option value="2">• Куплю</option>
-			  		<option value="18">• Подарю / Отдам даром</option>
+					<option value="0">• Все объявления</option>
+					<option value="1">• Продам</option>
+					<option value="2">• Куплю</option>
+					<option value="18">• Подарю / Отдам даром</option>
 				</select>
 
 				<div class="selectLabel">Тип товаров:</div>
 				<select class="minimal" id="selectTovar">
-			  		<option value="0">• Все товары</option>
-			  		<option value="1">• Антенны</option>
-			 		<option value="2">• ТРАНСИВЕРЫ КВ</option>
-			  		<option value="3">• ТРАНСИВЕРЫ УКВ</option>
-			  		<option value="4">• ТРАНСИВЕРЫ SDR</option>
-			  		<option value="5">• ПРИЕМНИКИ</option>
-			  		<option value="6">• ВСЕ ДЛЯ СВ</option>
-			  		<option value="7">• Радио</option>
-			  		<option value="8">• УСИЛИТЕЛИ</option>
-			  		<option value="9">• БЛОКИ ПИТАНИЯ</option>
-			  		<option value="10">• ЛАМПЫ</option>
-			  		<option value="11">• ЦИФРОВАЯ СВЯЗЬ</option>
-			  		<option value="12">• АКСЕССУАРЫ</option>
-			  		<option value="13">• ИЗМЕРИТЕЛЬНАЯ ТЕХНИКА</option>
-			  		<option value="14">• ПРИБОРЫ СВЧ</option>
-			  		<option value="15">• РАДИОДЕТАЛИ</option>
-			  		<option value="16">• КЛЮЧИ</option>
-			  		<option value="17">• ЛИТЕРАТУРА, ДИСКИ</option>
-			  		<option disabled>--------------------------</option>
-			  		<option value="18">• Подарю / Отдам даром</option>
+					<option value="0">• Все товары</option>
+					<option value="1">• Антенны</option>
+					<option value="2">• ТРАНСИВЕРЫ КВ</option>
+					<option value="3">• ТРАНСИВЕРЫ УКВ</option>
+					<option value="4">• ТРАНСИВЕРЫ SDR</option>
+					<option value="5">• ПРИЕМНИКИ</option>
+					<option value="6">• ВСЕ ДЛЯ СВ</option>
+					<option value="7">• Радио</option>
+					<option value="8">• УСИЛИТЕЛИ</option>
+					<option value="9">• БЛОКИ ПИТАНИЯ</option>
+					<option value="10">• ЛАМПЫ</option>
+					<option value="11">• ЦИФРОВАЯ СВЯЗЬ</option>
+					<option value="12">• АКСЕССУАРЫ</option>
+					<option value="13">• ИЗМЕРИТЕЛЬНАЯ ТЕХНИКА</option>
+					<option value="14">• ПРИБОРЫ СВЧ</option>
+					<option value="15">• РАДИОДЕТАЛИ</option>
+					<option value="16">• КЛЮЧИ</option>
+					<option value="17">• ЛИТЕРАТУРА, ДИСКИ</option>
+					<option disabled>--------------------------</option>
+					<option value="18">• Подарю / Отдам даром</option>
 				</select>
 
 			</div>
@@ -189,22 +199,25 @@
 			<a href="/market" id="nav_market" class="navigator_btn selected_nav">Барахолка</a>
 		</div>	
 		<div class="tovarLength">Найдено: <%= TOVAR.length %> объявлений</div>
-		<% for(var i = 0; i < TOVAR.length; i++){ %>
-		<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
-			<section id="section_<%= i %>" class="section_data">				
-				<div class="preImage" style="background-image: url(<%= TOVAR[i].Images[0] %>)"></div>
-				<h4><%= TOVAR[i].Title %></h4>
-				<div class="description"><%= TOVAR[i].Description %></div>
-				<% if(TOVAR[i].Type === 'Куплю'){ %>
+		
+		<div class="market_data">
+			<% for(var i = 0; i < TOVAR.length; i++){ %>
+			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
+				<section id="section_<%= i %>" class="section_data">				
+					<div class="preImage" style="background-image: url(<%= TOVAR[i].Images[0] %>)"></div>
+					<h4><%= TOVAR[i].Title %></h4>
+					<div class="description"><%= TOVAR[i].Description %></div>
+					<% if(TOVAR[i].Type === 'Куплю'){ %>
 					<div class="typeMar"><%= TOVAR[i].Type %></div>
-				<% } else { %>
+					<% } else { %>
 					<div class="typeMar prodam"><%= TOVAR[i].Type %></div>
-				<% } %>
-				
-				<div class="dateMar"><%= TOVAR[i].Date %></div>
-			</section>
-		</a>			
-		<% } %>
+					<% } %>
+					
+					<div class="dateMar"><%= TOVAR[i].Date %></div>
+				</section>
+			</a>			
+			<% } %>
+		</div>
 		
 		<% if( TOVAR.length > 6){ %>
 		<div class="addOldNews">Показать больше...</div>	
@@ -213,46 +226,43 @@
 	<div id="stop" class="scrollTop"></div>
 	<footer class="flex-rw">
 		<ul class="footer-list-top">
-			<li>
-				<h4 class="footer-list-header">Навигация</h4></li>
-				<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
-				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
-				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
-				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
-				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-			</ul>
-			<ul class="footer-list-top">
-				<li id='help'>
-					<h4 class="footer-list-header">Помощь</h4></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
-					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
-				</ul>
-				<section class="footer-social-section flex-rw">
-					<span class="footer-social-overlap footer-social-connect">
-						Мы в Соц. Сетях
-					</span>
-					<span class="footer-social-overlap footer-social-icons-wrapper">
-						<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
-						<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-						<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-						<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
-					</span>
-				</section>
-				<section class="footer-bottom-section flex-rw">
-					<div class="footer-bottom-wrapper">   
-						<i class="fa fa-copyright" role="copyright">
+			<li><h4 class="footer-list-header">Навигация</h4></li>
+			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+			<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+			<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+			<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+		</ul>
+		<ul class="footer-list-top">
+			<li id='help'><h4 class="footer-list-header">Помощь</h4></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+		</ul>
+		<section class="footer-social-section flex-rw">
+			<span class="footer-social-overlap footer-social-connect">
+				Мы в Соц. Сетях
+			</span>
+			<span class="footer-social-overlap footer-social-icons-wrapper">						
+				<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+				<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+				<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+				<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+			</span>
+		</section>
+		<section class="footer-bottom-section flex-rw">
+			<div class="footer-bottom-wrapper">   
+				<i class="fa fa-copyright" role="copyright">
 
-						</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
-					</div>
-					<div class="footer-bottom-wrapper">
-						
-					</div>
-				</section>
-			</footer>
-		</body>
-		</html>
+				</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+			</div>
+			<div class="footer-bottom-wrapper"></div>
+		</section>
+	</footer>
+	<div class="notifications"></div> 
+</body>
+</html>

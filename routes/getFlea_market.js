@@ -10,18 +10,22 @@ router.use(cookieParser());
 
 router.get('/', function(req, res, next){
 	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
-	     const db = client.db(global.baseName);
-           const news = db.collection("MARKET");
-           news.find().sort({AI: -1}).toArray(function(err, resTov){
-                res.render('flea_market.ejs',
-                {
-                  TOVAR: resTov,
-                  sessionUser: req.session.user,
-                  sessionPoziv: req.session.poziv,
-                  isAdm: req.session.admin,
-              });
-          });		
-     });  
+    const db = client.db(global.baseName);
+    const news = db.collection("MARKET");
+    const conf = db.collection("CONFIG");
+    news.find().sort({AI: -1}).toArray(function(err, resTov){     
+      conf.find().toArray(function(err, resultDB){
+        res.render('flea_market.ejs',
+        {
+          TOVAR: resTov,
+          sessionUser: req.session.user,
+          sessionPoziv: req.session.poziv,
+          isAdm: req.session.admin,
+          locator: resultDB[0].LOCATOR
+        });  
+      });         
+    });		
+  });  
 });
 
 module.exports = router;

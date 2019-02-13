@@ -9,20 +9,24 @@ router.get('/*', function(req, res, next) {
     const db = client.db(global.baseName);
     const news = db.collection("NEWS");
     const comments = db.collection("COMMENTS");
+    const conf = db.collection("CONFIG");
 
     news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){
       comments.find({newsAI: getNews}).sort({AI: -1}).toArray(function(err, resComment){
-        res.render('openNews.ejs',
-        {
-          NEWS: resNews[0],
-          COMMENTS: resComment,
-          sessionUser: req.session.user,
-          sessionPoziv: req.session.poziv,
-          isAdm: req.session.admin
-        });
+        conf.find().toArray(function(err, resultDB){
+          res.render('openNews.ejs',
+          {
+            NEWS: resNews[0],
+            COMMENTS: resComment,
+            sessionUser: req.session.user,
+            sessionPoziv: req.session.poziv,
+            isAdm: req.session.admin,
+            locator: resultDB[0].LOCATOR
+          });
+        });        
       });    
     });   
-   });  
+  });  
 });
 
 module.exports = router;

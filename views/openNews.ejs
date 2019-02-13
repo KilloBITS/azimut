@@ -17,15 +17,15 @@
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<% if(sessionUser === undefined){ %>
-		<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
 
 	<style type="text/css">
-		.section_data h2 {
-		    margin-top: 0px;
-		    line-height: 40px;
-		}
-	</style>
+	.section_data h2 {
+		margin-top: 0px;
+		line-height: 40px;
+	}
+</style>
 </head>
 <body>	
 	<div class="wrapper">
@@ -48,7 +48,7 @@
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 		</div>	
-		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
+		<div id="head_banner"><%= locator %></div>
 		<nav> 
 			<h1>Радиоклуб <b>Азимут</b></h1>	
 			<div class="mobileWrapper">
@@ -82,24 +82,34 @@
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
 				<div class="info_div">Действующие репитеры:</div>
-				<div class="ii_div">Тест репитер 1</div>
-				<div class="ii_div">Тест репитер 2</div>
-				<div class="ii_div">Тест репитер 3</div>
-				<div class="ii_div">Тест репитер 4</div>
+				<div class="ii_div">145.650/145.050 UR0WVA аналог;</div>
+				<div class="ii_div">438.800/431.200 UR0WUA CTCSS 82.5, аналог + цифра Yaesu C4FM;</div>
+				<div class="ii_div">439.450/431.850 UR0WUB цифровой DMR;</div>
+				<div class="ii_div">433.425 CTCSS 82.5, ECHO аналог;</div>
+				<div class="ii_div">27.110 FM СиБи ECHO.</div>
+
 				<div class="info_div">Действующие частоты:</div>
-				<div class="ii_div">27.1100</div>
-				<div class="ii_div">37.7750</div>
-				<div class="ii_div">42.7500</div>
-				<div class="ii_div">42.9875</div>
-				<div class="ii_div">145.2000</div>
-				<div class="ii_div">145.3500</div>
-				<div class="ii_div">145.4250</div>
-				<div class="ii_div">148.4250</div>
-				<div class="info_div">Круглые столы (Львов):</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
+				<div class="ii_div">145.500 аналог FM - вызывной канал；</div>
+				<div class="ii_div">145.450 аналог FM - прямой канал；</div>
+				<div class="ii_div">432.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">433.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">144.800 APRS.</div>
+
+				<div class="info_div">Разговорные группы:</div>
+				<div class="ii_div">DMR:</div>
+				<div class="ii_div">2555 TS2 - Украина;</div>
+				<div class="ii_div">25514 TS1 - Львов.</div>
+
+				<div class="info_div">Wires-X C4FM:</div>
+				<div class="ii_div">41270 - Комната Украина;</div>
+				<div class="ii_div">27053 - Шлюз в ДМР/Д-Стар;</div>
+				<div class="ii_div">31270 - Львовский узел.</div>
+
+				<div class="info_div">Круглые столы:</div>
+				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
+				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
+				<div class="ii_div">3.612 LSB  8.00 воскресене；</div>
+				<div class="ii_div">27.110 FM - 20.45 вечерг (спринт).</div>
 			</div>
 		</div>
 		<div class="nav_menu right">
@@ -127,7 +137,7 @@
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
-				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
 				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
@@ -162,7 +172,7 @@
 				<%= NEWS.TEXT %>					
 			</p>
 			<% for(var ii = 0; ii < NEWS.CONTENT_IMAGE.length; ii++){ %>
-				<img src="<%= NEWS.CONTENT_IMAGE[ii] %>">
+			<img src="<%= NEWS.CONTENT_IMAGE[ii] %>">
 			<% } %>
 			
 			<div class="section_date">
@@ -170,50 +180,47 @@
 				<span><%= NEWS.AUTHOR %></span>
 			</div>
 
-			<div class="comments">
-				
-					
-					
-					<% if(sessionUser !== undefined){ %>
-					<div class="comment-wrap">
-						<div class="loader_new_comment"></div>						
-						<div class="comment-block">
-							<form action="">
-								<textarea name="newComment" id="newComment" cols="30" rows="3" placeholder="Написать комментарий..."></textarea>
-								<script type="text/javascript">
-									$('#newComment').on('keyup', function(){
-										if($('#newComment').val().length > 3){
-											$('.sendComment').fadeIn(300);
-										}else{
-											$('.sendComment').fadeOut(300);
-										}
-									});
-								</script>
-								<div class="sendComment" >Отправить</div>
-							</form>
-						</div>
+			<div class="comments">	
+				<% if(sessionUser !== undefined){ %>
+				<div class="comment-wrap">
+					<div class="loader_new_comment"></div>						
+					<div class="comment-block">
+						<form action="">
+							<textarea name="newComment" id="newComment" cols="30" rows="3" placeholder="Написать комментарий..."></textarea>
+							<script type="text/javascript">
+								$('#newComment').on('keyup', function(){
+									if($('#newComment').val().length > 3){
+										$('.sendComment').fadeIn(300);
+									}else{
+										$('.sendComment').fadeOut(300);
+									}
+								});
+							</script>
+							<div class="sendComment" >Отправить</div>
+						</form>
 					</div>
-					<% } else { %>
-					<div class="noneCommentAuth">
-						<div class="noneCommentAuthText">
-							Для того чтобы оставлять комментарии нужно <a href="#" onclick="modalAuth()">авторизироватся</a>!
-						</div>
+				</div>
+				<% } else { %>
+				<div class="noneCommentAuth">
+					<div class="noneCommentAuthText">
+						Для того чтобы оставлять комментарии нужно <a href="#" onclick="modalAuth()">авторизироватся</a>!
 					</div>
+				</div>
 
-					<script type="text/javascript">
-						var modalAuth = function(){
-							$('#users_wraper').addClass('blink');
-							$('html, body').animate({
-						  		scrollTop: 0
-						  	}, 800);							  	
-							setTimeout(function(){
-								$('#users_wraper').removeClass('blink');
-							},6000);
-							return false;
-						}
-					</script>
-					<% } %>    
-			
+				<script type="text/javascript">
+					var modalAuth = function(){
+						$('#users_wraper').addClass('blink');
+						$('html, body').animate({
+							scrollTop: 0
+						}, 800);							  	
+						setTimeout(function(){
+							$('#users_wraper').removeClass('blink');
+						},6000);
+						return false;
+					}
+				</script>
+				<% } %>    
+
 				<% for(var ii = 0; ii < COMMENTS.length; ii++){ %>
 				<div class="comment-wrap">			
 					<div class="comment-block">
@@ -224,16 +231,15 @@
 						<div class="commentAuthor"><%= COMMENTS[ii].user %></div>
 					</div>
 				</div>
-			<% } %>			
+				<% } %>			
 			</div>			
 		</div>
-		</section>			
-	</main>
-	<div id="stop" class="scrollTop"></div>
+	</section>			
+</main>
+<div id="stop" class="scrollTop"></div>
 	<footer class="flex-rw">
-	<ul class="footer-list-top">
-		<li>
-			<h4 class="footer-list-header">Навигация</h4></li>
+		<ul class="footer-list-top">
+			<li><h4 class="footer-list-header">Навигация</h4></li>
 			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
 			<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
 			<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
@@ -242,37 +248,34 @@
 			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
 			<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
 		</ul>
-			<ul class="footer-list-top">
-				<li id='help'>
-					<h4 class="footer-list-header">Помощь</h4>
-				</li>
-				<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-				<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
-				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
-				<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
-			</ul>
-			<section class="footer-social-section flex-rw">
-				<span class="footer-social-overlap footer-social-connect">
-					Мы в Соц. Сетях
-				</span>
-				<span class="footer-social-overlap footer-social-icons-wrapper">
-					<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
-					<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-					<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-					<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
-				</span>
-			</section>
-			<section class="footer-bottom-section flex-rw">
-				<div class="footer-bottom-wrapper">   
-					<i class="fa fa-copyright" role="copyright">
+		<ul class="footer-list-top">
+			<li id='help'><h4 class="footer-list-header">Помощь</h4></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+		</ul>
+		<section class="footer-social-section flex-rw">
+			<span class="footer-social-overlap footer-social-connect">
+				Мы в Соц. Сетях
+			</span>
+			<span class="footer-social-overlap footer-social-icons-wrapper">						
+				<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+				<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+				<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+				<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+			</span>
+		</section>
+		<section class="footer-bottom-section flex-rw">
+			<div class="footer-bottom-wrapper">   
+				<i class="fa fa-copyright" role="copyright">
 
-					</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
-				</div>
-				<div class="footer-bottom-wrapper">
-					
-				</div>
-			</section>
-		</footer>
-	</body>
+				</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+			</div>
+			<div class="footer-bottom-wrapper"></div>
+		</section>
+	</footer>
+	<div class="notifications"></div> 
+</body>
 </html>

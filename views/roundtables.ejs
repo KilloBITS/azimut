@@ -57,7 +57,7 @@
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 		</div>		
-		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
+		<div id="head_banner"><%= locator %></div>
 		<nav> 
 			<h1>Радиоклуб <b>Азимут</b></h1>	
 			<div class="mobileWrapper">
@@ -91,24 +91,34 @@
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>
 				<div class="info_div">Действующие репитеры:</div>
-				<div class="ii_div">Тест репитер 1</div>
-				<div class="ii_div">Тест репитер 2</div>
-				<div class="ii_div">Тест репитер 3</div>
-				<div class="ii_div">Тест репитер 4</div>
+				<div class="ii_div">145.650/145.050 UR0WVA аналог;</div>
+				<div class="ii_div">438.800/431.200 UR0WUA CTCSS 82.5, аналог + цифра Yaesu C4FM;</div>
+				<div class="ii_div">439.450/431.850 UR0WUB цифровой DMR;</div>
+				<div class="ii_div">433.425 CTCSS 82.5, ECHO аналог;</div>
+				<div class="ii_div">27.110 FM СиБи ECHO.</div>
+
 				<div class="info_div">Действующие частоты:</div>
-				<div class="ii_div">27.1100</div>
-				<div class="ii_div">37.7750</div>
-				<div class="ii_div">42.7500</div>
-				<div class="ii_div">42.9875</div>
-				<div class="ii_div">145.2000</div>
-				<div class="ii_div">145.3500</div>
-				<div class="ii_div">145.4250</div>
-				<div class="ii_div">148.4250</div>
-				<div class="info_div">Круглые столы (Львов):</div>
-				<div class="ii_div">Тест стол</div>
-				<div class="ii_div">Рыцари</div>
-				<div class="ii_div">MicroGIS</div>
-				<div class="ii_div">Phalcon</div>
+				<div class="ii_div">145.500 аналог FM - вызывной канал；</div>
+				<div class="ii_div">145.450 аналог FM - прямой канал；</div>
+				<div class="ii_div">432.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">433.500 аналог FM - вызывной канал;</div>
+				<div class="ii_div">144.800 APRS.</div>
+
+				<div class="info_div">Разговорные группы:</div>
+				<div class="ii_div">DMR:</div>
+				<div class="ii_div">2555 TS2 - Украина;</div>
+				<div class="ii_div">25514 TS1 - Львов.</div>
+
+				<div class="info_div">Wires-X C4FM:</div>
+				<div class="ii_div">41270 - Комната Украина;</div>
+				<div class="ii_div">27053 - Шлюз в ДМР/Д-Стар;</div>
+				<div class="ii_div">31270 - Львовский узел.</div>
+
+				<div class="info_div">Круглые столы:</div>
+				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
+				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
+				<div class="ii_div">3.612 LSB  8.00 воскресене；</div>
+				<div class="ii_div">27.110 FM - 20.45 вечерг (спринт).</div>
 			</div>
 		</div>
 		<div class="nav_menu right">
@@ -135,11 +145,12 @@
 				<div class="wrapper_title">Авторизация</div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
-				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
 				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
 				<a href="/register" class="NewPassLink">Регистрация</a>
 				<a href="#" class="NewPassLink">Забыли пароль?</a>
+
 				<div class="localisation">
 					<div class="localIcon" id="ru" title="Русский"></div>
 					<div class="localIcon" id="ua" title="Українська"></div>
@@ -210,5 +221,6 @@
 			<div class="footer-bottom-wrapper"></div>
 		</section>
 	</footer>
+	<div class="notifications"></div> 
 </body>
 </html>
