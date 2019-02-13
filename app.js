@@ -95,7 +95,5 @@ app.listen(4334,'localhost' ,function(){
 	console.log('Started server on "Azimut" from port: 4334');
 });
 
-
-
 //azimutbot@gmail.com
 //qazwsx159357
