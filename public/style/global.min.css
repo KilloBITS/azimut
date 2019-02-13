@@ -173,6 +173,7 @@
 
 	.toScroll {
 		bottom: 60px;
+		display: block;
 	}
 	.navigator {
     	padding: 0 10px 0 10px;

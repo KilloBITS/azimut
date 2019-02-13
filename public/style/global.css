@@ -73,6 +73,7 @@ header h1 {
     left: 50%;
     bottom: 18px;
     transform: translate(-50%, 0);
+    display: none;
 }
 
 .scroll-arrow {
