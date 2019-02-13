@@ -46,6 +46,7 @@ router.post('/signup', function(req, res, next){
 					NEW_USER.password = req.body.password,
 					NEW_USER.rank = 0,
 					NEW_USER.stars = 0,
+					NEW_USER.pozivnoy = req.body.poziv,
 					// NEW_USER.AI = NEXT_AI,
 					NEW_USER.isAdmin = false,
 					NEW_USER.ava = "default.gif";

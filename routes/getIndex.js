@@ -16,6 +16,7 @@ router.get('/', function(req, res, next){
                 {
                     NEWS: resNews,
                     sessionUser: req.session.user,
+                    sessionPoziv: req.session.poziv,
                     isAdm: req.session.admin
               });
           });		

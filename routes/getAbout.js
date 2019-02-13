@@ -9,8 +9,9 @@ router.use(cookieParser());
 router.get('/', function(req, res, next){
   res.render('about.ejs',
   {
-    sessionUser: req.session.user,
-    isAdm: req.session.admin
+	sessionUser: req.session.user,
+	sessionPoziv: req.session.poziv,
+	isAdm: req.session.admin
   });  
 });
 

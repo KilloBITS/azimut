@@ -7,12 +7,16 @@ const cookieParser = require('cookie-parser');
 router.use(cookieParser());
 
 router.get('/', function(req, res, next){
-
-	res.render('register.ejs',
-	{
-		sessionUser: req.session.user,
-		isAdm: req.session.admin
-	});
+	if(req.session.user !== undefined){
+		res.redirect('/');
+	}else{
+		res.render('register.ejs',
+			{
+				sessionUser: req.session.user,
+				sessionPoziv: req.session.poziv,
+				isAdm: req.session.admin
+			});	
+	}
 	
 });
 

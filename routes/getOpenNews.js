@@ -17,6 +17,7 @@ router.get('/*', function(req, res, next) {
           NEWS: resNews[0],
           COMMENTS: resComment,
           sessionUser: req.session.user,
+          sessionPoziv: req.session.poziv,
           isAdm: req.session.admin
         });
       });    

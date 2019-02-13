@@ -16,9 +16,9 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
-	<% if(sessionUser === undefined){ %>
+	<!-- <% if(sessionUser === undefined){ %> -->
 		<script type="text/javascript" src="/script/loginMethod.js"></script>	
-	<% } %>	
+	<!-- <% } %>	 -->
 </head>
 <body>	
 	<div class="wrapper">
@@ -48,13 +48,14 @@
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
+			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#">VHF</a> 
-			<a href="#" class="menu_to_left">HF</a> 
-			<a href="#" class="menu_to_right">Форум</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
-			<a href="#">Контакты</a> 
+			<a href="/contacts">Контакты</a> 
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -105,6 +106,7 @@
 				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
 				<div class="userDATA">
 					<div class="userLogin"><%= sessionUser %></div>
+					<div class="userPoziv">(<%= sessionPoziv %>)</div>
 					<a href="/getProfile" class="userButton">Профиль</a>
 				</div>
 				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
@@ -157,38 +159,56 @@
 				<div class="o-grid">
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
-							Имя
+							Имя<small>*</small>
 							<input class="c-input" type="text" class="checkYou" id="checkText">
 						</label>
 					</div>
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
-							Фамилия
+							Фамилия<small>*</small>
 							<input class="c-input" type="text" class="checkYou" id="checkText2"/>
 						</label>
 					</div>
 				</div>
 				<label class="c-label">
-					Email
+					Ваш позывной<small>*</small>
+					<input class="c-input" type="text" id="checkPoziv">
+				</label>
+				<label class="c-label">
+					Email<small>*</small>
 					<input class="c-input" type="email" id="checkEmail">
 				</label>
 				<div class="o-grid">
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
-							Пароль
+							Пароль<small>*</small>
 							<input class="c-input" type="text" class="checkYou" id="checkPass">
 						</label>
 					</div>
 					<div class="o-grid__col o-grid__col--1-of-2">
 						<label class="c-label">
-							Повторите пароль
+							Повторите пароль<small>*</small>
 							<input class="c-input" type="text" class="checkYou" id="checkPAss2"/>
 						</label>
 					</div>
 				</div>
 				<label class="c-label">
-					Номер телефона
+					Номер телефона<small>*</small>
 					<input class="c-input" type="text" id="checkNumber">
+				</label>
+				<label class="c-label" style="text-align: center;">
+					<small>* - Обозначены поля обязательные к заполнению!</small>
+				</label>
+
+				<label class="c-label" style="text-align: center;" id="captchaLabel">
+					<img src="../../../img/spinner-preloader.gif" id="captcha" onclick="captchaMethod();">
+					<script type="text/javascript">
+						captchaMethod = function(){
+							$("#captcha").attr('src','/captcha'+Math.random());
+						};
+						captchaMethod();
+					</script>
+					<input type="text" name="captchaText" id="captchaText">
 				</label>
 
 				<input type="button" class="c-btn c-btn--primary c-btn--full c-btn--big" id="signUpUser" value="Зарегистрировать" />
@@ -198,14 +218,25 @@
 				$('#signUpUser').click(function(){
 					if($('#checkPass').val() === $('#checkPAss2').val()){
 						var NEW_USER = {};					
-						NEW_USER.name =  $('#checkText').val(),
-						NEW_USER.surname = $('#checkText2').val()
-						NEW_USER.email = $('#checkEmail').val(),
-						NEW_USER.phone_number = $('#checkNumber').val(),					
-						NEW_USER.password = $('#checkPass').val()
-						$.post('signup', NEW_USER, function(res){							
-							createUsers(res)
-						})
+						NEW_USER.name =  $('#checkText').val();
+						NEW_USER.surname = $('#checkText2').val();
+						NEW_USER.email = $('#checkEmail').val();
+						NEW_USER.phone_number = $('#checkNumber').val();					
+						NEW_USER.password = $('#checkPass').val();
+						NEW_USER.poziv = $('#checkPass').val();
+						NEW_USER.currentCaptcha = $('#captchaText').val();
+
+						$.post('/checkedCaptcha', {currentCaptcha: $('#captchaText').val()}, function(res){
+							if(res.code === 500){
+								$.post('/signup', NEW_USER, function(res){
+									window.location.href = "/";
+									createUsers(res);
+								})
+							}else{
+								console.log(res);
+							}
+						});
+						
 					}else{
 						console.warn('Логин и пароль не совпадают');
 						createError('nError','Логин и пароль не совпадают')

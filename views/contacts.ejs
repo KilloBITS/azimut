@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="Description" content="Радиоклуб АЗИМУТ">
+	<title>Наши контакты</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/style/loader.css">
+	<link rel="stylesheet" type="text/css" href="/style/global.css">
+	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="./data/header.json"></script>
+	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+	<script type="text/javascript" src="/script/index.js"></script>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+	<script type="text/javascript" src="/script/contacts/contacts.js"></script>
+	<% if(sessionUser === undefined){ %>
+		<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% } %>	
+	<link rel="stylesheet" type="text/css" href="/style/contacts/contacts.css">
+</head>
+<body>	
+	<div class="wrapper">
+		<div id="loader-wrapper">
+			<div id="loader">
+				<div class="pulse"></div>
+			</div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+
+		</div>
+	</div>
+	<header>	
+		<canvas id="canvas"></canvas>
+		<canvas id="spectr"></canvas>
+		<img src="../../../img/logo1.png" id="logotype">		
+		<h1>Радиоклуб <b>Азимут</b></h1>		
+		<div class="toScroll">
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+		</div>
+		
+		<div id="head_banner">QTH: Lviv, UA, KNZ9AU</div>
+		<nav> 
+			<h1><b>РЕГИСТРАЦИЯ</b></h1>	
+			<div class="mobileWrapper">
+				<a class="menu-2" data-menu="2"></a>
+			</div>
+			<a href="/">Главная</a>
+			<a href="/about">О нас</a> 
+			<a href="/news">Новости</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
+			<a href="/market">Барахолка</a> 
+			<a href="/contacts">Контакты</a> 
+		</nav>
+	</header>
+	<main class="wrapper">
+		<div class="nav_menu left">
+			<div class="nav_wrapper">
+				<div class="wrapper_title">Навигация</div>
+				<div class="pre_line"></div>
+				<a href="#" id="activity">Мероприятия</a>
+				<a href="#" id="calendar">Календарь</a>
+				<a href="#" id="Numeral">Цифра</a>
+				<a href="#" id="Communities">Сообщества</a>
+				<a href="#" id="Round_tables">Круглые столы</a>
+				<a href="/market" id="market">Барахолка</a>
+				<a href="#" id="miscellanea">Разное</a>
+				<a href="#" id="Technical_section">Технический раздел</a>				
+			</div>
+			<div class="nav_wrapper">
+				<div class="wrapper_title">Информация</div>
+				<div class="pre_line"></div>
+				<div class="info_div">Действующие репитеры:</div>
+				<div class="ii_div">Тест репитер 1</div>
+				<div class="ii_div">Тест репитер 2</div>
+				<div class="ii_div">Тест репитер 3</div>
+				<div class="ii_div">Тест репитер 4</div>
+				<div class="info_div">Действующие частоты:</div>
+				<div class="ii_div">27.1100</div>
+				<div class="ii_div">37.7750</div>
+				<div class="ii_div">42.7500</div>
+				<div class="ii_div">42.9875</div>
+				<div class="ii_div">145.2000</div>
+				<div class="ii_div">145.3500</div>
+				<div class="ii_div">145.4250</div>
+				<div class="ii_div">148.4250</div>
+				<div class="info_div">Круглые столы (Львов):</div>
+				<div class="ii_div">Тест стол</div>
+				<div class="ii_div">Рыцари</div>
+				<div class="ii_div">MicroGIS</div>
+				<div class="ii_div">Phalcon</div>
+			</div>
+		</div>
+		<div class="nav_menu right">
+
+			<% if(sessionUser !== undefined){ %>
+			<div class="nav_wrapper" id="users_wraper">
+				<div class="wrapper_title">Пользователь</div>
+				<div class="pre_line"></div>
+				<div class="nav_loader"></div>
+				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
+				<div class="userDATA">
+					<div class="userLogin"><%= sessionUser %></div>
+					<div class="userPoziv">(<%= sessionPoziv %>)</div>
+					<a href="/getProfile" class="userButton">Профиль</a>
+				</div>
+				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>
+			</div>
+			<% } else { %>
+			<div class="nav_wrapper" id="users_wraper">
+				<div class="wrapper_title">Авторизация</div>
+				<div class="pre_line"></div>
+				<div class="nav_loader"></div>
+				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Логин">
+				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
+				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
+				<a href="/register" class="NewPassLink">Регистрация</a>
+				<a href="#" class="NewPassLink">Забыли пароль?</a>
+
+				<div class="localisation">
+					<div class="localIcon" id="ru" title="Русский"></div>
+					<div class="localIcon" id="ua" title="Українська"></div>
+					<div class="localIcon" id="en" title="English"></div>
+				</div>
+			</div>
+			<% } %> 		
+		
+			<div class="nav_wrapper">
+				<div class="wrapper_title">APRS</div>
+				<div class="pre_line"></div>
+				<a class="none_text" href="https://www.aprsdirect.com/center/49.82786,24.03119/zoom/11/time/60" target="_blank">
+					<img src="../../../img/aprs.png" width="228">
+					<div class="a_btn">Открыть карту</div>
+				</a>
+			</div>
+		</div>
+		<div class="navigator">
+			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="/contacts" id="nav_contacts" class="navigator_btn selected_nav">Контакты</a>
+		</div>
+		<div class="contacts_data" id="myContacts">
+			<div class="contacts_block_title">Наши контакты</div>
+			<div class="numbers_block">
+				<contact id="country">Украина</contact>
+				<contact id="city">Львов</contact>
+				<contact id="street">Зеленая 149Б</contact>
+				<contact id="phone">+38(066)66-66-666</contact>
+				<contact id="phone2">+38(099)99-99-999</contact>
+			</div>					
+		</div>	
+		<div class="contacts_data">
+			<div class="contacts_block_title">Отправте нам сообщение</div>
+			<div class="postMessageBlock">
+				<div class="inner contact">
+				  <div class="contact-form">
+				    <!-- Form -->
+				    <form id="contact-us" method="post" action="#">
+				      <!-- Left Inputs -->
+				      <div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+				        <!-- Name -->
+				        <input type="text" name="name" id="name" required="required" class="form" placeholder="Name" />
+				        <!-- Email -->
+				        <input type="email" name="mail" id="mail" required="required" class="form" placeholder="Email" />
+				        <!-- Subject -->
+				        <input type="text" name="subject" id="subject" required="required" class="form" placeholder="Subject" />
+				      </div><!-- End Left Inputs -->
+				      <!-- Right Inputs -->
+				      <div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+				        <!-- Message -->
+				        <textarea name="message" id="message" class="form textarea"  placeholder="Message"></textarea>
+				      </div><!-- End Right Inputs -->
+				      <!-- Bottom Submit -->
+				      <div class="relative fullwidth col-xs-12">
+				        <!-- Send Button -->
+				        <button type="submit" id="submit" name="submit" class="form-btn semibold">Отправить сообщение</button> 
+				      </div><!-- End Bottom Submit -->
+				      <!-- Clear -->
+				      <div class="clear"></div>
+				    </form>
+
+				    <!-- Your Mail Message -->
+				    <div class="mail-message-area">
+				      <!-- Message -->
+				      <div class="alert gray-bg mail-message not-visible-message">
+				        <strong>Thank You !</strong> Your email has been delivered.
+				      </div>
+				    </div>
+				  </div><!-- End Contact Form Area -->
+				</div><!-- End Inner -->
+			</div>					
+		</div>	
+		<div class="contacts_data">
+			<div class="contacts_block_title">Мы на карте</div>
+			<div class="map_block" id="map"></div>	
+		</div>	
+	</main>
+	<div id="stop" class="scrollTop"></div>
+
+	<footer class="flex-rw">
+		<ul class="footer-list-top">
+			<li>
+				<h4 class="footer-list-header">Навигация</h4></li>
+				<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
+				<li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
+				<li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
+				<li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
+				<li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+			</ul>
+			<ul class="footer-list-top">
+				<li id='help'>
+					<h4 class="footer-list-header">Помощь</h4></li>
+					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
+					<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
+					<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
+				</ul>
+				<section class="footer-social-section flex-rw">
+					<span class="footer-social-overlap footer-social-connect">
+						Мы в Соц. Сетях
+					</span>
+					<span class="footer-social-overlap footer-social-icons-wrapper">
+						<a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
+						<a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+						<a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+						<a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+					</span>
+				</section>
+				<section class="footer-bottom-section flex-rw">
+					<div class="footer-bottom-wrapper">   
+						<i class="fa fa-copyright" role="copyright">
+
+						</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
+					</div>
+					<div class="footer-bottom-wrapper">
+						
+					</div>
+				</section>
+			</footer>
+		</body>
+		</html>

@@ -48,13 +48,14 @@
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
+			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#">VHF</a> 
-			<a href="#" class="menu_to_left">HF</a> 
-			<a href="#" class="menu_to_right">Форум</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
-			<a href="#">Контакты</a> 
+			<a href="/contacts">Контакты</a> 
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -106,6 +107,7 @@
 				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
 				<div class="userDATA">
 					<div class="userLogin"><%= sessionUser %></div>
+					<div class="userPoziv">(<%= sessionPoziv %>)</div>
 					<a href="/getProfile" class="userButton">Профиль</a>
 				</div>
 				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>	

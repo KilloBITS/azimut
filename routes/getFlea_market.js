@@ -14,9 +14,10 @@ router.get('/', function(req, res, next){
            news.find().sort({AI: -1}).toArray(function(err, resTov){
                 res.render('flea_market.ejs',
                 {
-                    TOVAR: resTov,
-                    sessionUser: req.session.user,
-                    isAdm: req.session.admin
+                  TOVAR: resTov,
+                  sessionUser: req.session.user,
+                  sessionPoziv: req.session.poziv,
+                  isAdm: req.session.admin
               });
           });		
      });  

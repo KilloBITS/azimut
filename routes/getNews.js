@@ -14,9 +14,10 @@ router.get('/', function(req, res, next){
            news.find().sort({AI: -1}).toArray(function(err, resNews){
                 res.render('news.ejs',
                 {
-                    NEWS: resNews,
-                    sessionUser: req.session.user,
-                    isAdm: req.session.admin
+                  NEWS: resNews,
+                  sessionUser: req.session.user,
+                  sessionPoziv: req.session.poziv,
+                  isAdm: req.session.admin
               });
           });		
      });  

@@ -21,6 +21,7 @@ router.post('/signin', function(req, res, next){
 					req.session.user = results_users[0].name;
 					req.session.email = results_users[0].email;
 					req.session.nick = results_users[0].nick;
+					req.session.poziv = results_users[0].pozivnoy;
 					req.session.admin = results_users[0].isAdmin;
 					global.online = global.online + 1;
 					res.send({code:500, data: results_users});

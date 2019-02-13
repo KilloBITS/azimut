@@ -16,6 +16,7 @@ router.get('/*', function(req, res, next) {
       {
         TOVAR: resNews[0],
         sessionUser: req.session.user,
+        sessionPoziv: req.session.poziv,
         isAdm: req.session.admin
       });
     });   

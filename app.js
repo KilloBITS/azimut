@@ -8,6 +8,7 @@ const session = require('express-session');
 const fs = require('fs');
 const mongoClient = require("mongodb").MongoClient;
 const request = require("request");
+const svgCaptcha = require('svg-captcha');
 const app = express();
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
@@ -39,6 +40,7 @@ const news = require('./routes/getNews');
 const opennews = require('./routes/getOpenNews');
 const market = require('./routes/getFlea_market');
 const getTovar = require('./routes/getDetailsTovar');
+const contacts = require('./routes/getcontacts');
 
 
 app.use('/', index);
@@ -48,10 +50,27 @@ app.use('/news', news);
 app.use('/market',  market);
 app.use('/detailsnews*', opennews);
 app.use('/getDetailsTovar*', getTovar);
+app.use('/contacts', contacts);
 
 app.get('/logout', function(req, res) {
     req.session.destroy(function(err) {})
     res.redirect('/');
+});
+
+app.get('/captcha*', function (req, res) {
+    var captcha = svgCaptcha.create();
+    req.session.captcha = captcha.text;    
+    console.log(captcha.text)
+    res.type('svg');
+    res.status(200).send(captcha.data);
+});
+
+app.post('/checkedCaptcha', function(req, res){
+	if(req.body.currentCaptcha === req.session.captcha){
+		res.send({code: 500});
+	}else{
+		res.send({code:450, message: 'nevernaya captcha!'});
+	}
 });
 
 app.get('*', get404);
@@ -64,7 +83,6 @@ app.post('/signup', signUp);
 
 const newComment = require('./controllers/setNewComment');
 app.post('/newComment', newComment);
-
 
 /* Started server */
 app.listen(4334, function(){
