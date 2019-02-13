@@ -41,6 +41,7 @@ const opennews = require('./routes/getOpenNews');
 const market = require('./routes/getFlea_market');
 const getTovar = require('./routes/getDetailsTovar');
 const contacts = require('./routes/getcontacts');
+const roundtables = require('./routes/getRoundtables');
 
 
 app.use('/', index);
@@ -51,6 +52,8 @@ app.use('/market',  market);
 app.use('/detailsnews*', opennews);
 app.use('/getDetailsTovar*', getTovar);
 app.use('/contacts', contacts);
+app.use('/roundtables', roundtables);
+
 
 app.get('/logout', function(req, res) {
     req.session.destroy(function(err) {})
@@ -85,7 +88,7 @@ const newComment = require('./controllers/setNewComment');
 app.post('/newComment', newComment);
 
 /* Started server */
-app.listen(4334, function(){
+app.listen(4334,'localhost' ,function(){
 	global.baseName = 'AZIMUT';
 	global.baseIP = 'mongodb://localhost:27017/';
 	global.online = 0;
