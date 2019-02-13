@@ -40,7 +40,7 @@ const news = require('./routes/getNews');
 const opennews = require('./routes/getOpenNews');
 const market = require('./routes/getFlea_market');
 const getTovar = require('./routes/getDetailsTovar');
-const contacts = require('./routes/getcontacts');
+const contacts = require('./routes/getContacts');
 const roundtables = require('./routes/getRoundtables');
 
 
