@@ -19,6 +19,11 @@
 	<% if(sessionUser === undefined){ %>
 		<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
+
+	<% if(isAdm === true){ %>
+		<link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
+		<script type="text/javascript" src="/script/admin/admin.js"></script>	
+	<% } %>
 </head>
 <body>	
 	<div class="wrapper">
@@ -152,6 +157,10 @@
 			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
 			<a href="/news" id="nav_news" class="navigator_btn selected_nav">Новости</a>
 		</div>	
+
+		<% if(isAdm === true){ %>
+			<button id="newNewsBtn" onclick="createNewsModal()">Добавить новость</button>
+		<% } %>
 
 
 		<% if(NEWS.length > 0){ %>

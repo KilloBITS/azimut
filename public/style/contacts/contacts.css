@@ -193,12 +193,19 @@ contact{
 .userContact{
     display: inline-block;
     width: calc(33%);
+    text-align: center;
 }
 
-.userContact div{
+.userContact img{
+    max-width: 60px;
+    margin: auto;
+    text-align: center;
+}
+
+.userContact div, .userContact a{
   width: 100%;
   /* float: left; */
-  padding-left: 30px;
+  /*padding-left: 30px;*/
   background-size: 14px;
   background-repeat: no-repeat;
   background-position: 10px;

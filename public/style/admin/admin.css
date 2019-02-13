@@ -1,0 +1,7 @@
+#newNewsBtn{
+	position: absolute;
+	padding: 5px 10px;
+	right: 0;
+	top: -10px;
+	cursor: pointer;
+}
