@@ -286,7 +286,7 @@
 					$("#password-strength2 .bar-text").html(checkStrength($('#checkPass2').val(),'2'))
 				})  
 				$('#signUpUser').click(function(){
-					if($('#checkPass').val() === $('#checkPAss2').val()){
+					if($('#checkPass').val() === $('#checkPass2').val()){
 						var NEW_USER = {};					
 						NEW_USER.name =  $('#checkText').val();
 						NEW_USER.surname = $('#checkText2').val();

@@ -23,7 +23,7 @@ router.post('/signup', function(req, res, next){
 		const users = db.collection("USERS");
 		const LOGS = db.collection("LOGS");
 		if(err) return console.log(err);
-
+		console.log(res)
 		users.find({email: req.body.newEmail}).toArray(function(err, results_usersEmail ){
 			if(results_usersEmail.length === 0){
 					var today = new Date();
@@ -69,7 +69,7 @@ router.post('/signup', function(req, res, next){
 				        from: "azimutbot@gmail.com", // sender address
 				        to: req.body.email, // list of receivers
 				        subject: 'Регистрация', // Subject line
-				        text:  "Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://localhost:4334/activate-accaunt?akeyAct="+bEnc, // plain text body
+				        text:  "Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, // plain text body
 				        // html: SHABLON_MESSAGE // html body
 				    };
 				  transporter.sendMail(mailOptions, function (error, info) {});
