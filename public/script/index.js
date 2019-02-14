@@ -59,6 +59,10 @@ $(function(){
 })
 
 $(document).ready(function(){
+  $('.switch').change(function(){
+    $(this).toggleClass('checked');
+  });
+    
 	var cnvs = document.getElementById("canvas");
 	cnvs.width = window.innerWidth;
 	cnvs.height = window.innerHeight;

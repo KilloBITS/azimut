@@ -3,31 +3,26 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title>Ридиоклуб "Азимут"</title>
+	<title>Профиль (<%= sessionPoziv %>)</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="/style/profile/profile.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
-	<% if(sessionUser === undefined){ %>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>	
-	<% } %>	
-	<style type="text/css">
-	.section_data p {
-		max-height: 220px;
-	}
+	<script type="text/javascript" src="/script/profile/profile.js"></script>
+	<% if(isAdm === true){ %>
 
-</style>
+	<% } %>
 </head>
-<body>	
+<body>
 	<div class="wrapper">
 		<div id="loader-wrapper">
 			<div id="loader">
@@ -38,32 +33,31 @@
 
 		</div>
 	</div>
-	<header>
+	<header>	
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
-		
-		<div class="spec_graph"></div>
-		<div class="spectrLineArray" id="spectrLineArray"></div>
 		<a href="/">
 			<img src="../../../img/logo1.png" id="logotype">
 		</a>				
-		<h1>Радиоклуб <b>Азимут</b></h1>	
+		<h1><b>О НАС</b></h1>		
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 		</div>
+		
 		<div id="head_banner"><%= locator %></div>
 		<nav> 
 			<h1>Радиоклуб <b>Азимут</b></h1>	
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
+			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#">VHF</a> 
-			<a href="#" class="menu_to_left">HF</a> 
-			<a href="#" class="menu_to_right">Форум</a> 
+			<a href="#" class="menu_to_left">VHF</a> 
+			<a href="#" class="menu_to_right">HF</a> 
+			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
 			<a href="/contacts">Контакты</a> 
 		</nav>
@@ -82,7 +76,6 @@
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>				
 			</div>
-
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>
 				<div class="pre_line"></div>				
@@ -118,8 +111,7 @@
 				<div class="ii_div">27.110 FM - 20.45 (спринт-группа).</div>
 			</div>
 		</div>
-		<div class="nav_menu right">
-			<% if(sessionUser !== undefined){ %>
+		<div class="nav_menu right">			
 			<div class="nav_wrapper" id="users_wraper">
 				<div class="wrapper_title">Пользователь</div>
 				<div class="pre_line"></div>
@@ -130,24 +122,7 @@
 					<div class="userPoziv">(<%= sessionPoziv %>)</div>
 					<a href="/getProfile" class="userButton">Профиль</a>
 				</div>
-				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>	
-
-				<div class="localisation">
-					<div class="localIcon" id="ru" title="Русский"></div>
-					<div class="localIcon" id="ua" title="Українська"></div>
-					<div class="localIcon" id="en" title="English"></div>
-				</div>	
-			</div>
-			<% } else { %>
-			<div class="nav_wrapper" id="users_wraper">
-				<div class="wrapper_title">Авторизация</div>
-				<div class="pre_line"></div>
-				<div class="nav_loader"></div>
-				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
-				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
-				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
-				<a href="/register" class="NewPassLink">Регистрация</a>
-				<a href="#" class="NewPassLink">Забыли пароль?</a>
+				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
 
 				<div class="localisation">
 					<div class="localIcon" id="ru" title="Русский"></div>
@@ -155,8 +130,8 @@
 					<div class="localIcon" id="en" title="English"></div>
 				</div>
 			</div>
-			<% } %>   
 			
+
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -168,35 +143,145 @@
 		</div>
 
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn noBefore">Главная</a>
+			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="#" id="nav_about" class="navigator_btn selected_nav">Профиль (<%= sessionPoziv %>)</a>
 		</div>	
 
-		<% if(NEWS.length > 0){ %>
-		<% for(var i = 0; i < NEWS.length; i++){ %>
-		<section id="section_<%= i %>" class="section_data">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
-			<p>
-				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
-			</p>			
-			<div class="section_date">
-				<%= NEWS[i].DATE %>
-				<span><%= NEWS[i].AUTHOR %></span>
+		<section id="section_01" class="section_data">
+			<div class="profile_navigator">
+				<div class="PN_Nav_btn active" onclick="clickTab(this)">Личная информация</div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)">Приватность</div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)">Барахолка</div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)">Сообщения<span>•</span></div>
+			</div>
+
+			<div class="tabs-block">
+				<div class="TAB visible">
+					<% if(USER.official){ %>
+					<div class="authificate"></div>
+					<% } %>			
+					<div class="fullBlock">
+						<div class="avatara_big" style="background-image: url(../../../data/avatars/<%= USER.ava %>)">
+							<div class="newInfo">Файл не должен привышать 1мб</div>
+							<div class="newAvatar">Выбрать файл</div>
+						</div>
+
+						<div class="dataText tName">Ваше имя: <%= USER.name %></div>
+						<div class="dataText tPoziv">Ваш позывной: <%= USER.pozivnoy %></div>
+						<div class="dataText tMail">Ваш e-mail: <%= USER.email %></div>
+						<div class="dataText tNumb">Ваш телефон: <%= USER.phone_number %></div>
+					</div>
+
+					<div class="fullBlock">
+						<div class="paramTitle">Вкратце обо мне</div>
+						<textarea id="textMe"></textarea>
+					</div>			
+					<div class="saveBtn">Сохранить</div>
+				</div>
+				<div class="TAB">
+					<div class="fullBlock">
+						<div class="switch_line">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Отображатся онлайн</div>
+						</div>
+
+						<div class="switch_line">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Показывать мой позывной</div>
+						</div>
+
+						<div class="switch_line">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Показывать мой профиль</div>
+						</div>
+
+						<div class="switch_line ">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Разрешить сообщения</div>
+						</div>
+
+						<div class="switch_line ">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Разрешить подписки</div>
+						</div>
+
+						<div class="switch_line ">
+							<label class="switch checked">
+								<i class="icon-ok"></i>
+								<i class="icon-remove"></i>
+								<input type="checkbox">
+							</label>
+							<div class="switch_text">Двухетапная авторизация</div>
+						</div>
+					</div>
+					<div class="fullBlock">
+						<h3>Изменить пароль</h3>
+						<div class="passLine">
+							<label>Старый пароль</label>
+							<input type="password" name="oldpass" id="oldpass" class="passRep"> 
+						</div>
+						<div class="passLine">
+							<label>Новый пароль</label>
+							<input type="password" name="newpass" id="newpass" class="passRep">
+						</div>
+						<div class="passLine">
+							<label>Новый пароль</label>
+							<input type="password" name="reppass" id="reppass" class="passRep">
+						</div>
+					</div>
+					<div class="saveBtn">Сохранить</div>
+				</div>
+				<div class="TAB">
+					<div class="mini_title">Тут отображается список ваших объявлений</div>
+					<div class="fullBlock" style="padding-top: 30px; overflow: scroll; overflow-x: hidden; height: 100%; margin-top: 20px;">
+						<% if(tovar.length > 0){ %>
+						<% for(var i = 0; i < tovar.length; i++){ %>
+						<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>">
+							<section id="section_<%= i %>" class="tovarData">				
+								<div class="preImage" style="background-image: url(<%= tovar[i].Images[0] %>)"></div>
+								<h4><%= tovar[i].Title %></h4>
+								<div class="description"><%= tovar[i].Description %></div>
+								<% if(tovar[i].Type === 'Куплю'){ %>
+								<div class="typeMar"><%= tovar[i].Type %></div>
+								<% } else { %>
+								<div class="typeMar prodam"><%= tovar[i].Type %></div>
+								<% } %>
+								<div class="dateMar"><%= tovar[i].Date %></div>
+								<button class="removeTovar">Удалить</button>
+								<button class="pauseTovar">Приостановить</button>
+							</section>
+						</a>			
+						<% } %>
+						<% }else{ %>
+						<h2 style="margin-top: 20px">У вас нет объявлений</h2>
+						<% } %>								
+					</div>
+				</div>
+				<div class="TAB"></div>
 			</div>
 		</section>	
-		<% } %>
-		<% }else{ %>
-		<div class="NoDataPage" style="text-align: center;">
-			<img src="../../../img/giphy.gif">
-			<h2>Нет данных</h2>
-		</div>
-		<% } %>
-		
 	</main>
-
 	<div id="stop" class="scrollTop"></div>
-
 	<footer class="flex-rw">
 		<ul class="footer-list-top">
 			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>

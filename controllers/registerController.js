@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const mongoClient = require("mongodb").MongoClient;
 const bParser = require('body-parser');
 const base64 = require('base-64');
+const fs = require('fs');
 
 const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
@@ -62,7 +63,13 @@ router.post('/signup', function(req, res, next){
 					NEW_USER.regLink = bEnc;
 					NEW_USER.activity = false;
 					users.insertOne(NEW_USER);
-;					
+
+					//create folder
+					var dir = './publick/data/avatars/'+req.body.poziv;
+					if (!fs.existsSync(dir)){
+						fs.mkdirSync(dir);
+					}
+
 					res.send({code: 500, data: NEW_USER});
 
 					let mailOptions = {

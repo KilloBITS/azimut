@@ -43,6 +43,7 @@ const market = require('./routes/getFlea_market');
 const getTovar = require('./routes/getDetailsTovar');
 const contacts = require('./routes/getContacts');
 const roundtables = require('./routes/getRoundtables');
+const profile = require('./routes/getProfile');
 const authAcc = require('./routes/getsData/authificateAccaunt');
 
 
@@ -55,6 +56,7 @@ app.use('/detailsnews*', opennews);
 app.use('/getDetailsTovar*', getTovar);
 app.use('/contacts', contacts);
 app.use('/roundtables', roundtables);
+app.use('/getProfile', profile);
 app.use('/activate-accaunt*', authAcc);
 
 
@@ -70,8 +72,6 @@ app.get('/captcha*', function (req, res) {
     res.type('svg');
     res.status(200).send(captcha.data);
 });
-
-
 
 app.get('*', get404);
 /* POSTS */
