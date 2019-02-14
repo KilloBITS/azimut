@@ -59,13 +59,10 @@ router.post('/signup', function(req, res, next){
 					NEW_USER.ava = "default.gif";
 					NEW_USER.regiter_date = today;
 					NEW_USER.official = false;
-					NEW_USER.regLink = bEnc;//shasum.digest('azimut_'+req.body.poziv+today).toString();
+					NEW_USER.regLink = bEnc;
 					NEW_USER.activity = false;
 					users.insertOne(NEW_USER);
-
-					// req.session.user = NEW_USER.nick;
-					// req.session.admin = false;
-					// global.online = global.online + 1;					
+;					
 					res.send({code: 500, data: NEW_USER});
 
 					let mailOptions = {
@@ -75,8 +72,6 @@ router.post('/signup', function(req, res, next){
 				        text:  "Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://localhost:4334/activate-accaunt?akeyAct="+bEnc, // plain text body
 				        // html: SHABLON_MESSAGE // html body
 				    };
-
-				  // let ml = new mailOptions("message.from.the.site.lm@gmail.com", "lm.store.shop@gmail.com", req.body.myTheme, SHABLON_MESSAGE + "]");
 				  transporter.sendMail(mailOptions, function (error, info) {});
 			}else{
 				res.send({code: 450, message: 'Ошибка регистрации'})

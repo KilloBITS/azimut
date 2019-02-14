@@ -206,10 +206,11 @@ p {
     padding-top: 20px;
     padding-bottom: 20px;
     float: left;
-    border: 1px solid rgb(0, 45, 99);
+    border: 2px solid rgb(4, 102, 164);
     margin-bottom: 30px;
-    border-radius: 5px;
+    border-radius: 0;
     position: relative;
+    /*box-shadow: -3px -3px 0px -2px #ffffff, -3px -3px 0px 0px #03629f;*/
 }
 
 .wrapper_title{
