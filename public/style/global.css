@@ -23,10 +23,10 @@ body {
 }
 
 main{
-    min-height: 1300px;
+    min-height: 1024px;
 }
 header {
-    background-image: linear-gradient(to bottom, #073958 25%,rgb(0, 109, 177) 84%);
+    /*background-image: linear-gradient(to bottom, #073958 25%,rgb(0, 109, 177) 84%); */*/
     width: 100%;
     height: 250px;
     z-index: 10;
@@ -40,6 +40,11 @@ header {
     transition: all 0.5s ease;
     background-size: cover;
     background-position: center;
+    background-color: #0466a5;
+    background: #0466a5 url(../../../img/wave-header.png);
+    background-size: 100%;
+    background-repeat-y: no-repeat;
+    background-position: top;
 }
 header h1 {
     font-size: 30px;
@@ -172,7 +177,7 @@ p {
 
 #head_banner{
     position: absolute;
-    right: 15px;
+    right: 40px;
     top: 15px;
     color: #ffffff;
     z-index: 1;
@@ -220,16 +225,14 @@ p {
     padding: 2px 15px;
     border-radius: 3px 3px 0 0;
     z-index: 1;
-    background-color: #726ca5;
+    background-color: #0466a5;
     width: calc(100% + 2px);
     background-repeat: no-repeat;
     color: white;
     text-align: center;
     line-height: 23px;
     background-position: center;
-
     /*background-image: url(http://www.tudorhouse.nsw.edu.au/wp-content/uploads/2017/03/background-title.png);*/
-
 }
 
 .auth_btn{
@@ -252,6 +255,14 @@ p {
     float: left;
     font-size: 18px;
     font-weight: bold;
+}
+
+.ii_div_min_title{
+    width: 100%;
+    float: left;
+    padding-left: 17px;
+    font-weight: bold;
+    font-size: 12px;
 }
 
 .ii_div{
@@ -451,8 +462,7 @@ a {
 
 
 footer {
-    background-color: #373737;
-    background: #203d75 url(../../../img/wave-footer.png);
+    background: #0466a5 url(../../../img/wave-footer.png);
     margin-top: auto;
     width: 100%;
     font-family: 'Didact Gothic', sans-serif;
@@ -474,8 +484,9 @@ footer {
 
 .footer-list-top {
     width: 33.333%;
-    padding-top: 36px;
+    padding-top: 20px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 .footer-list-top > li {
