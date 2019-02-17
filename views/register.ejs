@@ -280,41 +280,73 @@
 			</form>
 
 			<script type="text/javascript">
+				var isKyr = function (str) {
+					return /[а-я]/i.test(str);
+				}
 				$('#checkPass').keyup(function(){
 					$("#password-strength .bar-text").html(checkStrength($('#checkPass').val(),''))
 				})  
 				$('#checkPass2').keyup(function(){
 					$("#password-strength2 .bar-text").html(checkStrength($('#checkPass2').val(),'2'))
 				})  
+				var addBlick = function(a){
+					$(a).addClass('blink');
+					setTimeout(function(){
+						$(a).removeClass('blink');
+					},1500);					
+				}
 				$('#signUpUser').click(function(){
-					if($('#checkPass').val() === $('#checkPass2').val()){
-						var NEW_USER = {};					
-						NEW_USER.name =  $('#checkText').val();
-						NEW_USER.surname = $('#checkText2').val();
-						NEW_USER.email = $('#checkEmail').val();
-						NEW_USER.phone_number = $('#checkNumber').val();					
-						NEW_USER.password = $('#checkPass').val();
-						NEW_USER.poziv = $('#checkPoziv').val();
-						NEW_USER.currentCaptcha = $('#captchaText').val();
+					if($("#checkText").val().length >= 3){
+						if($("#checkText2").val().length >= 3){
+							if($("#checkPoziv").val().length >= 4 || isKyr($("#checkPoziv").val())){
+								if($("#checkNumber").val().length >= 10){
+									if($('#checkPass').val() === $('#checkPass2').val()){
+										var NEW_USER = {};					
+										NEW_USER.name =  $('#checkText').val();
+										NEW_USER.surname = $('#checkText2').val();
+										NEW_USER.email = $('#checkEmail').val();
+										NEW_USER.phone_number = $('#checkNumber').val();					
+										NEW_USER.password = $('#checkPass').val();
+										NEW_USER.poziv = $('#checkPoziv').val();
+										NEW_USER.currentCaptcha = $('#captchaText').val();
 
-						$.post('/checkedCaptcha', {currentCaptcha: $('#captchaText').val()}, function(res){
-							if(res.code === 500){
-								$.post('/signup', NEW_USER, function(res){
-									createUsers(res);
-									$("#registerBlockData #regisretSuccessFull").fadeIn(300);
-								})
+										$.post('/checkedCaptcha', {currentCaptcha: $('#captchaText').val()}, function(res){
+											if(res.code === 500){
+												$.post('/signup', NEW_USER, function(res){
+													createUsers(res);
+													$("#registerBlockData #regisretSuccessFull").fadeIn(300);
+												})
+											}else{
+												createError(res.className, res.message);
+												$("#captcha").click();
+											}
+										});
+
+									}else{
+										console.warn('Пароли не совпадают!');
+										createError('nError', 'Пароли не совпадают');
+										addBlick("#checkPass,#checkPass2");
+									}
+								}else{
+									console.log('Номер указан неверно!');
+									createError('nError', 'Номер указан неверно!');
+									addBlick("#checkNumber");
+								}
 							}else{
-								createError(res.className, res.message)
-								$("#captcha").click();
+								console.log('Позывной указан неверно!');
+								createError('nError', 'Позывной указан неверно!');
+								addBlick("#checkPoziv");
 							}
-						});
-						
+						}else{
+							console.log('Некорректное фамилия!');
+							createError('nError', 'Некорректное фамилия!');
+							addBlick("#checkText2");
+						}
 					}else{
-						console.warn('Пароли не совпадают!');
-						createError('nError', 'Пароли не совпадают')
-
-					}
-					
+						console.log('Некорректное имя!');
+						createError('nError', 'Некорректное имя!');
+						addBlick("#checkText");
+					}				
 				});
 			</script>
 

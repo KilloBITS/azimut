@@ -815,7 +815,7 @@ a,
 .c-label {
   display: block;
   margin-bottom: 23px;
-  font-size: 12px;
+  font-size: 16px;
   color: #7b8994; }
   .c-label:not(label) {
     /*! You must ensure the element matches one of these selectors: label */
