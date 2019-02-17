@@ -11,7 +11,7 @@ var signIn = function(){
 			location.reload();
 		}else{
 			$('.nav_loader').hide();
-			createError('nError', res.message)
+			createError(res.className, res.message)
 		}
 	});
 };

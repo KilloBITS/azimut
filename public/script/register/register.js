@@ -4,8 +4,6 @@ var createUsers = function(data){
 	createAva.className = 'userAvatarka';   
 };
 
-
-
 function checkStrength(password, dat){
 	var result = $("#password-strength"+dat);
     //initial strength

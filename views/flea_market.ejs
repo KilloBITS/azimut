@@ -202,6 +202,7 @@
 		<div class="tovarLength">Найдено: <%= TOVAR.length %> объявлений</div>
 		
 		<div class="market_data">
+			<div class="addNewTovar" id="addNewTovar">Подать объявление</div>
 			<% for(var i = 0; i < TOVAR.length; i++){ %>
 			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
 				<section id="section_<%= i %>" class="section_data">				

@@ -12,6 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="/style/profile/profile.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
@@ -163,7 +165,8 @@
 					<div class="fullBlock">
 						<div class="avatara_big" style="background-image: url(../../../data/avatars/<%= USER.ava %>)">
 							<div class="newInfo">Файл не должен привышать 1мб</div>
-							<div class="newAvatar">Выбрать файл</div>
+							<div class="newAvatar" onclick="selectAvatar()">Выбрать файл</div>
+							<input type="file" id="tFile" style="display: none;">
 						</div>
 
 						<div class="dataText tName">Ваше имя: <%= USER.name %></div>
@@ -180,56 +183,90 @@
 				</div>
 				<div class="TAB">
 					<div class="fullBlock">
+						<div class="fullBlockLoader"></div>
 						<div class="switch_line">
-							<label class="switch checked">
+							<% var aPar1 = USER.isOnline %>
+							<label class="switch <% if(aPar1){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar1){ %>
+									<input type="checkbox" onchange="setParam(1, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(1, false, this)" checked>
+								<% } %>
+								
 							</label>
+
 							<div class="switch_text">Отображатся онлайн</div>
+
 						</div>
 
 						<div class="switch_line">
-							<label class="switch checked">
+							<% var aPar2 = USER.isPozivnoy %>
+							<label class="switch <% if(aPar2){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar2){ %>
+									<input type="checkbox" onchange="setParam(2, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(2, false, this)" checked>
+								<% } %>
 							</label>
 							<div class="switch_text">Показывать мой позывной</div>
 						</div>
 
 						<div class="switch_line">
-							<label class="switch checked">
+							<% var aPar3 = USER.isProfile %>
+							<label class="switch <% if(aPar3){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar3){ %>
+									<input type="checkbox" onchange="setParam(3, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(3, false, this)" checked>
+								<% } %>
 							</label>
 							<div class="switch_text">Показывать мой профиль</div>
 						</div>
 
 						<div class="switch_line ">
-							<label class="switch checked">
+							<% var aPar4 = USER.isMessage %>
+							<label class="switch <% if(aPar4){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar4){ %>
+									<input type="checkbox" onchange="setParam(4, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(4, false, this)" checked>
+								<% } %>
 							</label>
 							<div class="switch_text">Разрешить сообщения</div>
 						</div>
 
 						<div class="switch_line ">
-							<label class="switch checked">
+							<% var aPar5 = USER.isFriend %>
+							<label class="switch <% if(aPar5){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar5){ %>
+									<input type="checkbox" onchange="setParam(5, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(5, false, this)" checked>
+								<% } %>
 							</label>
 							<div class="switch_text">Разрешить подписки</div>
 						</div>
 
-						<div class="switch_line ">
-							<label class="switch checked">
+						<div class="switch_line">
+							<% var aPar6 = USER.isSecurity %>
+							<label class="switch <% if(aPar6){ %>checked<% } %>">
 								<i class="icon-ok"></i>
 								<i class="icon-remove"></i>
-								<input type="checkbox">
+								<% if(aPar6){ %>
+									<input type="checkbox" onchange="setParam(6, true, this)">
+								<% }else{ %>
+									<input type="checkbox" onchange="setParam(6, false, this)" checked>
+								<% } %>
 							</label>
 							<div class="switch_text">Двухетапная авторизация</div>
 						</div>
@@ -248,15 +285,16 @@
 							<label>Новый пароль</label>
 							<input type="password" name="reppass" id="reppass" class="passRep">
 						</div>
+						<div class="saveBtn" onclick="changepass($('#oldpass').val(),$('#newpass').val(),$('#reppass').val())">Применить</div>
 					</div>
-					<div class="saveBtn">Сохранить</div>
+					
 				</div>
 				<div class="TAB">
 					<div class="mini_title">Тут отображается список ваших объявлений</div>
 					<div class="fullBlock" style="padding-top: 30px; overflow: scroll; overflow-x: hidden; height: 100%; margin-top: 20px;">
 						<% if(tovar.length > 0){ %>
 						<% for(var i = 0; i < tovar.length; i++){ %>
-						<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>">
+						<!-- <a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank"> -->
 							<section id="section_<%= i %>" class="tovarData">				
 								<div class="preImage" style="background-image: url(<%= tovar[i].Images[0] %>)"></div>
 								<h4><%= tovar[i].Title %></h4>
@@ -267,17 +305,100 @@
 								<div class="typeMar prodam"><%= tovar[i].Type %></div>
 								<% } %>
 								<div class="dateMar"><%= tovar[i].Date %></div>
-								<button class="removeTovar">Удалить</button>
-								<button class="pauseTovar">Приостановить</button>
+								<button class="removeTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 0)">Удалить</button>
+								<button class="pauseTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 1)">Дезактивировать</button>
+								<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank" style="position: absolute; bottom: 20px; left: 50%; color: red;">Перейти к объявлению...</a>
 							</section>
-						</a>			
+						<!-- 	</a>		 -->
 						<% } %>
 						<% }else{ %>
 						<h2 style="margin-top: 20px">У вас нет объявлений</h2>
 						<% } %>								
 					</div>
 				</div>
-				<div class="TAB"></div>
+				<div class="TAB">
+					<div class="modal__content chat">
+						<div class="modal__sidebar">
+							<div class="chat__search search">
+								<div class="search">
+									<div class="search__icon">
+										<i class="fa fa-search" aria-hidden="true"></i>
+									</div>
+									<input type="search" class="search__input" placeholder="Быстрый поиск">
+									<div class="search__icon search__icon_right">
+										<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+									</div>
+								</div>
+							</div>
+							<div class="chat__users">
+
+								<!-- TO DO users__item_group -->
+								<ul class="users">
+									<% for(var i = 0; i < FRIEND.length; i++){ %>
+									<li class="users__item " usres="<%= FRIEND[i].pozivnoy %>" onclick="openDialog('<%= FRIEND[i].pozivnoy %>')">
+										<div class="users__avatar avatar">
+											<a href="#" class="avatar__wrap">
+												<%= (FRIEND[i].nick).charAt(0) %>
+											</a>
+										</div>
+										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>
+										<div class="users__counter">
+											<span class="counter">99+</span>
+										</div>
+									</li>
+									<% } %>									
+								</ul>
+
+							</div>
+						</div>
+
+
+						<div class="modal__main">
+							<div class="chatbox">
+								<div class="chatbox__row">
+									<div class="head">
+										<div class="head__avatar avatar avatar_larger">
+											<a href="#" class="avatar__wrap"></a>
+										</div>
+										<div class="head__title">...</div>
+									</div>
+								</div>
+								<div class="chatbox__row chatbox__row_fullheight">
+									<div class="noneOpenDlg">
+										<h2>Сообщения</h2>
+										<small>(Тут будут отображатся ваши диалоги)</small>
+									</div>
+									<div class="dlgLoader"></div>
+									<div class="chatbox__content" id="chatbox__content" style="display: none;">
+										
+									</div>
+								</div>
+								<div class="chatbox__row">
+									<div class="enter">
+										<div class="enter__submit">
+											<button class="button button_id_submit" type="submit">
+												<i class="fa fa-paper-plane" aria-hidden="true"></i>
+											</button>
+										</div>
+										<div class="enter__textarea">
+											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="Say message..."></textarea>
+										</div>
+										<div class="enter__icons">
+											<a href="#" class="enter__icon">
+												<i class="fa fa-paperclip" aria-hidden="true"></i>
+											</a>
+											<a href="#" class="enter__icon">
+												<i class="fa fa-smile-o" aria-hidden="true"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>	
 	</main>

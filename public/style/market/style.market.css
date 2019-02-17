@@ -70,3 +70,14 @@
 .market_data{
     min-height: 1300px;
 }
+
+.addNewTovar{
+    text-align: center;
+    margin: 10px 0 10px 0;
+    padding: 12px;
+    border-radius: 3px;
+    background-color: #6ca578;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}

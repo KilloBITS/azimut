@@ -14,7 +14,18 @@ router.get('/*', function(req, res, next) {
     user.find({pozivnoy: req.session.poziv}).toArray(function(err, resUser){       
       conf.find().toArray(function(err, resultDB){
       	if((resUser.length > 0) || (resUser[0].pozivnoy === req.session.poziv)){
-          tovar.find({User: resUser[0].pozivnoy}).sort({AI: -1}).toArray(function(err, resTov){     
+          tovar.find({User: resUser[0].pozivnoy}).sort({AI: -1}).toArray(function(err, resTov){  
+          //парссинг друзей
+          var usersFriendArray = [];
+          user.find().toArray(function(err, friends ){
+            for(var f = 0; f < friends.length; f++){
+              for(var f2 = 0; f2 < resUser[0].friend.length; f2++ ){
+                if((friends[f].pozivnoy).indexOf(resUser[0].friend[f2]) >= 0){
+                  usersFriendArray.push(friends[f]);    
+                }
+              }              
+            }
+
             res.render('profile.ejs',
             {
              USER: resUser[0],
@@ -22,9 +33,12 @@ router.get('/*', function(req, res, next) {
              sessionUser: req.session.user,
              sessionPoziv: req.session.poziv,
              isAdm: req.session.admin,
-             locator: resultDB[0].LOCATOR
-           });         
-          }); 
+             locator: resultDB[0].LOCATOR,
+             FRIEND: usersFriendArray
+           }); 
+
+          });
+        }); 
         }else{
           res.redirect('/')
         }        

@@ -1,25 +1,25 @@
 .profile_navigator{
-    width: 100%;
-    height: 30px;
+  width: 100%;
+  height: 30px;
 }
 
 .PN_Nav_btn{
-    width: 25%;
-    display: inline-block;
-    height: 30px;
-    line-height: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-    float: left;
-    text-align: center;
-    position: relative;
+  width: 25%;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+  float: left;
+  text-align: center;
+  position: relative;
 }
 
 .PN_Nav_btn span{
-    color: red;
-    position: absolute;
-    font-size: 28px;
-    top: -10px;
+  color: red;
+  position: absolute;
+  font-size: 28px;
+  top: -10px;
 }
 
 .PN_Nav_btn:hover{
@@ -31,121 +31,124 @@
 }
 
 .tabs-block{
-    width: 100%;
-    height: 700px;
-    overflow: hidden;
-    position: relative;
+  width: 100%;
+  height: 700px;
+  overflow: hidden;
+  position: relative;
 }
 
 .TAB{
-    left: 100%;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #ebebeb;
-    position: absolute;
-    transition: 0.3s;
-    z-index: 0;
-    background-color: white;
-    padding-top: 10px;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #ebebeb;
+  position: absolute;
+  transition: 0.3s;
+  z-index: 0;
+  background-color: white;
+  padding-top: 10px;
 }
 
 .TAB.visible{
-    left: 0;
-    transition: 0.3s;
-    z-index: 1;
+  left: 0;
+  transition: 0.3s;
+  z-index: 1;
 }
 
 .fullBlock{
-    width: 100%;
-    height: 260px;
-    position: relative;
+  width: 100%;
+  height: 260px;
+  position: relative;
 }
 
 .avatara_big{
-    width: 250px;
-    height: 250px;
-    display: table-caption;
-    position: relative;
-    margin-top: 5px;
-    border: 1px solid silver;
-    background-size: contain;
-    float: left;
-    margin-left: 15px;
+  width: 250px;
+  height: 250px;
+  display: table-caption;
+  position: relative;
+  margin-top: 5px;
+  border: 1px solid silver;
+  background-size: contain;
+  float: left;
+  margin-left: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .newAvatar{
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.46);
-    color: white;
-    line-height: 40px;
-    bottom: 0;
-    cursor: pointer;
-    transition: 0.3s;
-    opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.46);
+  color: white;
+  line-height: 40px;
+  bottom: 0;
+  cursor: pointer;
+  transition: 0.3s;
+  opacity: 0;
 }
 
 .avatara_big:hover .newAvatar{
-    opacity: 1;
+  opacity: 1;
 }
 
 .newInfo{
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.46);
-    color: white;
-    line-height: 40px;
-    top: 0;
-    transition: 0.3s;
-    opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.46);
+  color: white;
+  line-height: 40px;
+  top: 0;
+  transition: 0.3s;
+  opacity: 0;
 }
 
 .avatara_big:hover .newInfo{
-    opacity: 1;
+  opacity: 1;
 }
 
 .dataText{
-    width: calc(100% - 283px);
-    float: right;
-    text-align: left;
-    display: inline-block;
-    margin-top: 10px;
+  width: calc(100% - 283px);
+  float: right;
+  text-align: left;
+  display: inline-block;
+  margin-top: 10px;
 }
 .authificate{
-    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9Ii0zOCAwIDUxMSA1MTEuOTk5NTYiIHdpZHRoPSI1MTJweCI+CjxnIGlkPSJzdXJmYWNlMSI+CjxwYXRoIGQ9Ik0gNDEzLjQ3NjU2MiAzNDEuOTEwMTU2IEMgMzk5LjcxNDg0NCAzNzkuMjA3MDMxIDM3OC45MDIzNDQgNDExLjYzNjcxOSAzNTEuNjA5Mzc1IDQzOC4yODkwNjIgQyAzMjAuNTQyOTY5IDQ2OC42MjUgMjc5Ljg2MzI4MSA0OTIuNzMwNDY5IDIzMC42OTkyMTkgNTA5LjkyNTc4MSBDIDIyOS4wODU5MzggNTEwLjQ4ODI4MSAyMjcuNDAyMzQ0IDUxMC45NDkyMTkgMjI1LjcxMDkzOCA1MTEuMjg5MDYyIEMgMjIzLjQ3NjU2MiA1MTEuNzMwNDY5IDIyMS4yMDMxMjUgNTExLjk2ODc1IDIxOC45NDkyMTkgNTEyIEwgMjE4LjUwNzgxMiA1MTIgQyAyMTYuMTA1NDY5IDUxMiAyMTMuNjkxNDA2IDUxMS43NTc4MTIgMjExLjI5Njg3NSA1MTEuMjg5MDYyIEMgMjA5LjYwNTQ2OSA1MTAuOTQ5MjE5IDIwNy45NDUzMTIgNTEwLjQ4ODI4MSAyMDYuMzM5ODQ0IDUwOS45Mzc1IEMgMTU3LjExNzE4OCA0OTIuNzY5NTMxIDExNi4zODY3MTkgNDY4LjY3NTc4MSA4NS4yODkwNjIgNDM4LjMzOTg0NCBDIDU3Ljk4NDM3NSA0MTEuNjg3NSAzNy4xNzU3ODEgMzc5LjI3NzM0NCAyMy40MzM1OTQgMzQxLjk4MDQ2OSBDIC0xLjU1NDY4OCAyNzQuMTY3OTY5IC0wLjEzMjgxMiAxOTkuNDY0ODQ0IDEuMDExNzE5IDEzOS40MzM1OTQgTCAxLjAzMTI1IDEzOC41MTE3MTkgQyAxLjI2MTcxOSAxMzMuNTU0Njg4IDEuNDEwMTU2IDEyOC4zNDc2NTYgMS40OTIxODggMTIyLjU5NzY1NiBDIDEuOTEwMTU2IDk0LjM2NzE4OCAyNC4zNTU0NjkgNzEuMDExNzE5IDUyLjU4OTg0NCA2OS40Mzc1IEMgMTExLjQ1NzAzMSA2Ni4xNTIzNDQgMTU2Ljk5NjA5NCA0Ni45NTMxMjUgMTk1LjkwNjI1IDkuMDI3MzQ0IEwgMTk2LjI0NjA5NCA4LjcxNDg0NCBDIDIwMi43MDcwMzEgMi43ODkwNjIgMjEwLjg0NzY1NiAtMC4xMTcxODggMjE4Ljk0OTIxOSAwLjAwMzkwNjI1IEMgMjI2Ljc2MTcxOSAwLjEwNTQ2OSAyMzQuNTQyOTY5IDMuMDA3ODEyIDI0MC43NzM0MzggOC43MTQ4NDQgTCAyNDEuMTA1NDY5IDkuMDI3MzQ0IEMgMjgwLjAyMzQzOCA0Ni45NTMxMjUgMzI1LjU2MjUgNjYuMTUyMzQ0IDM4NC40Mjk2ODggNjkuNDM3NSBDIDQxMi42NjQwNjIgNzEuMDExNzE5IDQzNS4xMDkzNzUgOTQuMzY3MTg4IDQzNS41MjczNDQgMTIyLjU5NzY1NiBDIDQzNS42MDkzNzUgMTI4LjM4NjcxOSA0MzUuNzU3ODEyIDEzMy41ODU5MzggNDM1Ljk4ODI4MSAxMzguNTExNzE5IEwgNDM2IDEzOC45MDIzNDQgQyA0MzcuMTQwNjI1IDE5OS4wNDY4NzUgNDM4LjU1NDY4OCAyNzMuODk4NDM4IDQxMy40NzY1NjIgMzQxLjkxMDE1NiBaIE0gNDEzLjQ3NjU2MiAzNDEuOTEwMTU2ICIgc3R5bGU9IiBzdHJva2U6bm9uZTtmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw4Ni42NjY2NjclLDUwLjE5NjA3OCUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDQxMy40NzY1NjIgMzQxLjkxMDE1NiBDIDM5OS43MTQ4NDQgMzc5LjIwNzAzMSAzNzguOTAyMzQ0IDQxMS42MzY3MTkgMzUxLjYwOTM3NSA0MzguMjg5MDYyIEMgMzIwLjU0Mjk2OSA0NjguNjI1IDI3OS44NjMyODEgNDkyLjczMDQ2OSAyMzAuNjk5MjE5IDUwOS45MjU3ODEgQyAyMjkuMDg1OTM4IDUxMC40ODgyODEgMjI3LjQwMjM0NCA1MTAuOTQ5MjE5IDIyNS43MTA5MzggNTExLjI4OTA2MiBDIDIyMy40NzY1NjIgNTExLjczMDQ2OSAyMjEuMjAzMTI1IDUxMS45Njg3NSAyMTguOTQ5MjE5IDUxMiBMIDIxOC45NDkyMTkgMC4wMDM5MDYyNSBDIDIyNi43NjE3MTkgMC4xMDU0NjkgMjM0LjU0Mjk2OSAzLjAwNzgxMiAyNDAuNzczNDM4IDguNzE0ODQ0IEwgMjQxLjEwNTQ2OSA5LjAyNzM0NCBDIDI4MC4wMjM0MzggNDYuOTUzMTI1IDMyNS41NjI1IDY2LjE1MjM0NCAzODQuNDI5Njg4IDY5LjQzNzUgQyA0MTIuNjY0MDYyIDcxLjAxMTcxOSA0MzUuMTA5Mzc1IDk0LjM2NzE4OCA0MzUuNTI3MzQ0IDEyMi41OTc2NTYgQyA0MzUuNjA5Mzc1IDEyOC4zODY3MTkgNDM1Ljc1NzgxMiAxMzMuNTg1OTM4IDQzNS45ODgyODEgMTM4LjUxMTcxOSBMIDQzNiAxMzguOTAyMzQ0IEMgNDM3LjE0MDYyNSAxOTkuMDQ2ODc1IDQzOC41NTQ2ODggMjczLjg5ODQzOCA0MTMuNDc2NTYyIDM0MS45MTAxNTYgWiBNIDQxMy40NzY1NjIgMzQxLjkxMDE1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNjYuNjY2NjY3JSwzOC44MjM1MjklKTtmaWxsLW9wYWNpdHk6MTsiLz4KPHBhdGggZD0iTSAzNDYuMTAxNTYyIDI1NiBDIDM0Ni4xMDE1NjIgMzI2LjIwNzAzMSAyODkuMDk3NjU2IDM4My4zNTU0NjkgMjE4Ljk0OTIxOSAzODMuNjA1NDY5IEwgMjE4LjUgMzgzLjYwNTQ2OSBDIDE0OC4xNDQ1MzEgMzgzLjYwNTQ2OSA5MC44OTQ1MzEgMzI2LjM1OTM3NSA5MC44OTQ1MzEgMjU2IEMgOTAuODk0NTMxIDE4NS42NDQ1MzEgMTQ4LjE0NDUzMSAxMjguMzk4NDM4IDIxOC41IDEyOC4zOTg0MzggTCAyMTguOTQ5MjE5IDEyOC4zOTg0MzggQyAyODkuMDk3NjU2IDEyOC42NDg0MzggMzQ2LjEwMTU2MiAxODUuNzk2ODc1IDM0Ni4xMDE1NjIgMjU2IFogTSAzNDYuMTAxNTYyIDI1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMTAwJSwxMDAlLDEwMCUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDM0Ni4xMDE1NjIgMjU2IEMgMzQ2LjEwMTU2MiAzMjYuMjA3MDMxIDI4OS4wOTc2NTYgMzgzLjM1NTQ2OSAyMTguOTQ5MjE5IDM4My42MDU0NjkgTCAyMTguOTQ5MjE5IDEyOC4zOTg0MzggQyAyODkuMDk3NjU2IDEyOC42NDg0MzggMzQ2LjEwMTU2MiAxODUuNzk2ODc1IDM0Ni4xMDE1NjIgMjU2IFogTSAzNDYuMTAxNTYyIDI1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoODguMjM1Mjk0JSw5Mi4xNTY4NjMlLDk0LjExNzY0NyUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDI3Ni40MTc5NjkgMjM3LjYyNSBMIDIxOC45NDkyMTkgMjk1LjEwMTU2MiBMIDIwNi41MzEyNSAzMDcuNTE5NTMxIEMgMjAzLjU5NzY1NiAzMTAuNDUzMTI1IDE5OS43NSAzMTEuOTE3OTY5IDE5NS45MDYyNSAzMTEuOTE3OTY5IEMgMTkyLjA1ODU5NCAzMTEuOTE3OTY5IDE4OC4yMTQ4NDQgMzEwLjQ1MzEyNSAxODUuMjc3MzQ0IDMwNy41MTk1MzEgTCAxNTguNTc4MTI1IDI4MC44MDg1OTQgQyAxNTIuNzEwOTM4IDI3NC45NDE0MDYgMTUyLjcxMDkzOCAyNjUuNDM3NSAxNTguNTc4MTI1IDI1OS41NjY0MDYgQyAxNjQuNDM3NSAyNTMuNjk5MjE5IDE3My45NTMxMjUgMjUzLjY5OTIxOSAxNzkuODIwMzEyIDI1OS41NjY0MDYgTCAxOTUuOTA2MjUgMjc1LjY1MjM0NCBMIDI1NS4xNzU3ODEgMjE2LjM4MjgxMiBDIDI2MS4wNDI5NjkgMjEwLjUxMTcxOSAyNzAuNTU4NTk0IDIxMC41MTE3MTkgMjc2LjQxNzk2OSAyMTYuMzgyODEyIEMgMjgyLjI4NTE1NiAyMjIuMjUgMjgyLjI4NTE1NiAyMzEuNzY1NjI1IDI3Ni40MTc5NjkgMjM3LjYyNSBaIE0gMjc2LjQxNzk2OSAyMzcuNjI1ICIgc3R5bGU9IiBzdHJva2U6bm9uZTtmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYig3MC41ODgyMzUlLDgyLjM1Mjk0MSUsODQuMzEzNzI1JSk7ZmlsbC1vcGFjaXR5OjE7Ii8+CjxwYXRoIGQ9Ik0gMjc2LjQxNzk2OSAyMzcuNjI1IEwgMjE4Ljk0OTIxOSAyOTUuMTAxNTYyIEwgMjE4Ljk0OTIxOSAyNTIuNjA1NDY5IEwgMjU1LjE3NTc4MSAyMTYuMzgyODEyIEMgMjYxLjA0Mjk2OSAyMTAuNTExNzE5IDI3MC41NTg1OTQgMjEwLjUxMTcxOSAyNzYuNDE3OTY5IDIxNi4zODI4MTIgQyAyODIuMjg1MTU2IDIyMi4yNSAyODIuMjg1MTU2IDIzMS43NjU2MjUgMjc2LjQxNzk2OSAyMzcuNjI1IFogTSAyNzYuNDE3OTY5IDIzNy42MjUgIiBzdHlsZT0iIHN0cm9rZTpub25lO2ZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDQzLjUyOTQxMiUsNjQuNzA1ODgyJSw2Ni42NjY2NjclKTtmaWxsLW9wYWNpdHk6MTsiLz4KPC9nPgo8L3N2Zz4K);
-    width: 25px;
-    height: 25px;
-    background-size: contain;
-    position: absolute;
-    right: 5px;
-    top: 5px;
+  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9Ii0zOCAwIDUxMSA1MTEuOTk5NTYiIHdpZHRoPSI1MTJweCI+CjxnIGlkPSJzdXJmYWNlMSI+CjxwYXRoIGQ9Ik0gNDEzLjQ3NjU2MiAzNDEuOTEwMTU2IEMgMzk5LjcxNDg0NCAzNzkuMjA3MDMxIDM3OC45MDIzNDQgNDExLjYzNjcxOSAzNTEuNjA5Mzc1IDQzOC4yODkwNjIgQyAzMjAuNTQyOTY5IDQ2OC42MjUgMjc5Ljg2MzI4MSA0OTIuNzMwNDY5IDIzMC42OTkyMTkgNTA5LjkyNTc4MSBDIDIyOS4wODU5MzggNTEwLjQ4ODI4MSAyMjcuNDAyMzQ0IDUxMC45NDkyMTkgMjI1LjcxMDkzOCA1MTEuMjg5MDYyIEMgMjIzLjQ3NjU2MiA1MTEuNzMwNDY5IDIyMS4yMDMxMjUgNTExLjk2ODc1IDIxOC45NDkyMTkgNTEyIEwgMjE4LjUwNzgxMiA1MTIgQyAyMTYuMTA1NDY5IDUxMiAyMTMuNjkxNDA2IDUxMS43NTc4MTIgMjExLjI5Njg3NSA1MTEuMjg5MDYyIEMgMjA5LjYwNTQ2OSA1MTAuOTQ5MjE5IDIwNy45NDUzMTIgNTEwLjQ4ODI4MSAyMDYuMzM5ODQ0IDUwOS45Mzc1IEMgMTU3LjExNzE4OCA0OTIuNzY5NTMxIDExNi4zODY3MTkgNDY4LjY3NTc4MSA4NS4yODkwNjIgNDM4LjMzOTg0NCBDIDU3Ljk4NDM3NSA0MTEuNjg3NSAzNy4xNzU3ODEgMzc5LjI3NzM0NCAyMy40MzM1OTQgMzQxLjk4MDQ2OSBDIC0xLjU1NDY4OCAyNzQuMTY3OTY5IC0wLjEzMjgxMiAxOTkuNDY0ODQ0IDEuMDExNzE5IDEzOS40MzM1OTQgTCAxLjAzMTI1IDEzOC41MTE3MTkgQyAxLjI2MTcxOSAxMzMuNTU0Njg4IDEuNDEwMTU2IDEyOC4zNDc2NTYgMS40OTIxODggMTIyLjU5NzY1NiBDIDEuOTEwMTU2IDk0LjM2NzE4OCAyNC4zNTU0NjkgNzEuMDExNzE5IDUyLjU4OTg0NCA2OS40Mzc1IEMgMTExLjQ1NzAzMSA2Ni4xNTIzNDQgMTU2Ljk5NjA5NCA0Ni45NTMxMjUgMTk1LjkwNjI1IDkuMDI3MzQ0IEwgMTk2LjI0NjA5NCA4LjcxNDg0NCBDIDIwMi43MDcwMzEgMi43ODkwNjIgMjEwLjg0NzY1NiAtMC4xMTcxODggMjE4Ljk0OTIxOSAwLjAwMzkwNjI1IEMgMjI2Ljc2MTcxOSAwLjEwNTQ2OSAyMzQuNTQyOTY5IDMuMDA3ODEyIDI0MC43NzM0MzggOC43MTQ4NDQgTCAyNDEuMTA1NDY5IDkuMDI3MzQ0IEMgMjgwLjAyMzQzOCA0Ni45NTMxMjUgMzI1LjU2MjUgNjYuMTUyMzQ0IDM4NC40Mjk2ODggNjkuNDM3NSBDIDQxMi42NjQwNjIgNzEuMDExNzE5IDQzNS4xMDkzNzUgOTQuMzY3MTg4IDQzNS41MjczNDQgMTIyLjU5NzY1NiBDIDQzNS42MDkzNzUgMTI4LjM4NjcxOSA0MzUuNzU3ODEyIDEzMy41ODU5MzggNDM1Ljk4ODI4MSAxMzguNTExNzE5IEwgNDM2IDEzOC45MDIzNDQgQyA0MzcuMTQwNjI1IDE5OS4wNDY4NzUgNDM4LjU1NDY4OCAyNzMuODk4NDM4IDQxMy40NzY1NjIgMzQxLjkxMDE1NiBaIE0gNDEzLjQ3NjU2MiAzNDEuOTEwMTU2ICIgc3R5bGU9IiBzdHJva2U6bm9uZTtmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYigwJSw4Ni42NjY2NjclLDUwLjE5NjA3OCUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDQxMy40NzY1NjIgMzQxLjkxMDE1NiBDIDM5OS43MTQ4NDQgMzc5LjIwNzAzMSAzNzguOTAyMzQ0IDQxMS42MzY3MTkgMzUxLjYwOTM3NSA0MzguMjg5MDYyIEMgMzIwLjU0Mjk2OSA0NjguNjI1IDI3OS44NjMyODEgNDkyLjczMDQ2OSAyMzAuNjk5MjE5IDUwOS45MjU3ODEgQyAyMjkuMDg1OTM4IDUxMC40ODgyODEgMjI3LjQwMjM0NCA1MTAuOTQ5MjE5IDIyNS43MTA5MzggNTExLjI4OTA2MiBDIDIyMy40NzY1NjIgNTExLjczMDQ2OSAyMjEuMjAzMTI1IDUxMS45Njg3NSAyMTguOTQ5MjE5IDUxMiBMIDIxOC45NDkyMTkgMC4wMDM5MDYyNSBDIDIyNi43NjE3MTkgMC4xMDU0NjkgMjM0LjU0Mjk2OSAzLjAwNzgxMiAyNDAuNzczNDM4IDguNzE0ODQ0IEwgMjQxLjEwNTQ2OSA5LjAyNzM0NCBDIDI4MC4wMjM0MzggNDYuOTUzMTI1IDMyNS41NjI1IDY2LjE1MjM0NCAzODQuNDI5Njg4IDY5LjQzNzUgQyA0MTIuNjY0MDYyIDcxLjAxMTcxOSA0MzUuMTA5Mzc1IDk0LjM2NzE4OCA0MzUuNTI3MzQ0IDEyMi41OTc2NTYgQyA0MzUuNjA5Mzc1IDEyOC4zODY3MTkgNDM1Ljc1NzgxMiAxMzMuNTg1OTM4IDQzNS45ODgyODEgMTM4LjUxMTcxOSBMIDQzNiAxMzguOTAyMzQ0IEMgNDM3LjE0MDYyNSAxOTkuMDQ2ODc1IDQzOC41NTQ2ODggMjczLjg5ODQzOCA0MTMuNDc2NTYyIDM0MS45MTAxNTYgWiBNIDQxMy40NzY1NjIgMzQxLjkxMDE1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMCUsNjYuNjY2NjY3JSwzOC44MjM1MjklKTtmaWxsLW9wYWNpdHk6MTsiLz4KPHBhdGggZD0iTSAzNDYuMTAxNTYyIDI1NiBDIDM0Ni4xMDE1NjIgMzI2LjIwNzAzMSAyODkuMDk3NjU2IDM4My4zNTU0NjkgMjE4Ljk0OTIxOSAzODMuNjA1NDY5IEwgMjE4LjUgMzgzLjYwNTQ2OSBDIDE0OC4xNDQ1MzEgMzgzLjYwNTQ2OSA5MC44OTQ1MzEgMzI2LjM1OTM3NSA5MC44OTQ1MzEgMjU2IEMgOTAuODk0NTMxIDE4NS42NDQ1MzEgMTQ4LjE0NDUzMSAxMjguMzk4NDM4IDIxOC41IDEyOC4zOTg0MzggTCAyMTguOTQ5MjE5IDEyOC4zOTg0MzggQyAyODkuMDk3NjU2IDEyOC42NDg0MzggMzQ2LjEwMTU2MiAxODUuNzk2ODc1IDM0Ni4xMDE1NjIgMjU2IFogTSAzNDYuMTAxNTYyIDI1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMTAwJSwxMDAlLDEwMCUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDM0Ni4xMDE1NjIgMjU2IEMgMzQ2LjEwMTU2MiAzMjYuMjA3MDMxIDI4OS4wOTc2NTYgMzgzLjM1NTQ2OSAyMTguOTQ5MjE5IDM4My42MDU0NjkgTCAyMTguOTQ5MjE5IDEyOC4zOTg0MzggQyAyODkuMDk3NjU2IDEyOC42NDg0MzggMzQ2LjEwMTU2MiAxODUuNzk2ODc1IDM0Ni4xMDE1NjIgMjU2IFogTSAzNDYuMTAxNTYyIDI1NiAiIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoODguMjM1Mjk0JSw5Mi4xNTY4NjMlLDk0LjExNzY0NyUpO2ZpbGwtb3BhY2l0eToxOyIvPgo8cGF0aCBkPSJNIDI3Ni40MTc5NjkgMjM3LjYyNSBMIDIxOC45NDkyMTkgMjk1LjEwMTU2MiBMIDIwNi41MzEyNSAzMDcuNTE5NTMxIEMgMjAzLjU5NzY1NiAzMTAuNDUzMTI1IDE5OS43NSAzMTEuOTE3OTY5IDE5NS45MDYyNSAzMTEuOTE3OTY5IEMgMTkyLjA1ODU5NCAzMTEuOTE3OTY5IDE4OC4yMTQ4NDQgMzEwLjQ1MzEyNSAxODUuMjc3MzQ0IDMwNy41MTk1MzEgTCAxNTguNTc4MTI1IDI4MC44MDg1OTQgQyAxNTIuNzEwOTM4IDI3NC45NDE0MDYgMTUyLjcxMDkzOCAyNjUuNDM3NSAxNTguNTc4MTI1IDI1OS41NjY0MDYgQyAxNjQuNDM3NSAyNTMuNjk5MjE5IDE3My45NTMxMjUgMjUzLjY5OTIxOSAxNzkuODIwMzEyIDI1OS41NjY0MDYgTCAxOTUuOTA2MjUgMjc1LjY1MjM0NCBMIDI1NS4xNzU3ODEgMjE2LjM4MjgxMiBDIDI2MS4wNDI5NjkgMjEwLjUxMTcxOSAyNzAuNTU4NTk0IDIxMC41MTE3MTkgMjc2LjQxNzk2OSAyMTYuMzgyODEyIEMgMjgyLjI4NTE1NiAyMjIuMjUgMjgyLjI4NTE1NiAyMzEuNzY1NjI1IDI3Ni40MTc5NjkgMjM3LjYyNSBaIE0gMjc2LjQxNzk2OSAyMzcuNjI1ICIgc3R5bGU9IiBzdHJva2U6bm9uZTtmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYig3MC41ODgyMzUlLDgyLjM1Mjk0MSUsODQuMzEzNzI1JSk7ZmlsbC1vcGFjaXR5OjE7Ii8+CjxwYXRoIGQ9Ik0gMjc2LjQxNzk2OSAyMzcuNjI1IEwgMjE4Ljk0OTIxOSAyOTUuMTAxNTYyIEwgMjE4Ljk0OTIxOSAyNTIuNjA1NDY5IEwgMjU1LjE3NTc4MSAyMTYuMzgyODEyIEMgMjYxLjA0Mjk2OSAyMTAuNTExNzE5IDI3MC41NTg1OTQgMjEwLjUxMTcxOSAyNzYuNDE3OTY5IDIxNi4zODI4MTIgQyAyODIuMjg1MTU2IDIyMi4yNSAyODIuMjg1MTU2IDIzMS43NjU2MjUgMjc2LjQxNzk2OSAyMzcuNjI1IFogTSAyNzYuNDE3OTY5IDIzNy42MjUgIiBzdHlsZT0iIHN0cm9rZTpub25lO2ZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDQzLjUyOTQxMiUsNjQuNzA1ODgyJSw2Ni42NjY2NjclKTtmaWxsLW9wYWNpdHk6MTsiLz4KPC9nPgo8L3N2Zz4K);
+  width: 25px;
+  height: 25px;
+  background-size: contain;
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .paramTitle{
-    text-align: left;
-    padding: 0px 15px;
-    font-size: 18px;
-    color: white;
-    background-color: silver;
-    position: absolute;
-    left: 40px;
-    top: -13px;
-    border-radius: 3px;
+  text-align: left;
+  padding: 0px 15px;
+  font-size: 18px;
+  color: white;
+  background-color: silver;
+  position: absolute;
+  left: 40px;
+  top: -13px;
+  border-radius: 3px;
 }
 
 #textMe{
-    width: calc(100% - 30px);
-    height: 100%;
-    border: 1px solid silver;
-    margin: auto;
-    margin-top: 20px;
-    padding: 15px 7px 7px 7px;
+  width: calc(100% - 30px);
+  height: 100%;
+  border: 1px solid silver;
+  margin: auto;
+  margin-top: 20px;
+  padding: 15px 7px 7px 7px;
 }
 
 .passLine{
-    width: 100%;
+  width: 100%;
 }
 
 .passLine label{
@@ -153,106 +156,109 @@
 }
 
 .passRep{
-    width: calc(100% - 60px);
-    border: 1px solid #dedede;
-    height: 30px;
-    margin: auto;
-    border-radius: 3px;
+  width: calc(100% - 60px);
+  border: 1px solid #dedede;
+  height: 30px;
+  margin: auto;
+  border-radius: 3px;
 }
 
 .saveBtn{
-    background-color: #73b473;
-    color: white;
-    height: 40px;
-    font-size: 18px;
-    line-height: 40px;
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    cursor: pointer;
+  background-color: #73b473;
+  color: white;
+  height: 40px;
+  font-size: 18px;
+  line-height: 40px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  cursor: pointer;
 }
 
 .switch_line{
-    height: 28px;
-    width: calc(50% - 20px);
-    float: left;
-    position: relative;
-    margin: 5px 0 5px 18px;
+  height: 28px;
+  width: calc(50% - 20px);
+  float: left;
+  position: relative;
+  margin: 5px 0 5px 18px;
 }
 
 .switch_text{
-    float: left;
-    padding-left: 15px;
-    line-height: 26px;
+  float: left;
+  padding-left: 15px;
+  line-height: 26px;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
 }
 
 .mini_title{
-    background-color: #ebebeb;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    height: 30px;
-    line-height: 30px;
-    color: #434343;
+  background-color: #ebebeb;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  height: 30px;
+  line-height: 30px;
+  color: #434343;
 }
 
 .tovarData{
-    float: left;
-    position: relative;
+  float: left;
+  position: relative;
 }
 
 .section_data h4{
-    float: left;
-    margin: 0;
-    text-align: center;
-    width: calc(100% - 260px);
-    color: black;
+  float: left;
+  margin: 0;
+  text-align: center;
+  width: calc(100% - 260px);
+  color: black;
 }
 
 .preImage {
-    width: 200px;
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    float: left;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  float: left;
 }
 
 .description{
-    float: left;
-    width: calc(100% - 200px);
-    padding: 10px;
-    color: black;
+  float: left;
+  width: calc(100% - 200px);
+  padding: 10px;
+  color: black;
 }
 
 .typeMar{
-    position: absolute;
-    right: 10px;
-    padding: 5px 20px;
-    background-color: #9bff9b;
-    top: 9px;
-    border: 1px solid white;
-    border-radius: 3px;
-    color: #737373;
+  position: absolute;
+  right: 10px;
+  padding: 5px 20px;
+  background-color: #9bff9b;
+  top: 9px;
+  border: 1px solid white;
+  border-radius: 3px;
+  color: #737373;
 }
 
 .dateMar{
-    position: absolute;
-    font-size: 12px;
-    right: 5px;
-    bottom: 3px;
-    color: silver;
+  position: absolute;
+  font-size: 12px;
+  right: 5px;
+  bottom: 3px;
+  color: silver;
 }
 
 .prodam{
-    background-color: #fea9a9;
+  background-color: #fea9a9;
 }
 
 .market_data{
-    min-height: 1300px;
+  min-height: 1300px;
 }
 
 button{
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .removeTovar{
@@ -261,4 +267,542 @@ button{
 
 .pauseTovar{
 
+}
+
+
+.button:hover,
+button:focus {
+  background-color: #4cceea;
+  border-radius: 50%;
+}
+
+.button_id_submit {
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  color: grey;
+}
+
+.button_id_submit .fa-paper-plane {
+  color: grey;
+  transition: color ease 0.2s;
+}
+
+.button_id_submit:hover .fa-paper-plane {
+  color: white;
+}
+
+
+/* Icons from Fotnt Awesome */
+
+.search__icon .fa-search {
+  color: grey;
+  font-size: 18px;
+}
+
+.search__icon .fa-pencil-square-o {
+  color: grey;
+  font-size: 18px;
+}
+
+
+/* Icons sprite */
+
+.icon-attachment {
+  width: 12px;
+  height: 20px;
+  background-position: -5px -5px;
+}
+
+.icon-smiles {
+  width: 16px;
+  height: 16px;
+  background-position: -5px -61px;
+}
+
+
+/* Modal window */
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.modal__dialog {
+  width: 870px;
+  position: relative;
+}
+
+.modal__close {
+  font-size: 0;
+  position: absolute;
+  right: 25px;
+  top: -30px;
+  cursor: pointer;
+}
+
+.modal__icon {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.modal__icon .fa-times {
+  font-size: 18px;
+  line-height: 16px;
+  color: white;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.modal__note {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 9px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.modal__sidebar {
+  flex: 0 0 268px;
+  background-color: #eff0f5;
+}
+
+.modal__main {
+  flex: 1 1 auto;
+}
+
+.close {
+  width: 12px;
+  height: 12px;
+  position: relative;
+}
+
+.close:before,
+.close:after {
+  content: '';
+  background-color: #fff;
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: rotate(45deg) scale(.86667);
+}
+
+.close:before {
+  width: 2px;
+  height: 18px;
+  margin: -9px 0 0 -1px;
+}
+
+.close:after {
+  width: 18px;
+  height: 2px;
+  margin: -1px 0 0 -9px;
+}
+
+
+/* Chat window */
+
+.chat {
+  display: flex;
+  background-color: white;
+  box-shadow: 0 0 32px rgba(0, 1, 3, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chat__search {
+  padding: 23px 23px 13px 21px;
+}
+
+.chat__search:after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 22px;
+  right: 24px;
+  height: 2px;
+  opacity: 0.25;
+  background-color: #b8bbc8;
+}
+
+.chat__users {
+  padding: 18px 19px 22px 15px;
+}
+
+
+/* Search block */
+
+.search {
+  display: block;
+  position: relative;
+}
+
+.search__icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.search__icon_right {
+  right: 0;
+  left: auto;
+}
+
+.search__input {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0 32px;
+  line-height: 14px;
+  color: #a0a3b1;
+  outline: none;
+}
+
+
+/* Users block */
+
+.users {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.users__item {
+  display: flex;
+  align-items: center;
+  padding: 9px 7px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.users__item:hover {
+  background-color: #e3e5eb;
+}
+
+.users__avatar {
+  flex: 0 0 35px;
+}
+
+.users__note {
+  line-height: 18px;
+  color: #828697;
+  font-weight: 500;
+  margin-left: 16px;
+}
+
+.users__counter {
+  padding: 7px 6px;
+  border-radius: 9px;
+  margin-left: 11px;
+  background-color: #b8bbc8;
+  min-width: 13px;
+  text-align: center;
+  flex: 0 0 auto;
+}
+
+.users__item_group .users__avatar {
+  background-color: #4cceea;
+}
+
+.users__item_group .users__note {
+  color: #4cceea;
+}
+
+.users__item_group .users__counter {
+  background-color: #4cceea;
+}
+
+
+/* Chatbox */
+
+.chatbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  table-layout: fixed;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 26px;
+  position: relative;
+}
+
+.chatbox__row {
+  display: block;
+}
+
+.chatbox__row_fullheight {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.head {
+  display: inline-flex;
+  position: relative;
+  width: 100%;
+  align-items: center;
+  padding: 11px 0 13px 0;
+}
+
+.head:after {
+  background-color: #edeef1;
+  height: 2px;
+  width: 100%;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.head__avatar.avatar {
+  position: relative;
+  background-color: #4cceea;
+}
+
+.head__title {
+  color: #5b6171;
+  font-size: 18px;
+  font-weight: 400;
+  margin-left: 21px;
+  padding-top: 3px;
+}
+
+.head__note {
+  color: #a0a3b1;
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: auto;
+  padding-right: 18px;
+  padding-top: 3px;
+}
+
+.head__icon {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #d2d4da;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.chatbox__content {
+  height: 100%;
+}
+
+
+/* message block */
+
+.message {}
+
+.message__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 80px 10px 82px;
+}
+
+.message__note {
+  opacity: 0.5;
+  color: #5b6171;
+  font-size: 12px;
+}
+
+.message__date {}
+
+.message__base {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+}
+
+.message__avatar {}
+
+.message__textbox {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  width: 100%;
+  min-height: 43px;
+  background-color: #f5f6fa;
+  border-radius: 9px;
+  padding: 11px 25px 12px 25px;
+  color: #6a6d77;
+}
+
+.message__smiley {
+  margin-right: 3px;
+}
+
+.message__smiley:last-child {
+  margin-right: 0;
+}
+
+.message__text + .message__smiley {
+  margin-left: 4px;
+}
+
+.avatar {
+  border-radius: 50%;
+  position: relative;
+  border: none;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  background-color: #b8bbc8;
+}
+
+.avatar_larger {
+  width: 43px;
+  height: 43px;
+}
+
+.avatar_online:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  background-color: #4cceea;
+  border: 2px solid #eff0f5;
+  border-radius: 50%;
+}
+
+.avatar__wrap {
+  border-radius: 50%;
+  text-decoration: none;
+  display: inherit;
+  color: #fff;
+}
+
+.avatar__img {
+  border-radius: 50%;
+}
+
+.counter {
+  line-height: 11px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  display: block;
+}
+
+
+/* enter block */
+
+.enter {
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 14px;
+}
+
+.enter:before {
+  background-color: #edeef1;
+  height: 2px;
+  width: 100%;
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+}
+
+.enter__submit {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border: 2px solid #e2e3e7;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+}
+
+.enter__textarea {
+  padding-right: 50px;
+}
+
+.enter__textarea textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+}
+
+.enter__icons {
+  padding-right: 50px;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.enter__icons .fa-paperclip {
+  font-size: 16px;
+  color: grey;
+}
+
+.enter__icons .fa-smile-o {
+  font-size: 16px;
+  color: grey;
+}
+
+.enter__icon {
+  margin-right: 12px;
+}
+
+.noneOpenDlg{
+
+}
+
+.dlgLoader,.fullBlockLoader{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../img/spinner-preloader.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  z-index: 2;
+  display: none;
+}
+
+.passRep{
+  padding-left: 10px;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    display: inline;
+    width: auto;
+    height: auto;
+    line-height: normal;
+    vertical-align: baseline;
+    background-image: none;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+    margin-top: 0;
+    z-index: 1;
+    position: relative;
 }

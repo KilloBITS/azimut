@@ -61,16 +61,16 @@ app.use('/activate-accaunt*', authAcc);
 
 
 app.get('/logout', function(req, res) {
-    req.session.destroy(function(err) {})
-    res.redirect('/');
+	req.session.destroy(function(err) {})
+	res.redirect('/');
 });
 
 app.get('/captcha*', function (req, res) {
-    var captcha = svgCaptcha.create();
-    req.session.captcha = captcha.text;    
-    console.log(captcha.text)
-    res.type('svg');
-    res.status(200).send(captcha.data);
+	var captcha = svgCaptcha.create();
+	req.session.captcha = captcha.text;    
+	console.log(captcha.text)
+	res.type('svg');
+	res.status(200).send(captcha.data);
 });
 
 app.get('*', get404);
@@ -93,11 +93,50 @@ app.post('/signup', signUp);
 const newComment = require('./controllers/setNewComment');
 app.post('/newComment', newComment);
 
+const opendialog = require('./controllers/openDlgController');
+app.post('/opendialog*', opendialog);
+
+const userParamsController = require('./controllers/userParamsController');
+app.post('/setParamsUser', userParamsController);
+
+const changePasswordController = require('./controllers/changePasswordController');
+app.post('/changePass', changePasswordController);
+
+const updateAvaUser = require('./controllers/avatarController');
+app.post('/updateAvaUser', updateAvaUser);
+
+function sravnenie(arr, arr2){
+	if(arr.length != arr2.length) return false
+	var on = 0;
+	for( var i = 0; i < arr.length; i++ ){
+		for( var j = 0; j < arr2.length; j++ ){
+			if(arr[i] === arr2[j]){
+				on++
+				break
+			}
+		}
+	}
+	return on==arr.length?true:false
+}
+
 /* Started server */
 app.listen(4334,'localhost' ,function(){
 	global.baseName = 'AZIMUT';
 	global.baseIP = 'mongodb://localhost:27017/';
 	global.online = 0;
+	var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];
+	var currentCollections = [];
+	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
+		const db = client.db(global.baseName);
+		db.listCollections().toArray(function(err, collections){
+			for(let ic = 0; ic < collections.length; ic++){
+				currentCollections.push(collections[ic].name);
+			}
+			if(sravnenie(currentCollections, defaultCollections)){
+				console.log('Проверка базы завершена, все таблицы присутствуют')
+			} 
+		});
+	});
 	console.log('Started server on "Azimut" from port: 4334');
 });
 

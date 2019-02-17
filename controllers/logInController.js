@@ -45,10 +45,10 @@ router.post('/signin', function(req, res, next){
 						NEW_LOGS.text = 'Авторизация: '+results_users[0];
 						LOGS.insertOne(NEW_LOGS);
 					}else{
-						res.send({code:450, message: 'Аккаунт не активирован'});
+						res.send({code:450, className: 'nWarning', message: 'Аккаунт не активирован'});
 					}					
 				}else{
-					res.send({code:450, message: 'Неверный логин или пароль!'});
+					res.send({code:450, className: 'nError', message: 'Неверный логин или пароль!'});
 				}
 			});
 		});
