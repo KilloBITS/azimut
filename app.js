@@ -45,7 +45,7 @@ const contacts = require('./routes/getContacts');
 const roundtables = require('./routes/getRoundtables');
 const profile = require('./routes/getProfile');
 const authAcc = require('./routes/getsData/authificateAccaunt');
-
+const forgotPass = require('./routes/getForgotpasswored');
 
 app.use('/', index);
 app.use('/register', register);
@@ -58,6 +58,7 @@ app.use('/contacts', contacts);
 app.use('/roundtables', roundtables);
 app.use('/getProfile', profile);
 app.use('/activate-accaunt*', authAcc);
+app.use('/forgotPass', forgotPass);
 
 
 app.get('/logout', function(req, res) {
@@ -96,6 +97,9 @@ app.post('/newComment', newComment);
 const opendialog = require('./controllers/openDlgController');
 app.post('/opendialog*', opendialog);
 
+const CreateNewMessage = require('./controllers/openDlgController');
+app.post('/sendMessage', CreateNewMessage);
+
 const userParamsController = require('./controllers/userParamsController');
 app.post('/setParamsUser', userParamsController);
 
@@ -104,6 +108,9 @@ app.post('/changePass', changePasswordController);
 
 const updateAvaUser = require('./controllers/avatarController');
 app.post('/updateAvaUser', updateAvaUser);
+
+
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

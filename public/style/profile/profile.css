@@ -269,13 +269,6 @@ button{
 
 }
 
-
-.button:hover,
-button:focus {
-  background-color: #4cceea;
-  border-radius: 50%;
-}
-
 .button_id_submit {
   border-radius: 50%;
   height: 38px;
@@ -548,6 +541,7 @@ button:focus {
 .chatbox__row_fullheight {
   flex: 1;
   overflow-y: auto;
+  padding-right: 10px;
 }
 
 .head {
@@ -556,6 +550,7 @@ button:focus {
   width: 100%;
   align-items: center;
   padding: 11px 0 13px 0;
+  display: none;
 }
 
 .head:after {
@@ -636,13 +631,18 @@ button:focus {
   box-sizing: border-box;
   display: flex;
   align-items: center;
-  margin-left: 15px;
   width: 100%;
   min-height: 43px;
   background-color: #f5f6fa;
   border-radius: 9px;
   padding: 11px 25px 12px 25px;
   color: #6a6d77;
+  max-width: calc(100% - 50px);
+}
+
+.message__text{
+  width: 100%;
+  word-break: break-all;
 }
 
 .message__smiley {
@@ -714,16 +714,7 @@ button:focus {
   position: relative;
   padding-top: 12px;
   padding-bottom: 14px;
-}
-
-.enter:before {
-  background-color: #edeef1;
-  height: 2px;
-  width: 100%;
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 0;
+  display: none;
 }
 
 .enter__submit {
@@ -794,15 +785,47 @@ button:focus {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-    display: inline;
-    width: auto;
-    height: auto;
-    line-height: normal;
-    vertical-align: baseline;
-    background-image: none;
-    background-position: 0% 0%;
-    background-repeat: repeat;
-    margin-top: 0;
-    z-index: 1;
-    position: relative;
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: normal;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  margin-top: 0;
+  z-index: 1;
+  position: relative;
+}
+
+.touser .message__textbox{
+  background-color: #ebefff;
+  margin-right: 15px;
+}
+
+.tome .message__textbox{
+  background-color: #ecffeb;
+  margin-left: 15px;
+
+}
+
+.button_id_submit{
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDQ4LjAxMSA0NDguMDExIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NDguMDExIDQ0OC4wMTE7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgY2xhc3M9IiI+PGc+PGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDM4LjczMSwyMDkuNDYzbC00MTYtMTkyYy02LjYyNC0zLjAwOC0xNC41MjgtMS4yMTYtMTkuMTM2LDQuNDhjLTQuNjQsNS42OTYtNC44LDEzLjc5Mi0wLjM4NCwxOS42NDhsMTM2LjgsMTgyLjQgICAgbC0xMzYuOCwxODIuNGMtNC40MTYsNS44NTYtNC4yNTYsMTMuOTg0LDAuMzUyLDE5LjY0OGMzLjEwNCwzLjg3Miw3Ljc0NCw1Ljk1MiwxMi40NDgsNS45NTJjMi4yNzIsMCw0LjU0NC0wLjQ4LDYuNjg4LTEuNDcyICAgIGw0MTYtMTkyYzUuNjk2LTIuNjI0LDkuMzEyLTguMjg4LDkuMzEyLTE0LjUyOFM0NDQuMzk1LDIxMi4wODcsNDM4LjczMSwyMDkuNDYzeiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojOTk5MzkzIiBkYXRhLW9sZF9jb2xvcj0iIzlFOTY5NiI+PC9wYXRoPgoJPC9nPgo8L2c+PC9nPiA8L3N2Zz4=);
+}
+
+button.button_id_submit.loadBtn{
+  background-image: url(../../../img/spinner-preloader.gif);
+}
+
+.users__avatar span {
+  color: green;
+  position: absolute;
+  font-size: 34px;
+  top: -3px;
+  height: 5px;
+  line-height: 5px;
+  right: -3px;
 }

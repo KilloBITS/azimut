@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+	<script type="text/javascript" src="/script/socket.io.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/profile/profile.js"></script>
 	<% if(isAdm === true){ %>
@@ -96,12 +97,12 @@
 				<div class="ii_div">144.800 FM - APRS.</div>
 
 				<div class="info_div">Разговорные группы:</div>
-				<div class="ii_div">DMR:</div>
+				<div class="ii_div_min_title">DMR:</div>
 				<div class="ii_div">2555 TS2 - Украина;</div>
 				<div class="ii_div">25514 TS1 - Львов;</div>
 				<div class="ii_div">25577 TS1 - Азимут.</div>
 
-				<div class="info_div">Wires-X C4FM:</div>
+				<div class="ii_div_min_title">Wires-X C4FM:</div>
 				<div class="ii_div">41270 - Комната Украина;</div>
 				<div class="ii_div">27053 - Шлюз в DMR/D-STAR;</div>
 				<div class="ii_div">31270 - Львовский узел.</div>
@@ -340,6 +341,7 @@
 											<a href="#" class="avatar__wrap">
 												<%= (FRIEND[i].nick).charAt(0) %>
 											</a>
+											<span title="ONLINE">•</span>
 										</div>
 										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>
 										<div class="users__counter">
@@ -373,15 +375,18 @@
 										
 									</div>
 								</div>
+
+								<div class="newTovarModal">
+									
+								</div>
+
 								<div class="chatbox__row">
 									<div class="enter">
 										<div class="enter__submit">
-											<button class="button button_id_submit" type="submit">
-												<i class="fa fa-paper-plane" aria-hidden="true"></i>
-											</button>
+											<button class="button button_id_submit" type="submit" onclick="sendMessage()"></button>
 										</div>
 										<div class="enter__textarea">
-											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="Say message..."></textarea>
+											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="ведите ваше сообщение..."></textarea>
 										</div>
 										<div class="enter__icons">
 											<a href="#" class="enter__icon">
