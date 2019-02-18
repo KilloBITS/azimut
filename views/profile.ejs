@@ -161,9 +161,12 @@
 			<div class="tabs-block">
 				<div class="TAB visible">
 					<% if(USER.official){ %>
-					<div class="authificate"></div>
+					<div class="authificate" title="Аккаунт подтвержден"></div>
+					<% } %>		
+					<% if(isAdm){ %>
+					<div class="isadminicon" title="Администратор"></div>
 					<% } %>			
-					<div class="fullBlock">
+					<div class="fullBlock" style="box-shadow: inset -40px 0px 0px 0px #716ba5;">
 						<div class="avatara_big" style="background-image: url(../../../data/avatars/<%= USER.ava %>)">
 							<div class="newInfo">Файл не должен привышать 1мб</div>
 							<div class="newAvatar" onclick="selectAvatar()">Выбрать файл</div>
@@ -174,11 +177,16 @@
 						<div class="dataText tPoziv">Ваш позывной: <%= USER.pozivnoy %></div>
 						<div class="dataText tMail">Ваш e-mail: <%= USER.email %></div>
 						<div class="dataText tNumb">Ваш телефон: <%= USER.phone_number %></div>
+
+						<div class="socialUserBtn"></div>
+						<div class="socialUserBtn"></div>
+						<div class="socialUserBtn"></div>
+
 					</div>
 
-					<div class="fullBlock">
+					<div class="fullBlock" style="margin-top: 15px;">
 						<div class="paramTitle">Вкратце обо мне</div>
-						<textarea id="textMe"></textarea>
+						<textarea id="textMe"><%= USER.info %></textarea>
 					</div>			
 					<div class="saveBtn">Сохранить</div>
 				</div>
