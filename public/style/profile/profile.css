@@ -829,3 +829,7 @@ button.button_id_submit.loadBtn{
   line-height: 5px;
   right: -3px;
 }
+
+.section_data img {
+    max-height: 36px;
+}

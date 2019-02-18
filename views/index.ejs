@@ -24,7 +24,6 @@
 	.section_data p {
 		max-height: 220px;
 	}
-
 </style>
 </head>
 <body>	
@@ -186,13 +185,17 @@
 			</div>
 		</section>	
 		<% } %>
+
+		<% if( NEWS.length >= 8){ %>
+		<div class="addOldNews" onclick="allNewsIndex(8)">Показать больше...</div>	
+		<% } %>
+
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/giphy.gif">
 			<h2>Нет данных</h2>
 		</div>
-		<% } %>
-		
+		<% } %>		
 	</main>
 
 	<div id="stop" class="scrollTop"></div>
@@ -224,7 +227,6 @@
 		<section class="footer-bottom-section flex-rw">
 			<div class="footer-bottom-wrapper">   
 				<i class="fa fa-copyright" role="copyright">
-
 				</i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
 			</div>
 			<div class="footer-bottom-wrapper"></div>

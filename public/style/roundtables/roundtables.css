@@ -1,0 +1,18 @@
+.roundtables{
+    width: calc(50% - 2px);
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid rgba(192, 192, 192, 0.34);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.roundtables h1{
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid silver;
+    color: #6b6b6b;
+}

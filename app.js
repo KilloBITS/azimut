@@ -24,8 +24,8 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 * 7 * 2 // two weeks
     }
 }));
-//project libs use
 
+//project libs use
 app.use(bParser.urlencoded({limit: '50mb'}));
 app.use(bParser.json());
 app.use(express.static(__dirname + '/public/'));
@@ -60,7 +60,6 @@ app.use('/getProfile', profile);
 app.use('/activate-accaunt*', authAcc);
 app.use('/forgotPass', forgotPass);
 
-
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
 	res.redirect('/');
@@ -76,7 +75,6 @@ app.get('/captcha*', function (req, res) {
 
 app.get('*', get404);
 /* POSTS */
-
 app.post('/checkedCaptcha', function(req, res){
 	if(req.body.currentCaptcha === req.session.captcha){
 		res.send({code: 500});
@@ -109,7 +107,8 @@ app.post('/changePass', changePasswordController);
 const updateAvaUser = require('./controllers/avatarController');
 app.post('/updateAvaUser', updateAvaUser);
 
-
+const getallnews = require('./controllers/getAllNewsController');
+app.post('/getAllNews', getallnews);
 
 
 function sravnenie(arr, arr2){
@@ -146,4 +145,3 @@ app.listen(4334,'localhost' ,function(){
 	});
 	console.log('Started server on "Azimut" from port: 4334');
 });
-

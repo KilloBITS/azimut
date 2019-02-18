@@ -170,15 +170,22 @@
 		</div>
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
-			<a href="/about" id="nav_about" class="navigator_btn selected_nav">О нас</a>
+			<a href="/about" id="nav_about" class="navigator_btn selected_nav">Круглые столы</a>
 		</div>	
 		<section id="section_01" class="section_data RT">
 			<h2>Круглые столы</h2>
-			<div class="roundtables">
-				<h1>Тест Стол №1</h1>
-				<div class="time_roundtables">22:00 - 24:00</div>
-				<div class="text_roundtables">text</div>
-			</div>
+			<% if(RT.length > 0){ %>
+			<% for(var i = 0; i < RT.length; i++){ %>
+				<div class="roundtables">
+					<h1><%= RT[i].name %></h1>
+					<div class="time_roundtables"><%= RT[i].time %></div>
+					<div class="text_roundtables"><%= RT[i].date %></div>
+				</div>
+			<% } %>
+			<% }else{ %>
+				<h2>Круглые столы отсутствуют</h2>
+			<% } %>
+			
 			
 		</section>		
 	</main>

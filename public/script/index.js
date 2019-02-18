@@ -1,3 +1,12 @@
+var currentLengthNews = 0;
+
+var allNewsIndex = function(n){
+  currentLengthNews += n;
+  $.post("/getAllNews",{a: n, b: (currentLengthNews+n)}, function(res){
+    console.log(res);
+  });
+}
+
 var initAnim = function(){
   var cnvs = document.getElementById("canvas");
   cnvs.width = window.innerWidth;

@@ -1,4 +1,5 @@
 var OPEN_DLG = null;
+var MYNICK;
 var file;
 var GlobalObj = {};
 
@@ -24,16 +25,11 @@ $(document).ready(function(){
 		}
 	}, false);
 
-	GlobalObj.socket = io.connect(location.hostname + ':3000');
-	GlobalObj.socket.on('connect', function (d) {
-		GlobalObj.socket.emit('clientConnect', {
-			data: 'connection'
-		});
-	});
+	GlobalObj.socket = io.connect(location.hostname + ':4335');
 
-	GlobalObj.socket.on('message', function (data) {
-		console.log(data)
-	});
+	GlobalObj.socket.emit('clientConnect', {
+        nickName: $('.tPoziv').html().split(":")[1]
+    });
 });
 
 var sendMessage =  function(){
@@ -56,11 +52,12 @@ var sendMessage =  function(){
 		'<a href="#" class="avatar__wrap">'+
 		'<img class="avatar__img" src="http://placehold.it/35x35" width="35" height="35" alt="avatar image">'+
 		'</a> </div></div> </div>';
-
+		GlobalObj.socket.emit("messages",{user: OPEN_DLG, my: MYNICK, resDlg:$('#enterMessage').val()});
 		$("#chatbox__content").append(MSG);
 		$('#enterMessage').val('');
 		$('.button_id_submit').removeClass('loadBtn');
 		$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
+		
 	});
 };
 
@@ -134,25 +131,39 @@ var shablonMessage = function(iam, data){
 		'<span class="message__text">'+
 		data.text +
 		'</span> </div> </div> </div>';
-	}
-	
+	}	
 };
 
+var messageInterval;
+
+
 var openDialog = function(user){
+	// try{
+	// 	GlobalObj.socket.emit("disconnect");	
+	// 	clearInterval(messageInterval);
+	// }catch(e){
+	// 	console.log(e);
+	// }
 	OPEN_DLG = user;
 	$('.noneOpenDlg').fadeOut();
 	$('.dlgLoader').fadeIn();
 	$('.message').remove();
 	$.post('/opendialog?user='+user, {user: user}, function(dlg){
+		MYNICK = dlg.my;
+
 		$('.head__title').html('Диалог с - '+user)
 		for(var i = 0; i < dlg.data.length; i++){
 			$("#chatbox__content").append(shablonMessage(user,dlg.data[i]));
-		}
-		
+		}		
 		$('#chatbox__content,.enter').fadeIn(100);
 		$('.head').css({"display":"inline-flex"})
 		$('.dlgLoader').fadeOut(300);
 		$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
-	})
+	});
+	
+	GlobalObj.socket.on('messages', function (data) {		
+		$("#chatbox__content").append(shablonMessage(user, data.data));
+		$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
+	});
 }
 

@@ -335,19 +335,20 @@
 
 								<!-- TO DO users__item_group -->
 								<ul class="users">
+									<% if(FRIEND.length > 0){ %>
 									<% for(var i = 0; i < FRIEND.length; i++){ %>
 									<li class="users__item " usres="<%= FRIEND[i].pozivnoy %>" onclick="openDialog('<%= FRIEND[i].pozivnoy %>')">
 										<div class="users__avatar avatar">
 											<a href="#" class="avatar__wrap">
-												<%= (FRIEND[i].nick).charAt(0) %>
+												<img src="../../../data/avatars/<%= FRIEND[i].ava %>">												
 											</a>
 											<span title="ONLINE">•</span>
 										</div>
-										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>
-										<div class="users__counter">
-											<span class="counter">99+</span>
-										</div>
+										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>									
 									</li>
+									<% } %>
+									<% }else{ %>
+									У вас нет контактов
 									<% } %>									
 								</ul>
 

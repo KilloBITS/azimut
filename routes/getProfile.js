@@ -11,6 +11,7 @@ router.get('/*', function(req, res, next) {
       const user = db.collection("USERS");
       const tovar = db.collection("MARKET");
       const conf = db.collection("CONFIG");
+      const msg = db.collection("MESSAGE");
 
       user.find({pozivnoy: req.session.poziv}).toArray(function(err, resUser){       
         conf.find().toArray(function(err, resultDB){
@@ -27,16 +28,19 @@ router.get('/*', function(req, res, next) {
               }              
             }
 
-            res.render('profile.ejs',
-            {
-             USER: resUser[0],
-             tovar: resTov,
-             sessionUser: req.session.user,
-             sessionPoziv: req.session.poziv,
-             isAdm: req.session.admin,
-             locator: resultDB[0].LOCATOR,
-             FRIEND: usersFriendArray
-           }); 
+
+              res.render('profile.ejs',
+              {
+               USER: resUser[0],
+               tovar: resTov,
+               sessionUser: req.session.user,
+               sessionPoziv: req.session.poziv,
+               isAdm: req.session.admin,
+               locator: resultDB[0].LOCATOR,
+               FRIEND: usersFriendArray
+             }); 
+         
+            
 
           });
         }); 
