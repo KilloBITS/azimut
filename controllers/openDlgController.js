@@ -92,11 +92,9 @@ io.sockets.on('connection', function (client) {
 	});
 
     client.on('getonline', function(data){ 
-    	console.log(data);
     	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, clientUser){
 	  	    const db = clientUser.db(global.baseName);
-		    const user = db.collection("USERS");      
-
+		    const user = db.collection("USERS");    
 	        user.find({ pozivnoy: data.my.replace(/\s/g, '') }).toArray(function(err, friends ){
 	        	user.find({ pozivnoy: {$in: friends[0].friend} }).toArray(function(err, friendsParse ){
 	        		client.emit('getonline', {code: 500, data: friendsParse});
@@ -108,7 +106,7 @@ io.sockets.on('connection', function (client) {
     client.on('writing', function(MD){     	
     	try{
     		console.log(MD.user)
-			io.sockets.connected[users[MD.user]].emit('writing', {code: 500});  
+			io.sockets.connected[users[MD.user]].emit('writing', {code: 500, user: MD.my});  
 		}catch(e){
 			console.log('Сообщение не отправлено, пользователь не в сети')
 		}	 

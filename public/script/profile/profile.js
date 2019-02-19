@@ -36,9 +36,9 @@ $(document).ready(function(){
     });
 
     GlobalObj.socket.on('writing', function (data) {		
-		$('.writingMessage').css({"opacity":"1"});
+		$('.writingMessage, .'+data.user+ ' .writingMessage' ).css({"opacity":"1"});
 		setTimeout(function(){
-			$('.writingMessage').css({"opacity":"0"});
+			$('.writingMessage, .'+data.user+ ' .writingMessage').css({"opacity":"0"});
 		},1500)
 	});
 

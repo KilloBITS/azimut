@@ -350,7 +350,10 @@
 											</a>
 											<span  title="В сети" class="onlineIndicator <%= FRIEND[i].pozivnoy %>">•</span>
 										</div>
-										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>									
+										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>
+										<div class="writingMessage">
+										Собеседник набирает сообщение...
+										</div>									
 									</li>
 									<% } %>
 									<% }else{ %>
@@ -379,7 +382,7 @@
 									<div class="chatbox__content" id="chatbox__content" style="display: none;">
 
 										<div class="writingMessage">
-											<div id="preloader_1">
+											<div class="writingPreloader">
 								                <span></span>
 								                <span></span>
 								                <span></span>
