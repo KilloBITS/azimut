@@ -12,9 +12,9 @@ router.get('/', function(req, res, next){
     const db = client.db(global.baseName);
     const news = db.collection("NEWS");
     const conf = db.collection("CONFIG");
-    news.find({type:"ALL"}).sort({AI: -1}).toArray(function(err, resNews){
+    news.find({type:"VHF"}).sort({AI: -1}).toArray(function(err, resNews){
       conf.find().toArray(function(err, resultDB){
-        res.render('news.ejs',
+        res.render('VHF.ejs',
         {
           NEWS: resNews,
           sessionUser: req.session.user,

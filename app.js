@@ -46,6 +46,8 @@ const roundtables = require('./routes/getRoundtables');
 const profile = require('./routes/getProfile');
 const authAcc = require('./routes/getsData/authificateAccaunt');
 const forgotPass = require('./routes/getForgotpasswored');
+const whf = require('./routes/getVHF');
+const hf = require('./routes/getHF');
 
 app.use('/', index);
 app.use('/register', register);
@@ -59,6 +61,8 @@ app.use('/roundtables', roundtables);
 app.use('/getProfile', profile);
 app.use('/activate-accaunt*', authAcc);
 app.use('/forgotPass', forgotPass);
+app.use('/VHF', whf);
+app.use('/HF', hf);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
@@ -126,7 +130,7 @@ function sravnenie(arr, arr2){
 }
 
 /* Started server */
-app.listen(4334,'localhost' ,function(){
+app.listen(4334,function(){
 	global.baseName = 'AZIMUT';
 	global.baseIP = 'mongodb://localhost:27017/';
 	global.online = 0;

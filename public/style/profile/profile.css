@@ -849,6 +849,75 @@ button.button_id_submit.loadBtn{
     max-height: 36px;
 }
 
+.onlineIndicator{
+  display: none;
+}
+
+.writingMessage{
+  opacity: 0;
+  position: absolute;
+  bottom: 75px;
+  color: rgb(144, 144, 144);
+  font-size: 14px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  transition: 0.3s;
+}
+
+#preloader_1{
+    position: absolute;
+    left: 0;
+    margin-left: -25px;
+    top: 50%;
+}
+#preloader_1 span{
+  display: block;
+  bottom: 0px;
+  width: 3px;
+  height: 4px;
+  background: #a9a9a9;
+  position: absolute;
+  animation: preloader_1 1.5s  infinite ease-in-out;
+}
+ 
+#preloader_1 span:nth-child(2){
+left:4px;
+animation-delay: .2s;
+ 
+}
+#preloader_1 span:nth-child(3){
+left:8px;
+animation-delay: .4s;
+}
+#preloader_1 span:nth-child(4){
+left:12px;
+animation-delay: .6s;
+}
+#preloader_1 span:nth-child(5){
+left:16px;
+animation-delay: .8s;
+}
+@keyframes preloader_1 {
+    0% {height:5px;transform:translateY(0px);background:#e62d3f;}
+    25% {height:20px;transform:translateY(15px);background:#e62d3f;}
+    50% {height:5px;transform:translateY(0px);background:#ee2438;}
+    100% {height:5px;transform:translateY(0px);background:#ee2438;}
+}
+
 .socialUserBtn{
 
 }
+
+#forMyVK{
+
+}
+
+#forMyInsta{
+
+}
+
+#forMyFacebook{
+  
+}
+
+

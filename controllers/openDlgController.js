@@ -83,6 +83,35 @@ io.sockets.on('connection', function (client) {
 	client.on('clientConnect', function(data){ //подключение к чату
         client.username = data.nickName;        
 		users[data.nickName.replace(/\s/g, '')] = client.id;
+
+		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, clientUser){
+	  	    const db = clientUser.db(global.baseName);
+		    const user = db.collection("USERS");		      
+	        user.update({ pozivnoy: data.nickName.replace(/\s/g, '') },{$set: {onlineSession: true}});
+    	});
+	});
+
+    client.on('getonline', function(data){ 
+    	console.log(data);
+    	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, clientUser){
+	  	    const db = clientUser.db(global.baseName);
+		    const user = db.collection("USERS");      
+
+	        user.find({ pozivnoy: data.my.replace(/\s/g, '') }).toArray(function(err, friends ){
+	        	user.find({ pozivnoy: {$in: friends[0].friend} }).toArray(function(err, friendsParse ){
+	        		client.emit('getonline', {code: 500, data: friendsParse});
+		        });
+	        });
+    	});        
+    });
+
+    client.on('writing', function(MD){     	
+    	try{
+    		console.log(MD.user)
+			io.sockets.connected[users[MD.user]].emit('writing', {code: 500});  
+		}catch(e){
+			console.log('Сообщение не отправлено, пользователь не в сети')
+		}	 
     });
 
     client.on('messages', function (MD) { //функция отправки сообщений
@@ -91,21 +120,33 @@ io.sockets.on('connection', function (client) {
 				NEW_MESSAGE.do = MD.user;
 				NEW_MESSAGE.date = '';
 				NEW_MESSAGE.time = 'Только что';
-				NEW_MESSAGE.text = MD.resDlg;
-				
+				NEW_MESSAGE.text = MD.resDlg;	
+				NEW_MESSAGE.views = false;			
 		try{
 			io.sockets.connected[users[MD.user]].emit('messages', {code: 500, data: NEW_MESSAGE});
 		}catch(e){
-
-		}				
-		
+			console.log('Сообщение не отправлено, пользователь не в сети')
+		}		
     });
 
-    // client.on('disconnect', function() {
-    //   console.log('Got disconnect!');
-    //   var i = allClients.indexOf(client);
-    //   allClients.splice(i, 1);
-   	// });
+    client.on('disconnect', function() {
+    	console.log('suka: '+client.username);
+    	try{
+    		if(client.username !== undefined){
+	    			mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, clientUser){
+			  	    const db = clientUser.db(global.baseName);
+				    const user = db.collection("USERS");		      
+			        user.update({ pozivnoy: client.username.replace(/\s/g, '') },{$set: {onlineSession: false}});
+	      			delete users[client.username.replace(/\s/g, '')];
+			    });
+	    	}    		
+    	}catch(e){
+
+    	}
+      
+      var i = allClients.indexOf(client);
+      allClients.splice(i, 1);
+   	});
 });
 
 server.listen(4335, function (err) {

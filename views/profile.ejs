@@ -58,8 +58,8 @@
 			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
 			<a href="/news">Новости</a> 
-			<a href="#" class="menu_to_left">VHF</a> 
-			<a href="#" class="menu_to_right">HF</a> 
+			<a href="/VHF" class="menu_to_left">VHF</a> 
+			<a href="/HF" class="menu_to_right">HF</a> 
 			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
 			<a href="/contacts">Контакты</a> 
@@ -178,10 +178,9 @@
 						<div class="dataText tMail">Ваш e-mail: <%= USER.email %></div>
 						<div class="dataText tNumb">Ваш телефон: <%= USER.phone_number %></div>
 
-						<div class="socialUserBtn"></div>
-						<div class="socialUserBtn"></div>
-						<div class="socialUserBtn"></div>
-
+						<div class="socialUserBtn" id="forMyVK"></div>
+						<div class="socialUserBtn" id="forMyInsta"></div>
+						<div class="socialUserBtn" id="forMyFacebook"></div>
 					</div>
 
 					<div class="fullBlock" style="margin-top: 15px;">
@@ -340,7 +339,6 @@
 								</div>
 							</div>
 							<div class="chat__users">
-
 								<!-- TO DO users__item_group -->
 								<ul class="users">
 									<% if(FRIEND.length > 0){ %>
@@ -350,7 +348,7 @@
 											<a href="#" class="avatar__wrap">
 												<img src="../../../data/avatars/<%= FRIEND[i].ava %>">												
 											</a>
-											<span title="ONLINE">•</span>
+											<span  title="В сети" class="onlineIndicator <%= FRIEND[i].pozivnoy %>">•</span>
 										</div>
 										<span class="users__note"><%= FRIEND[i].name %> (<%= FRIEND[i].pozivnoy %>)</span>									
 									</li>
@@ -359,10 +357,8 @@
 									У вас нет контактов
 									<% } %>									
 								</ul>
-
 							</div>
 						</div>
-
 
 						<div class="modal__main">
 							<div class="chatbox">
@@ -381,7 +377,17 @@
 									</div>
 									<div class="dlgLoader"></div>
 									<div class="chatbox__content" id="chatbox__content" style="display: none;">
-										
+
+										<div class="writingMessage">
+											<div id="preloader_1">
+								                <span></span>
+								                <span></span>
+								                <span></span>
+								                <span></span>
+								                <span></span>
+								            </div>
+										Собеседник набирает сообщение...
+										</div>
 									</div>
 								</div>
 
@@ -395,7 +401,7 @@
 											<button class="button button_id_submit" type="submit" onclick="sendMessage()"></button>
 										</div>
 										<div class="enter__textarea">
-											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="ведите ваше сообщение..."></textarea>
+											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="ведите ваше сообщение..." onkeyup="writingMessage()"></textarea>
 										</div>
 										<div class="enter__icons">
 											<a href="#" class="enter__icon">

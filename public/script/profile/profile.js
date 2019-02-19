@@ -2,6 +2,10 @@ var OPEN_DLG = null;
 var MYNICK;
 var file;
 var GlobalObj = {};
+var audioMsg = new Audio();
+    audioMsg.src='../../../audio/message.mp3';
+
+
 
 $(document).ready(function(){
 	file = document.getElementById('tFile');
@@ -30,7 +34,32 @@ $(document).ready(function(){
 	GlobalObj.socket.emit('clientConnect', {
         nickName: $('.tPoziv').html().split(":")[1]
     });
+
+    GlobalObj.socket.on('writing', function (data) {		
+		$('.writingMessage').css({"opacity":"1"});
+		setTimeout(function(){
+			$('.writingMessage').css({"opacity":"0"});
+		},1500)
+	});
+
+    GlobalObj.socket.on('getonline', function (data) {	
+    	for(var i = 0; i < data.data.length; i++){
+    		if(data.data[i].onlineSession){
+    			$('.'+data.data[0].pozivnoy).fadeIn(200);
+    		}else{
+				$('.'+data.data[0].pozivnoy).fadeOut(200);
+    		}
+    	}	
+	});
+
+	setInterval(function(){
+		GlobalObj.socket.emit("getonline",{ my:  $('.tPoziv').html().split(":")[1] });
+	}, 10000);
 });
+
+var writingMessage = function(){
+	GlobalObj.socket.emit("writing",{ user: OPEN_DLG, my: MYNICK });
+}
 
 var sendMessage =  function(){
 	// GlobalObj.socket.emit("message", {message: 'asdasdasd', to: OPEN_DLG });
@@ -136,14 +165,7 @@ var shablonMessage = function(iam, data){
 
 var messageInterval;
 
-
 var openDialog = function(user){
-	// try{
-	// 	GlobalObj.socket.emit("disconnect");	
-	// 	clearInterval(messageInterval);
-	// }catch(e){
-	// 	console.log(e);
-	// }
 	OPEN_DLG = user;
 	$('.noneOpenDlg').fadeOut();
 	$('.dlgLoader').fadeIn();
@@ -164,6 +186,7 @@ var openDialog = function(user){
 	GlobalObj.socket.on('messages', function (data) {		
 		$("#chatbox__content").append(shablonMessage(user, data.data));
 		$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
+		audioMsg.play();
 	});
 }
 
