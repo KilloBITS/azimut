@@ -12,7 +12,7 @@ router.get('/', function(req, res, next){
     const news = db.collection("NEWS");
     const conf = db.collection("CONFIG");
 
-    news.find().sort({AI: -1}).limit(8).toArray(function(err, resNews){
+    news.find().sort({AI: -1}).limit(3).toArray(function(err, resNews){
       conf.find().toArray(function(err, resultDB){
         res.render('index.ejs',
         {
