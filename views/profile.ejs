@@ -313,6 +313,7 @@
 								<div class="typeMar prodam"><%= tovar[i].Type %></div>
 								<% } %>
 								<div class="dateMar"><%= tovar[i].Date %></div>
+								<div class="statusTovar <%= tovar[i].status %>"></div>
 								<button class="removeTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 0)">Удалить</button>
 								<button class="pauseTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 1)">Дезактивировать</button>
 								<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank" style="position: absolute; bottom: 20px; left: 50%; color: red;">Перейти к объявлению...</a>
@@ -380,7 +381,6 @@
 									</div>
 									<div class="dlgLoader"></div>
 									<div class="chatbox__content" id="chatbox__content" style="display: none;">
-
 										<div class="writingMessage">
 											<div class="writingPreloader">
 								                <span></span>
@@ -393,11 +393,9 @@
 										</div>
 									</div>
 								</div>
-
 								<div class="newTovarModal">
 									
 								</div>
-
 								<div class="chatbox__row">
 									<div class="enter">
 										<div class="enter__submit">
