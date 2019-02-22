@@ -48,6 +48,7 @@ const authAcc = require('./routes/getsData/authificateAccaunt');
 const forgotPass = require('./routes/getForgotpasswored');
 const whf = require('./routes/getVHF');
 const hf = require('./routes/getHF');
+const calendar = require('./routes/getCalendar');
 
 app.use('/', index);
 app.use('/register', register);
@@ -63,6 +64,7 @@ app.use('/activate-accaunt*', authAcc);
 app.use('/forgotPass', forgotPass);
 app.use('/VHF', whf);
 app.use('/HF', hf);
+app.use('/calendar', calendar);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
@@ -86,33 +88,39 @@ app.post('/checkedCaptcha', function(req, res){
 		res.send({code:450,className:'nError', message: 'Неверная капча!'});
 	}
 });
-
+//Авторизация
 const auth = require('./controllers/logInController');
 app.post('/signin', auth);
-
+//Регистрация
 const signUp = require('./controllers/registerController');
 app.post('/signup', signUp);
-
+//Новый комментарий
 const newComment = require('./controllers/setNewComment');
 app.post('/newComment', newComment);
-
+//Открытие диалога
 const opendialog = require('./controllers/openDlgController');
 app.post('/opendialog*', opendialog);
-
+//Отправить сообщение
 const CreateNewMessage = require('./controllers/openDlgController');
 app.post('/sendMessage', CreateNewMessage);
-
+//параметры пользователя
 const userParamsController = require('./controllers/userParamsController');
 app.post('/setParamsUser', userParamsController);
-
+//Изменение пароля
 const changePasswordController = require('./controllers/changePasswordController');
 app.post('/changePass', changePasswordController);
-
+//Обновление аватарки
 const updateAvaUser = require('./controllers/avatarController');
 app.post('/updateAvaUser', updateAvaUser);
-
+//Показать больше новостей
 const getallnews = require('./controllers/getAllNewsController');
 app.post('/getAllNews', getallnews);
+//Автозаполнение товара
+const newtovardataController = require('./controllers/newtovardataController');
+app.post('/newtovarautodata', newtovardataController);
+
+const newTovar = require('./controllers/setNewTovar');
+app.post('/newTovar', newTovar);
 
 
 function sravnenie(arr, arr2){

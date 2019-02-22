@@ -27,7 +27,8 @@
 	<% } %>
 
 	<% if(isAdm === true){ %>
-
+	<link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
+	<script type="text/javascript" src="/script/admin/admin.js"></script>	
 	<% } %>
 
 	<script type="text/javascript">
@@ -90,7 +91,10 @@
 				<a href="/roundtables" id="Round_tables">Круглые столы</a>
 				<a href="/market" id="market">Барахолка</a>
 				<a href="#" id="miscellanea">Разное</a>
-				<a href="#" id="Technical_section">Технический раздел</a>				
+				<a href="#" id="Technical_section">Технический раздел</a>	
+				<% if(isAdm === true){ %>
+				<a href="/panel" id="admin_panel_a">Панельадминистратора</a>
+				<% } %>			
 			</div>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">Информация</div>

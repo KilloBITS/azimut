@@ -32,6 +32,15 @@
 	</style>
 </head>
 <body>	
+	<% if(isAdm === true){ %>
+		<div class="adminMiniPanel">
+			<div class="aminMiniBtn defaultLeft"></div>
+			<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
+			<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
+			<div class="aminMiniBtn defaultRight"></div>
+		</div>
+		
+	<% } %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
 			<div id="loader">
@@ -75,13 +84,16 @@
 				<div class="wrapper_title">Навигация</div>
 				<div class="pre_line"></div>
 				<a href="#" id="activity">Мероприятия</a>
-				<a href="#" id="calendar">Календарь</a>
+				<a href="/calendar" id="calendar">Календарь</a>
 				<a href="#" id="Numeral">Цифра</a>
 				<a href="#" id="Communities">Сообщества</a>
 				<a href="/roundtables" id="Round_tables">Круглые столы</a>
 				<a href="/market" id="market">Барахолка</a>
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>
+				<% if(isAdm === true){ %>
+				<a href="/panel" id="admin_panel_a">Панельадминистратора</a>
+				<% } %>
 				
 			</div>
 			<div class="nav_wrapper">
@@ -120,7 +132,6 @@
 			</div>
 		</div>
 		<div class="nav_menu right">
-
 			<% if(sessionUser !== undefined){ %>
 			<div class="nav_wrapper" id="users_wraper">
 				<div class="wrapper_title">Пользователь</div>
@@ -157,8 +168,7 @@
 					<div class="localIcon" id="en" title="English"></div>
 				</div>
 			</div>
-			<% } %>      
-
+			<% } %>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -168,18 +178,10 @@
 				</a>
 			</div>
 		</div>
-
-
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
 			<a href="/news" id="nav_news" class="navigator_btn selected_nav">Новости</a>
 		</div>	
-
-		<% if(isAdm === true){ %>
-		<button id="newNewsBtn" onclick="createNewsModal()">Добавить новость</button>
-		<% } %>
-
-
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
