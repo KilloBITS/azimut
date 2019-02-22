@@ -118,7 +118,7 @@ app.post('/getAllNews', getallnews);
 //Автозаполнение товара
 const newtovardataController = require('./controllers/newtovardataController');
 app.post('/newtovarautodata', newtovardataController);
-
+//Добавить обхявление товара
 const newTovar = require('./controllers/setNewTovar');
 app.post('/newTovar', newTovar);
 
