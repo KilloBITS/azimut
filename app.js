@@ -74,10 +74,30 @@ app.get('/logout', function(req, res) {
 app.get('/captcha*', function (req, res) {
 	var captcha = svgCaptcha.create();
 	req.session.captcha = captcha.text;    
-	console.log(captcha.text)
 	res.type('svg');
 	res.status(200).send(captcha.data);
 });
+
+
+/** ADMIN_PANEL **/
+const getPanelCalendar = require('./routes/panel/getPanelCalendar');
+const getPanelIndex = require('./routes/panel/getPanelIndex');
+const getPanelLanguage = require('./routes/panel/getPanelLanguage');
+const getPanelMarket = require('./routes/panel/getPanelMarket');
+const getPanelNews = require('./routes/panel/getPanelNews');
+const getPanelUsers = require('./routes/panel/getPanelUsers');
+
+app.use('/PanelCalendar', getPanelCalendar);
+app.use('/PanelIndex', getPanelIndex);
+app.use('/PanelLanguage', getPanelLanguage);
+app.use('/PanelMarket', getPanelMarket);
+app.use('/PanelNews*', getPanelNews);
+app.use('/PanelUsers', getPanelUsers);
+
+
+
+
+
 
 app.get('*', get404);
 /* POSTS */

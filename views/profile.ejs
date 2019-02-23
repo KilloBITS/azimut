@@ -80,7 +80,7 @@
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>
 				<% if(isAdm === true){ %>
-				<a href="/panel" id="admin_panel_a">Панель администратора</a>
+				<a href="/PanelIndex" target="_blank" id="admin_panel_a">Панель администратора</a>
 				<% } %>				
 			</div>
 			<div class="nav_wrapper">
@@ -319,7 +319,6 @@
 								<div class="dateMar"><%= tovar[i].Date %></div>
 								<div class="statusTovar <%= tovar[i].status %>"></div>
 								<button class="removeTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 0)">Удалить</button>
-								<button class="pauseTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 1)">Дезактивировать</button>
 								<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank" style="position: absolute; bottom: 20px; left: 50%; color: red;">Перейти к объявлению...</a>
 							</section>
 						<!-- 	</a>		 -->

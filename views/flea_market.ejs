@@ -75,7 +75,7 @@
 				<a href="#" id="miscellanea">Разное</a>
 				<a href="#" id="Technical_section">Технический раздел</a>
 				<% if(isAdm === true){ %>
-				<a href="/panel" id="admin_panel_a">Панель администратора</a>
+				<a href="/PanelIndex" target="_blank" id="admin_panel_a">Панель администратора</a>
 				<% } %>				
 			</div>
 			<div class="nav_wrapper">
@@ -198,11 +198,13 @@
 		</div>	
 		<div class="tovarLength">Найдено: <%= TOVAR.length %> объявлений</div>		
 		<div class="market_data">
+			<% if(sessionUser !== undefined){ %>
 			<div class="addNewTovar" id="addNewTovar" onclick="addNewTovar()">Подать объявление</div>
+			<% } %>
 			<% for(var i = 0; i < TOVAR.length; i++){ %>
 			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
 				<section id="section_<%= i %>" class="section_data">				
-					<div class="preImage" style="background-image: url(<%= TOVAR[i].Images[0] %>)"></div>
+					<div class="preImage" style="background-image: url(../../../data/<%= TOVAR[i].Images[0] %>)"></div>
 					<h4><%= TOVAR[i].Title %></h4>
 					<div class="description"><%= TOVAR[i].Description %></div>
 					<% if(TOVAR[i].Type === 'Куплю'){ %>
@@ -214,7 +216,7 @@
 				</section>
 			</a>			
 			<% } %>
-
+			<% if(sessionUser !== undefined){ %>
 			<div class="addTovarData">
 				<div class="canvelAddTovar" onclick="canvelAddTovar()">Отмена</div>
 				<h2>Заполните данные</h2>
@@ -240,9 +242,9 @@
 					<label class="buttonOfRadio" for="prodam" onclick="clickLabelType(this)">Продам</label>
 					<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)">Куплю</label>
 					<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)">Отдам даром</label>
-					<input type="radio" name="newTovarType" value="kuplyu" id="kuplyu" class="hiddenradio">
-					<input type="radio" name="newTovarType" value="prodam" id="prodam" class="hiddenradio">
-					<input type="radio" name="newTovarType" value="otdam" id="otdam" class="hiddenradio">
+					<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio">
+					<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
+					<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
 				</div>
 				<h3>Добавить изображения</h3>
 				<input type="file" name="file" id="tFile" required multiple>
@@ -268,6 +270,8 @@
 				</div>
 				<div class="SavingBtnNewTovar" onclick="getNewPostTovar()">Подать объявление</div>
 			</div>
+			<% } %>
+			
 		</div>
 		<% if( TOVAR.length > 6){ %>
 		<div class="addOldNews">Показать больше...</div>	

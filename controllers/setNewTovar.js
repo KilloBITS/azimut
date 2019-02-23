@@ -4,6 +4,7 @@ const router = express.Router();
 const cookieParser = require('cookie-parser');
 const mongoClient = require("mongodb").MongoClient;
 const bParser = require('body-parser');
+const fs = require('fs');
 
 router.use(cookieParser());
 
@@ -22,35 +23,48 @@ router.post('/newTovar', function(req, res, next){
 					var NEXT_AI = 1;
 				}
 
-				var today = new Date();
-				var dd = today.getDate();
-				var mm = today.getMonth()+1;
-				var yyyy = today.getFullYear();
-				if(dd<10) {
-					dd = '0'+dd
-				}
-				if(mm<10) {
-					mm = '0'+mm
-				}
-				today = mm + '-' + dd + '-' + yyyy;			
+				var currentdate = new Date(); 
+				var datetime = currentdate.getDate() + "-"
+				+ (currentdate.getMonth()+1)  + "-" 
+				+ currentdate.getFullYear() + "-"  
+				+ currentdate.getHours() + "-"  
+				+ currentdate.getMinutes() + "-" 
+				+ currentdate.getSeconds();
+	
 				
 				var NEW_TOVAR = {};
-				NEW_TOVAR.Title = '';
-				NEW_TOVAR.Description = '';
-				NEW_TOVAR.Number = '';
-				NEW_TOVAR.Email = '';		
-				NEW_TOVAR.Type = '';			
-				NEW_TOVAR.User = '';			
-				NEW_TOVAR.Date = today;			
+				NEW_TOVAR.Title = req.body.info[0];
+				NEW_TOVAR.Description = req.body.info[3];
+				NEW_TOVAR.Number = req.body.info[1];
+				NEW_TOVAR.Email = req.body.info[2];		
+				NEW_TOVAR.Type = req.body.type;			
+				NEW_TOVAR.User = req.session.poziv;			
+				NEW_TOVAR.Date = datetime;			
 				NEW_TOVAR.AI = NEXT_AI;			
-				NEW_TOVAR.status = 'moderation';			
-				market.insertOne(NEW_TOVAR);
+				NEW_TOVAR.status = 'moderation';
 
-				res.send({code: 500, msg: 'Ваше объявление отправленно на модерацию!'});	
+				var dir = './public/data/tovar/'+NEXT_AI;
+
+				if (!fs.existsSync(dir)){
+					fs.mkdirSync(dir);
+				}
+				var forImage = [];
+				for(let i = 0; i < req.body.image.length; i++){
+					console.log(i);
+					forImage.push("/"+NEXT_AI+"/"+i+".jpg");
+			    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
+		    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
+		    			forImage.push("/"+i+".jpg");
+			    	});
+			   	}
+				console.log(forImage)
+				NEW_TOVAR.Images = forImage;
+				market.insertOne(NEW_TOVAR);
+				res.send({code: 500, className:'nSuccess', message: 'Ваше объявление отправленно на модерацию!'});	
 			});			
 		});
 	}else{
-		res.send({code: 403, message: 'Ошибка!'})
+		res.send({code: 403, className:'nError', message: 'Ошибка!'})
 	}
 });
 

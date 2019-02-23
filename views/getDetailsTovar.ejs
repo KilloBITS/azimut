@@ -79,7 +79,7 @@
         <a href="#" id="miscellanea">Разное</a>
         <a href="#" id="Technical_section">Технический раздел</a>   
         <% if(isAdm === true){ %>
-        <a href="/panel" id="admin_panel_a">Панель администратора</a>
+        <a href="/PanelIndex" target="_blank" id="admin_panel_a">Панель администратора</a>
         <% } %>    
       </div>
       <div class="nav_wrapper">
@@ -222,7 +222,7 @@
               <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
               <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                  <img src="<%= TOVAR.Images[ii] %>">
+                  <img src="../../../data/<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
               <% } %>           
@@ -236,7 +236,7 @@
               <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
               <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                  <img src="<%= TOVAR.Images[ii] %>">
+                  <img src="../../../data/<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
               <% } %> 
@@ -250,17 +250,13 @@
   <div class="product-gallery-full-screen">
     <div class="swiper-container gallery-top">
       <div class="swiper-wrapper">
-
         <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
         <div class="swiper-slide">
           <div class="swiper-zoom-container">
-            <img src="<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
+            <img src="../../../data/<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
           </div>
         </div>
         <% } %> 
-
-
-
       </div>
       <div class="swiper-button-next swiper-button-white">
         <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

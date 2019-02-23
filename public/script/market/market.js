@@ -67,7 +67,13 @@ var getNewPostTovar = function(){
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
 	objectNewTovar.image = GLOBAL_FILE;
 
-	$.post("/setNewTovar", objectNewTovar, function(res){
+	$.post("/newTovar", objectNewTovar, function(res){
 		console.log(res);
+		if(res.code === 500){
+			createError(res.className, res.message)
+			canvelAddTovar();
+		}else{
+			createError(res.className, res.message)
+		}
 	})
 }
