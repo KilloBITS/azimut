@@ -16,6 +16,7 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
+	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
 	<% if(sessionUser === undefined){ %>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
@@ -26,12 +27,20 @@
 	<% } %>
 
 	<style type="text/css">
-		.section_data p {
-		    max-height: 220px;
-		}
-	</style>
+	.section_data p {
+		max-height: 220px;
+	}
+</style>
 </head>
 <body>	
+	<% if(isAdm === true){ %>
+	<div class="adminMiniPanel">
+		<div class="aminMiniBtn defaultLeft"></div>
+		<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
+		<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
+		<div class="aminMiniBtn defaultRight"></div>
+	</div>
+	<% } %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
 			<div id="loader">
@@ -61,9 +70,9 @@
 			</div>
 			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
-			<a href="/news">Новости</a> 
-			<a href="/VHF" class="menu_to_left">VHF</a> 
-			<a href="/HF" class="menu_to_right">HF</a> 
+			<a href="/news?page=1">Новости</a> 
+			<a href="/VHF?page=1" class="menu_to_left">VHF</a> 
+			<a href="/HF?page=1" class="menu_to_right">HF</a> 
 			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
 			<a href="/contacts">Контакты</a> 
@@ -160,8 +169,7 @@
 					<div class="localIcon" id="en" title="English"></div>
 				</div>
 			</div>
-			<% } %>      
-
+			<% } %>    
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -171,18 +179,10 @@
 				</a>
 			</div>
 		</div>
-
-
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
 			<a href="/news" id="nav_news" class="navigator_btn selected_nav">HF</a>
 		</div>	
-
-		<% if(isAdm === true){ %>
-		<button id="newNewsBtn" onclick="createNewsModal()">Добавить новость</button>
-		<% } %>
-
-
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
@@ -205,8 +205,34 @@
 		</div>
 		<% } %>
 		
-		<% if( NEWS.length > 6){ %>
-		<div class="addOldNews">Показать больше...</div>	
+		<% if(offLength > 12){ %>
+		<div id="pagination" class="mt-2 mb-2">
+
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var translations = {
+					'PREVIOUS' : '<',
+					'NEXT' : '>',
+					'FIRST' : '<<',
+					'LAST' : '>>',
+					'CURRENT_PAGE_REPORT' : 'Показано от {FromResult} до {ToResult} из {TotalResult} товаров'
+				};
+				var paginator = new pagination.ItemPaginator({prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				var html = paginator.render();
+				var paginator = pagination.create('search', {prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				console.log(paginator)
+				html += paginator.render();
+				document.getElementById("pagination").innerHTML = html;
+				$("#pagination .paginator:eq(0) a, #pagination .paginator:eq(0) .paginator-first, #pagination .paginator:eq(0) .paginator-previous").remove();
+			})();
+		</script>
 		<% } %>
 		
 	</main>

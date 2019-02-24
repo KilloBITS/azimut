@@ -23,7 +23,7 @@ body {
 }
 
 main{
-    min-height: 1024px;
+    min-height: 1048px;
 }
 header {
     /*background-image: linear-gradient(to bottom, #073958 25%,rgb(0, 109, 177) 84%); */*/
@@ -1654,4 +1654,36 @@ to {
 }
 .switch .icon-remove {
     float: right;
+}
+
+#pagination {
+    height: 100px;
+    width: fit-content;
+    margin: auto;
+    position: relative;
+}
+
+.paginator-current-report{
+    display: none;
+}
+
+.paginator a {
+    display: inline-block;
+    float: left;
+    height: 40px;
+    width: 40px;
+    background-color: #0466a5;
+    margin: 2px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 0 11px;
+}
+
+.paginator .paginator-current {
+    background-color: #203d75;
 }

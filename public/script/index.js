@@ -166,6 +166,7 @@ $(document).ready(function(){
     
   setTimeout(function() {
     $('.wrapper').addClass('loaded');
+    $("#pagination .paginator:eq(0) a, #pagination .paginator:eq(0) .paginator-first, #pagination .paginator:eq(0) .paginator-previous").remove();
   }, 3000);
 
   initAnim(); 

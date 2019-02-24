@@ -14,32 +14,30 @@
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
-	<script type="text/javascript" src="/script/index.js"></script>
+	<script type="text/javascript" src="/script/index.js"></script>	
 	<% if(sessionUser === undefined){ %>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
-
 	<% if(isAdm === true){ %>
 	<link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
 	<script type="text/javascript" src="/script/admin/admin.js"></script>	
 	<% } %>
-
 	<style type="text/css">
-		.section_data p {
-		    max-height: 220px;
-		}
-	</style>
+	.section_data p {
+		max-height: 220px;
+	}
+</style>
 </head>
 <body>	
 	<% if(isAdm === true){ %>
-		<div class="adminMiniPanel">
-			<div class="aminMiniBtn defaultLeft"></div>
-			<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
-			<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
-			<div class="aminMiniBtn defaultRight"></div>
-		</div>
-		
+	<div class="adminMiniPanel">
+		<div class="aminMiniBtn defaultLeft"></div>
+		<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
+		<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
+		<div class="aminMiniBtn defaultRight"></div>
+	</div>
 	<% } %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
@@ -70,12 +68,12 @@
 			</div>
 			<a href="/">Главная</a>
 			<a href="/about">О нас</a> 
-			<a href="/news">Новости</a> 
-			<a href="/VHF" class="menu_to_left">VHF</a> 
-			<a href="/HF" class="menu_to_right">HF</a> 
+			<a href="/news?page=1">Новости</a> 
+			<a href="/VHF?page=1" class="menu_to_left">VHF</a> 
+			<a href="/HF?page=1" class="menu_to_right">HF</a> 
 			<a href="#">Форум</a> 
 			<a href="/market">Барахолка</a> 
-			<a href="/contacts">Контакты</a> 
+			<a href="/contacts">Контакты</a>  
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -204,8 +202,35 @@
 		</div>
 		<% } %>
 		
-		<% if( NEWS.length > 6){ %>
-		<div class="addOldNews">Показать больше...</div>	
+		<% if(offLength > 12){ %>
+		<div id="pagination" class="mt-2 mb-2">
+
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var translations = {
+					'PREVIOUS' : '<',
+					'NEXT' : '>',
+					'FIRST' : '<<',
+					'LAST' : '>>',
+					'CURRENT_PAGE_REPORT' : 'Показано от {FromResult} до {ToResult} из {TotalResult} новостей'
+				};
+				var paginator = new pagination.ItemPaginator({prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				var html = paginator.render();
+				var paginator = pagination.create('search', {prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				console.log(paginator)
+				html += paginator.render();
+				document.getElementById("pagination").innerHTML = html;
+
+				
+			})();
+		</script>
 		<% } %>
 		
 	</main>
