@@ -141,7 +141,9 @@ app.post('/newtovarautodata', newtovardataController);
 //Добавить обхявление товара
 const newTovar = require('./controllers/setNewTovar');
 app.post('/newTovar', newTovar);
-
+//Получить данные календаря
+const calendarData = require('./controllers/getCalendarController');
+app.post('/getCalendar', calendarData);
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

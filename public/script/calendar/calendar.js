@@ -17,7 +17,7 @@ $(document).ready(function(){
 //quicktmpl is a simple template language I threw together a while ago; it is not remotely secure to xss and probably has plenty of bugs that I haven't considered, but it basically works
 //the design is a function I read in a blog post by John Resig (http://ejohn.org/blog/javascript-micro-templating/) and it is intended to be loosely translateable to a more comprehensive template language like mustache easily
 $.extend({
-    quicktmpl: function (template) {return new Function("obj","var p=[],print=function(){p.push.apply(p,arguments);};with(obj){p.push('"+template.replace(/[\r\t\n]/g," ").split("{{").join("\t").replace(/((^|\}\})[^\t]*)'/g,"$1\r").replace(/\t:(.*?)\}\}/g,"',$1,'").split("\t").join("');").split("}}").join("p.push('").split("\r").join("\\'")+"');}return p.join('');")}
+  quicktmpl: function (template) {return new Function("obj","var p=[],print=function(){p.push.apply(p,arguments);};with(obj){p.push('"+template.replace(/[\r\t\n]/g," ").split("{{").join("\t").replace(/((^|\}\})[^\t]*)'/g,"$1\r").replace(/\t:(.*?)\}\}/g,"',$1,'").split("\t").join("');").split("}}").join("p.push('").split("\r").join("\\'")+"');}return p.join('');")}
 });
 
 $.extend(Date.prototype, {
@@ -31,9 +31,9 @@ $.extend(Date.prototype, {
   },
   toTimeString: function() {
     var hours = this.getHours(),
-        minutes = this.getMinutes(),
-        hour = (hours > 12) ? (hours - 12) : hours,
-        ampm = (hours >= 12) ? ' pm' : ' am';
+    minutes = this.getMinutes(),
+    hour = (hours > 12) ? (hours - 12) : hours,
+    ampm = (hours >= 12) ? ' pm' : ' am';
     if (hours === 0 && minutes===0) { return ''; }
     if (minutes > 0) {
       return hour + ':' + minutes + ampm;
@@ -52,18 +52,18 @@ $.extend(Date.prototype, {
     //actions aren't currently in the template, but could be added easily...
     $el.on('click', '.js-cal-prev', function () {
       switch(options.mode) {
-      case 'year': options.date.setFullYear(options.date.getFullYear() - 1); break;
-      case 'month': options.date.setMonth(options.date.getMonth() - 1); break;
-      case 'week': options.date.setDate(options.date.getDate() - 7); break;
-      case 'day':  options.date.setDate(options.date.getDate() - 1); break;
+        case 'year': options.date.setFullYear(options.date.getFullYear() - 1); break;
+        case 'month': options.date.setMonth(options.date.getMonth() - 1); break;
+        case 'week': options.date.setDate(options.date.getDate() - 7); break;
+        case 'day':  options.date.setDate(options.date.getDate() - 1); break;
       }
       draw();
     }).on('click', '.js-cal-next', function () {
       switch(options.mode) {
-      case 'year': options.date.setFullYear(options.date.getFullYear() + 1); break;
-      case 'month': options.date.setMonth(options.date.getMonth() + 1); break;
-      case 'week': options.date.setDate(options.date.getDate() + 7); break;
-      case 'day':  options.date.setDate(options.date.getDate() + 1); break;
+        case 'year': options.date.setFullYear(options.date.getFullYear() + 1); break;
+        case 'month': options.date.setMonth(options.date.getMonth() + 1); break;
+        case 'week': options.date.setDate(options.date.getDate() + 7); break;
+        case 'day':  options.date.setDate(options.date.getDate() + 1); break;
       }
       draw();
     }).on('click', '.js-cal-option', function () {
@@ -73,10 +73,10 @@ $.extend(Date.prototype, {
       draw();
     }).on('click', '.js-cal-years', function () {
       var $t = $(this), 
-          haspop = $t.data('popover'),
-          s = '', 
-          y = options.date.getFullYear() - 2, 
-          l = y + 5;
+      haspop = $t.data('popover'),
+      s = '', 
+      y = options.date.getFullYear() - 2, 
+      l = y + 5;
       if (haspop) { return true; }
       for (; y < l; y++) {
         s += '<button type="button" class="btn btn-default btn-lg btn-block js-cal-option" data-date="' + (new Date(y, 1, 1)).toISOString() + '" data-mode="year">'+y + '</button>';
@@ -85,14 +85,14 @@ $.extend(Date.prototype, {
       return false;
     }).on('click', '.event', function () {
       var $t = $(this), 
-          index = +($t.attr('data-index')), 
-          haspop = $t.data('popover'),
-          data, time;
-          
-      if (haspop || isNaN(index)) { return true; }
-      data = options.data[index];
-      time = data.start.toTimeString();
-      if (time && data.end) { time = time + ' - ' + data.end.toTimeString(); }
+      index = +($t.attr('data-index')), 
+      haspop = $t.data('popover'),
+      data, time;
+
+      if (haspop || isNaN(index)) { return true; }      
+      data = options.data[index];;
+      time = new Date(data.start).toTimeString();
+      if (time && data.end) { time = time + ' - ' + new Date(data.end).toTimeString(); }
       $t.data('popover',true);
       $t.popover({content: '<p><strong>' + time + '</strong></p>'+data.text, html: true, placement: 'auto left'}).popover('toggle');
       return false;
@@ -103,14 +103,14 @@ $.extend(Date.prototype, {
         return;
       }
       var $event = $('<div/>', {'class': 'event', text: event.title, title: event.title, 'data-index': index}),
-          start = event.start,
-          end = event.end || start,
-          time = event.start.toTimeString(),
-          hour = start.getHours(),
-          timeclass = '.time-22-0',
-          startint = start.toDateInt(),
-          dateint = options.date.toDateInt(),
-          endint = end.toDateInt();
+      start = event.start,
+      end = event.end || start,
+      time = event.start.toTimeString(),
+      hour = start.getHours(),
+      timeclass = '.time-22-0',
+      startint = start.toDateInt(),
+      dateint = options.date.toDateInt(),
+      endint = end.toDateInt();
       if (startint > dateint || endint < dateint) { return; }
       
       if (!!time) {
@@ -128,27 +128,29 @@ $.extend(Date.prototype, {
     }
     
     function monthAddEvent(index, event) {
+      var dateobj = new Date(event.start);
       var $event = $('<div/>', {'class': 'event', text: event.title, title: event.title, 'data-index': index}),
-          e = new Date(event.start),
-          dateclass = e.toDateCssClass(),
-          day = $('.' + e.toDateCssClass()),
-          empty = $('<div/>', {'class':'clear event', html:'&nbsp;'}), 
-          numbevents = 0, 
-          time = event.start.toTimeString(),
-          endday = event.end && $('.' + event.end.toDateCssClass()).length > 0,
-          checkanyway = new Date(e.getFullYear(), e.getMonth(), e.getDate()+40),
-          existing,
-          i;
+      e = new Date(event.start),
+      dateclass = e.toDateCssClass(),
+      day = $('.' + e.toDateCssClass()),
+      empty = $('<div/>', {'class':'clear event', html:'&nbsp;'}), 
+      numbevents = 0,       
+      //  
+      time = dateobj.toTimeString(),
+      endday = new Date(event.end) && $('.' + new Date(event.end).toDateCssClass()).length > 0,
+      checkanyway = new Date(e.getFullYear(), e.getMonth(), e.getDate()+40),
+      existing,
+      i;
       $event.toggleClass('all-day', !!event.allDay);
       if (!!time) {
         $event.html('<strong>' + time + '</strong> ' + $event.html());
       }
       if (!event.end) {
         $event.addClass('begin end');
-        $('.' + event.start.toDateCssClass()).append($event);
+        $('.' + dateobj.toDateCssClass()).append($event);
         return;
       }
-            
+
       while (e <= event.end && (day.length || endday || options.date < checkanyway)) {
         if(day.length) { 
           existing = day.find('.event').length;
@@ -160,7 +162,7 @@ $.extend(Date.prototype, {
             $event.
             toggleClass('begin', dateclass === event.start.toDateCssClass()).
             toggleClass('end', dateclass === event.end.toDateCssClass())
-          );
+            );
           $event = $event.clone();
           $event.html('&nbsp;');
         }
@@ -173,12 +175,12 @@ $.extend(Date.prototype, {
       var counts = [0,0,0,0,0,0,0,0,0,0,0,0];
       $.each(events, function (i, v) {
         if (v.start.getFullYear() === year) {
-            counts[v.start.getMonth()]++;
+          counts[v.start.getMonth()]++;
         }
       });
       $.each(counts, function (i, v) {
         if (v!==0) {
-            $('.month-'+i).append('<span class="badge">'+v+'</span>');
+          $('.month-'+i).append('<span class="badge">'+v+'</span>');
         }
       });
     }
@@ -189,11 +191,11 @@ $.extend(Date.prototype, {
       $('.' + (new Date()).toDateCssClass()).addClass('today');
       if (options.data && options.data.length) {
         if (options.mode === 'year') {
-            yearAddEvents(options.data, options.date.getFullYear());
+          yearAddEvents(options.data, options.date.getFullYear());
         } else if (options.mode === 'month' || options.mode === 'week') {
-            $.each(options.data, monthAddEvent);
+          $.each(options.data, monthAddEvent);
         } else {
-            $.each(options.data, dayAddEvent);
+          $.each(options.data, dayAddEvent);
         }
       }
     }
@@ -220,52 +222,55 @@ $.extend(Date.prototype, {
     months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
     shortMonths: ["Янв", "Фев", "Мар", "Апр", "Май", "Июнь", "Июль", "Авг", "Сен", "Окт", "Нояб", "Дек"],
     date: (new Date()),
-        daycss: ["c-sunday", "", "", "", "", "", "c-saturday"],
-        todayname: "Сегодня",
-        thismonthcss: "current",
-        lastmonthcss: "outside",
-        nextmonthcss: "outside",
+    daycss: ["c-sunday", "", "", "", "", "", "c-saturday"],
+    todayname: "Сегодня",
+    thismonthcss: "current",
+    lastmonthcss: "outside",
+    nextmonthcss: "outside",
     mode: "month",
     data: []
   }, jQuery, window, document);
-    
+
 })(jQuery);
 
-var data = [],
-    date = new Date(),
-    d = date.getDate(),
-    d1 = d,
-    m = date.getMonth(),
-    y = date.getFullYear(),
-    i,
-    end, 
-    j, 
-    c = 1063, 
-    c1 = 3329,
-    h, 
-    m,
-    names = ['All Day Event'],
-    slipsum = [""];
+// var data = [],
+// date = new Date(),
+// d = date.getDate(),
+// d1 = d,
+// m = date.getMonth(),
+// y = date.getFullYear(),
+// i,
+// end, 
+// j, 
+// c = 1063, 
+// c1 = 3329,
+// h, 
+// m,
+// names = ['All Day Event'],
+// slipsum = ["fdsfdf"];
 
-  for(i = 0; i < 500; i++) {
-    j = Math.max(i % 15 - 10, 0);
-    //c and c1 jump around to provide an illusion of random data
-    c = (c * 1063) % 1061; 
-    c1 = (c1 * 3329) % 3331;
-    d = (d1 + c + c1) % 839 - 440;
-    h = i % 36;
-    m = (i % 4) * 15;
-    if (h < 18) { h = 0; m = 0; } else { h = Math.max(h - 24, 0) + 8; }
-    end = !j ? null : new Date(y, m, d + j, h + 2, m);
-    data.push({ title: names[c1 % names.length], start: new Date(y, m, d, h, m), end: end, allDay: !(i % 6), text: slipsum[c % slipsum.length ]  });
-  }
+// for(i = 0; i < 100; i++) {
+//   j = Math.max(i % 15 - 10, 0);
+//     //c and c1 jump around to provide an illusion of random data
+//     c = (c * 1063) % 1061; 
+//     c1 = (c1 * 3329) % 3331;
+//     d = (d1 + c + c1) % 839 - 440;
+//     h = i % 36;
+//     m = (i % 4) * 15;
+//     if (h < 18) { h = 0; m = 0; } else { h = Math.max(h - 24, 0) + 8; }
+//     end = !j ? null : new Date(y, m, d + j, h + 2, m);
+//     console.log(new Date(y, m, d, h, m))
+//     data.push({ title: names[c1 % names.length], start: new Date(y, m, d, h, m), end: end, allDay: !(i % 6), text: slipsum[c % slipsum.length ]  });
+//   }
   
-  data.sort(function(a,b) { return (+a.start) - (+b.start); });
+//   data.sort(function(a,b) { return (+a.start) - (+b.start); });
   
-//data must be sorted by start date
-
+// //data must be sorted by start date
+// console.log(data)
 //Actually do everything
+$.post('/getCalendar', function(data){
   $('#holder').calendar({
-    data: data
+    data: data.data
   });
+})
 });
