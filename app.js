@@ -86,6 +86,8 @@ const getPanelLanguage = require('./routes/panel/getPanelLanguage');
 const getPanelMarket = require('./routes/panel/getPanelMarket');
 const getPanelNews = require('./routes/panel/getPanelNews');
 const getPanelUsers = require('./routes/panel/getPanelUsers');
+const getNewNews = require('./routes/panel/getNewNews');
+const getPanelAbout = require('./routes/panel/getPanelAbout');
 
 app.use('/PanelCalendar', getPanelCalendar);
 app.use('/PanelIndex', getPanelIndex);
@@ -93,6 +95,8 @@ app.use('/PanelLanguage', getPanelLanguage);
 app.use('/PanelMarket', getPanelMarket);
 app.use('/PanelNews*', getPanelNews);
 app.use('/PanelUsers', getPanelUsers);
+app.use('/PanelAbout', getPanelAbout);
+app.use('/newNews', getNewNews);
 
 
 

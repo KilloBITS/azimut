@@ -43,9 +43,16 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">         
-                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>               
+                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>   
+                          <li><a href="/PanelAbout"><i class="fa fa-info-circle"></i> <span>О нас</span></a></li>            
                           <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
-                          <li><a href="/PanelNews?page=1"><i class="fa fa-newspaper-o"></i><span>Новости</span></a></li>                            
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
+                                <ul class="collapse" style="height: 0px;">
+                                    <li><a href="/PanelNews?page=1">Новости</a></li>
+                                    <li><a href="/newNews">Создать новость</a></li>
+                                </ul>
+                            </li>                          
                           <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
                           <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                            
                           <li class="active"><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>                            
@@ -252,6 +259,8 @@
                                         <th>Номер телефона</th>
                                         <th>Дата регистрации</th>                                                
                                         <th>Онлайн</th>                                                
+                                        <th>Должность</th>                                                
+                                        <th>Действия</th>                                                
                                     </tr>
                                 </thead>
                                 <tbody>                                 
@@ -266,7 +275,16 @@
                                         <td class="greenTable">Онлайн</td>
                                         <% }else{ %>    
                                         <td class="redTable">Офлайн</td>
-                                        <% } %>    
+                                        <% } %> 
+                                        <% if(users[i].isAdmin){ %>
+                                        <td class="redTable">Администратор</td>
+                                        <% }else{ %>    
+                                        <td class="greenTable">Пользователь</td>
+                                        <% } %>                                         
+                                        <td>
+                                            <button type="button" class="btn btn-warning btn-xs mb-3">Заблокировать</button>
+                                            <button type="button" class="btn btn-danger btn-xs mb-3">Удалить</button>
+                                        </td>  
                                     </tr>                                                
                                     <% } %>
                                 </tbody>

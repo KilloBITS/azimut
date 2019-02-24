@@ -12,19 +12,15 @@ router.get('/', function(req, res, next){
 		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
-			const calendar = db.collection("CALENDAR");
 
 			conf.find().toArray(function(err, resultDB){
-				calendar.find().toArray(function(err, result_calendar){
-					res.render('panel/calendar_panel.ejs',
-					{
-						sessionUser: req.session.user,
-						sessionPoziv: req.session.poziv,
-						isAdm: req.session.admin,
-						locator: resultDB[0].LOCATOR,
-						calendar_data: result_calendar
-					});  
-				});
+				res.render('panel/newNews_panel.ejs',
+				{
+					sessionUser: req.session.user,
+					sessionPoziv: req.session.poziv,
+					isAdm: req.session.admin,
+					locator: resultDB[0].LOCATOR
+				});  
 			});   
 		});  
 	}else{
