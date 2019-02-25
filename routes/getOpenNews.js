@@ -21,7 +21,8 @@ router.get('/*', function(req, res, next) {
             sessionUser: req.session.user,
             sessionPoziv: req.session.poziv,
             isAdm: req.session.admin,
-            locator: resultDB[0].LOCATOR
+            locator: resultDB[0].LOCATOR,
+            page: resultDB[0][global.parseLanguage(req)]
           });
         });        
       });    

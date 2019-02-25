@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="assets/js/methods.js"></script>
 </head>
 <body>
     <div id="preloader">
@@ -236,6 +237,89 @@
         </div>
         <div class="main-content-inner">
           <!-- Тут будет контент -->
+            <div class="row">
+                <div class="col-lg-12 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">На Русском</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">По Українськи</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">The English</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content mt-3" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="col-12">
+                                        <div class="card mt-12">
+                                            <div class="card-body">
+                                                <h4 class="header-title">О нас</h4>
+                                                <form action="#">                                                    
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">О нас</span>
+                                                        </div>
+                                                        <textarea class="form-control about_text" id="aboutRU" aria-label="With textarea">
+                                                            <%= aboutData.RU.about.text %>
+                                                        </textarea>
+                                                    </div>                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveAboutText('RU', $('#aboutRU').val())">Сохранить</button> 
+                                </div>
+                                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="col-12">
+                                        <div class="card mt-12">
+                                            <div class="card-body">
+                                                <h4 class="header-title">Про нас</h4>
+                                                <form action="#">                                                    
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Про нас</span>
+                                                        </div>
+                                                        <textarea class="form-control about_text" id="aboutUA" aria-label="With textarea">
+                                                             <%= aboutData.UA.about.text %>
+                                                        </textarea>
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveAboutText('UA', $('#aboutUA').val())">Сохранить</button> 
+                                </div>
+                                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                    <div class="col-12">
+                                        <div class="card mt-12">
+                                            <div class="card-body">
+                                                <h4 class="header-title">About</h4>
+                                                <form action="#">                                                    
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">About</span>
+                                                        </div>
+                                                        <textarea class="form-control about_text" id="aboutEN" aria-label="With textarea">
+                                                             <%= aboutData.EN.about.text %>
+                                                        </textarea>
+                                                    </div>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveAboutText('EN', $('#aboutEN').val())">Сохранить</button>                         
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
       </div>
   </div>
   <footer>

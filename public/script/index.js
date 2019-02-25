@@ -96,6 +96,11 @@ requestAnimationFrame(update);
 
 $(document).ready(function(){
 
+  $('.localIcon').click(function(){
+    $.cookie("AL", $(this).attr('id'));
+    location.reload();
+  });
+
     if ($(window).width() <= 812) {
     $('header').css({
       width: $(window).width() + 'px',

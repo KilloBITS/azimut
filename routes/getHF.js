@@ -8,6 +8,12 @@ const pagination = require('pagination');
 router.use(cookieParser());
 
 router.get('/', function(req, res, next){
+  switch(req.cookies.AL){
+    case 'RU': var lang = 'RU' ;break;
+    case 'UA': var lang = 'UA' ;break;
+    case 'EN': var lang = 'EN' ;break;
+    default: var lang = 'EN'
+  }
   var page = req.url.split('page=')[1];
   if(parseInt(page) === 1){
     var otNews = 0;
@@ -35,7 +41,8 @@ router.get('/', function(req, res, next){
           NEWS: resNews.slice(otNews, doNews),
           offLength: resNews.length,
           isPage: page,
-          paginate: p
+          paginate: p,
+          page: resultDB[0][global.parseLanguage(req)]
         });
       });      
     });		

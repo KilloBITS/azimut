@@ -35,7 +35,8 @@ router.get('/', function(req, res, next){
           NEWS: resNews.slice(otNews, doNews),
           offLength: resNews.length,
           isPage: page,
-          paginate: p
+          paginate: p,
+          page: resultDB[0][global.parseLanguage(req)]
         });
       });      
     });		

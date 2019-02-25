@@ -12,6 +12,7 @@ const svgCaptcha = require('svg-captcha');
 const app = express();
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
+require('./controllers/parseLanguageController')
 
 app.use(session({
 	secret: '2C44-4D44-WppQ38S',
@@ -148,6 +149,11 @@ app.post('/newTovar', newTovar);
 //Получить данные календаря
 const calendarData = require('./controllers/getCalendarController');
 app.post('/getCalendar', calendarData);
+
+/** Panel POST **/
+const panelAbout = require('./controllers/panelControllers/aboutController');
+app.post('/saveAboutText', panelAbout);
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

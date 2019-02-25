@@ -37,7 +37,8 @@ router.get('/*', function(req, res, next) {
                sessionPoziv: req.session.poziv,
                isAdm: req.session.admin,
                locator: resultDB[0].LOCATOR,
-               FRIEND: usersFriendArray
+               FRIEND: usersFriendArray,
+               page: resultDB[0][global.parseLanguage(req)]
              }); 
          
             

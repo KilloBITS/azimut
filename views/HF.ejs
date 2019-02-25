@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
 	<% if(sessionUser === undefined){ %>
@@ -68,52 +69,51 @@
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
-			<a href="/">Главная</a>
-			<a href="/about">О нас</a> 
-			<a href="/news?page=1">Новости</a> 
-			<a href="/VHF?page=1" class="menu_to_left">VHF</a> 
-			<a href="/HF?page=1" class="menu_to_right">HF</a> 
-			<a href="#">Форум</a> 
-			<a href="/market">Барахолка</a> 
-			<a href="/contacts">Контакты</a> 
+			<a href="/"><%= page.top_menu[0] %></a>
+			<a href="/about"><%= page.top_menu[1] %></a> 
+			<a href="/news?page=1"><%= page.top_menu[2] %></a> 
+			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
+			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
+			<a href="#"><%= page.top_menu[5] %></a> 
+			<a href="/market"><%= page.top_menu[6] %></a> 
+			<a href="/contacts"><%= page.top_menu[7] %></a> 
 		</nav>
 	</header>
 	<main class="wrapper">
 		<div class="nav_menu left">
 			<div class="nav_wrapper">
-				<div class="wrapper_title">Навигация</div>
+				<div class="wrapper_title"><%= page.navigation %></div>
 				<div class="pre_line"></div>
-				<a href="#" id="activity">Мероприятия</a>
-				<a href="/calendar" id="calendar">Календарь</a>
-				<a href="#" id="Numeral">Цифра</a>
-				<a href="#" id="Communities">Сообщества</a>
-				<a href="/roundtables" id="Round_tables">Круглые столы</a>
-				<a href="/market" id="market">Барахолка</a>
-				<a href="#" id="miscellanea">Разное</a>
-				<a href="#" id="Technical_section">Технический раздел</a>
+				<a href="#" id="activity"><%= page.left_menu[0] %></a>
+				<a href="/calendar" id="calendar"><%= page.left_menu[1] %></a>
+				<a href="#" id="Numeral"><%= page.left_menu[2] %></a>
+				<a href="#" id="Communities"><%= page.left_menu[3] %></a>
+				<a href="/roundtables" id="Round_tables"><%= page.left_menu[4] %></a>
+				<a href="/market" id="market"><%= page.left_menu[5] %></a>
+				<a href="#" id="miscellanea"><%= page.left_menu[6] %></a>
+				<a href="#" id="Technical_section"><%= page.left_menu[7] %></a>	
 				<% if(isAdm === true){ %>
-				<a href="/PanelIndex" target="_blank" id="admin_panel_a">Панель администратора</a>
-				<% } %>
-				
+				<a href="/PanelIndex" target="_blank" id="admin_panel_a"><%= page.left_menu[8] %></a>
+				<% } %>					
 			</div>
 			<div class="nav_wrapper">
-				<div class="wrapper_title">Информация</div>
+				<div class="wrapper_title"><%= page.information %></div>
 				<div class="pre_line"></div>				
-				<div class="info_div">Действующие репитеры:</div>
+				<div class="info_div"><%= page.activerepeaters %>:</div>
 				<div class="ii_div">145.650/145.050 FM - UR0WVA;</div>
 				<div class="ii_div">438.800/431.200 FM/DN C4FM - UR0WUA, CTCSS 82.5;</div>
 				<div class="ii_div">439.450/431.850 DMR - UR0WUB;</div>
 				<div class="ii_div">433.425 FM - CTCSS 82.5, ECHO;</div>
 				<div class="ii_div">27.110 FM - CB ECHO.</div>
 
-				<div class="info_div">Действующие частоты:</div>
+				<div class="info_div"><%= page.operatingfrequencies %>:</div>
 				<div class="ii_div">145.500 FM - вызывной；</div>
 				<div class="ii_div">145.450 FM - прямой;</div>
 				<div class="ii_div">432.500 FM - вызывной;</div>
 				<div class="ii_div">433.500 FM - вызывной;</div>
 				<div class="ii_div">144.800 FM - APRS.</div>
 
-				<div class="info_div">Разговорные группы:</div>
+				<div class="info_div"><%= page.conversationalgroups %>:</div>
 				<div class="ii_div_min_title">DMR:</div>
 				<div class="ii_div">2555 TS2 - Украина;</div>
 				<div class="ii_div">25514 TS1 - Львов;</div>
@@ -124,7 +124,7 @@
 				<div class="ii_div">27053 - Шлюз в DMR/D-STAR;</div>
 				<div class="ii_div">31270 - Львовский узел.</div>
 
-				<div class="info_div">Круглые столы:</div>
+				<div class="info_div"><%= page.left_menu[4] %>:</div>
 				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
 				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
 				<div class="ii_div">3.612 LSB - 8.00 воскресене；</div>
@@ -133,35 +133,35 @@
 		</div>
 		<div class="nav_menu right">
 
-			<% if(sessionUser !== undefined){ %>
+						<% if(sessionUser !== undefined){ %>
 			<div class="nav_wrapper" id="users_wraper">
-				<div class="wrapper_title">Пользователь</div>
+				<div class="wrapper_title"><%= page.users %></div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
 				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
 				<div class="userDATA">
 					<div class="userLogin"><%= sessionUser %></div>
 					<div class="userPoziv">(<%= sessionPoziv %>)</div>
-					<a href="/getProfile" class="userButton">Профиль</a>
+					<a href="/getProfile" class="userButton"><%= page.profile %></a>
 				</div>
-				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
+				<a href="/logout" class="userlogoutInBlock" title="Выход"><%= page.exit %></a>	
 
 				<div class="localisation">
 					<div class="localIcon" id="ru" title="Русский"></div>
 					<div class="localIcon" id="ua" title="Українська"></div>
 					<div class="localIcon" id="en" title="English"></div>
-				</div>
+				</div>	
 			</div>
 			<% } else { %>
 			<div class="nav_wrapper" id="users_wraper">
-				<div class="wrapper_title">Авторизация</div>
+				<div class="wrapper_title"><%= page.signIn %></div>
 				<div class="pre_line"></div>
 				<div class="nav_loader"></div>
 				<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
 				<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
-				<input type="button" value="Авторизация" class="auth_btn" id="signIn" onclick="signIn()">
-				<a href="/register" class="NewPassLink">Регистрация</a>
-				<a href="#" class="NewPassLink">Забыли пароль?</a>
+				<input type="button" value="<%= page.signIn %>" class="auth_btn" id="signIn" onclick="signIn()">
+				<a href="/register" class="NewPassLink"><%= page.signUp %></a>
+				<a href="/forgotPass" class="NewPassLink"><%= page.forgot %></a>
 
 				<div class="localisation">
 					<div class="localIcon" id="ru" title="Русский"></div>
@@ -169,13 +169,13 @@
 					<div class="localIcon" id="en" title="English"></div>
 				</div>
 			</div>
-			<% } %>    
+			<% } %>  
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
 				<a class="none_text" href="https://www.aprsdirect.com/center/49.82786,24.03119/zoom/11/time/60" target="_blank">
 					<img src="../../../img/aprs.png" width="228">
-					<div class="a_btn">Открыть карту</div>
+					<div class="a_btn"><%= page.openMap %></div>
 				</a>
 			</div>
 		</div>

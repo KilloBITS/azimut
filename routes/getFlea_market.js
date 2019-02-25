@@ -7,8 +7,13 @@ const pagination = require('pagination');
 
 router.use(cookieParser());
 
-
 router.get('/', function(req, res, next){
+  switch(req.cookies.AL){
+    case 'RU': var lang = 'RU' ;break;
+    case 'UA': var lang = 'UA' ;break;
+    case 'EN': var lang = 'EN' ;break;
+    default: var lang = 'EN'
+  }
 	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
     const market = db.collection("MARKET");
@@ -21,7 +26,8 @@ router.get('/', function(req, res, next){
           sessionUser: req.session.user,
           sessionPoziv: req.session.poziv,
           isAdm: req.session.admin,
-          locator: resultDB[0].LOCATOR
+          locator: resultDB[0].LOCATOR,
+          page: resultDB[0][global.parseLanguage(req)]
         });  
       });         
     });		
