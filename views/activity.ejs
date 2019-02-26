@@ -3,29 +3,31 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title><%= page.index.title %></title>	
+	<title><%= page.activity.title %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
-	
+	<link rel="stylesheet" type="text/css" href="/style/news/news.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="./data/header.json"></script>
+
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/script/index.js"></script>
+	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
+	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+
+	<script type="text/javascript" src="/script/index.js"></script>	
 	<% if(sessionUser === undefined){ %>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>	
-	<% } %>		
+	<% } %>
 	<style type="text/css">
-	.section_data p {
-		max-height: 220px;
-	}
-</style>
+		.section_data p {
+			max-height: 220px;
+		}
+	</style>
 </head>
 <body>	
 	<%- include ./includes/mini_panel.ejs %>
@@ -36,36 +38,34 @@
 			</div>
 			<div class="loader-section section-left"></div>
 			<div class="loader-section section-right"></div>
+
 		</div>
 	</div>
-	<header>
+	<header>	
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
-		
-		<div class="spec_graph"></div>
-		<div class="spectrLineArray" id="spectrLineArray"></div>
-		<a href="/">
-			<img src="../../../img/logo1.png" id="logotype">
-		</a>				
-		<h1><%= page.index.title %></h1>	
+		<img src="../../../img/logo1.png" id="logotype">		
+		<h1><%= page.activity.title %></h1>		
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 		</div>
+		
 		<div id="head_banner"><%= locator %></div>
 		<nav> 
-			<h1><%= page.index.title %></h1>	
+			<h1><%= page.activity.title %></h1>	
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
+			<a href="/"><%= page.top_menu[0] %></a>
 			<a href="/about"><%= page.top_menu[1] %></a> 
 			<a href="/news?page=1"><%= page.top_menu[2] %></a> 
-			<a href="/VHF?page=1"><%= page.top_menu[3] %></a> 
-			<a href="/HF?page=1" class="menu_to_left"><%= page.top_menu[4] %></a> 
-			<a href="#" class="menu_to_right"><%= page.top_menu[5] %></a> 
+			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
+			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
+			<a href="#"><%= page.top_menu[5] %></a> 
 			<a href="/market"><%= page.top_menu[6] %></a> 
-			<a href="/contacts"><%= page.top_menu[7] %></a> 
+			<a href="/contacts"><%= page.top_menu[7] %></a>  
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -73,9 +73,8 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.navigation %></div>
 				<div class="pre_line"></div>
-				<%- include ./includes/left_nav.ejs %>	
+				<%- include ./includes/left_nav.ejs %>				
 			</div>
-
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.information %></div>
 				<div class="pre_line"></div>				
@@ -83,8 +82,7 @@
 			</div>
 		</div>
 		<div class="nav_menu right">
-			<%- include ./includes/user_block.ejs %> 
-			
+			<%- include ./includes/user_block.ejs %>
 			<div class="nav_wrapper">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -94,11 +92,10 @@
 				</a>
 			</div>
 		</div>
-
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn noBefore"><%= page.top_menu[0] %></a>
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
+			<a href="/activity?page=1" id="nav_activity" class="navigator_btn selected_nav"><%= page.activity.title %></a>
 		</div>	
-
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
@@ -106,7 +103,7 @@
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
 				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
+				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
 			</p>			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
@@ -114,17 +111,44 @@
 			</div>
 		</section>	
 		<% } %>
-
-		<% if( NEWS.length >= 8){ %>
-		<div class="addOldNews" onclick="allNewsIndex(8)"><%= page.showmore %></div>	
-		<% } %>
-
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/giphy.gif">
-			<h2><%= page.notdata %></h2>
+			<h2>Нет данных</h2>
 		</div>
-		<% } %>		
+		<% } %>
+		
+		<% if(offLength > 12){ %>
+		<div id="pagination" class="mt-2 mb-2">
+
+		</div>
+		<script type="text/javascript">
+			(function() {
+				var translations = {
+					'PREVIOUS' : '<',
+					'NEXT' : '>',
+					'FIRST' : '<<',
+					'LAST' : '>>',
+					'CURRENT_PAGE_REPORT' : 'Показано от {FromResult} до {ToResult} из {TotalResult} новостей'
+				};
+				var paginator = new pagination.ItemPaginator({prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				var html = paginator.render();
+				var paginator = pagination.create('search', {prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				console.log(paginator)
+				html += paginator.render();
+				document.getElementById("pagination").innerHTML = html;
+
+				
+			})();
+		</script>
+		<% } %>
+		
 	</main>
 
 	<div id="stop" class="scrollTop"></div>

@@ -42,23 +42,27 @@ router.post('/newTovar', function(req, res, next){
 				NEW_TOVAR.Date = datetime;			
 				NEW_TOVAR.AI = NEXT_AI;			
 				NEW_TOVAR.status = 'moderation';
+				NEW_TOVAR.Images = [];
+				console.log(req.body.image)
+				if(req.body.image !== undefined && req.body.image.length > 0){
+					var dir = './public/data/tovar/'+NEXT_AI;
 
-				var dir = './public/data/tovar/'+NEXT_AI;
-
-				if (!fs.existsSync(dir)){
-					fs.mkdirSync(dir);
+					if (!fs.existsSync(dir)){
+						fs.mkdirSync(dir);
+					}
+					var forImage = [];
+					for(let i = 0; i < req.body.image.length; i++){
+						console.log(i);
+						forImage.push("/"+NEXT_AI+"/"+i+".jpg");
+				    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
+			    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
+			    			forImage.push("/"+i+".jpg");
+				    	});
+				   	}
+				   	NEW_TOVAR.Images = forImage;
 				}
-				var forImage = [];
-				for(let i = 0; i < req.body.image.length; i++){
-					console.log(i);
-					forImage.push("/"+NEXT_AI+"/"+i+".jpg");
-			    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
-		    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
-		    			forImage.push("/"+i+".jpg");
-			    	});
-			   	}
-				console.log(forImage)
-				NEW_TOVAR.Images = forImage;
+				
+				
 				market.insertOne(NEW_TOVAR);
 				res.send({code: 500, className:'nSuccess', message: 'Ваше объявление отправленно на модерацию!'});	
 			});			

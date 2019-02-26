@@ -50,6 +50,8 @@ const forgotPass = require('./routes/getForgotpasswored');
 const whf = require('./routes/getVHF');
 const hf = require('./routes/getHF');
 const calendar = require('./routes/getCalendar');
+const activ = require('./routes/getActivity');
+const rules = require('./routes/getRules');
 
 app.use('/', index);
 app.use('/register', register);
@@ -66,6 +68,8 @@ app.use('/forgotPass', forgotPass);
 app.use('/VHF', whf);
 app.use('/HF', hf);
 app.use('/calendar', calendar);
+app.use('/activity*', activ);
+app.use('/rules', rules);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
@@ -153,6 +157,11 @@ app.post('/getCalendar', calendarData);
 /** Panel POST **/
 const panelAbout = require('./controllers/panelControllers/aboutController');
 app.post('/saveAboutText', panelAbout);
+
+const marketAbout = require('./controllers/panelControllers/marketController');
+app.post('/setRemoveTovar', marketAbout);
+app.post('/setCancelTovar', marketAbout);
+app.post('/setGoodTovar', marketAbout);
 
 
 function sravnenie(arr, arr2){

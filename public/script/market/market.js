@@ -76,4 +76,6 @@ var getNewPostTovar = function(){
 			createError(res.className, res.message)
 		}
 	})
+	
+
 }

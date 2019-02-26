@@ -1,12 +1,13 @@
 .roundtables{
     width: calc(50% - 2px);
-    background-color: whitesmoke;
+    background-color: #fbfbfb;
     color: black;
     padding: 10px;
-    border-radius: 3px;
+    border-radius: 1px;
     border: 1px solid rgba(192, 192, 192, 0.34);
     display: inline-block;
     margin-bottom: 4px;
+    transition: 0.2s;
 }
 
 .roundtables h1{
@@ -15,4 +16,8 @@
     margin-bottom: 10px;
     border-bottom: 1px solid silver;
     color: #6b6b6b;
+}
+
+.roundtables:hover{
+    border: 1px solid rgba(187, 0, 0, 0.63);
 }

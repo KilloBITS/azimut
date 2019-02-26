@@ -1,0 +1,14 @@
+<% if(isAdm === true){ %>
+<link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
+<script type="text/javascript" src="/script/admin/admin.js"></script>	
+<% } %>
+<% if(isAdm === true){ %>
+<div class="adminMiniPanel">
+	<div class="aminMiniBtn defaultLeft"></div>
+	<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
+	<button class="aminMiniBtn" id="setUsersBtn" title="Управление пользователями" onclick=""></button>
+	<button class="aminMiniBtn" id="setCalendarBtn" title="Управление календарем" onclick=""></button>
+	<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
+	<div class="aminMiniBtn defaultRight"></div>
+</div>
+<% } %>	

@@ -3,3 +3,24 @@ var saveAboutText = function(a,b){
 		console.log(res);
 	});
 }
+
+var setRemoveTovar = function(a){
+	$.post('/setRemoveTovar',{a:a}, (res) => {
+		console.log(res);
+		location.reload();
+	});
+}
+
+var setCancelTovar = function(a){
+	$.post('/setCancelTovar',{a:a}, (res) => {
+		console.log(res);
+		location.reload();
+	});
+}
+
+var setGoodTovar = function(a){
+	$.post('/setGoodTovar',{a:a}, (res) => {
+		console.log(res);
+		location.reload();
+	});
+}

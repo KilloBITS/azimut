@@ -2881,3 +2881,7 @@ p.card-text.tovarText{
 .about_text{
     min-height: 300px;
 }
+
+.card-img-top {
+    width: inherit;
+}

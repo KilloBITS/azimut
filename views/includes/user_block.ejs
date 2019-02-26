@@ -1,0 +1,36 @@
+<% if(sessionUser !== undefined){ %>
+<div class="nav_wrapper" id="users_wraper">
+	<div class="wrapper_title"><%= page.users %></div>
+	<div class="pre_line"></div>
+	<div class="nav_loader"></div>
+	<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
+	<div class="userDATA">
+		<div class="userLogin"><%= sessionUser %></div>
+		<div class="userPoziv">(<%= sessionPoziv %>)</div>
+		<a href="/getProfile" class="userButton"><%= page.profile %></a>
+	</div>
+	<a href="/logout" class="userlogoutInBlock" title="<%= page.exit %>"><%= page.exit %></a>	
+	<div class="localisation">
+		<div class="localIcon" id="ru" title="Русский"></div>
+		<div class="localIcon" id="ua" title="Українська"></div>
+		<div class="localIcon" id="en" title="English"></div>
+	</div>	
+</div>
+<% } else { %>
+<div class="nav_wrapper" id="users_wraper">
+	<div class="wrapper_title"><%= page.signIn %></div>
+	<div class="pre_line"></div>
+	<div class="nav_loader"></div>
+	<input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
+	<input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
+	<input type="button" value="<%= page.signIn %>" class="auth_btn" id="signIn" onclick="signIn()">
+	<a href="/register" class="NewPassLink"><%= page.signUp %></a>
+	<a href="/forgotPass" class="NewPassLink"><%= page.forgot %></a>
+
+	<div class="localisation">
+		<div class="localIcon" id="ru" title="Русский"></div>
+		<div class="localIcon" id="ua" title="Українська"></div>
+		<div class="localIcon" id="en" title="English"></div>
+	</div>
+</div>
+<% } %>  

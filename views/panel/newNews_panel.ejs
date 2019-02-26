@@ -236,6 +236,59 @@
         </div>
         <div class="main-content-inner">
           <!-- Тут будет контент -->
+            <div class="row">
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Добавить новость</h4>
+                                    <p class="text-muted font-14 mb-4">Заполните данные для добавления новости</p>
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">Заголовок</label>
+                                        <input class="form-control" type="text" id="example-text-input" placeholder="Введите заголовок">
+                                    </div>                                  
+                                    
+                                    <div class="form-group">
+                                        <label for="example-date-input" class="col-form-label">Дата</label>
+                                        <input class="form-control" type="date" value="2018-03-05" id="example-date-input" readonly>
+                                    </div>
+                                    <script type="text/javascript">
+                                        document.getElementById("example-date-input").valueAsDate = new Date();
+                                    </script>
+                                    
+                                    <div class="form-group">
+                                        <label class="col-form-label">Выберите тип новости</label>
+                                        <select class="form-control">
+                                            <option>Общая</option>
+                                            <option>HF</option>
+                                            <option>VHF</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="example-textarea-input" class="col-form-label">Текст новости</label>
+                                        <textarea class="form-control" aria-label="With textarea" id="example-textarea-input" placeholder="Введите текст"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-form-label">Логотип новости</label>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                            <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
+                                        </div>
+                                    </div>
+
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Textual inputs end -->
+                    </div>
+                </div>
+            </div>
+
       </div>
   </div>
   <footer>

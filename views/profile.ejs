@@ -22,12 +22,10 @@
 	<script type="text/javascript" src="/script/socket.io.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/profile/profile.js"></script>
-	<% if(isAdm === true){ %>
-	<link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
-	<script type="text/javascript" src="/script/admin/admin.js"></script>	
-	<% } %>
+	<script type="text/javascript" src="/script/market/market.js"></script>
 </head>
 <body>
+	<%- include ./includes/mini_panel.ejs %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
 			<div id="loader">
@@ -72,72 +70,16 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.navigation %></div>
 				<div class="pre_line"></div>
-				<a href="#" id="activity"><%= page.left_menu[0] %></a>
-				<a href="/calendar" id="calendar"><%= page.left_menu[1] %></a>
-				<a href="#" id="Numeral"><%= page.left_menu[2] %></a>
-				<a href="#" id="Communities"><%= page.left_menu[3] %></a>
-				<a href="/roundtables" id="Round_tables"><%= page.left_menu[4] %></a>
-				<a href="/market" id="market"><%= page.left_menu[5] %></a>
-				<a href="#" id="miscellanea"><%= page.left_menu[6] %></a>
-				<a href="#" id="Technical_section"><%= page.left_menu[7] %></a>	
-				<% if(isAdm === true){ %>
-				<a href="/PanelIndex" target="_blank" id="admin_panel_a"><%= page.left_menu[8] %></a>
-				<% } %>					
+				<%- include ./includes/left_nav.ejs %>				
 			</div>
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.information %></div>
 				<div class="pre_line"></div>				
-				<div class="info_div"><%= page.activerepeaters %>:</div>
-				<div class="ii_div">145.650/145.050 FM - UR0WVA;</div>
-				<div class="ii_div">438.800/431.200 FM/DN C4FM - UR0WUA, CTCSS 82.5;</div>
-				<div class="ii_div">439.450/431.850 DMR - UR0WUB;</div>
-				<div class="ii_div">433.425 FM - CTCSS 82.5, ECHO;</div>
-				<div class="ii_div">27.110 FM - CB ECHO.</div>
-
-				<div class="info_div"><%= page.operatingfrequencies %>:</div>
-				<div class="ii_div">145.500 FM - вызывной；</div>
-				<div class="ii_div">145.450 FM - прямой;</div>
-				<div class="ii_div">432.500 FM - вызывной;</div>
-				<div class="ii_div">433.500 FM - вызывной;</div>
-				<div class="ii_div">144.800 FM - APRS.</div>
-
-				<div class="info_div"><%= page.conversationalgroups %>:</div>
-				<div class="ii_div_min_title">DMR:</div>
-				<div class="ii_div">2555 TS2 - Украина;</div>
-				<div class="ii_div">25514 TS1 - Львов;</div>
-				<div class="ii_div">25577 TS1 - Азимут.</div>
-
-				<div class="ii_div_min_title">Wires-X C4FM:</div>
-				<div class="ii_div">41270 - Комната Украина;</div>
-				<div class="ii_div">27053 - Шлюз в DMR/D-STAR;</div>
-				<div class="ii_div">31270 - Львовский узел.</div>
-
-				<div class="info_div"><%= page.left_menu[4] %>:</div>
-				<div class="ii_div">UR0WVA - 21.00 понедельник;</div>
-				<div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
-				<div class="ii_div">3.612 LSB - 8.00 воскресене；</div>
-				<div class="ii_div">27.110 FM - 20.45 (спринт-группа).</div>
+				<%- include ./includes/information.ejs %>
 			</div>
 		</div>
 		<div class="nav_menu right">			
-			<div class="nav_wrapper" id="users_wraper">
-				<div class="wrapper_title">Пользователь</div>
-				<div class="pre_line"></div>
-				<div class="nav_loader"></div>
-				<div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
-				<div class="userDATA">
-					<div class="userLogin"><%= sessionUser %></div>
-					<div class="userPoziv">(<%= sessionPoziv %>)</div>
-					<a href="/getProfile" class="userButton">Профиль</a>
-				</div>
-				<a href="/logout" class="userlogoutInBlock" title="Выход">Выход</a>		
-
-				<div class="localisation">
-					<div class="localIcon" id="ru" title="Русский"></div>
-					<div class="localIcon" id="ua" title="Українська"></div>
-					<div class="localIcon" id="en" title="English"></div>
-				</div>
-			</div>
+			<%- include ./includes/user_block.ejs %>
 			
 
 			<div class="nav_wrapper">
@@ -304,6 +246,7 @@
 				</div>
 				<div class="TAB">
 					<div class="mini_title">Тут отображается список ваших объявлений</div>
+					<div class="addNewTovar" id="addNewTovar" onclick="addNewTovar()"><%= page.postads %></div>
 					<div class="fullBlock" style="padding-top: 30px; overflow: scroll; overflow-x: hidden; height: 100%; margin-top: 20px;">
 						<% if(tovar.length > 0){ %>
 						<% for(var i = 0; i < tovar.length; i++){ %>
@@ -425,41 +368,63 @@
 					</div>
 				</div>
 			</div>
+			<div class="addTovarData">
+					<div class="canvelAddTovar" onclick="canvelAddTovar()"><%= page.cancel %></div>
+					<h2><%= page.thedetails %></h2>
+					<div class="newTovarLoader"></div>
+					<div class="lineOftovar">
+						<div class="titleOfNewTovar"><%= page.productname %></div>
+						<input type="text" name="newTovarTitle" placeholder="Введите название товара">
+					</div>
+					<div class="lineOftovar">
+						<div class="titleOfNewTovar">Телефон для связи</div>
+						<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="Введите номер телефона">
+					</div>
+					<div class="lineOftovar">
+						<div class="titleOfNewTovar">Електронная почта</div>
+						<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="Введите ваш адрес електронной почты">
+					</div>
+					<div class="lineOftovar">
+						<div class="titleOfNewTovar">Описание товара</div>
+						<textarea placeholder="Опишите ваш товар"></textarea>
+					</div>
+					<div class="lineOftovar">
+						<div class="titleOfNewTovar">Тип объявления: </div>
+						<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)">Продам</label>
+						<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)">Куплю</label>
+						<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)">Отдам даром</label>
+						<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio" checked>
+						<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
+						<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
+					</div>
+					<h3>Добавить изображения</h3>
+					<input type="file" name="file" id="tFile" required multiple>
+					<div class="AddPhotoBlock">
+						<div class="newPhotoClick" onclick="addPhoto()">
+							<img src="../../../img/image.svg">
+						</div>
+						<div class="newPhotoClick" onclick="addPhoto()">
+							<img src="../../../img/image.svg">
+						</div>
+						<div class="newPhotoClick" onclick="addPhoto()">
+							<img src="../../../img/image.svg">
+						</div>
+						<div class="newPhotoClick" onclick="addPhoto()">
+							<img src="../../../img/image.svg">
+						</div>
+						<div class="newPhotoClick" onclick="addPhoto()"> 
+							<img src="../../../img/image.svg">
+						</div>
+						<div class="newPhotoClick" onclick="addPhoto()">
+							<img src="../../../img/image.svg">
+						</div>
+					</div>
+					<div class="SavingBtnNewTovar" onclick="getNewPostTovar()">Подать объявление</div>
+				</div>
 		</section>	
 	</main>
 	<div id="stop" class="scrollTop"></div>
-	<footer class="flex-rw">
-		<ul class="footer-list-top">
-			<li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[1] %></a></li>
-			<li><a href='/news?page=1' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[2] %></a></li>
-			<li><a href='/VHF?page=1' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[3] %></a></li>
-			<li><a href='/HF?page=1' itemprop="significantLink" class="generic-anchor footer-list-anchor"><%= page.top_menu[4] %></a></li>
-			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[5] %></a></li>
-			<li><a href='/market' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[6] %></a></li>
-			<li><a href='/contacts' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.top_menu[7] %></a></li>
-		</ul>
-		<ul class="footer-list-top">
-			<a href="#" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>				
-			<a href="#" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-			<a href="#" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-			<a href="#" class="generic-anchor" target="_blank" title="VK" itemprop="significantLink"><i class="fa fa-vk"></i></a>
-		</ul>
-
-		<ul class="footer-list-top">
-			<li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.sitemap %></a></li>
-			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.rules %></a></li>
-			<li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink"><%= page.pp %></a></li>
-		</ul>
-		
-		<section class="footer-bottom-section flex-rw">
-			<div class="footer-bottom-wrapper">   
-				<i class="fa fa-copyright" role="copyright">
-				</i> <%= page.copiright[0] %> <address class="footer-address" role="company address"> <%= page.copiright[1] %> </address><span class="footer-bottom-rights"></span>
-			</div>
-			<div class="footer-bottom-wrapper"></div>
-		</section>
-	</footer>
+	<%- include ./includes/footer.ejs %>
 	<div class="notifications"></div> 
 </body>
 </html>

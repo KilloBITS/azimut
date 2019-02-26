@@ -24,12 +24,9 @@
   <% if(sessionUser === undefined){ %>
   <script type="text/javascript" src="/script/loginMethod.js"></script> 
   <% } %>
-  <% if(isAdm === true){ %>
-  <link rel="stylesheet" type="text/css" href="/style/admin/admin.css">
-  <script type="text/javascript" src="/script/admin/admin.js"></script> 
-  <% } %>
 </head>
 <body>  
+  <%- include ./includes/mini_panel.ejs %>
   <div class="wrapper">
     <div id="loader-wrapper">
       <div id="loader">
@@ -71,91 +68,16 @@
       <div class="nav_wrapper">
         <div class="wrapper_title"><%= page.navigation %></div>
         <div class="pre_line"></div>
-        <a href="#" id="activity"><%= page.left_menu[0] %></a>
-        <a href="/calendar" id="calendar"><%= page.left_menu[1] %></a>
-        <a href="#" id="Numeral"><%= page.left_menu[2] %></a>
-        <a href="#" id="Communities"><%= page.left_menu[3] %></a>
-        <a href="/roundtables" id="Round_tables"><%= page.left_menu[4] %></a>
-        <a href="/market" id="market"><%= page.left_menu[5] %></a>
-        <a href="#" id="miscellanea"><%= page.left_menu[6] %></a>
-        <a href="#" id="Technical_section"><%= page.left_menu[7] %></a> 
-        <% if(isAdm === true){ %>
-        <a href="/PanelIndex" target="_blank" id="admin_panel_a"><%= page.left_menu[8] %></a>
-        <% } %>   
+        <%- include ./includes/left_nav.ejs %> 
       </div>
       <div class="nav_wrapper">
         <div class="wrapper_title"><%= page.information %></div>
         <div class="pre_line"></div>        
-        <div class="info_div"><%= page.activerepeaters %>:</div>
-        <div class="ii_div">145.650/145.050 FM - UR0WVA;</div>
-        <div class="ii_div">438.800/431.200 FM/DN C4FM - UR0WUA, CTCSS 82.5;</div>
-        <div class="ii_div">439.450/431.850 DMR - UR0WUB;</div>
-        <div class="ii_div">433.425 FM - CTCSS 82.5, ECHO;</div>
-        <div class="ii_div">27.110 FM - CB ECHO.</div>
-
-        <div class="info_div"><%= page.operatingfrequencies %>:</div>
-        <div class="ii_div">145.500 FM - вызывной；</div>
-        <div class="ii_div">145.450 FM - прямой;</div>
-        <div class="ii_div">432.500 FM - вызывной;</div>
-        <div class="ii_div">433.500 FM - вызывной;</div>
-        <div class="ii_div">144.800 FM - APRS.</div>
-
-        <div class="info_div"><%= page.conversationalgroups %>:</div>
-        <div class="ii_div_min_title">DMR:</div>
-        <div class="ii_div">2555 TS2 - Украина;</div>
-        <div class="ii_div">25514 TS1 - Львов;</div>
-        <div class="ii_div">25577 TS1 - Азимут.</div>
-
-        <div class="ii_div_min_title">Wires-X C4FM:</div>
-        <div class="ii_div">41270 - Комната Украина;</div>
-        <div class="ii_div">27053 - Шлюз в DMR/D-STAR;</div>
-        <div class="ii_div">31270 - Львовский узел.</div>
-
-        <div class="info_div"><%= page.left_menu[4] %>:</div>
-        <div class="ii_div">UR0WVA - 21.00 понедельник;</div>
-        <div class="ii_div">UR0WUA - 21.00 воскресенье;</div>
-        <div class="ii_div">3.612 LSB - 8.00 воскресене；</div>
-        <div class="ii_div">27.110 FM - 20.45 (спринт-группа).</div>
+        <%- include ./includes/information.ejs %>
       </div>
     </div>
     <div class="nav_menu right">
-            <% if(sessionUser !== undefined){ %>
-      <div class="nav_wrapper" id="users_wraper">
-        <div class="wrapper_title"><%= page.users %></div>
-        <div class="pre_line"></div>
-        <div class="nav_loader"></div>
-        <div class="userAVA" style="background-image: url(../../../data/avatars/default.gif)"></div>
-        <div class="userDATA">
-          <div class="userLogin"><%= sessionUser %></div>
-          <div class="userPoziv">(<%= sessionPoziv %>)</div>
-          <a href="/getProfile" class="userButton"><%= page.profile %></a>
-        </div>
-        <a href="/logout" class="userlogoutInBlock" title="Выход"><%= page.exit %></a>  
-
-        <div class="localisation">
-          <div class="localIcon" id="ru" title="Русский"></div>
-          <div class="localIcon" id="ua" title="Українська"></div>
-          <div class="localIcon" id="en" title="English"></div>
-        </div>  
-      </div>
-      <% } else { %>
-      <div class="nav_wrapper" id="users_wraper">
-        <div class="wrapper_title"><%= page.signIn %></div>
-        <div class="pre_line"></div>
-        <div class="nav_loader"></div>
-        <input type="text" name="emailRadio" id="emailRadio" class="authdata" placeholder="Позывной">
-        <input type="password" name="passwordRadio" id="passwordRadio" class="authdata" placeholder="Пароль">
-        <input type="button" value="<%= page.signIn %>" class="auth_btn" id="signIn" onclick="signIn()">
-        <a href="/register" class="NewPassLink"><%= page.signUp %></a>
-        <a href="/forgotPass" class="NewPassLink"><%= page.forgot %></a>
-
-        <div class="localisation">
-          <div class="localIcon" id="ru" title="Русский"></div>
-          <div class="localIcon" id="ua" title="Українська"></div>
-          <div class="localIcon" id="en" title="English"></div>
-        </div>
-      </div>
-      <% } %>   
+      <%- include ./includes/user_block.ejs %> 
 
       <div class="nav_wrapper">
         <div class="wrapper_title">APRS</div>
@@ -223,7 +145,7 @@
               <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
               <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                  <img src="../../../data/<%= TOVAR.Images[ii] %>">
+                  <img src="../../../data/tovar<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
               <% } %>           
@@ -237,7 +159,7 @@
               <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
               <div class="swiper-slide">
                 <div class="swiper-zoom-container">
-                  <img src="../../../data/<%= TOVAR.Images[ii] %>">
+                  <img src="../../../data/tovar<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
               <% } %> 
@@ -254,7 +176,7 @@
         <% for(var ii = 0; ii < TOVAR.Images.length; ii++){ %>
         <div class="swiper-slide">
           <div class="swiper-zoom-container">
-            <img src="../../../data/<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
+            <img src="../../../data/tovar<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
           </div>
         </div>
         <% } %> 
@@ -313,39 +235,7 @@
     </section>      
   </main>
   <div id="stop" class="scrollTop"></div>
-  <footer class="flex-rw">
-    <ul class="footer-list-top">
-      <li><a href='/about' class="generic-anchor footer-list-anchor" itemprop="significantLink">Про нас</a></li>
-      <li><a href='/news' class="generic-anchor footer-list-anchor" itemprop="significantLink">Новости</a></li>
-      <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">VHF</a></li>
-      <li><a href='#' itemprop="significantLink" class="generic-anchor footer-list-anchor">HF</a></li>
-      <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Форум</a></li>
-      <li><a href='/market' class="generic-anchor footer-list-anchor" itemprop="significantLink">Барахолка</a></li>
-      <li><a href='/contacts' class="generic-anchor footer-list-anchor" itemprop="significantLink">Контакты</a></li>
-    </ul>
-    <ul class="footer-list-top">
-      <a href="#" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>       
-      <a href="#" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
-      <a href="#" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
-      <a href="#" class="generic-anchor" target="_blank" title="VK" itemprop="significantLink"><i class="fa fa-vk"></i></a>
-    </ul>
-
-    <ul class="footer-list-top">
-      <li><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
-      <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Карта сайта</a></li>
-      <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Условия пользования</a></li>
-      <li id='find-a-store'><a href='#' class="generic-anchor footer-list-anchor" itemprop="significantLink">Политика конфединцыальности</a></li>
-    </ul>
-    
-    <section class="footer-bottom-section flex-rw">
-      <div class="footer-bottom-wrapper">   
-        <i class="fa fa-copyright" role="copyright">
-
-        </i> 2019 Радиоклуб "Азимут" <address class="footer-address" role="company address">Львов, UA</address><span class="footer-bottom-rights"></span>
-      </div>
-      <div class="footer-bottom-wrapper"></div>
-    </section>
-  </footer>
+  <%- include ./includes/footer.ejs %>
   <div class="notifications"></div> 
 </body>
 </html>
