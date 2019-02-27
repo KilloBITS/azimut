@@ -53,6 +53,7 @@ const hf = require('./routes/getHF');
 const calendar = require('./routes/getCalendar');
 const activ = require('./routes/getActivity');
 const rules = require('./routes/getRules');
+const numeral = require('./routes/getNumeral');
 
 app.use('/', index);
 app.use('/register', register);
@@ -71,6 +72,7 @@ app.use('/HF', hf);
 app.use('/calendar', calendar);
 app.use('/activity*', activ);
 app.use('/rules', rules);
+app.use('/numeral*', numeral);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
