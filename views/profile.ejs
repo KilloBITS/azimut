@@ -61,7 +61,7 @@
 			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
 			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
 			<a href="#"><%= page.top_menu[5] %></a> 
-			<a href="/market"><%= page.top_menu[6] %></a> 
+			<a href="/market?page=1"><%= page.top_menu[6] %></a> 
 			<a href="/contacts"><%= page.top_menu[7] %></a>  
 		</nav>
 	</header>
@@ -368,59 +368,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="addTovarData">
-					<div class="canvelAddTovar" onclick="canvelAddTovar()"><%= page.cancel %></div>
-					<h2><%= page.thedetails %></h2>
-					<div class="newTovarLoader"></div>
-					<div class="lineOftovar">
-						<div class="titleOfNewTovar"><%= page.productname %></div>
-						<input type="text" name="newTovarTitle" placeholder="Введите название товара">
-					</div>
-					<div class="lineOftovar">
-						<div class="titleOfNewTovar">Телефон для связи</div>
-						<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="Введите номер телефона">
-					</div>
-					<div class="lineOftovar">
-						<div class="titleOfNewTovar">Електронная почта</div>
-						<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="Введите ваш адрес електронной почты">
-					</div>
-					<div class="lineOftovar">
-						<div class="titleOfNewTovar">Описание товара</div>
-						<textarea placeholder="Опишите ваш товар"></textarea>
-					</div>
-					<div class="lineOftovar">
-						<div class="titleOfNewTovar">Тип объявления: </div>
-						<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)">Продам</label>
-						<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)">Куплю</label>
-						<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)">Отдам даром</label>
-						<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio" checked>
-						<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
-						<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
-					</div>
-					<h3>Добавить изображения</h3>
-					<input type="file" name="file" id="tFile" required multiple>
-					<div class="AddPhotoBlock">
-						<div class="newPhotoClick" onclick="addPhoto()">
-							<img src="../../../img/image.svg">
-						</div>
-						<div class="newPhotoClick" onclick="addPhoto()">
-							<img src="../../../img/image.svg">
-						</div>
-						<div class="newPhotoClick" onclick="addPhoto()">
-							<img src="../../../img/image.svg">
-						</div>
-						<div class="newPhotoClick" onclick="addPhoto()">
-							<img src="../../../img/image.svg">
-						</div>
-						<div class="newPhotoClick" onclick="addPhoto()"> 
-							<img src="../../../img/image.svg">
-						</div>
-						<div class="newPhotoClick" onclick="addPhoto()">
-							<img src="../../../img/image.svg">
-						</div>
-					</div>
-					<div class="SavingBtnNewTovar" onclick="getNewPostTovar()">Подать объявление</div>
-				</div>
+			<%- include ./includes/addtovar.ejs %>
 		</section>	
 	</main>
 	<div id="stop" class="scrollTop"></div>

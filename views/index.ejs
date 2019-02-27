@@ -64,7 +64,7 @@
 			<a href="/VHF?page=1"><%= page.top_menu[3] %></a> 
 			<a href="/HF?page=1" class="menu_to_left"><%= page.top_menu[4] %></a> 
 			<a href="#" class="menu_to_right"><%= page.top_menu[5] %></a> 
-			<a href="/market"><%= page.top_menu[6] %></a> 
+			<a href="/market?page=1"><%= page.top_menu[6] %></a> 
 			<a href="/contacts"><%= page.top_menu[7] %></a> 
 		</nav>
 	</header>
@@ -110,7 +110,21 @@
 			</p>			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
-				<span><%= NEWS[i].AUTHOR %></span>
+				<span>
+				<%= NEWS[i].AUTHOR %>
+					<div class="miniUserBlockNews">
+						<div class="miniUsersBlockAva"></div>
+						<div class="miniUsersBlockName"></div>
+						<script type="text/javascript">
+							var posivka = '<%= NEWS[i].AUTHOR %>';
+							$.post('/getUserAva', {user: posivka},function(res){
+								$('.miniUsersBlockAva:eq(<%= i %>)').css({"background-image":"url(../../../data/avatars/"+res.ava+")"})
+								$('.miniUsersBlockName:eq(<%= i %>)').html(res.name);
+							});
+						</script>
+						<div class="miniUsersBlockButton"><%= page.profile %></div>
+					</div>
+				</span>
 			</div>
 		</section>	
 		<% } %>

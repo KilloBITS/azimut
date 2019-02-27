@@ -13,10 +13,18 @@ router.post('/setGoodTovar', function(req, res, next){
 		mongoClient.connect(global.baseIP, function(err, client){
 			const db = client.db(global.baseName);
 			const market = db.collection("MARKET");
+			const user = db.collection("USERS");
 
 			if(err) return console.log(err);
 
-			market.update({ AI: parseInt(req.body.a) },{$set: {status: 'good'}});		
+			market.update({ AI: parseInt(req.body.a) },{$set: {status: 'good'}});	
+
+			market.find({ AI: parseInt(req.body.a) }).toArray(function(err, resTovar){
+				user.find({pozivnoy: resTovar[0].User}).toArray(function(err, resuser){
+					global.sendMail("Уведомление","Ваше объявление '"+ resTovar[0].Title +"' было одобрено администрацией!", resuser[0].email);
+				});	
+			});
+			
 
 			res.send({code: 500, className: 'nSuccess', message: 'Объявление переведено в статус активного!'});				
 		});
@@ -32,10 +40,17 @@ router.post('/setCancelTovar', function(req, res, next){
 		mongoClient.connect(global.baseIP, function(err, client){
 			const db = client.db(global.baseName);
 			const market = db.collection("MARKET");
+			const user = db.collection("USERS");
 
 			if(err) return console.log(err);
 
 			market.update({ AI: parseInt(req.body.a) },{$set: {status: 'stop'}});		
+
+			market.find({ AI: parseInt(req.body.a) }).toArray(function(err, resTovar){
+				user.find({pozivnoy: resTovar[0].User}).toArray(function(err, resuser){
+					global.sendMail("Уведомление","Ваше объявление '"+ resTovar[0].Title +"' не прошло модерацию!", resuser[0].email);
+				});	
+			});
 
 			res.send({code: 500, className: 'nSuccess', message: 'Объявление переведено в статус неактивного!'});				
 		});
@@ -51,9 +66,16 @@ router.post('/setRemoveTovar', function(req, res, next){
 		mongoClient.connect(global.baseIP, function(err, client){
 			const db = client.db(global.baseName);
 			const market = db.collection("MARKET");
+			const user = db.collection("USERS");
 
 			if(err) return console.log(err);
-		
+
+			market.find({ AI: parseInt(req.body.a) }).toArray(function(err, resTovar){
+				user.find({pozivnoy: resTovar[0].User}).toArray(function(err, resuser){
+					global.sendMail("Уведомление","Ваше объявление '"+ resTovar[0].Title +"' было удалено администрацией!", resuser[0].email);
+				});	
+			});
+
 			market.remove({ AI: parseInt(req.body.a)});
 
 			res.send({code: 500, className: 'nSuccess', message: 'Товар успешно удален!'});				

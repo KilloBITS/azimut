@@ -7,15 +7,6 @@ const bParser = require('body-parser');
 const base64 = require('base-64');
 const fs = require('fs');
 
-const nodemailer = require('nodemailer');
-const transporter = nodemailer.createTransport({
-	service: 'gmail',
-	auth: {
-		user: 'azimutbot@gmail.com',
-		pass: 'qazwsx159357'
-	}
-});
-
 router.use(cookieParser());
 
 router.post('/signup', function(req, res, next){
@@ -69,31 +60,21 @@ router.post('/signup', function(req, res, next){
 				NEW_USER.isProfile = true;
 				NEW_USER.isMessage = true;
 				NEW_USER.isFriend = true;
-				NEW_USER.isSecurity = false;
-				
+				NEW_USER.isSecurity = false;				
 
 				users.insertOne(NEW_USER);
 
-					//create folder
-					var dir = './publick/data/avatars/'+req.body.poziv;
-					if (!fs.existsSync(dir)){
-						fs.mkdirSync(dir);
-					}
-
-					res.send({code: 500, data: NEW_USER});
-
-					let mailOptions = {
-				        from: "azimutbot@gmail.com", // sender address
-				        to: req.body.email, // list of receivers
-				        subject: 'Регистрация', // Subject line
-				        text:  "Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, // plain text body
-				        // html: SHABLON_MESSAGE // html body
-				    };
-				    transporter.sendMail(mailOptions, function (error, info) {});
-				}else{
-					res.send({code: 450, message: 'Ошибка регистрации'})
+				//create folder
+				var dir = './publick/data/avatars/'+req.body.poziv;
+				if (!fs.existsSync(dir)){
+					fs.mkdirSync(dir);
 				}
-			});
+				global.sendMail("Регистрация","Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, req.body.email);
+				res.send({code: 500, data: NEW_USER});					
+			}else{
+				res.send({code: 450, message: 'Ошибка регистрации'})
+			}
+		});
 	});
 
 

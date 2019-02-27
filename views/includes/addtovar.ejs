@@ -1,0 +1,79 @@
+<% if(sessionUser !== undefined){ %>
+<div class="addTovarData">
+	<div class="canvelAddTovar" onclick="canvelAddTovar()"><%= page.cancel %></div>
+	<h2><%= page.thedetails %></h2>
+	<div class="newTovarLoader"></div>
+	<div class="lineOftovar">
+		<div class="titleOfNewTovar"><%= page.productname %></div>
+		<input type="text" name="newTovarTitle" placeholder="Введите название товара">
+	</div>
+
+	<div class="lineOftovar">
+		<div class="titleOfNewTovar">Телефон для связи</div>
+		<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="Введите номер телефона">
+	</div>
+	<div class="lineOftovar">
+		<div class="titleOfNewTovar">Електронная почта</div>
+		<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="Введите ваш адрес електронной почты">
+	</div>
+	<div class="lineOftovar">
+		<div class="titleOfNewTovar">Описание товара</div>
+		<textarea placeholder="Опишите ваш товар"></textarea>
+	</div>
+	<div class="lineOftovar">
+		<div class="titleOfNewTovar">Тип объявления: </div>
+		<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)">Продам</label>
+		<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)">Куплю</label>
+		<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)">Отдам даром</label>
+		<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio" checked>
+		<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
+		<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
+	</div>
+	<div class="lineOftovar" id="priceOfTovarBlock">
+		<div class="titleOfNewTovar">Цена товара</div>
+		<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="Введите цену">		
+	</div>	
+
+	<h3>Добавить изображения</h3>
+	<input type="file" name="file" id="tFile" required multiple>
+	<div class="AddPhotoBlock">
+		<div class="newPhotoClick" onclick="addPhoto(this)">
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+		<div class="newPhotoClick" onclick="addPhoto(this)">
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+		<div class="newPhotoClick" onclick="addPhoto(this)">
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+		<div class="newPhotoClick" onclick="addPhoto(this)">
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+		<div class="newPhotoClick" onclick="addPhoto(this)"> 
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+		<div class="newPhotoClick" onclick="addPhoto(this)">
+			<img src="../../../img/image.svg">
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+		</div>
+	</div>
+	<div class="SavingBtnNewTovar" onclick="getNewPostTovar()">Подать объявление</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.hiddenradio').on('change',function(){
+			if(document.querySelector('input[name="newTovarType"]:checked').value === 'Отдам'){
+				$('#priceOfTovarBlock').hide();
+			}else{
+				$('#priceOfTovarBlock').show();
+			}
+		});		
+	});
+</script>
+<% } %>

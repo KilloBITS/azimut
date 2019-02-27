@@ -42,6 +42,9 @@ router.post('/newTovar', function(req, res, next){
 				NEW_TOVAR.Date = datetime;			
 				NEW_TOVAR.AI = NEXT_AI;			
 				NEW_TOVAR.status = 'moderation';
+				if(req.body.type !== 'Отдам'){
+					NEW_TOVAR.Price = req.body.info[4];
+				}				
 				NEW_TOVAR.Images = [];
 				console.log(req.body.image)
 				if(req.body.image !== undefined && req.body.image.length > 0){

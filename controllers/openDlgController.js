@@ -55,6 +55,7 @@ var CreateNewMessage = function(req, res, next){
 		mongoClient.connect(global.baseIP, function(err, clientMDB){
 			const db = clientMDB.db(global.baseName);
 			const msg = db.collection("MESSAGE");
+			const user = db.collection("USERS");
 			msg.find().toArray(function(err, resDlg){	
 				var NEW_MESSAGE = {};
 				NEW_MESSAGE.to = req.session.poziv;
@@ -65,7 +66,9 @@ var CreateNewMessage = function(req, res, next){
 				NEW_MESSAGE.views = false;
 				NEW_MESSAGE.AI = resDlg.length;
 				msg.insertOne(NEW_MESSAGE);
-
+				user.find({pozivnoy: req.body.a}).toArray(function(err, resuser){
+					global.sendMail("Уведомление","Вам пришло сообщение от: " + req.session.poziv + ". На сайте http://www.ur4wwr.org/", resuser[0].email);
+				});				
 				res.send({code: 500, data: NEW_MESSAGE });
 			});			
 		});		

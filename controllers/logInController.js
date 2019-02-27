@@ -53,7 +53,23 @@ router.post('/signin', function(req, res, next){
 			});
 		});
 	}
-
 });
+
+
+router.post('/getUserAva', function(req, res, next){	
+	mongoClient.connect(global.baseIP, function(err, client){
+		const db = client.db(global.baseName);
+		const users = db.collection("USERS");
+		const LOGS = db.collection("LOGS");
+		if(err) return console.log(err);
+		users.find({pozivnoy: req.body.user}).toArray(function(err, results_users){
+			if(results_users.length > 0){
+				res.send({ava: results_users[0].ava, name: results_users[0].name})
+			}			
+			
+		});
+	});	
+});
+
 
 module.exports = router;

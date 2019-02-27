@@ -13,6 +13,7 @@ const app = express();
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 require('./controllers/parseLanguageController')
+require('./controllers/mailController')
 
 app.use(session({
 	secret: '2C44-4D44-WppQ38S',
@@ -120,6 +121,7 @@ app.post('/checkedCaptcha', function(req, res){
 //Авторизация
 const auth = require('./controllers/logInController');
 app.post('/signin', auth);
+app.post('/getUserAva', auth);
 //Регистрация
 const signUp = require('./controllers/registerController');
 app.post('/signup', signUp);
@@ -163,6 +165,9 @@ app.post('/setRemoveTovar', marketAbout);
 app.post('/setCancelTovar', marketAbout);
 app.post('/setGoodTovar', marketAbout);
 
+const newsPanel = require('./controllers/panelControllers/newsController');
+app.post('/setNewNews', newsPanel);
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false
@@ -196,5 +201,6 @@ app.listen(4334,function(){
 			} 
 		});
 	});
+	global.sendMail("Система АЗИМУТ","Сервер азимут был запущен!", 'mr.kalinuk@gmail.com');
 	console.log('Started server on "Azimut" from port: 4334');
 });

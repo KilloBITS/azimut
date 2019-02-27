@@ -1115,3 +1115,7 @@ animation-delay: .8s;
 #tFile{
     display: none;
 }
+
+.newPhotoClick img{
+  max-height: 100%;
+}

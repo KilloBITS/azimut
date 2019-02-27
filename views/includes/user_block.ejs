@@ -15,6 +15,12 @@
 		<div class="localIcon" id="ua" title="Українська"></div>
 		<div class="localIcon" id="en" title="English"></div>
 	</div>	
+	<script type="text/javascript">
+		$.post('/getUserAva', {user: $('.userPoziv').html().slice(1).slice(0,-1)},function(res){
+			console.log(res);
+			$('.userAVA').css({"background-image":"url(../../../data/avatars/"+res.ava+")"})
+		});
+	</script>
 </div>
 <% } else { %>
 <div class="nav_wrapper" id="users_wraper">
