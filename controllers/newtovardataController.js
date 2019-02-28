@@ -16,7 +16,7 @@ router.post('/newtovarautodata', function(req, res, next){
 		users.find({pozivnoy: req.session.poziv}).toArray(function(err, results_users ){
 			console.log(results_users)
 			if(results_users.length > 0){
-					res.send({code: 450, data: results_users[0]})
+					res.send({code: 500, data: results_users[0]})
 				}else{
 					res.send({code: 450, message: 'Ошибка данных'})
 				}

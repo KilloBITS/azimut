@@ -51,7 +51,11 @@
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                             <ul class="collapse">
                                 <li><a href="/PanelNews?page=1">Новости</a></li>
-                                <li class="active"><a href="/newNews">Создать новость</a></li>
+                                <li><a href="/PanelNews?page=1">VHF</a></li>
+                                <li><a href="/PanelNews?page=1">HF</a></li>
+                                <li><a href="/PanelNumeral?page=1">Цифра</a></li>
+                                
+                                <!-- <li class="active"><a href="/newNews">Создать новость</a></li> -->
                             </ul>
                         </li>
                         <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
@@ -61,7 +65,7 @@
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
                             <ul class="collapse" style="height: 0px;">
                                 <li><a href="#">Настройки</a></li>
-                                <li><a href="#">База данных</a></li>
+                                <li><a href="/PanelDB">База данных</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -279,6 +283,7 @@
                                             <option value="ALL">Общая</option>
                                             <option value="HF">HF</option>
                                             <option value="VHF">VHF</option>
+                                            <option value="NUMERIC">Цифра</option>
                                         </select>
                                     </div>
 

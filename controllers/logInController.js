@@ -14,7 +14,7 @@ router.post('/signin', function(req, res, next){
 		mongoClient.connect(global.baseIP, function(err, client){
 			const db = client.db(global.baseName);
 			const users = db.collection("USERS");
-			const LOGS = db.collection("LOGS");
+
 			if(err) return console.log(err);
 			users.find({pozivnoy: req.body.login}).toArray(function(err, results_users){				
 				if((results_users.length !== 0) && (req.body.login === results_users[0].pozivnoy && req.body.password === results_users[0].password)) {
@@ -27,23 +27,7 @@ router.post('/signin', function(req, res, next){
 						global.online = global.online + 1;
 						res.send({code:500, data: results_users});
 
-						var today = new Date();
-						var dd = today.getDate();
-						var mm = today.getMonth()+1;
-						var yyyy = today.getFullYear();
-						if(dd<10) {
-							dd = '0'+dd
-						}
-						if(mm<10) {
-							mm = '0'+mm
-						}
-						today = mm + '-' + dd + '-' + yyyy;
-
-						var NEW_LOGS = {};
-						NEW_LOGS.date = today;
-						NEW_LOGS.type = 'Авторизация пользователя';
-						NEW_LOGS.text = 'Авторизация: '+results_users[0];
-						LOGS.insertOne(NEW_LOGS);
+						global.setLog(4, 'Авторизация пользователя', 'Авторизация: '+results_users[0], results_users[0].pozivnoy);
 					}else{
 						res.send({code:450, className: 'nWarning', message: 'Аккаунт не активирован'});
 					}					

@@ -25,12 +25,12 @@ router.get('/*', function(req, res, next){
 			const news = db.collection("NEWS");
 
 			conf.find().toArray(function(err, resultDB){
-				news.find({type:"ALL"}).toArray(function(err, result_news){
+				news.find({type:"HF"}).toArray(function(err, result_news){
 					var current_page = page;
-					var paginator = new pagination.SearchPaginator({prelink: '/PanelNews?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
+					var paginator = new pagination.SearchPaginator({prelink: '/PanelHF?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
 					var p = paginator.getPaginationData();
 
-					res.render('panel/news_panel.ejs',
+					res.render('panel/HF_panel.ejs',
 					{
 						sessionUser: req.session.user,
 						sessionPoziv: req.session.poziv,

@@ -52,8 +52,11 @@
                           <li>
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                             <ul class="collapse" style="height: 0px;">
-                                <li><a href="/PanelNews?page=1">Новости</a></li>
-                                <li><a href="/newNews">Создать новость</a></li>
+                                    <li><a href="/PanelNews?page=1">Новости</a></li>
+                                    <li><a href="/PanelVHF?page=1">VHF</a></li>
+                                    <li><a href="/PanelHF?page=1">HF</a></li>
+                                    <li><a href="/PanelNumeral?page=1">Цифра</a></li>
+                                <!-- <li><a href="/newNews">Создать новость</a></li> -->
                             </ul>
                         </li>                            
                         <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
@@ -63,7 +66,7 @@
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
                             <ul class="collapse" style="height: 0px;">
                                 <li><a href="#">Настройки</a></li>
-                                <li><a href="#">База данных</a></li>
+                                <li><a href="/PanelDB">База данных</a></li>
                             </ul>
                         </li>                          
                     </ul>
@@ -264,6 +267,43 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-12 col-lg-8 mb-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-sm-flex justify-content-between align-items-center">
+                                    <h4 class="header-title mb-0">Последние логи системы</h4>
+                                </div>
+                                <div class="market-status-table mt-4">
+                                    <div class="table-responsive">
+                                        <table class="dbkit-table">
+                                            <tr class="heading-td">
+                                                <td class="mv-icon">...</td>
+                                                <td class="coin-name">Тип</td>
+                                                <td class="buy">Дата</td>
+                                                <td class="sell">Время</td>
+                                                <td class="trends">Пользователь</td>
+                                                <td class="attachments">Описание</td>
+
+                                            </tr>
+                                            <% for(var i = 0; i < logs.length; i++){ %>
+                                            <tr>
+                                                <td class="mv-icon">
+                                                    <img src="../../../../img/logs-icon/<%= logs[i].logo %>.png" alt="icon">
+                                                </td>
+                                                <td class="coin-name"><%= logs[i].type %></td>
+                                                <td class="buy"><%= logs[i].date %></td>
+                                                <td class="sell"><%= logs[i].time %></td>
+                                                <td class="trends"><%= logs[i].user %></td>
+                                                <td class="attachments"><%= logs[i].text %></td> 
+                                            </tr>
+                                            <% } %>                                           
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

@@ -70,9 +70,11 @@ router.post('/signup', function(req, res, next){
 					fs.mkdirSync(dir);
 				}
 				global.sendMail("Регистрация","Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, req.body.email);
-				res.send({code: 500, data: NEW_USER});					
+				res.send({code: 500, data: NEW_USER});	
+
+				global.setLog(4, 'Регистрация пользователя', 'Регистрация нового аккаунта: '+req.body.poziv, req.body.poziv);				
 			}else{
-				res.send({code: 450, message: 'Ошибка регистрации'})
+				res.send({code: 450, message: 'Ошибка регистрации'});
 			}
 		});
 	});

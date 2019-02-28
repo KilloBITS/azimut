@@ -46,7 +46,7 @@ router.post('/newTovar', function(req, res, next){
 					NEW_TOVAR.Price = req.body.info[4];
 				}				
 				NEW_TOVAR.Images = [];
-				console.log(req.body.image)
+
 				if(req.body.image !== undefined && req.body.image.length > 0){
 					var dir = './public/data/tovar/'+NEXT_AI;
 
@@ -67,7 +67,8 @@ router.post('/newTovar', function(req, res, next){
 				
 				
 				market.insertOne(NEW_TOVAR);
-				res.send({code: 500, className:'nSuccess', message: 'Ваше объявление отправленно на модерацию!'});	
+				res.send({code: 500, className:'nSuccess', message: 'Ваше объявление отправленно на модерацию!'});
+				global.setLog(3, 'Добавление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);		
 			});			
 		});
 	}else{

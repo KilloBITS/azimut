@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 require('./controllers/parseLanguageController')
 require('./controllers/mailController')
+require('./controllers/logsController')
 
 app.use(session({
 	secret: '2C44-4D44-WppQ38S',
@@ -93,17 +94,25 @@ const getPanelIndex = require('./routes/panel/getPanelIndex');
 const getPanelLanguage = require('./routes/panel/getPanelLanguage');
 const getPanelMarket = require('./routes/panel/getPanelMarket');
 const getPanelNews = require('./routes/panel/getPanelNews');
+const getPanelVHF = require('./routes/panel/getPanelVHF');
+const getPanelHF = require('./routes/panel/getPanelHF');
+const getPanelNumeral = require('./routes/panel/getPanelNumeral');
 const getPanelUsers = require('./routes/panel/getPanelUsers');
 const getNewNews = require('./routes/panel/getNewNews');
 const getPanelAbout = require('./routes/panel/getPanelAbout');
+const getPanelDB = require('./routes/panel/getPanelDB');
 
 app.use('/PanelCalendar', getPanelCalendar);
 app.use('/PanelIndex', getPanelIndex);
 app.use('/PanelLanguage', getPanelLanguage);
 app.use('/PanelMarket', getPanelMarket);
 app.use('/PanelNews*', getPanelNews);
+app.use('/PanelVHF*', getPanelVHF);
+app.use('/PanelHF*', getPanelHF);
+app.use('/PanelNumeral*', getPanelNumeral);
 app.use('/PanelUsers', getPanelUsers);
 app.use('/PanelAbout', getPanelAbout);
+app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
 
 
@@ -158,6 +167,9 @@ app.post('/newTovar', newTovar);
 const calendarData = require('./controllers/getCalendarController');
 app.post('/getCalendar', calendarData);
 
+
+
+
 /** Panel POST **/
 const panelAbout = require('./controllers/panelControllers/aboutController');
 app.post('/saveAboutText', panelAbout);
@@ -173,6 +185,11 @@ app.post('/setNewNews', newsPanel);
 const calendarPanel = require('./controllers/panelControllers/calendarController');
 app.post('/setNewCalendar', calendarPanel);
 app.post('/setDeleteCalendar', calendarPanel);
+
+const numeralPanel = require('./controllers/panelControllers/numeralController');
+app.post('/setNewNews', numeralPanel);
+
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

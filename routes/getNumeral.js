@@ -18,9 +18,9 @@ router.get('/', function(req, res, next){
   }
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
-    const numeral = db.collection("NUMERAL");
+    const numeral = db.collection("NEWS");
     const conf = db.collection("CONFIG");
-    numeral.find().sort({AI: -1}).toArray(function(err, resNews){
+    numeral.find({type: 'NUMERIC'}).sort({AI: -1}).toArray(function(err, resNews){
       conf.find().toArray(function(err, resultDB){
         var current_page = page;
         var paginator = new pagination.SearchPaginator({prelink: '/numeral?' , current: current_page, rowsPerPage: 12, totalResult: resNews.length-1});

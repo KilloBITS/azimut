@@ -4,17 +4,21 @@
     color: black;
     padding: 10px;
     border-radius: 1px;
-    border: 1px solid rgba(192, 192, 192, 0.34);
+    border: 1px solid rgb(0, 0, 0);
     display: inline-block;
     margin-bottom: 4px;
     transition: 0.2s;
+    background-image: url(https://www.glendon.yorku.ca/futurestudents/wp-content/uploads/sites/12/retreat1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 3px;
 }
 
 .roundtables h1{
     margin: 0;
     padding: 0;
     margin-bottom: 10px;
-    border-bottom: 1px solid silver;
+    /* border-bottom: 1px solid silver; */
     color: #6b6b6b;
 }
 

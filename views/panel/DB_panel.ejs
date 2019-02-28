@@ -1,10 +1,9 @@
 <!doctype html>
 <html class="no-js" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Пользователи</title>
+    <title>Управление базой данных</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -13,14 +12,9 @@
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amcharts css -->
+    <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- Start datatable css -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
-    <!-- style css -->
+    <!-- others css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -28,7 +22,6 @@
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-
 <body>
     <div id="preloader">
         <div class="loader"></div>
@@ -57,23 +50,23 @@
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                                 <ul class="collapse" style="height: 0px;">
-                                    <li><a href="/PanelNumeral?page=1">Цифра</a></li>
                                     <li><a href="/PanelNews?page=1">Новости</a></li>
-                                    <li><a href="/PanelNews?page=1">VHF</a></li>
-                                    <li><a href="/PanelNews?page=1">HF</a></li>
+                                    <li><a href="/PanelVHF?page=1">VHF</a></li>
+                                    <li><a href="/PanelHF?page=1">HF</a></li>
+                                    <li><a href="/PanelNumeral?page=1">Цифра</a></li>
                                     <!-- <li><a href="/newNews">Создать новость</a></li> -->
                                 </ul>
                             </li>                          
-                            <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
+                            <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
                             <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                            
-                            <li class="active"><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
-                            <li>
+                            <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>  
+                            <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
-                                <ul class="collapse" style="height: 0px;">
+                                <ul class="collapse">
                                     <li><a href="#">Настройки</a></li>
-                                    <li><a href="/PanelDB">База данных</a></li>
+                                    <li class="active"><a href="/PanelDB">База данных</a></li>
                                 </ul>
-                            </li>                          
+                            </li>                                                    
                       </ul>
                   </nav>
               </div>
@@ -244,7 +237,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Пользователи</h4>
+                        <h4 class="page-title pull-left">Локализация</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
@@ -262,90 +255,70 @@
         <div class="main-content-inner">
           <!-- Тут будет контент -->
           <div class="row">
-            <!-- data table start -->
-            <div class="col-12 mt-5">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="header-title">Список пользователей</h4>
-                        <div class="data-tables">
-                            <table id="dataTable" class="text-center">
-                                <thead class="bg-light text-capitalize">
-                                    <tr>
-                                        <th>Позывной</th>
-                                        <th>Имя</th>
-                                        <th>email</th>
-                                        <th>Номер телефона</th>
-                                        <th>Дата регистрации</th>                                                
-                                        <th>Онлайн</th>                                                
-                                        <th>Должность</th>                                                
-                                        <th>Действия</th>                                                
-                                    </tr>
-                                </thead>
-                                <tbody>                                 
-                                    <% for(var i = 0; i < users.length; i++){ %>
-                                    <tr>
-                                        <td><%= users[i].pozivnoy %></td>
-                                        <td><%= users[i].name %></td>
-                                        <td><%= users[i].email %></td>
-                                        <td><%= users[i].phone_number %></td>
-                                        <td><%= users[i].regiter_date %></td>
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Подключение к базе</h4>
+                                    <p class="text-muted font-14 mb-4">Настройки параметров базы данных</p>
 
-                                        <% if(users[i].onlineSession){ %>
-                                        <td class="greenTable">Онлайн</td>
-                                        <% }else{ %>    
-                                        <td class="redTable">Офлайн</td>
-                                        <% } %> 
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">IP адресс базы</label>
+                                        <input class="form-control" type="text" id="example-text-input">
+                                    </div>    
 
-                                        <% if(users[i].isAdmin){ %>
-                                        <td class="redTable">Администратор</td>
-                                        <% }else{ %>    
-                                        <td class="greenTable">Пользователь</td>
-                                        <% } %>                                         
-                                        <td>
-                                            <button type="button" class="btn btn-warning btn-xs mb-3">Заблокировать</button>
-                                            <button type="button" class="btn btn-danger btn-xs mb-3">Удалить</button>
-                                            <% if(users[i].isAdmin){ %>
-                                            <button type="button" class="btn btn-secondary btn-xs mb-3">Назначить администратором</button>
-                                            <% } %>  
-                                        </td>  
-                                    </tr>                                                
-                                    <% } %>
-                                </tbody>
-                            </table>
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">Порт адресс базы</label>
+                                        <input class="form-control" type="text" id="example-text-input">
+                                    </div>                                
+                                    
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">Логин</label>
+                                        <input class="form-control" type="text" id="example-text-input">
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">Пароль</label>
+                                        <input class="form-control" type="text" id="example-text-input">
+                                    </div>   
+
+                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveDBParams()">Сохранить</button>
+                                 
+                                </div>
+                            </div>
                         </div>
+                        <!-- Textual inputs end -->
                     </div>
                 </div>
             </div>
-        </div>  
-    </div>
-</div>
-<footer>
+      </div>
+  </div>
+  <footer>
     <div class="footer-area">
         <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
     </div>
 </footer>
 </div>
-<!-- jquery latest version -->
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
-<!-- bootstrap 4 js -->
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/metisMenu.min.js"></script>
 <script src="assets/js/jquery.slimscroll.min.js"></script>
 <script src="assets/js/jquery.slicknav.min.js"></script>
-
-<!-- Start datatable js -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-<!-- others plugins -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<script src="assets/js/line-chart.js"></script>
+<script src="assets/js/pie-chart.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
-<script src="assets/js/methods.js"></script>
-
 </body>
 
 </html>
