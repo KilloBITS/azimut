@@ -77,3 +77,30 @@ var saveNewNews = function(){
 		location.reload();
 	})
 }
+
+var newCalendarDate = function(){
+	if(isNaN(new Date($("#example-datetime-local-input-end").val()))){
+		var data = null;
+	}else{
+		var data = new Date($("#example-datetime-local-input-end").val());
+	}
+	var ND = {
+		allDay: false,
+		end: data,
+		start: new Date($("#example-datetime-local-input-start").val()),
+		text: $("#example-text-input2").val(),
+		title: $("#example-text-input").val()
+	}
+
+	$.post('/setNewCalendar', ND, function(res){
+		console.log(res);
+		location.reload();
+	})
+}
+
+var setRemoveCalendar = function(ai){
+	$.post('/setDeleteCalendar', {a: ai}, function(res){
+		console.log(res);
+		location.reload();
+	})
+}

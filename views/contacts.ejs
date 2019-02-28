@@ -101,7 +101,14 @@
 			<h2 class="contacts_block_title"><%= page.ourcontacts %></h2>
 			<div class="numbers_block">
 				<div class="userContact">
-					<img src="../../../data/avatars/default.gif">
+					<img id="oneAdmin" src="../../../data/avatars/default.gif">
+					<script type="text/javascript">
+						var posivka = '<%= page.admins[0].pozivnoy %>';
+						$.post('/getUserAva', {user: posivka},function(res){
+							console.log(res);
+							$('#oneAdmin').attr({"src":"../../../data/avatars/"+res.ava})
+						});
+					</script>
 					<div class="userName"><%= page.admins[0].name %></div>
 					<div class="userDolg">(<%= page.admins[0].rank %>)</div>
 					<a href="tel:<%= page.admins[0].number %>" class="userNumbe"><%= page.admins[0].number %></a>
@@ -109,7 +116,13 @@
 					<div class="userPozivnoy">(<%= page.admins[0].pozivnoy %>)</div>
 				</div>
 				<div class="userContact">
-					<img src="../../../data/avatars/default.gif">
+					<img id="twoAdmin" src="../../../data/avatars/default.gif">
+					<script type="text/javascript">
+						var posivka = '<%= page.admins[1].pozivnoy %>';
+						$.post('/getUserAva', {user: posivka},function(res){
+							$('#twoAdmin').attr({"src":"../../../data/avatars/"+res.ava})
+						});
+					</script>
 					<div class="userName"><%= page.admins[1].name %></div>
 					<div class="userDolg">(<%= page.admins[1].rank %>)</div>
 					<a href="tel:<%= page.admins[1].number %>" class="userNumbe"><%= page.admins[1].number %></a>
@@ -117,7 +130,13 @@
 					<div class="userPozivnoy">(<%= page.admins[1].pozivnoy %>)</div>
 				</div>
 				<div class="userContact">
-					<img src="../../../data/avatars/default.gif">
+					<img id="threeAdmin" src="../../../data/avatars/default.gif">
+					<script type="text/javascript">
+						var posivka = '<%= page.admins[2].pozivnoy %>';
+						$.post('/getUserAva', {user: posivka},function(res){
+							$('#threeAdmin').attr({"src":"../../../data/avatars/"+res.ava})
+						});
+					</script>
 					<div class="userName"><%= page.admins[2].name %></div>
 					<div class="userDolg">(<%= page.admins[2].rank %>)</div>
 					<a href="tel:<%= page.admins[2].number %>" class="userNumbe"><%= page.admins[2].number %></a>

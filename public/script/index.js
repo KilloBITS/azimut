@@ -95,7 +95,6 @@ requestAnimationFrame(update);
 }
 
 $(document).ready(function(){
-
   $('.localIcon').click(function(){
     $.cookie("AL", $(this).attr('id'));
     location.reload();

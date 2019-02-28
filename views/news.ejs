@@ -10,14 +10,17 @@
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" type="text/css" href="/style/news/news.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="./data/header.json"></script>
+	<script src="./script/aos.js"></script>	
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
 	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
-	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
-	<script type="text/javascript" src="/script/index.js"></script>	
+	<script type="text/javascript" src="/script/index.js"></script>		
+  	
 	<% if(sessionUser === undefined){ %>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>	
 	<% } %>
@@ -96,7 +99,7 @@
 		</div>	
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
-		<section id="section_<%= i %>" class="section_data">
+		<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
 			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
@@ -151,6 +154,12 @@
 
 	<div id="stop" class="scrollTop"></div>
 	<%- include ./includes/footer.ejs %>
-	<div class="notifications"></div> 
+	<div class="notifications"></div>
+
+    <script>
+      AOS.init({
+        easing: 'ease-in-out-sine'
+      });
+    </script> 
 </body>
 </html>

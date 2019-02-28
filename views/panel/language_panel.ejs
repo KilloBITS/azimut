@@ -30,15 +30,23 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
+                    <h3 style="color: white;">Админка</h3>
                 </div>
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">         
-                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>   
-                          <li><a href="/PanelAbout"><i class="fa fa-info-circle"></i> <span>О нас</span></a></li>            
-                          <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
+                            <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>   
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
+                                <ul class="collapse" style="height: 0px;">
+                                    <li><a href="/PanelAbout">Информация</a></li>
+                                    <li><a href="/PanelGallery">Фотогалерея</a></li>
+                                    <li><a href="/PanelContacts">Контакты</a></li>
+                                </ul>
+                            </li>          
+                            <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                                 <ul class="collapse" style="height: 0px;">
@@ -46,9 +54,16 @@
                                     <li><a href="/newNews">Создать новость</a></li>
                                 </ul>
                             </li>                          
-                          <li class="active"><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
-                          <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                            
-                          <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>                            
+                            <li class="active"><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
+                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                            
+                            <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>  
+                            <li>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
+                                <ul class="collapse" style="height: 0px;">
+                                    <li><a href="#">Настройки</a></li>
+                                    <li><a href="#">База данных</a></li>
+                                </ul>
+                            </li>                                                    
                       </ul>
                   </nav>
               </div>

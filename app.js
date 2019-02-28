@@ -170,6 +170,9 @@ app.post('/setGoodTovar', marketAbout);
 const newsPanel = require('./controllers/panelControllers/newsController');
 app.post('/setNewNews', newsPanel);
 
+const calendarPanel = require('./controllers/panelControllers/calendarController');
+app.post('/setNewCalendar', calendarPanel);
+app.post('/setDeleteCalendar', calendarPanel);
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

@@ -98,14 +98,14 @@ $.extend(Date.prototype, {
       return false;
     });
     function dayAddEvent(index, event) {
-      if (!!event.allDay) {
+      if (!!(event.allDay === 'true')) {
         monthAddEvent(index, event);
         return;
       }
       var $event = $('<div/>', {'class': 'event', text: event.title, title: event.title, 'data-index': index}),
-      start = event.start,
-      end = event.end || start,
-      time = event.start.toTimeString(),
+      start = new Date(event.start),
+      end = new Date(event.end) || start,
+      time =  new Date(event.start).toTimeString(),
       hour = start.getHours(),
       timeclass = '.time-22-0',
       startint = start.toDateInt(),
@@ -141,7 +141,7 @@ $.extend(Date.prototype, {
       checkanyway = new Date(e.getFullYear(), e.getMonth(), e.getDate()+40),
       existing,
       i;
-      $event.toggleClass('all-day', !!event.allDay);
+      $event.toggleClass('all-day', !!(event.allDay === 'true'));
       if (!!time) {
         $event.html('<strong>' + time + '</strong> ' + $event.html());
       }
@@ -151,7 +151,7 @@ $.extend(Date.prototype, {
         return;
       }
 
-      while (e <= event.end && (day.length || endday || options.date < checkanyway)) {
+      while (e <= new Date(event.end) && (day.length || endday || options.date < checkanyway)) {
         if(day.length) { 
           existing = day.find('.event').length;
           numbevents = Math.max(numbevents, existing);
@@ -160,8 +160,8 @@ $.extend(Date.prototype, {
           }
           day.append(
             $event.
-            toggleClass('begin', dateclass === event.start.toDateCssClass()).
-            toggleClass('end', dateclass === event.end.toDateCssClass())
+            toggleClass('begin', dateclass === new Date(event.start).toDateCssClass()).
+            toggleClass('end', dateclass === new Date(event.end).toDateCssClass())
             );
           $event = $event.clone();
           $event.html('&nbsp;');

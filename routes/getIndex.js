@@ -12,16 +12,17 @@ router.get('/', function(req, res, next){
     const news = db.collection("NEWS");
     const conf = db.collection("CONFIG");
 
-    news.find().sort({AI: -1}).limit(3).toArray(function(err, resNews){
+    news.find().sort({AI: -1}).toArray(function(err, resNews){
       conf.find().toArray(function(err, resultDB){
         res.render('index.ejs',
         {
-          NEWS: resNews,
+          NEWS: resNews.slice(0, 3),
           sessionUser: req.session.user,
           sessionPoziv: req.session.poziv,
           isAdm: req.session.admin,
           locator: resultDB[0].LOCATOR,
-          page: resultDB[0][global.parseLanguage(req)]
+          page: resultDB[0][global.parseLanguage(req)],
+          newsLength: resNews.length
         });
       });      
     });		

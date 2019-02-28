@@ -139,7 +139,7 @@
 }
 
 .sidebar-header {
-    padding: 19px 32px 20px;
+    padding: 18px 32px 18px;
     background: #303641;
     border-bottom: 1px solid #343e50;
 }
@@ -2884,4 +2884,12 @@ p.card-text.tovarText{
 
 .card-img-top {
     width: inherit;
+}
+
+.greenTable{
+    color: green;
+}
+
+.redTable{
+    color: red;
 }

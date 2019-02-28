@@ -18,9 +18,10 @@
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
 	<script type="text/javascript" src="/script/index.js"></script>
+  	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/yepnope/1.5.4/yepnope.min.js"></script>
 	<% if(sessionUser === undefined){ %>
 	<script type="text/javascript" src="/script/loginMethod.js"></script>	
-	<% } %>		
+	<% } %>	
 	<style type="text/css">
 	.section_data p {
 		max-height: 220px;
@@ -102,7 +103,9 @@
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+			<h2>
+				<a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a>
+			</h2>
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
 				<%= NEWS[i].TEXT %>	
@@ -128,11 +131,6 @@
 			</div>
 		</section>	
 		<% } %>
-
-		<% if( NEWS.length >= 8){ %>
-		<div class="addOldNews" onclick="allNewsIndex(8)"><%= page.showmore %></div>	
-		<% } %>
-
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/giphy.gif">
