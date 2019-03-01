@@ -78,8 +78,27 @@ router.post('/signup', function(req, res, next){
 			}
 		});
 	});
+});
 
-
+router.post('/setForgotPassword', function(req, res, next){
+	mongoClient.connect(global.baseIP, function(err, client){
+		const db = client.db(global.baseName);
+		const users = db.collection("USERS");
+		const LOGS = db.collection("LOGS");
+		if(err) return console.log(err);
+		console.log(res)
+		users.find({email: req.body.poziv}).toArray(function(err, results_usersEmail ){
+			if(results_usersEmail.length === 0){
+				var NEWPASS = Math.random().toString(36).slice(-10);
+				tovaruk.update({pozivnoy: req.body.poziv },{$set: {password: NEWPASS}});		
+				res.send({code: 500, data: 'Пароль успешно изменен! Новый пароль выслан вам на електронную почту!'});	
+				global.sendMail("Востановление пароля","Вы подали запросс на востановление пароля от аккаунта: "+req.body.poziv+" на сайте http://ur4wwr.org/ . мы сгенерировали вам новый пароль : <b style='color: red; font-size: 20px'>"+NEWPASS+"</b><br><br> Изменить свой пароль вы можете в личном кабиинете!<br><br><br>С уважением администрация ur4wwr.org");
+				global.setLog(4, 'Регистрация пользователя', 'Регистрация нового аккаунта: '+req.body.poziv, req.body.poziv);				
+			}else{
+				res.send({code: 450, message: 'Ошибка регистрации'});
+			}
+		});
+	});
 });
 
 module.exports = router;

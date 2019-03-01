@@ -24,7 +24,7 @@ router.get('/', function(req, res, next){
 						logs: resultLogs
 					});  
 
-					global.setLog(2, 'Вход в админку', 'Пользователь: '+ req.session.poziv + ' вошел в панель администратора', req.session.poziv);
+					global.setLog(3, 'Вход в админку', 'Пользователь: '+ req.session.poziv + ' вошел в панель администратора', req.session.poziv);
 				});   
 			});   
 		});  

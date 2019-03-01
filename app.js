@@ -55,6 +55,8 @@ const calendar = require('./routes/getCalendar');
 const activ = require('./routes/getActivity');
 const rules = require('./routes/getRules');
 const numeral = require('./routes/getNumeral');
+const technikal = require('./routes/getTechnikal');
+const others = require('./routes/getOthers');
 
 app.use('/', index);
 app.use('/register', register);
@@ -73,6 +75,8 @@ app.use('/HF', hf);
 app.use('/calendar', calendar);
 app.use('/activity*', activ);
 app.use('/rules', rules);
+app.use('/technikal', technikal);
+app.use('/others', others);
 app.use('/numeral*', numeral);
 
 app.get('/logout', function(req, res) {
@@ -115,13 +119,9 @@ app.use('/PanelAbout', getPanelAbout);
 app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
 
-
-
-
-
-
-app.get('*', get404);
+app.use('*', get404);
 /* POSTS */
+
 app.post('/checkedCaptcha', function(req, res){
 	if(req.body.currentCaptcha === req.session.captcha){
 		res.send({code: 500});
@@ -135,7 +135,8 @@ app.post('/signin', auth);
 app.post('/getUserAva', auth);
 //Регистрация
 const signUp = require('./controllers/registerController');
-app.post('/signup', signUp);
+app.post('/signup', signUp); //Регистрация
+app.post('/setForgotPassword', signUp); //Востановление пароля
 //Новый комментарий
 const newComment = require('./controllers/setNewComment');
 app.post('/newComment', newComment);
@@ -166,9 +167,6 @@ app.post('/newTovar', newTovar);
 //Получить данные календаря
 const calendarData = require('./controllers/getCalendarController');
 app.post('/getCalendar', calendarData);
-
-
-
 
 /** Panel POST **/
 const panelAbout = require('./controllers/panelControllers/aboutController');
@@ -223,6 +221,7 @@ app.listen(4334,function(){
 			} 
 		});
 	});
+
 	global.sendMail("Система АЗИМУТ","Сервер азимут был запущен!", 'mr.kalinuk@gmail.com');
 	console.log('Started server on "Azimut" from port: 4334');
 });

@@ -1,0 +1,6 @@
+{
+  "database_ip": "localhost",
+  "database_port": "27017",
+  "database_nick": null,
+  "databale_password": null,
+}
