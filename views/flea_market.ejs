@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" type="text/css" href="/style/market/style.market.css">
+	<link rel="stylesheet" type="text/css" href="/style/market/style.market.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
@@ -127,6 +128,7 @@
 			<% if(sessionUser !== undefined){ %>
 			<div class="addNewTovar" id="addNewTovar" onclick="addNewTovar()"><%= page.postads %></div>
 			<% } %>
+			<% if(TOVAR.length > 0){ %>
 			<% for(var i = 0; i < TOVAR.length; i++){ %>
 			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
 				<section id="section_<%= i %>" class="section_data">				
@@ -141,6 +143,12 @@
 					<div class="dateMar"><%= TOVAR[i].Date %></div>
 				</section>
 			</a>			
+			<% } %>
+			<% }else{ %>
+			<div class="NoDataPage" style="text-align: center;">
+				<img src="../../../img/no-data.png">
+				<h2>Объявления отсутствуют</h2>
+			</div>
 			<% } %>
 			<%- include ./includes/addtovar.ejs %>			
 		</div>

@@ -1,0 +1,33 @@
+/* Контакты */
+@media screen and (max-width: 812px) {
+	.userContact {
+		display: block;
+		width: calc(80%);
+		text-align: center;
+		margin: auto;
+		margin-bottom: 15px;
+		border-bottom: 1px solid rgba(192, 192, 192, 0.39);
+		padding-bottom: 30px;
+		margin-top: 15px;
+	}
+	.userContact img {
+		max-width: 100px;
+		transition: 0.3s;
+	}
+
+	.userContact img:hover{
+		max-width: 120px;
+	}
+
+	.postMessageBlock {
+		width: calc(100% - 20px);
+		margin: auto;
+	}
+
+	.form-btn {
+		width: 100%;
+	}
+	.contacts_block_title {
+		margin: 5px 0 0px 0;
+	}
+}

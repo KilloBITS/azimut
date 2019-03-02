@@ -57,6 +57,7 @@ const rules = require('./routes/getRules');
 const numeral = require('./routes/getNumeral');
 const technikal = require('./routes/getTechnikal');
 const others = require('./routes/getOthers');
+const сommunities = require('./routes/getCommunities');
 
 app.use('/', index);
 app.use('/register', register);
@@ -78,6 +79,7 @@ app.use('/rules', rules);
 app.use('/technikal', technikal);
 app.use('/others', others);
 app.use('/numeral*', numeral);
+app.use('/communities*', сommunities);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
@@ -105,6 +107,7 @@ const getPanelUsers = require('./routes/panel/getPanelUsers');
 const getNewNews = require('./routes/panel/getNewNews');
 const getPanelAbout = require('./routes/panel/getPanelAbout');
 const getPanelDB = require('./routes/panel/getPanelDB');
+const getPanelContacts = require('./routes/panel/getPanelContacts');
 
 app.use('/PanelCalendar', getPanelCalendar);
 app.use('/PanelIndex', getPanelIndex);
@@ -118,6 +121,7 @@ app.use('/PanelUsers', getPanelUsers);
 app.use('/PanelAbout', getPanelAbout);
 app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
+app.use('/PanelContacts', getPanelContacts);
 
 app.use('*', get404);
 /* POSTS */

@@ -1,0 +1,9 @@
+@media screen and (max-width: 812px) {
+    .roundtables {
+        border: 1px solid rgb(209, 209, 209);
+        background-image: none;aa
+    } 
+    .RT {
+        min-height: auto;
+    }
+}
