@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title>Новости</title>
+	<title><%= page.news.title %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
@@ -27,6 +27,7 @@
 	<style type="text/css">
 	.section_data p {
 		max-height: 220px;
+	    min-height: 40px;
 	}
 </style>
 </head>
@@ -46,7 +47,7 @@
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
 		<img src="../../../img/logo1.png" id="logotype">		
-		<h1>НАШИ <b>НОВОСТИ</b></h1>		
+		<h1><%= page.news.title %></h1>		
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
@@ -55,7 +56,7 @@
 		
 		<div id="head_banner"><%= locator %></div>
 		<nav> 
-			<h1>Радиоклуб <b>Азимут</b></h1>	
+			<h1><%= page.news.title %></h1>	
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
@@ -94,17 +95,19 @@
 			</div>
 		</div>
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
-			<a href="/news" id="nav_news" class="navigator_btn selected_nav">Новости</a>
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
+			<a href="/news" id="nav_news" class="navigator_btn selected_nav"><%= page.news.title %></a>
 		</div>	
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title[numberLanguage] %></a></h2>
 			<p>
+				<% if(NEWS[i].NEWS_LOGO !== undefined){ %>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
+				<% } %>			
+				<%= NEWS[i].TEXT[numberLanguage] %>
+				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
 			</p>			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
@@ -115,14 +118,12 @@
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/no-data.png">
-			<h2>Нет данных</h2>
+			<h2><%= page.notdata %></h2>
 		</div>
 		<% } %>
 		
 		<% if(offLength > 12){ %>
-		<div id="pagination" class="mt-2 mb-2">
-
-		</div>
+		<div id="pagination" class="mt-2 mb-2"></div>
 		<script type="text/javascript">
 			(function() {
 				var translations = {

@@ -25,6 +25,7 @@
 	<style type="text/css">
 		.section_data p {
 			max-height: 220px;
+		    min-height: 40px;
 		}
 	</style>
 </head>
@@ -92,17 +93,17 @@
 			</div>
 		</div>
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
 			<a href="/news" id="nav_news" class="navigator_btn selected_nav">HF</a>
 		</div>	
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
-			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a></h2>
+			<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title[numberLanguage] %></a></h2>
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
-				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>">Читать полностью...</a></div>
+				<%= NEWS[i].TEXT[numberLanguage] %>
+				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
 			</p>			
 			<div class="section_date">
 				<%= NEWS[i].DATE %>
@@ -113,7 +114,7 @@
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/no-data.png">
-			<h2>Нет данных</h2>
+			<h2><%= page.notdata %></h2>
 		</div>
 		<% } %>
 		

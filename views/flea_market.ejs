@@ -126,7 +126,7 @@
 		<div class="tovarLength"><%= page.found %>: <%= TOVAR.length %> <%= page.ads %></div>		
 		<div class="market_data">
 			<% if(sessionUser !== undefined){ %>
-			<div class="addNewTovar" id="addNewTovar" onclick="addNewTovar()"><%= page.postads %></div>
+			<a href="/newtovar" target="_blank"><div class="addNewTovar" id="addNewTovar"><%= page.postads %></div></a>
 			<% } %>
 			<% if(TOVAR.length > 0){ %>
 			<% for(var i = 0; i < TOVAR.length; i++){ %>
@@ -147,10 +147,9 @@
 			<% }else{ %>
 			<div class="NoDataPage" style="text-align: center;">
 				<img src="../../../img/no-data.png">
-				<h2>Объявления отсутствуют</h2>
+				<h2><%= page.ANNOUNCEMENTSAREABSENT %></h2>
 			</div>
-			<% } %>
-			<%- include ./includes/addtovar.ejs %>			
+			<% } %>		
 		</div>
 		
 		<% if(offLength > 12){ %>

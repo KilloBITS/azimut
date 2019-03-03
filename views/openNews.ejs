@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="<%= NEWS.title %>">
-	<title><%= NEWS.title %></title>
+	<title><%= NEWS.title[numberLanguage] %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
@@ -44,7 +44,7 @@
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
 		<img src="../../../img/logo1.png" id="logotype">		
-		<h1><%= NEWS.title %></h1>	
+		<h1><%= NEWS.title[numberLanguage] %></h1>	
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
@@ -52,7 +52,7 @@
 		</div>	
 		<div id="head_banner"><%= locator %></div>
 		<nav> 
-			<h1>Радиоклуб <b>Азимут</b></h1>	
+			<h1><%= NEWS.title[numberLanguage] %></h1>	
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
@@ -92,15 +92,15 @@
 			</div>
 		</div>
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
-			<a href="/news" id="nav_news" class="navigator_btn">Новости</a>
-			<a href="#" id="nav_news" class="navigator_btn selected_nav"><%= NEWS.title %></a>
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
+			<a href="/news" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<a href="#" id="nav_news" class="navigator_btn selected_nav"><%= NEWS.title[numberLanguage] %></a>
 		</div>	
 		<section id="section_0" class="section_data">
-			<h2><%= NEWS.title %></h2>
+			<h2><%= NEWS.title[numberLanguage] %></h2>
 			<p>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS.NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS.TEXT %>					
+				<%= NEWS.TEXT[numberLanguage] %>					
 			</p>
 			<% for(var ii = 0; ii < NEWS.CONTENT_IMAGE.length; ii++){ %>
 			<img src="<%= NEWS.CONTENT_IMAGE[ii] %>">

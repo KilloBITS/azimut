@@ -92,7 +92,7 @@
 			<a href="/about" id="nav_about" class="navigator_btn selected_nav"><%= page.left_menu[4] %></a>
 		</div>	
 		<section id="section_01" class="section_data RT">
-			<h2>Круглые столы</h2>
+			<h2><%= page.roundtables.title %></h2>
 			<p style="text-align: center;">
 				<%= page.roundtables.text %>
 			</p>
@@ -105,7 +105,7 @@
 				</div>
 			<% } %>
 			<% }else{ %>
-				<h2>Круглые столы отсутствуют</h2>
+				<h2><%= page.notdata %></h2>
 			<% } %>
 			
 			

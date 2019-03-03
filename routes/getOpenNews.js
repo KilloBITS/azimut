@@ -5,6 +5,12 @@ const mongoClient = require("mongodb").MongoClient;
 
 router.get('/*', function(req, res, next) {
   var getNews = req.url.split('=')[1]; 
+  switch(req.cookies.AL){
+    case 'ru': var numLang = 0 ;break;
+    case 'ua': var numLang = 1 ;break;
+    case 'en': var numLang = 2 ;break;
+    default: var numLang = 0;
+  }
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
     const news = db.collection("NEWS");
@@ -22,7 +28,8 @@ router.get('/*', function(req, res, next) {
             sessionPoziv: req.session.poziv,
             isAdm: req.session.admin,
             locator: resultDB[0].LOCATOR,
-            page: resultDB[0][global.parseLanguage(req)]
+            page: resultDB[0][global.parseLanguage(req)],
+            numberLanguage: numLang
           });
         });        
       });    

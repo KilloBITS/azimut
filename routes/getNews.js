@@ -16,6 +16,12 @@ router.get('/', function(req, res, next){
     var otNews = 12 * (parseInt(page)-1);
     var doNews = otNews + 12;
   }
+  switch(req.cookies.AL){
+    case 'ru': var numLang = 0 ;break;
+    case 'ua': var numLang = 1 ;break;
+    case 'en': var numLang = 2 ;break;
+    default: var numLang = 0;
+  }
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
     const news = db.collection("NEWS");
@@ -36,7 +42,8 @@ router.get('/', function(req, res, next){
           offLength: resNews.length,
           isPage: page,
           paginate: p,
-          page: resultDB[0][global.parseLanguage(req)]
+          page: resultDB[0][global.parseLanguage(req)],
+          numberLanguage: numLang
         });
       });      
     });		

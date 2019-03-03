@@ -1,0 +1,37 @@
+@media screen and (max-width: 812px) {
+	.avatara_big {
+		width: 100px;
+		height: 100px;
+	}
+	.dataText {
+		width: calc(100%);
+		margin-top: 4px;
+		padding-left: 14px;
+	}
+	.fullBlock {
+		height: 220px;
+	}
+
+	.tabs-block {
+		height: 530px;
+	}
+	.passRep {
+		width: calc(100% - 20px);
+	}
+	.switch_line {
+		height: 40px;
+		width: calc(50% - 5px);
+		float: left;
+		position: relative;
+		margin: 2px 0 5px 5px;
+	}
+	.switch_text {
+		float: none;
+		padding-left: 0px;
+		line-height: 12px;
+		-moz-user-select: none;
+		-khtml-user-select: none;
+		user-select: none;
+		font-size: 14px;
+	}
+}

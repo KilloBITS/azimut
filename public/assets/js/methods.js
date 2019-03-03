@@ -65,8 +65,16 @@ var selectNewsContentImage = function(e,i){
 
 var saveNewNews = function(){
 	var NN = {
-		title: $('#example-text-input').val(),
-		TEXT:  $('#example-textarea-input').val(),
+		title:  [
+			$('#example-text-input-RU').val(),
+			$('#example-text-input-UA').val(),
+			$('#example-text-input-EN').val()
+		],
+		TEXT:  [
+			$('#example-textarea-input-RU').val(),
+			$('#example-textarea-input-UA').val(),
+			$('#example-textarea-input-EN').val()
+		],
 		DATE:  $('#example-date-input').val(),
 		type:  $('#example-type-input').val(),
 		NEWS_LOGO: NEWSFILELOGO,

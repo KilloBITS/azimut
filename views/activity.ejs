@@ -96,6 +96,7 @@
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
 			<a href="/activity?page=1" id="nav_activity" class="navigator_btn selected_nav"><%= page.activity.title %></a>
 		</div>	
+		<h2><%= page.activity.title %></h2>
 		<% if(NEWS.length > 0){ %>
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
@@ -114,7 +115,7 @@
 		<% }else{ %>
 		<div class="NoDataPage" style="text-align: center;">
 			<img src="../../../img/no-data.png">
-			<h2>Нет данных</h2>
+			<h2><%= page.notdata %></h2>
 		</div>
 		<% } %>
 		

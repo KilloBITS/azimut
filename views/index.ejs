@@ -26,6 +26,7 @@
 	<style type="text/css">
 	.section_data p {
 		max-height: 220px;
+		min-height: 40px;
 	}
 </style>
 </head>
@@ -105,11 +106,13 @@
 		<% for(var i = 0; i < NEWS.length; i++){ %>
 		<section id="section_<%= i %>" class="section_data">
 			<h2>
-				<a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title %></a>
+				<a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title[numberLanguage] %></a>
 			</h2>
 			<p>
+				<% if(NEWS[i].NEWS_LOGO !== undefined){ %>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS[i].TEXT %>	
+				<% } %>
+				<%= NEWS[i].TEXT[numberLanguage] %>	
 				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
 			</p>			
 			<div class="section_date">

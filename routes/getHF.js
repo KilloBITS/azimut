@@ -8,12 +8,6 @@ const pagination = require('pagination');
 router.use(cookieParser());
 
 router.get('/', function(req, res, next){
-  switch(req.cookies.AL){
-    case 'RU': var lang = 'RU' ;break;
-    case 'UA': var lang = 'UA' ;break;
-    case 'EN': var lang = 'EN' ;break;
-    default: var lang = 'EN'
-  }
   var page = req.url.split('page=')[1];
   if(parseInt(page) === 1){
     var otNews = 0;
@@ -21,6 +15,12 @@ router.get('/', function(req, res, next){
   }else{
     var otNews = 12 * (parseInt(page)-1);
     var doNews = otNews + 12;
+  }
+  switch(req.cookies.AL){
+    case 'ru': var numLang = 0 ;break;
+    case 'ua': var numLang = 1 ;break;
+    case 'en': var numLang = 2 ;break;
+    default: var numLang = 0;
   }
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
@@ -42,7 +42,8 @@ router.get('/', function(req, res, next){
           offLength: resNews.length,
           isPage: page,
           paginate: p,
-          page: resultDB[0][global.parseLanguage(req)]
+          page: resultDB[0][global.parseLanguage(req)],
+          numberLanguage: numLang
         });
       });      
     });		

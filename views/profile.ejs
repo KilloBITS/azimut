@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/style/global.css">
 	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
 	<link rel="stylesheet" type="text/css" href="/style/profile/profile.css">
+	<link rel="stylesheet" type="text/css" href="/style/profile/profile.min.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -23,7 +24,6 @@
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/global.socket.js"></script>
 	<script type="text/javascript" src="/script/profile/profile.js"></script>
-	<script type="text/javascript" src="/script/market/market.js"></script>
 </head>
 <body>
 	<%- include ./includes/mini_panel.ejs %>
@@ -241,13 +241,14 @@
 							<label>Новый пароль</label>
 							<input type="password" name="reppass" id="reppass" class="passRep">
 						</div>
-						<div class="saveBtn" onclick="changepass($('#oldpass').val(),$('#newpass').val(),$('#reppass').val())">Применить</div>
+						
 					</div>
+					<div class="saveBtn" onclick="changepass($('#oldpass').val(),$('#newpass').val(),$('#reppass').val())">Применить</div>
 					
 				</div>
 				<div class="TAB">
 					<div class="mini_title">Тут отображается список ваших объявлений</div>
-					<div class="addNewTovar" id="addNewTovar" onclick="addNewTovar()"><%= page.postads %></div>
+					<a href="/newtovar" target="_blank"><div class="addNewTovar" id="addNewTovar"><%= page.postads %></div></a>
 					<div class="fullBlock" style="padding-top: 30px; overflow: scroll; overflow-x: hidden; height: 100%; margin-top: 20px;">
 						<% if(tovar.length > 0){ %>
 						<% for(var i = 0; i < tovar.length; i++){ %>
@@ -362,14 +363,12 @@
 										</div>
 									</div>
 								</div>
-
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<%- include ./includes/addtovar.ejs %>
+			
 		</section>	
 	</main>
 	<div id="stop" class="scrollTop"></div>

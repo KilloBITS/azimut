@@ -58,6 +58,7 @@ const numeral = require('./routes/getNumeral');
 const technikal = require('./routes/getTechnikal');
 const others = require('./routes/getOthers');
 const сommunities = require('./routes/getCommunities');
+const newtovar = require('./routes/getNewTovar');
 
 app.use('/', index);
 app.use('/register', register);
@@ -80,6 +81,7 @@ app.use('/technikal', technikal);
 app.use('/others', others);
 app.use('/numeral*', numeral);
 app.use('/communities*', сommunities);
+app.use('/newtovar', newtovar);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})

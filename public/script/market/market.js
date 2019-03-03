@@ -24,16 +24,6 @@ $(document).ready(function(){
 	}, false);
 });
 
-var canvelAddTovar = function(){
-	$('.newTovarLoader').show();
-	$('.addTovarData').fadeOut(300);
-	GLOBAL_FILE = [];
-	currentImage = 0;
-	$(".newPhotoClick img").attr("src","../../../img/image.svg");
-	$(".newPhotoClick").removeClass('settingImages');
-	$(".lineOftovar input[type=text]").val('')
-}
-
 var addNewTovar = function(){
 	$('.addTovarData').fadeIn(300);
 	$('.newTovarLoader').show();
@@ -74,7 +64,7 @@ var getNewPostTovar = function(){
 		console.log(res);
 		if(res.code === 500){
 			createError(res.className, res.message)
-			canvelAddTovar();
+			window.location.reload();
 		}else{
 			createError(res.className, res.message)
 		}

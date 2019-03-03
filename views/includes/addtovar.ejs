@@ -1,37 +1,36 @@
 <% if(sessionUser !== undefined){ %>
 <div class="addTovarData">
-	<div class="canvelAddTovar" onclick="canvelAddTovar()"><%= page.cancel %></div>
-	<h2><%= page.thedetails %></h2>
+	<h2><%= page.createanad.title %></h2>
 	<div class="newTovarLoader"></div>
 	<div class="lineOftovar">
 		<div class="titleOfNewTovar"><%= page.productname %></div>
-		<input type="text" name="newTovarTitle" placeholder="Введите название товара">
+		<input type="text" name="newTovarTitle" placeholder="<%= page.productname %>">
 	</div>
 
 	<div class="lineOftovar">
-		<div class="titleOfNewTovar">Телефон для связи</div>
-		<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="Введите номер телефона">
+		<div class="titleOfNewTovar"><%= page.contactphone %></div>
+		<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="<%= page.contactphone %>">
 	</div>
 	<div class="lineOftovar">
-		<div class="titleOfNewTovar">Електронная почта</div>
-		<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="Введите ваш адрес електронной почты">
+		<div class="titleOfNewTovar"><%= page.email %></div>
+		<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="<%= page.email %>">
 	</div>
 	<div class="lineOftovar">
-		<div class="titleOfNewTovar">Описание товара</div>
-		<textarea placeholder="Опишите ваш товар"></textarea>
+		<div class="titleOfNewTovar"><%= page.productdescription %></div>
+		<textarea placeholder="<%= page.productdescription %>"></textarea>
 	</div>
 	<div class="lineOftovar">
-		<div class="titleOfNewTovar">Тип объявления: </div>
-		<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)">Продам</label>
-		<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)">Куплю</label>
-		<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)">Отдам даром</label>
+		<div class="titleOfNewTovar"><%= page.typeob %>: </div>
+		<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)"><%= page.iwillsell %></label>
+		<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)"><%= page.buy %></label>
+		<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)"><%= page.iwillgiveagift %></label>
 		<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio" checked>
 		<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
 		<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
 	</div>
 	<div class="lineOftovar" id="priceOfTovarBlock">
-		<div class="titleOfNewTovar">Цена товара</div>
-		<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="Введите цену">		
+		<div class="titleOfNewTovar"><%= page.price %></div>
+		<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="<%= page.price %>">		
 	</div>	
 
 	<h3>Добавить изображения</h3>
@@ -39,30 +38,30 @@
 	<div class="AddPhotoBlock">
 		<div class="newPhotoClick" onclick="addPhoto(this)">
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 		<div class="newPhotoClick" onclick="addPhoto(this)">
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 		<div class="newPhotoClick" onclick="addPhoto(this)">
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 		<div class="newPhotoClick" onclick="addPhoto(this)">
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 		<div class="newPhotoClick" onclick="addPhoto(this)"> 
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 		<div class="newPhotoClick" onclick="addPhoto(this)">
 			<img src="../../../img/image.svg">
-			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="Удалить"></div>
+			<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 		</div>
 	</div>
-	<div class="SavingBtnNewTovar" onclick="getNewPostTovar()">Подать объявление</div>
+	<div class="SavingBtnNewTovar" onclick="getNewPostTovar()"><%= page.postads %></div>
 </div>
 
 <script type="text/javascript">

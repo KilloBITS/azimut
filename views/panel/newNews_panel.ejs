@@ -38,16 +38,16 @@
                     <nav>
                         <ul class="metismenu" id="menu">         
                           <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>    
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
-                                <ul class="collapse" style="height: 0px;">
-                                    <li><a href="/PanelAbout">Информация</a></li>
-                                    <li><a href="/PanelGallery">Фотогалерея</a></li>
-                                    <li><a href="/PanelContacts">Контакты</a></li>
-                                </ul>
-                            </li>          
-                          <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
-                          <li class="active">
+                          <li>
+                            <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
+                            <ul class="collapse" style="height: 0px;">
+                                <li><a href="/PanelAbout">Информация</a></li>
+                                <li><a href="/PanelGallery">Фотогалерея</a></li>
+                                <li><a href="/PanelContacts">Контакты</a></li>
+                            </ul>
+                        </li>          
+                        <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
+                        <li class="active">
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                             <ul class="collapse">
                                 <li><a href="/PanelNews?page=1">Новости</a></li>
@@ -255,131 +255,205 @@
         </div>
         <div class="main-content-inner">
           <!-- Тут будет контент -->
-            <div class="row">
-                <div class="col-lg-6 col-ml-12">
-                    <div class="row">
-                        <!-- Textual inputs start -->
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Добавить новость</h4>
-                                    <p class="text-muted font-14 mb-4">Заполните данные для добавления новости</p>
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Заголовок</label>
-                                        <input class="form-control" type="text" id="example-text-input" placeholder="Введите заголовок">
-                                    </div>                                  
-                                    
-                                    <div class="form-group">
-                                        <label for="example-date-input" class="col-form-label">Дата</label>
-                                        <input class="form-control" type="date" value="2018-03-05" id="example-date-input" readonly>
-                                    </div>
-                                    <script type="text/javascript">
-                                        document.getElementById("example-date-input").valueAsDate = new Date();
-                                    </script>
-                                    
-                                    <div class="form-group">
-                                        <label class="col-form-label">Выберите тип новости</label>
-                                        <select class="form-control" id="example-type-input">
-                                            <option value="ALL">Общая</option>
-                                            <option value="HF">HF</option>
-                                            <option value="VHF">VHF</option>
-                                            <option value="NUMERIC">Цифра</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="example-textarea-input" class="col-form-label">Текст новости</label>
-                                        <textarea class="form-control" aria-label="With textarea" id="example-textarea-input" placeholder="Введите текст"></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="col-form-label">Логотип новости</label>
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="selectNewsLogo()">
-                                            <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
+          <div class="row">
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Добавить новость</h4>
+                                <p class="text-muted font-14 mb-4">Заполните данные для добавления новости</p>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Заголовок</label>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <!-- <div class="card-body"> -->
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Русский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Украинский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Английский</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content mt-3" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введите заголовок на Русском языке</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-RU" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введіть заголовок на Українській мові</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-UA" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Write title for English language</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-EN" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- </div> -->
+                                            </div>
                                         </div>
-                                    </div>                                  
+                                    </div>
+                                </div>                                  
+
+                                <div class="form-group">
+                                    <label for="example-date-input" class="col-form-label">Дата</label>
+                                    <input class="form-control" type="date" value="2018-03-05" id="example-date-input" readonly>
                                 </div>
+                                <script type="text/javascript">
+                                    document.getElementById("example-date-input").valueAsDate = new Date();
+                                </script>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">Выберите тип новости</label>
+                                    <select class="form-control" id="example-type-input">
+                                        <option value="ALL">Общая</option>
+                                        <option value="HF">HF</option>
+                                        <option value="VHF">VHF</option>
+                                        <option value="NUMERIC">Цифра</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Введите текст на Русском языке</label>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <!-- <div class="card-body"> -->
+                                                    <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="home-tab1" data-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true">Русский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="profile-tab1" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile" aria-selected="false">Украинский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="contact-tab1" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact" aria-selected="false">Английский</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content mt-3" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введите текст на Русском языке</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-RU" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введіть текст на Українській мові</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-UA" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Write text for English language</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-EN" placeholder="Введите текст"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Логотип новости</label>
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="selectNewsLogo()">
+                                        <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
+                                    </div>
+                                </div>                                  
                             </div>
                         </div>
-                        <!-- Textual inputs end -->
                     </div>
+                    <!-- Textual inputs end -->
                 </div>
-
-                <div class="col-lg-6 col-ml-12">
-                    <div class="row">
-                        <!-- Textual inputs start -->
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Добавить изображения</h4>
-                                    <p class="text-muted font-14 mb-4">Выберите изображения для новости</p>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage1" onchange="selectNewsContentImage(this,0)">
-                                            <label class="custom-file-label" for="newsImage1">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage2" onchange="selectNewsContentImage(this,1)">
-                                            <label class="custom-file-label" for="newsImage2">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage3" onchange="selectNewsContentImage(this,2)">
-                                            <label class="custom-file-label" for="newsImage3">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage4" onchange="selectNewsContentImage(this,3)">
-                                            <label class="custom-file-label" for="newsImage4">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage5" onchange="selectNewsContentImage(this,4)">
-                                            <label class="custom-file-label" for="newsImage5">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage6" onchange="selectNewsContentImage(this,5)">
-                                            <label class="custom-file-label" for="newsImage6">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage7" onchange="selectNewsContentImage(this,6)">
-                                            <label class="custom-file-label" for="newsImage7">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="newsImage8" onchange="selectNewsContentImage(this,7)">
-                                            <label class="custom-file-label" for="newsImage8">Выбрать файл</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Textual inputs end -->
-                    </div>
-                </div>
-
-                <div class="col-lg-12 col-ml-12 mt-5">
-                    <div class="row">
-                        <button type="button" class="btn btn-success mb-2 col-12" onclick="saveNewNews()">Опубликовать</button>
-                    </div>
-                </div>
-
             </div>
 
-      </div>
-  </div>
-  <footer>
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Добавить изображения</h4>
+                                <p class="text-muted font-14 mb-4">Выберите изображения для новости</p>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage1" onchange="selectNewsContentImage(this,0)">
+                                        <label class="custom-file-label" for="newsImage1">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage2" onchange="selectNewsContentImage(this,1)">
+                                        <label class="custom-file-label" for="newsImage2">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage3" onchange="selectNewsContentImage(this,2)">
+                                        <label class="custom-file-label" for="newsImage3">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage4" onchange="selectNewsContentImage(this,3)">
+                                        <label class="custom-file-label" for="newsImage4">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage5" onchange="selectNewsContentImage(this,4)">
+                                        <label class="custom-file-label" for="newsImage5">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage6" onchange="selectNewsContentImage(this,5)">
+                                        <label class="custom-file-label" for="newsImage6">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage7" onchange="selectNewsContentImage(this,6)">
+                                        <label class="custom-file-label" for="newsImage7">Выбрать файл</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="newsImage8" onchange="selectNewsContentImage(this,7)">
+                                        <label class="custom-file-label" for="newsImage8">Выбрать файл</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Textual inputs end -->
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-ml-12 mt-5">
+                <div class="row">
+                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveNewNews()">Опубликовать</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<footer>
     <div class="footer-area">
         <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
     </div>
