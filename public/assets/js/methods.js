@@ -112,3 +112,24 @@ var setRemoveCalendar = function(ai){
 		location.reload();
 	})
 }
+
+var blockUser = function(a,b){
+	$.post('/blockUser', {a: a, b: b}, function(res){
+		console.log(res);
+		location.reload();
+	})
+}
+
+var removeUser = function(a){
+	$.post('/deleteUser', {a: a}, function(res){
+		console.log(res);
+		location.reload();
+	})
+}
+
+var setAdminUser = function(a,b){
+	$.post('/setAdmUser', {a: a, b: b}, function(res){
+		console.log(res);
+		location.reload();
+	})
+}

@@ -5,10 +5,10 @@
 <% if(isAdm === true){ %>
 <div class="adminMiniPanel">
 	<div class="aminMiniBtn defaultLeft"></div>
-	<button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость" onclick="createNewsModal()"></button>
-	<button class="aminMiniBtn" id="setUsersBtn" title="Управление пользователями" onclick=""></button>
-	<button class="aminMiniBtn" id="setCalendarBtn" title="Управление календарем" onclick=""></button>
-	<button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button>
+	<a href="/newNews" target="_blank"> <button class="aminMiniBtn" id="newNewsBtn" title="Добавить новость"></button> </a>
+	<a href="/PanelUsers" target="_blank"> <button class="aminMiniBtn" id="setUsersBtn" title="Управление пользователями" onclick=""></button> </a>
+	<a href="/PanelCalendar" target="_blank"> <button class="aminMiniBtn" id="setCalendarBtn" title="Управление календарем" onclick=""></button> </a>
+	<a href="/PanelIndex" target="_blank"> <button class="aminMiniBtn" id="getPanel" title="Панель администратора"></button> </a>
 	<div class="aminMiniBtn defaultRight"></div>
 </div>
 <% } %>	

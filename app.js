@@ -193,6 +193,10 @@ app.post('/setDeleteCalendar', calendarPanel);
 const numeralPanel = require('./controllers/panelControllers/numeralController');
 app.post('/setNewNews', numeralPanel);
 
+const usersPanelMethods = require('./controllers/panelControllers/usersController');
+app.post('/setAdmUser', usersPanelMethods);
+app.post('/deleteUser', usersPanelMethods);
+app.post('/blockUser', usersPanelMethods);
 
 
 function sravnenie(arr, arr2){

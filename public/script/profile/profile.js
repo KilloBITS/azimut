@@ -190,3 +190,8 @@ var openDialog = function(user){
 	});
 }
 
+
+
+var saveMyInfo = function(){
+	
+}

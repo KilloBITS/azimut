@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="Description" content="Радиоклуб АЗИМУТ">
-	<title>Профиль (<%= sessionPoziv %>)</title>
+	<title><%= page.profilepage.title %> (<%= sessionPoziv %>)</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="/style/loader.css">
@@ -43,7 +43,7 @@
 		<a href="/">
 			<img src="../../../img/logo1.png" id="logotype">
 		</a>				
-		<h1><b>О НАС</b></h1>		
+		<h1><%= page.profilepage.title %> (<%= sessionPoziv %>)</h1>		
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
@@ -52,7 +52,7 @@
 		
 		<div id="head_banner"><%= locator %></div>
 		<nav> 
-			<h1>Радиоклуб <b>Азимут</b></h1>	
+			<h1><%= page.profilepage.title %> (<%= sessionPoziv %>)</h1>	
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
@@ -94,16 +94,16 @@
 		</div>
 
 		<div class="navigator">
-			<a href="/" id="nav_home" class="navigator_btn">Главная</a>
-			<a href="#" id="nav_about" class="navigator_btn selected_nav">Профиль (<%= sessionPoziv %>)</a>
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
+			<a href="#" id="nav_about" class="navigator_btn selected_nav"><%= page.profilepage.title %> (<%= sessionPoziv %>)</a>
 		</div>	
 
 		<section id="section_01" class="section_data">
 			<div class="profile_navigator">
-				<div class="PN_Nav_btn active" onclick="clickTab(this)">Личная информация</div>
-				<div class="PN_Nav_btn" onclick="clickTab(this)">Приватность</div>
-				<div class="PN_Nav_btn" onclick="clickTab(this)">Барахолка</div>
-				<div class="PN_Nav_btn" onclick="clickTab(this)">Сообщения<span>•</span></div>
+				<div class="PN_Nav_btn active" onclick="clickTab(this)"><%= page.profilepage.personalinformation %></div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)"><%= page.profilepage.privacy %></div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)"><%= page.profilepage.fleamarket %></div>
+				<div class="PN_Nav_btn" onclick="clickTab(this)"><%= page.profilepage.messages %><span>•</span></div>
 			</div>
 
 			<div class="tabs-block">
@@ -121,10 +121,10 @@
 							<input type="file" id="tFile" style="display: none;">
 						</div>
 
-						<div class="dataText tName">Ваше имя: <%= USER.name %></div>
+						<div class="dataText tName">Ваше имя: <input type="text" name="username" value="<%= USER.name %>"></div>
 						<div class="dataText tPoziv">Ваш позывной: <%= USER.pozivnoy %></div>
-						<div class="dataText tMail">Ваш e-mail: <%= USER.email %></div>
-						<div class="dataText tNumb">Ваш телефон: <%= USER.phone_number %></div>
+						<div class="dataText tMail">Ваш e-mail: <input type="text" name="username" value="<%= USER.email %>"></div>
+						<div class="dataText tNumb">Ваш телефон: <input type="text" name="username" value="<%= USER.phone_number %>"></div>
 
 						<div class="socialUserBtn" id="forMyVK"></div>
 						<div class="socialUserBtn" id="forMyInsta"></div>
@@ -135,7 +135,7 @@
 						<div class="paramTitle">Вкратце обо мне</div>
 						<textarea id="textMe"><%= USER.info %></textarea>
 					</div>			
-					<div class="saveBtn">Сохранить</div>
+					<div class="saveBtn" onclick="saveMyInfo()">Сохранить</div>
 				</div>
 				<div class="TAB">
 					<div class="fullBlock">

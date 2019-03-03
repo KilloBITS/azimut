@@ -19,18 +19,24 @@ router.post('/signin', function(req, res, next){
 			users.find({pozivnoy: req.body.login}).toArray(function(err, results_users){				
 				if((results_users.length !== 0) && (req.body.login === results_users[0].pozivnoy && req.body.password === results_users[0].password)) {
 					if(results_users[0].activity){
-						req.session.user = results_users[0].name;
-						req.session.email = results_users[0].email;
-						req.session.nick = results_users[0].nick;
-						req.session.poziv = results_users[0].pozivnoy;
-						req.session.admin = results_users[0].isAdmin;
-						global.online = global.online + 1;
-						res.send({code:500, data: results_users});
+						if(!results_users[0].blocked){
+							req.session.user = results_users[0].name;
+							req.session.email = results_users[0].email;
+							req.session.nick = results_users[0].nick;
+							req.session.poziv = results_users[0].pozivnoy;
+							req.session.admin = results_users[0].isAdmin;
+							global.online = global.online + 1;
+							res.send({code:500, data: results_users});
 
-						global.setLog(4, 'Авторизация пользователя', 'Авторизация: '+results_users[0], results_users[0].pozivnoy);
+							global.setLog(4, 'Авторизация пользователя', 'Авторизация: '+results_users[0], results_users[0].pozivnoy);
+						}else{
+							res.send({code:450, className: 'nWarning', message: 'Ваш аккаунт заблокирован!'});
+						}
 					}else{
 						res.send({code:450, className: 'nWarning', message: 'Аккаунт не активирован'});
-					}					
+					}		
+
+
 				}else{
 					res.send({code:450, className: 'nError', message: 'Неверный логин или пароль!'});
 				}
