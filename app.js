@@ -108,6 +108,7 @@ const getPanelNumeral = require('./routes/panel/getPanelNumeral');
 const getPanelUsers = require('./routes/panel/getPanelUsers');
 const getNewNews = require('./routes/panel/getNewNews');
 const getPanelAbout = require('./routes/panel/getPanelAbout');
+const getPanelGallery = require('./routes/panel/getPanelGallery');
 const getPanelDB = require('./routes/panel/getPanelDB');
 const getPanelContacts = require('./routes/panel/getPanelContacts');
 
@@ -121,6 +122,7 @@ app.use('/PanelHF*', getPanelHF);
 app.use('/PanelNumeral*', getPanelNumeral);
 app.use('/PanelUsers', getPanelUsers);
 app.use('/PanelAbout', getPanelAbout);
+app.use('/PanelGallery', getPanelGallery);
 app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
 app.use('/PanelContacts', getPanelContacts);
