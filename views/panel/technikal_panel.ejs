@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Управление цифрой</title>
+    <title>Управление новостями</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -24,7 +24,6 @@
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="/script/pagination.full.min.js"></script>
 </head>
-
 <body>
     <div id="preloader">
         <div class="loader"></div>
@@ -53,16 +52,16 @@
                             <li class="active">
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                                 <ul class="collapse">
-                                    <li><a href="/PanelNews?page=1">Новости</a></li>
+                                    <li class="active"><a href="/PanelNews?page=1">Новости</a></li>                                   
                                     <li><a href="/PanelVHF?page=1">VHF</a></li>
                                     <li><a href="/PanelHF?page=1">HF</a></li>
-                                    <li class="active"><a href="/PanelNumeral?page=1">Цифра</a></li>
+                                    <li><a href="/PanelNumeral?page=1">Цифра</a></li>
                                     <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
                             </li>
                             <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
-                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>  
+                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
                             <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                             
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                             <li>
@@ -108,7 +107,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Новости цифра</h4>
+                        <h4 class="page-title pull-left">Новости</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
@@ -119,26 +118,22 @@
         <div class="main-content-inner">
           <!-- Тут будет контент -->
           <div class="row">
-            <a class="btn btn-primary col-lg-12 mt-2 mb-2" href="/newNews">Создать новость</a>
-            <% if(newsData.length > 0){ %>
-            <% for(var i = 0; i < newsData.length; i++) { %>
+            <a class="btn btn-primary col-lg-12 mt-2 mb-2" href="#">Добавить данные</a>
+            <% if(techData.length > 0){ %>
+            <% for(var i = 0; i < techData.length; i++) { %>
             <div class="col-lg-12 mt-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="media mb-5">
-                            <img class="img-fluid mr-4" src="<%= newsData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
+                            <img class="img-fluid mr-4" src="<%= techData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
                             <div class="media-body">
-                                <h4 class="mb-3"><%= newsData[i].title[0] %></h4> 
-                                <%= newsData[i].TEXT[0] %>
+                                <h4 class="mb-3"><%= techData[i].title[0] %></h4> 
+                                <%= techData[i].TEXT[0] %>
                             </div>
                         </div> 
-                        <div class="media mb-5">
-                            <div class="col-lg-6 mt-3">
-                                <button type="submit" class="btn btn-danger col-lg-12 mb-3" onclick="removeNews('<%= newsData[i].AI %>')">Удалить</button>
-                            </div>
-                            <div class="col-lg-6 mt-3">
-                                <a href="/editNews?news=<%= newsData[i].AI %>" class="btn btn-success col-lg-12 mb-3">Редактировать</a>
-                            </div>
+                        <div class="media">
+                            <button type="submit" class="btn btn-danger col-lg-6 mb-3" onclick="removeNews('<%= techData[i].AI %>')">Удалить</button>
+                            <a href="/editNews?news=<%= techData[i].AI %>" class="btn btn-success col-lg-6 mb-3">Редактировать</a>
                         </div>                              
                     </div>
                 </div>
@@ -146,10 +141,10 @@
             <% } %>
             <% }else{ %>
             <div class="alert alert-primary col-lg-12" role="alert">
-                <h4 class="alert-heading">Новости данного типа отстутствуют!</h4>
-                <p>Как видно новости в данной категории отсутствуют</p>
+                <h4 class="alert-heading">Данные отсутствуют!</h4>
+                <p>Данные в этом разделе отстутствуют или не заполнены администратором</p>
                 <hr>
-                <p class="mb-0">Вы можете <a href="/newNews">Создать новость</a></p>
+                <p class="mb-0">Вы можете <a href="#">Добавить данные</a></p>
             </div>
             <% } %>
 

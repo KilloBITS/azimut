@@ -2913,22 +2913,22 @@ p.card-text.tovarText{
     left: 50%;
     top: 50%;
     color: white;
-    padding: 16px 70px 60px 70px;
+    padding: 25px 10px 25px 10px;
     border-radius: 4px;
     font-size: 18px;
     border: 1px solid #f53c4e;
     box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.66);
     z-index: 10;
+    text-align: center;
 }
 
 .modalWin span{
-    position: absolute;
     left: calc(50% + 70px);
     width: 100%;
-    transform: translate(-50%, 0);
     bottom: 10px;
     font-size: 14px;
     color: silver;
+    float: left;
 }
 
 #map {

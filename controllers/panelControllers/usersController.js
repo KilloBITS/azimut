@@ -15,7 +15,13 @@ router.post('/blockUser', function(req, res, next){
 
 			if(err) return console.log(err);	
 			users.update({pozivnoy: req.body.a} ,{$set: {blocked:  (req.body.b === 'true') }});
-			res.send({code: 500, className: 'nSuccess', message: 'Пользователь заблокирован!'});
+
+			if((req.body.b === 'true')){
+				res.send({code: 500, className: 'nSuccess', message: 'Пользователь заблокирован!'});
+			}else{
+				res.send({code: 500, className: 'nSuccess', message: 'Пользователь разблокирован!'});
+			}
+			
 		});	
 	}else{
 		res.send({code: 403, className: 'nError', message: 'У вас нет доступа!'})

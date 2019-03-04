@@ -86,6 +86,34 @@
 		display: none;
 	}
 
+	#users_wraper{
+		display: block;
+	}
+
+	#aprs_block{
+		display: none;
+	}
+
+	.usersnavmenu{
+		display: block;
+	}
+
+	.wrapper_title {
+		position: relative;
+		top: -13px;
+		left: -1px;
+		padding: 2px 15px;
+		border-radius: 3px 3px 0 0;
+		z-index: 2;
+		background-color: #ffffff;
+		width: calc(100% + 2px);
+		background-repeat: no-repeat;
+		color: black;
+		text-align: center;
+		line-height: 23px;
+		background-position: center;
+	}
+
 	.mobileWrapper{
 		display: block;
 		width: 40px;

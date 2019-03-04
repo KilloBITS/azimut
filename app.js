@@ -113,6 +113,8 @@ const getPanelDB = require('./routes/panel/getPanelDB');
 const getPanelContacts = require('./routes/panel/getPanelContacts');
 const getPanelOthers = require('./routes/panel/getPanelOthers');
 const getEditNews = require('./routes/panel/getEditNews');
+const getPanelTechnical = require('./routes/panel/getPanelTechnical');
+const getPanelRoundTables = require('./routes/panel/getPanelRoundTables');
 
 app.use('/PanelCalendar', getPanelCalendar);
 app.use('/PanelIndex', getPanelIndex);
@@ -130,6 +132,8 @@ app.use('/newNews', getNewNews);
 app.use('/PanelContacts', getPanelContacts);
 app.use('/PanelOthers', getPanelOthers)
 app.use('/editNews*', getEditNews)
+app.use('/PanelTechnical*', getPanelTechnical)
+app.use('/PanelRoundTables', getPanelRoundTables)
 
 app.use('*', get404);
 

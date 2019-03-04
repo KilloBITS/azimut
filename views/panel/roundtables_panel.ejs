@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Управление календарем</title>
+    <title>Управление круглыми столами</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/methods.js"></script>
 </head>
 
 <body>
@@ -45,38 +44,38 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">         
-                            <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>               
+                            <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>   
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>О нас</span></a>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
                                 <ul class="collapse" style="height: 0px;">
                                     <li><a href="/PanelAbout">Информация</a></li>
                                     <li><a href="/PanelGallery">Фотогалерея</a></li>
                                     <li><a href="/PanelContacts">Контакты</a></li>
                                 </ul>
-                            </li>              
+                            </li>          
                             <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>Новости</span></a>
+                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                                 <ul class="collapse" style="height: 0px;">
-                                    <li><a href="/PanelNews?page=1">Новости</a></li>
-                                    <li><a href="/PanelVHF?page=1">VHF</a></li>
-                                    <li><a href="/PanelHF?page=1">HF</a></li>
                                     <li><a href="/PanelNumeral?page=1">Цифра</a></li>
+                                    <li><a href="/PanelNews?page=1">Новости</a></li>
+                                    <li><a href="/PanelNews?page=1">VHF</a></li>
+                                    <li><a href="/PanelNews?page=1">HF</a></li>
                                     <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
+                            <li class="active"><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
-                            <li class="active"><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
-                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                            
-                            <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>   
+                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li> 
+                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                             
+                            <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
                                 <ul class="collapse" style="height: 0px;">
                                     <li><a href="#">Настройки</a></li>
-                                    <li><a href="#">База данных</a></li>
+                                    <li><a href="/PanelDB">База данных</a></li>
                                 </ul>
-                            </li>                         
+                            </li>                          
                         </ul>
                     </nav>
                 </div>
@@ -113,7 +112,7 @@
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Календарь</h4>
+                            <h4 class="page-title pull-left">Круглые столы</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
@@ -124,34 +123,29 @@
             <div class="main-content-inner">
               <!-- Тут будет контент -->
               <div class="row">
-                <!-- table primary start -->
-                
-                <div class="col-lg-6 mt-5">
+                <!-- data table start -->
+                <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Список меток</h4>
+                            <h4 class="header-title">Список круглых столов</h4>
                             <div class="data-tables">
                                 <table id="dataTable" class="text-center">
                                     <thead class="bg-light text-capitalize">
                                         <tr>
-                                            <th>Заголовок</th>
-                                            <th>От</th>
-                                            <th>До</th>                                               
+                                            <th>Название</th>
+                                            <th>День недели</th>
+                                            <th>Время</th>
                                             <th>Действия</th>                                               
                                         </tr>
                                     </thead>
                                     <tbody>                                 
-                                        <% for(var i = 0; i < calendar_data.length; i++){ %>
+                                        <% for(var i = 0; i < rt.length; i++){ %>
                                         <tr>
-                                            <td><%= calendar_data[i].title %></td>
-                                            <td><%= calendar_data[i].start %></td>
-                                            <% if(calendar_data[i].end !== null && calendar_data[i].end !== undefined && calendar_data[i].end.length > 1){ %>
-                                            <td><%= calendar_data[i].end %></td> 
-                                            <% }else{ %>
-                                            <td>Нет данных</td> 
-                                            <% } %>
+                                            <td><%= rt[i].name %></td>
+                                            <td><%= rt[i].date %></td>
+                                            <td><%= rt[i].time %></td>
                                             <td>
-                                                <a href="#" class="btn btn-danger btn-xs mb-3" onclick="setRemoveCalendar(<%= calendar_data[i].AI %>)">Удалить</a>
+                                                <button type="button" class="btn btn-danger btn-xs mb-3">Удалить</button>
                                             </td>  
                                         </tr>                                                
                                         <% } %>
@@ -162,48 +156,24 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 mt-5">
+
+                <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="header-title">Добавить метку</h4>                       
-                            <div class="form-group">
-                                <label for="example-text-input" class="col-form-label">Заголовок</label>
-                                <input class="form-control" type="text" value="" id="example-text-input">
-                            </div>
+                            <h4 class="header-title">Добавить круглый стол</h4>
 
-                            <div class="form-group">
-                                <label for="example-text-input" class="col-form-label">Описание</label>
-                                <input class="form-control" type="text" value="" id="example-text-input2">
-                            </div>
 
-                            <div class="form-group">
-                                <label for="example-datetime-local-input" class="col-form-label">Начало</label>
-                                <input class="form-control" type="datetime-local" id="example-datetime-local-input-start">
-                            </div>
-                            <div class="form-group">
-                                <label for="example-datetime-local-input" class="col-form-label">Конец</label>
-                                <input class="form-control" type="datetime-local" id="example-datetime-local-input-end">
-                            </div>
-                            <script type="text/javascript">
-                                document.getElementById("example-datetime-local-input-end").value = new Date().toJSON().slice(0,19);
-                                document.getElementById("example-datetime-local-input-start").value = new Date().toJSON().slice(0,19);
-                            </script>
-
-                            <div class="form-group">
-                               <button type="submit" class="btn btn-primary mt-4 pr-4 col-lg-12 pl-4" onclick="newCalendarDate()">Сохранить</button>
-                           </div>
-
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-   <footer>
-    <div class="footer-area">
-        <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
     </div>
-</footer>
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
+    </footer>
 </div>
 <!-- jquery latest version -->
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
@@ -224,6 +194,7 @@
 <!-- others plugins -->
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script src="assets/js/methods.js"></script>
 <script type="text/javascript">
     var posivka = '<%= sessionPoziv %>';
     $.post('/getUserAva', {user: posivka},function(res){

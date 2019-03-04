@@ -40,16 +40,16 @@
                     <nav>
                         <ul class="metismenu" id="menu">         
                           <li class="active"><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
-                                <ul class="collapse" style="height: 0px;">
-                                    <li><a href="/PanelAbout">Информация</a></li>
-                                    <li><a href="/PanelGallery">Фотогалерея</a></li>
-                                    <li><a href="/PanelContacts">Контакты</a></li>
-                                </ul>
-                            </li>               
-                          <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
                           <li>
+                            <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
+                            <ul class="collapse" style="height: 0px;">
+                                <li><a href="/PanelAbout">Информация</a></li>
+                                <li><a href="/PanelGallery">Фотогалерея</a></li>
+                                <li><a href="/PanelContacts">Контакты</a></li>
+                            </ul>
+                        </li>               
+                        <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
+                        <li>
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                             <ul class="collapse" style="height: 0px;">
                                 <li><a href="/PanelNews?page=1">Новости</a></li>
@@ -58,10 +58,11 @@
                                 <li><a href="/PanelNumeral?page=1">Цифра</a></li>
                                 <li><a href="/PanelOthers?page=1">Разное</a></li>
                             </ul>
-                        </li>                            
+                        </li>
+                        <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                         <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
                         <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                              
-                        <li><a href="/PanelTechnical"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>  
+                        <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>  
                         <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>  
                         <li>
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -117,76 +118,123 @@
         <div class="main-content-inner">
             <!-- Тут будет контент -->
             <div class="row">
-                <div class="col-xl-6 col-lg-8 mt-5 mb-5">
+
+                <div class="col-md-3 mt-5 mb-3">
+                    <div class="card">
+                        <div class="seo-fact sbg1"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                        <div class="p-4 d-flex justify-content-between align-items-center">
+                            <div class="seofct-icon"><i class="ti-thumb-up"></i> Пользователей</div>
+                            <h2>3</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 mt-5 mb-3">
+                <div class="card">
+                    <div class="seo-fact sbg2"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    <div class="p-4 d-flex justify-content-between align-items-center">
+                        <div class="seofct-icon"><i class="ti-thumb-up"></i> Новостей</div>
+                        <h2>0</h2>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 mt-5 mb-3">
+                <div class="card">
+                    <div class="seo-fact sbg3"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    <div class="p-4 d-flex justify-content-between align-items-center">
+                        <div class="seofct-icon"><i class="ti-thumb-up"></i> Гостей за день</div>
+                        <h2>2</h2>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-md-3 mt-5 mb-3">
+                <div class="card">
+                    <div class="seo-fact sbg4"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    <div class="p-4 d-flex justify-content-between align-items-center">
+                        <div class="seofct-icon"><i class="ti-thumb-up"></i> Объявлений</div>
+                        <h2>1</h2>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
+
+        <div class="col-xl-6 col-lg-8 mt-5 mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="header-title mb-0">Статистика посещений</h4>
+                    </div>
+                    <div id="verview-shart"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-ml-12">
+            <div class="row">
+                <!-- Textual inputs start -->
+                <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="header-title mb-0">Статистика посещений</h4>
-                            </div>
-                            <div id="verview-shart"></div>
+                            <h4 class="header-title">Мы на карте</h4>
+                            <div class="map_block" id="map"></div>
                         </div>
                     </div>
                 </div>
+                <!-- Textual inputs end -->
+            </div>
+        </div>
 
-                <div class="col-lg-6 col-ml-12">
-                    <div class="row">
-                        <!-- Textual inputs start -->
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Мы на карте</h4>
-                                    <div class="map_block" id="map"></div>
-                                </div>
-                            </div>
+        <div class="col-xl-12 col-lg-8 mb-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-sm-flex justify-content-between align-items-center">
+                        <h4 class="header-title mb-0">Последние логи системы</h4>
+                    </div>
+                    <div class="market-status-table mt-4">
+                        <div class="table-responsive">
+                            <table class="dbkit-table">
+                                <tr class="heading-td">
+                                    <td class="mv-icon">...</td>
+                                    <td class="coin-name">Тип</td>
+                                    <td class="buy">Дата</td>
+                                    <td class="sell">Время</td>
+                                    <td class="trends">Пользователь</td>
+                                    <td class="attachments">Описание</td>
+
+                                </tr>
+                                <% for(var i = 0; i < logs.length; i++){ %>
+                                <tr>
+                                    <td class="mv-icon">
+                                        <img src="../../../../img/logs-icon/<%= logs[i].logo %>.png" alt="icon">
+                                    </td>
+                                    <td class="coin-name"><%= logs[i].type %></td>
+                                    <td class="buy"><%= logs[i].date %></td>
+                                    <td class="sell"><%= logs[i].time %></td>
+                                    <td class="trends"><%= logs[i].user %></td>
+                                    <td class="attachments"><%= logs[i].text %></td> 
+                                </tr>
+                                <% } %>                                           
+                            </table>
                         </div>
-                        <!-- Textual inputs end -->
                     </div>
                 </div>
-
-                <div class="col-xl-12 col-lg-8 mb-5">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-sm-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Последние логи системы</h4>
-                                </div>
-                                <div class="market-status-table mt-4">
-                                    <div class="table-responsive">
-                                        <table class="dbkit-table">
-                                            <tr class="heading-td">
-                                                <td class="mv-icon">...</td>
-                                                <td class="coin-name">Тип</td>
-                                                <td class="buy">Дата</td>
-                                                <td class="sell">Время</td>
-                                                <td class="trends">Пользователь</td>
-                                                <td class="attachments">Описание</td>
-
-                                            </tr>
-                                            <% for(var i = 0; i < logs.length; i++){ %>
-                                            <tr>
-                                                <td class="mv-icon">
-                                                    <img src="../../../../img/logs-icon/<%= logs[i].logo %>.png" alt="icon">
-                                                </td>
-                                                <td class="coin-name"><%= logs[i].type %></td>
-                                                <td class="buy"><%= logs[i].date %></td>
-                                                <td class="sell"><%= logs[i].time %></td>
-                                                <td class="trends"><%= logs[i].user %></td>
-                                                <td class="attachments"><%= logs[i].text %></td> 
-                                            </tr>
-                                            <% } %>                                           
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
             </div>
         </div>
     </div>
-    <footer>
-        <div class="footer-area">
-            <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-        </div>
-    </footer>
+</div>
+</div>
+<footer>
+    <div class="footer-area">
+        <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+    </div>
+</footer>
 </div>
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
@@ -221,14 +269,14 @@
         var iconclasses = {
           exclamation: 'font-size: 22px;',
           A: 'font-size: 22px;'
-        };
-        var map = new L.Map('map', {
+      };
+      var map = new L.Map('map', {
           center: [data[0].lat,data[0].lon],
           zoom: 13,
           zoomControl:false,
           leafletControl: false
-        });
-        L.tileLayer('http://maps.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i375060738!3m9!2spl!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0').addTo(map);
+      });
+      L.tileLayer('http://maps.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i375060738!3m9!2spl!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0').addTo(map);
         // L.tileLayer('https://stamen-tiles-c.a.ssl.fastly.net/toner/{z}/{x}/{y}.png').addTo(map);
 
         data.forEach(function(row){
@@ -237,12 +285,12 @@
           var iconstyle = iconclass?iconclasses[iconclass]:'';
           var icontext = iconclass?'':row.iconclass;
 
-           var icon = L.divIcon({
-             className: 'map-marker '+iconclass,
-             iconSize:null,
-             html:'<div class="icon" style="'+iconstyle+'">'+icontext+'</div><div class="arrow" />',
-             iconUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/6362/marker.png'
-           });
+          var icon = L.divIcon({
+           className: 'map-marker '+iconclass,
+           iconSize:null,
+           html:'<div class="icon" style="'+iconstyle+'">'+icontext+'</div><div class="arrow" />',
+           iconUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/6362/marker.png'
+       });
 
           L.marker(pos).addTo(map).setIcon(L.icon({
             iconUrl: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSItMzEgMCA1MTEgNTEyIiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0xNTYuNDEwMTU2IDI3MmgxMzkuNDk2MDk0djMwaC0xMzkuNDk2MDk0em0wIDAiIGZpbGw9IiM1YTVhNWEiLz48cGF0aCBkPSJtMzg1LjkwNjI1IDQ4Ni4xOTkyMTktMjAuOTk2MDk0IDIxLjYwMTU2Mi0xMzguOTAyMzQ0LTEzMy41LS41OTc2NTYuNTk3NjU3LTEzOS44MDA3ODEgMTMyLjkwMjM0My0yMC40MDIzNDQtMjEuNjAxNTYyIDEzOC44OTg0MzgtMTMyLjYwMTU2My01OC4xOTkyMTktNTUuNzk2ODc1IDIxLjAwMzkwNi0yMS42MDE1NjIgNTguNSA1Ni4xMDE1NjIuNTk3NjU2LjU5NzY1NyA1OS42OTkyMTktNTYuNjk5MjE5IDIwLjQwMjM0NCAyMS42MDE1NjItNTguNSA1NS43OTY4NzV6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjxnIGZpbGw9IiM0NDQiPjxwYXRoIGQ9Im0yMjUuNDEwMTU2IDI3Mmg3MC40OTYwOTR2MzBoLTcwLjQ5NjA5NHptMCAwIi8+PHBhdGggZD0ibTM4NS45MDYyNSA0ODYuMTk5MjE5LTIwLjk5NjA5NCAyMS42MDE1NjItMTM4LjkwMjM0NC0xMzMuNS0uNTk3NjU2LjU5NzY1N3YtNDIuNTk3NjU3bC41OTc2NTYuNTk3NjU3IDU5LjY5OTIxOS01Ni42OTkyMTkgMjAuNDAyMzQ0IDIxLjYwMTU2Mi01OC41IDU1Ljc5Njg3NXptMCAwIi8+PHBhdGggZD0ibTM2MS4zNzUgNTAyLjMxNjQwNi0xMzcuNDMzNTk0LTM2NC43NTM5MDYgMjguMDcwMzEzLTEwLjYzMjgxMiAxMzcuNDI5Njg3IDM2NC43NTM5MDZ6bTAgMCIvPjwvZz48cGF0aCBkPSJtODkuNDQxNDA2IDUwMi4zMTY0MDYtMjguMDY2NDA2LTEwLjYzMjgxMiAxMzcuNDI5Njg4LTM2NC43NTM5MDYgMjguMDcwMzEyIDEwLjYzMjgxMnptMCAwIiBmaWxsPSIjNWE1YTVhIi8+PHBhdGggZD0ibTIxMC40MTAxNTYgMGgzMHY3NWgtMzB6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjxwYXRoIGQ9Im0yMjUuNDEwMTU2IDBoMTV2NzVoLTE1em0wIDAiIGZpbGw9IiM0NDQiLz48cGF0aCBkPSJtMzguMTI4OTA2IDIwOS45MTAxNTZjLTUwLjE3MTg3NS02MC43ODkwNjItNTAuMTcxODc1LTE0OS4wMzEyNSAwLTIwOS44MjAzMTIybDIzLjE0NDUzMiAxOS4xMDE1NjIyYy00MS4wNDY4NzYgNDkuNzE0ODQ0LTQxLjA0Njg3NiAxMjEuOTAyMzQ0IDAgMTcxLjYyMTA5NHptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTQxMi42ODc1IDIwOS45MTAxNTYtMjMuMTQ0NTMxLTE5LjEwMTU2MmM0MS4wNDY4NzUtNDkuNzE0ODQ0IDQxLjA0Njg3NS0xMjEuOTAyMzQ0IDAtMTcxLjYyMTA5NGwyMy4xNDQ1MzEtMTkuMDk3NjU2MmM1MC4xNzE4NzUgNjAuNzg5MDYyMiA1MC4xNzE4NzUgMTQ5LjAzMTI1MDIgMCAyMDkuODIwMzEyMnptMCAwIiBmaWxsPSIjNzZlMmY4Ii8+PHBhdGggZD0ibTEyOC4wNzAzMTIgMTMwLjA2MjVjLTYuOTYwOTM3LTEwLjMyODEyNS0xNC4yMjY1NjItMzMuMjM4MjgxIDIuNjIxMDk0LTUzLjYxMzI4MWwyMy4xMTMyODIgMTkuMTAxNTYyYy02LjM5ODQzOCA3Ljc1LTIuMjM4MjgyIDE1LjYxNzE4OC0uODA0Njg4IDE3LjgyODEyNXptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTc4LjM4MjgxMiAxNjMuNjk1MzEyYy0xNi4zMjAzMTItMjQuMTQwNjI0LTMzLjM5ODQzNy03Ny43MTA5MzcgNi4wNTA3ODItMTI1LjQ2NDg0M2wyMy4xMTMyODEgMTkuMTA1NDY5Yy0zNS4yNTc4MTMgNDIuNjk5MjE4LTUuNTkzNzUgODcuNjUyMzQzLTQuMzIwMzEzIDg5LjU0Mjk2OHptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTMyMC4xMDkzNzUgMTMzLjU2MjUtMjMuMTEzMjgxLTE5LjEwMTU2MmMzLjEzMjgxMi0zLjgwODU5NCA1LjcyNjU2Mi0xMS45ODA0NjkgMC0xOC45MjU3ODJsMjMuMTEzMjgxLTE5LjEwMTU2MmMxNS41IDE4Ljc1MzkwNiAxMS43MzQzNzUgNDIuOTM3NSAwIDU3LjEyODkwNnptMCAwIiBmaWxsPSIjNzZlMmY4Ii8+PHBhdGggZD0ibTM2Ni4zOTg0MzggMTcxLjc2OTUzMS0yMy4xNDQ1MzItMTkuMTA1NDY5YzIyLjgwODU5NC0yNy42MDkzNzQgMjIuODA4NTk0LTY3LjcwMzEyNCAwLTk1LjMyODEyNGwyMy4xNDQ1MzItMTkuMTA1NDY5YzMxLjkzMzU5MyAzOC42ODc1IDMxLjkzMzU5MyA5NC44NTE1NjIgMCAxMzMuNTM5MDYyem0wIDAiIGZpbGw9IiM3NmUyZjgiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiA2MGMtMjQuOTAyMzQ0IDAtNDUgMjAuMDk3NjU2LTQ1IDQ1IDAgMjQuODk4NDM4IDIwLjA5NzY1NiA0NSA0NSA0NSAyNC44OTg0MzggMCA0NS0yMC4xMDE1NjIgNDUtNDUgMC0yNC45MDIzNDQtMjAuMTAxNTYyLTQ1LTQ1LTQ1em0wIDAiIGZpbGw9IiM3NmUyZjgiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiAxNTB2LTkwYzI0Ljg5ODQzOCAwIDQ1IDIwLjA5NzY1NiA0NSA0NSAwIDI0Ljg5ODQzOC0yMC4xMDE1NjIgNDUtNDUgNDV6bTAgMCIgZmlsbD0iIzI1ZDlmOCIvPjxwYXRoIGQ9Im0zMC40MTAxNTYgNDgyaDM5MHYzMGgtMzkwem0wIDAiIGZpbGw9IiM2ZTZlNmUiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiA0ODJoMTk1djMwaC0xOTV6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjwvc3ZnPgo=', // load your own custom marker image here
@@ -252,12 +300,12 @@
           }));; //reference marker
           L.marker(pos,{icon: icon}).addTo(map);
 
-        });
+      });
 
-        $('.leaflet-control a').remove();
-      });     
-      
-    });
+$('.leaflet-control a').remove();
+});     
+
+});
 </script>
 <script type="text/javascript">
     var posivka = '<%= sessionPoziv %>';

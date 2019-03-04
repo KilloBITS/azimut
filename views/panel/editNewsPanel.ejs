@@ -59,9 +59,10 @@
                                     <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
                             <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
-                            <li><a href="/PanelTechnical"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                             
+                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -163,6 +164,19 @@
                                         <label for="example-text-input" class="col-form-label">Английский</label>
                                         <textarea class="form-control" id="example-text-input5"><%= NEWS.TEXT[2] %></textarea>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mt-5">
+                    <div class="row">
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Логотип новости</h4>
+                                    <img src="<%= NEWS.NEWS_LOGO %>">                                                      
                                 </div>
                             </div>
                         </div>

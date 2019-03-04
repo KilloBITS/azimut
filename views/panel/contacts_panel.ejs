@@ -61,10 +61,11 @@
                                     <li><a href="/PanelNumeral?page=1">Цифра</a></li>
                                     <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
-                            </li>                          
+                            </li>
+                            <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
                             <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>  
-                            <li><a href="/PanelTechnical"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                            
+                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>  
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -126,43 +127,39 @@
                         <div class="col-12 mt-5">
                             <div class="card">
                                 <div class="card-body">
-
-                                        <div class="card-body">
-                                            <h4 class="header-title">Список контактов</h4>
-                                            <div class="data-tables">
-                                                <table id="dataTable" class="text-center">
-                                                    <thead class="bg-light text-capitalize">
-                                                        <tr>
-                                                            <th>ФИО</th>
-                                                            <th>Должность</th>
-                                                            <th>Номер</th>
-                                                            <th>EMAIL</th>
-                                                            <th>Позывной</th>                                               
-                                                            <th>Действия</th>                                               
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>                                 
-                                                        <% for(var i = 0; i < listContact.length; i++){ %>
-                                                        <tr>
-                                                            <td><%= listContact[i].name %></td>
-                                                            <td><%= listContact[i].rank %></td>
-                                                            <td><%= listContact[i].number %></td>
-                                                            <td><%= listContact[i].email %></td>
-                                                            <td><%= listContact[i].pozivnoy %></td>                                                     
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('<%= listContact[i].pozivnoy %>')">Редактировать</button> 
-                                                                <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('<%= listContact[i].pozivnoy %>')">Удалить</button> 
-                                                            </td>  
-                                                        </tr>                                                
-                                                        <% } %>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <a href="#"><button type="button" class="btn btn-info mb-2 col-12" onclick="addUserContacts()">Добавить</button></a>
+                                    <div class="card-body">
+                                        <h4 class="header-title">Список контактов</h4>
+                                        <div class="data-tables">
+                                            <table id="dataTable" class="text-center">
+                                                <thead class="bg-light text-capitalize">
+                                                    <tr>
+                                                        <th>ФИО</th>
+                                                        <th>Должность</th>
+                                                        <th>Номер</th>
+                                                        <th>EMAIL</th>
+                                                        <th>Позывной</th>                                               
+                                                        <th>Действия</th>                                               
+                                                    </tr>
+                                                </thead>
+                                                <tbody>                                 
+                                                    <% for(var i = 0; i < listContact.length; i++){ %>
+                                                    <tr>
+                                                        <td><%= listContact[i].name %></td>
+                                                        <td><%= listContact[i].rank %></td>
+                                                        <td><%= listContact[i].number %></td>
+                                                        <td><%= listContact[i].email %></td>
+                                                        <td><%= listContact[i].pozivnoy %></td>                                                     
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('<%= listContact[i].pozivnoy %>')">Редактировать</button> 
+                                                            <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('<%= listContact[i].pozivnoy %>')">Удалить</button> 
+                                                        </td>  
+                                                    </tr>                                                
+                                                    <% } %>
+                                                </tbody>
+                                            </table>
                                         </div>
-                               
-                                 
+                                        <a href="#"><button type="button" class="btn btn-info mb-2 col-12" onclick="addUserContacts()">Добавить</button></a>
+                                    </div>                             
                                 </div>
                             </div>
                         </div>

@@ -60,9 +60,10 @@
                                     <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
                             <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li> 
-                            <li><a href="/PanelTechnical"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                           
+                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -132,8 +133,12 @@
                             </div>
                         </div> 
                         <div class="media mb-5">
-                            <button type="submit" class="btn btn-danger col-lg-6 mb-3" onclick="removeNews('<%= newsData[i].AI %>')">Удалить</button>
-                            <a href="/editNews?news=<%= newsData[i].AI %>" class="btn btn-success col-lg-6 mb-3">Редактировать</a>
+                            <div class="col-lg-6 mt-3">
+                                <button type="submit" class="btn btn-danger col-lg-12 mb-3" onclick="removeNews('<%= newsData[i].AI %>')">Удалить</button>
+                            </div>
+                            <div class="col-lg-6 mt-3">
+                                <a href="/editNews?news=<%= newsData[i].AI %>" class="btn btn-success col-lg-12 mb-3">Редактировать</a>
+                            </div>
                         </div>                              
                     </div>
                 </div>

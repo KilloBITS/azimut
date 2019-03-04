@@ -27,7 +27,7 @@ var locationReload =  function(text, reload){
 
 var saveAboutText = function(a,b){
 	$.post('/saveAboutText',{a:a,b:b}, (res) => {
-		locationReload(res.message, true)
+		locationReload(res.message, false)
 	});
 }
 
@@ -147,9 +147,11 @@ var setAdminUser = function(a,b){
 	})
 }
 
-var removedPhotoGallery = function(a){
+var removedPhotoGallery = function(a,b){
+	$(b).parent().parent().parent().fadeOut(100)
 	$.post('/removedPhotoGallery', {a: a}, function(res){
-		locationReload(res.message, true)
+		$(b).parent().parent().parent().remove();
+		locationReload(res.message, false);
 	})
 }
 
