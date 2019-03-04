@@ -290,6 +290,7 @@ p {
 	margin-top: -20px;
 	border-radius: 6px;
 	margin-bottom: -25px;
+    margin-left: 0px;
 }
 
 .nav_wrapper a.none_text{
