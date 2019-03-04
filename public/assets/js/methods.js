@@ -1,30 +1,51 @@
 var NEWSFILELOGO;
 var NEWSFILECONTENTIMAGE = ['','','','','','','',''];
+var reload;
+
+var locationReload =  function(text, reload){
+	var modalWin = document.createElement('div');
+	modalWin.className = 'modalWin';
+	modalWin.innerHTML = text;
+	$('body').append(modalWin);
+	if(reload){
+		$(modalWin).append('<span>Страница будет обновлена через 3 секунды</span>');
+		var defInt = 3;
+		reload = setInterval(function(){
+			defInt = defInt - 1;
+			$('.modalWin span').html('Страница будет обновлена через '+defInt+' секунды');
+			if(defInt <= 0){
+				clearInterval(reload)
+				location.reload();
+			}
+		}, 1000)
+	}else{
+		setTimeout(function(){
+			$(modalWin).remove()
+		},3000)
+	}
+}
 
 var saveAboutText = function(a,b){
 	$.post('/saveAboutText',{a:a,b:b}, (res) => {
-		console.log(res);
+		locationReload(res.message, true)
 	});
 }
 
 var setRemoveTovar = function(a){
 	$.post('/setRemoveTovar',{a:a}, (res) => {
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	});
 }
 
 var setCancelTovar = function(a){
 	$.post('/setCancelTovar',{a:a}, (res) => {
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	});
 }
 
 var setGoodTovar = function(a){
 	$.post('/setGoodTovar',{a:a}, (res) => {
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	});
 }
 
@@ -59,8 +80,6 @@ var selectNewsContentImage = function(e,i){
 	    }
 	    $(e).parent().children()[1].innerHTML = filename
 	}
-	
-	
 }
 
 var saveNewNews = function(){
@@ -81,8 +100,7 @@ var saveNewNews = function(){
 		CONTENT_IMAGE: NEWSFILECONTENTIMAGE,
 	}
 	$.post('/setNewNews', NN, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	})
 }
 
@@ -101,35 +119,77 @@ var newCalendarDate = function(){
 	}
 
 	$.post('/setNewCalendar', ND, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	})
 }
 
 var setRemoveCalendar = function(ai){
 	$.post('/setDeleteCalendar', {a: ai}, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	})
 }
 
 var blockUser = function(a,b){
 	$.post('/blockUser', {a: a, b: b}, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	})
 }
 
 var removeUser = function(a){
 	$.post('/deleteUser', {a: a}, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
 	})
 }
 
 var setAdminUser = function(a,b){
 	$.post('/setAdmUser', {a: a, b: b}, function(res){
-		console.log(res);
-		location.reload();
+		locationReload(res.message, true)
+	})
+}
+
+var removedPhotoGallery = function(a){
+	$.post('/removedPhotoGallery', {a: a}, function(res){
+		locationReload(res.message, true)
+	})
+}
+
+var addPhotoGallery = function(a){	
+	var file = document.querySelector('#inputGroupFileGallery').files[0];
+	const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function(data){
+    	$.post('/addPhotoGallery', {a: data.target.result}, function(res){
+			locationReload(res.message, true)
+		})
+    }	
+}
+
+var saveFormMessage = function(){
+
+}
+
+var removeUserContacts =  function(){
+
+}
+
+var saveDBParams = function(){
+	var isSecure = confirm("Неправильные данные могут привести к поломке всего проекта!\nТакие изминения лучше вводить разработчикам!\nВы уверены что хотите сохранить ?");
+	if(isSecure){
+		var DBP = {
+			a: $('#example-text-input').val(),
+			b: $('#example-text-input1').val(),
+			c: $('#example-text-input2').val(),
+			d: $('#example-text-input3').val(),
+			e: $('#example-text-input4').val()
+		}
+		$.post('/setDbParams', DBP, function(res){
+			locationReload(res.message, false)
+		})
+	}
+}
+
+var removeNews = function(a){
+	$.post('/setRemoveNews', {a: a}, function(res){
+		locationReload(res.message, true);
 	})
 }

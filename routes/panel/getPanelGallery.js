@@ -13,22 +13,25 @@ router.get('/', function(req, res, next){
 		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
-			console.log(Folder)
-			fs.readdir(Folder, (err, files) => {
-				console.log(files)
-				conf.find().toArray(function(err, resultDB){
-					res.render('panel/gallery_panel.ejs',
-					{
-						sessionUser: req.session.user,
-						sessionPoziv: req.session.poziv,
-						isAdm: req.session.admin,
-						locator: resultDB[0].LOCATOR,
-						aboutData: resultDB[0],
-						images: files
-					});  
-				}); 
+			const reviews = db.collection("REVIEWS");
+			
+			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
+				fs.readdir(Folder, (err, files) => {
+					console.log(files)
+					conf.find().toArray(function(err, resultDB){
+						res.render('panel/gallery_panel.ejs',
+						{
+							sessionUser: req.session.user,
+							sessionPoziv: req.session.poziv,
+							isAdm: req.session.admin,
+							locator: resultDB[0].LOCATOR,
+							aboutData: resultDB[0],
+							images: files,
+							message: result_reviews
+						});  
+					}); 
+				});
 			});
-
 		});  
 	}else{
 		res.redirect('/');

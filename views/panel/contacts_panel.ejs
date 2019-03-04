@@ -12,9 +12,14 @@
     <link rel="stylesheet" href="assets/css/metisMenu.css">
     <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amchart css -->
+    <!-- amcharts css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
+    <!-- style css -->
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -54,11 +59,12 @@
                                     <li><a href="/PanelVHF?page=1">VHF</a></li>
                                     <li><a href="/PanelHF?page=1">HF</a></li>
                                     <li><a href="/PanelNumeral?page=1">Цифра</a></li>
-                                    <!-- <li><a href="/newNews">Создать новость</a></li> -->
+                                    <li><a href="/PanelOthers?page=1">Разное</a></li>
                                 </ul>
                             </li>                          
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
-                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>                            
+                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>  
+                            <li><a href="/PanelTechnical"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                            
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>  
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -93,141 +99,7 @@
                         <li id="full-view"><i class="ti-fullscreen"></i></li>
                         <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                         <li class="dropdown">
-                            <i class="ti-bell dropdown-toggle" data-toggle="dropdown">
-                                <span>2</span>
-                            </i>
-                            <div class="dropdown-menu bell-notify-box notify-box">
-                                <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
-                                <div class="nofity-list">
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                        <div class="notify-text">
-                                            <p>You have Changed Your Password</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                        <div class="notify-text">
-                                            <p>New Commetns On Post</p>
-                                            <span>30 Seconds ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                        <div class="notify-text">
-                                            <p>Some special like you</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-comments-smiley btn-info"></i></div>
-                                        <div class="notify-text">
-                                            <p>New Commetns On Post</p>
-                                            <span>30 Seconds ago</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-primary"></i></div>
-                                        <div class="notify-text">
-                                            <p>Some special like you</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                        <div class="notify-text">
-                                            <p>You have Changed Your Password</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb"><i class="ti-key btn-danger"></i></div>
-                                        <div class="notify-text">
-                                            <p>You have Changed Your Password</p>
-                                            <span>Just Now</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="dropdown">
-                            <i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span>3</span></i>
-                            <div class="dropdown-menu notify-box nt-enveloper-box">
-                                <span class="notify-title">You have 3 new notifications <a href="#">view all</a></span>
-                                <div class="nofity-list">
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img1.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">Hey I am waiting for you...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img2.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">When you can connect with me...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img3.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">I missed you so much...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img4.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">Your product is completely Ready...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img2.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">Hey I am waiting for you...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img1.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">Hey I am waiting for you...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="notify-item">
-                                        <div class="notify-thumb">
-                                            <img src="assets/images/author/author-img3.jpg" alt="image">
-                                        </div>
-                                        <div class="notify-text">
-                                            <p>Aglae Mayer</p>
-                                            <span class="msg">Hey I am waiting for you...</span>
-                                            <span>3:15 PM</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
+                            <%- include ./panel_includes/panel_notify.ejs %> 
                         </li>                            
                     </ul>
                 </div>
@@ -237,54 +109,59 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Локализация</h4>
+                        <h4 class="page-title pull-left">Управление контактыми</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
-                    <div class="user-profile pull-right">
-                        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <%= sessionUser %> (<%= sessionPoziv %>) <i class="fa fa-angle-down"></i></h4>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="/getProfile" target="_blank">Профиль</a>
-                            <a class="dropdown-item" href="/logout">Выход</a>
-                        </div>
-                    </div>
+                    <%- include ./panel_includes/panel_session.ejs %> 
                 </div>
             </div>
         </div>
         <div class="main-content-inner">
           <!-- Тут будет контент -->
-          <div class="row">
-                <div class="col-lg-6 col-ml-12">
+            <div class="row">
+                <div class="col-lg-12 col-ml-12">
                     <div class="row">
                         <!-- Textual inputs start -->
                         <div class="col-12 mt-5">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="header-title">Подключение к базе</h4>
-                                    <p class="text-muted font-14 mb-4">Настройки параметров базы данных</p>
 
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">IP адресс базы</label>
-                                        <input class="form-control" type="text" id="example-text-input">
-                                    </div>    
+                                        <div class="card-body">
+                                            <h4 class="header-title">Список контактов</h4>
+                                            <div class="data-tables">
+                                                <table id="dataTable" class="text-center">
+                                                    <thead class="bg-light text-capitalize">
+                                                        <tr>
+                                                            <th>ФИО</th>
+                                                            <th>Должность</th>
+                                                            <th>Номер</th>
+                                                            <th>EMAIL</th>
+                                                            <th>Позывной</th>                                               
+                                                            <th>Действия</th>                                               
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>                                 
+                                                        <% for(var i = 0; i < listContact.length; i++){ %>
+                                                        <tr>
+                                                            <td><%= listContact[i].name %></td>
+                                                            <td><%= listContact[i].rank %></td>
+                                                            <td><%= listContact[i].number %></td>
+                                                            <td><%= listContact[i].email %></td>
+                                                            <td><%= listContact[i].pozivnoy %></td>                                                     
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('<%= listContact[i].pozivnoy %>')">Редактировать</button> 
+                                                                <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('<%= listContact[i].pozivnoy %>')">Удалить</button> 
+                                                            </td>  
+                                                        </tr>                                                
+                                                        <% } %>
+                                                    </tbody>
+                                                </table>
+                                            </div>
 
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Порт адресс базы</label>
-                                        <input class="form-control" type="text" id="example-text-input">
-                                    </div>                                
-                                    
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Логин</label>
-                                        <input class="form-control" type="text" id="example-text-input">
-                                    </div> 
-
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Пароль</label>
-                                        <input class="form-control" type="text" id="example-text-input">
-                                    </div>   
-
-                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveDBParams()">Сохранить</button>
+                                            <a href="#"><button type="button" class="btn btn-info mb-2 col-12" onclick="addUserContacts()">Добавить</button></a>
+                                        </div>
+                               
                                  
                                 </div>
                             </div>
@@ -292,6 +169,45 @@
                         <!-- Textual inputs end -->
                     </div>
                 </div>
+
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Настройки обратной связи</h4>
+                                    <p class="text-muted font-14 mb-4">Форма обратной связи на странице контакты</p>
+
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="col-form-label">email для приема сообщений</label>
+                                        <input class="form-control" type="text" id="example-text-input-email" value="<%= C_EMAIL %>">
+                                    </div>    
+
+                                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveFormMessage()">Сохранить</button>
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Textual inputs end -->
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-ml-12">
+                    <div class="row">
+                        <!-- Textual inputs start -->
+                        <div class="col-12 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="header-title">Настройки карты</h4>
+                                    <div class="map_block" id="map"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Textual inputs end -->
+                    </div>
+                </div>
+
             </div>
       </div>
   </div>
@@ -301,24 +217,115 @@
     </div>
 </footer>
 </div>
+<!-- jquery latest version -->
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/metisMenu.min.js"></script>
 <script src="assets/js/jquery.slimscroll.min.js"></script>
 <script src="assets/js/jquery.slicknav.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-<script>
-    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+
+<!-- Start datatable js -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+<!-- Leaflet js -->
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+
+<script type="text/javascript">
+    var data;
+    var map;
+    var markerArray = [];
+
+
+    var removeMarker = function(e){
+        map.removeLayer(markerArray[e]);   
+        $.post('/removeMapPoint', {a: e}, function(res){
+            locationReload(res.message, false);
+        })       
+    }
+
+
+    function onMapClick(e) {
+        var isConfirm = confirm("Вы действительно хотите добавить метку по координатам: " + e.latlng);
+        if(isConfirm){
+            data.push({iconclass: 'A', lat: parseFloat(e.latlng.lat.toFixed(4)), lon: parseFloat(e.latlng.lng.toFixed(4))});
+            $.post('/setMapPoint', {a: data}, function(res){
+                locationReload(res.message);
+            })
+        }
+    }
+
+    var mapConstructor = function(){
+        var markerIndex = 0;
+        var iconclasses = {
+            exclamation: 'font-size: 22px;',
+            A: 'font-size: 22px;'
+        };
+        map = new L.Map('map', {
+            center: [data[0].lat,data[0].lon],
+            zoom: 13,
+            zoomControl:false,
+            leafletControl: false
+        });
+       
+
+        map.on('click', onMapClick);
+
+        L.tileLayer('http://maps.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i375060738!3m9!2spl!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0').addTo(map);
+
+        data.forEach(function(row){
+            var pos = new L.LatLng(row.lat,row.lon);
+            var iconclass = iconclasses[row.iconclass]?row.iconclass:'';
+            var iconstyle = iconclass?iconclasses[iconclass]:'';
+            var icontext = iconclass?'':row.iconclass;
+
+             var icon = L.divIcon({
+               className: 'map-marker '+iconclass,
+               iconSize:null,
+               html:'<div class="icon" style="'+iconstyle+'">'+icontext+'</div><div class="arrow" />',
+               iconUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/6362/marker.png'
+             });
+
+            var marker = L.marker(pos).addTo(map).setIcon(L.icon({
+              iconUrl: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSItMzEgMCA1MTEgNTEyIiB3aWR0aD0iNTEycHgiPjxwYXRoIGQ9Im0xNTYuNDEwMTU2IDI3MmgxMzkuNDk2MDk0djMwaC0xMzkuNDk2MDk0em0wIDAiIGZpbGw9IiM1YTVhNWEiLz48cGF0aCBkPSJtMzg1LjkwNjI1IDQ4Ni4xOTkyMTktMjAuOTk2MDk0IDIxLjYwMTU2Mi0xMzguOTAyMzQ0LTEzMy41LS41OTc2NTYuNTk3NjU3LTEzOS44MDA3ODEgMTMyLjkwMjM0My0yMC40MDIzNDQtMjEuNjAxNTYyIDEzOC44OTg0MzgtMTMyLjYwMTU2My01OC4xOTkyMTktNTUuNzk2ODc1IDIxLjAwMzkwNi0yMS42MDE1NjIgNTguNSA1Ni4xMDE1NjIuNTk3NjU2LjU5NzY1NyA1OS42OTkyMTktNTYuNjk5MjE5IDIwLjQwMjM0NCAyMS42MDE1NjItNTguNSA1NS43OTY4NzV6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjxnIGZpbGw9IiM0NDQiPjxwYXRoIGQ9Im0yMjUuNDEwMTU2IDI3Mmg3MC40OTYwOTR2MzBoLTcwLjQ5NjA5NHptMCAwIi8+PHBhdGggZD0ibTM4NS45MDYyNSA0ODYuMTk5MjE5LTIwLjk5NjA5NCAyMS42MDE1NjItMTM4LjkwMjM0NC0xMzMuNS0uNTk3NjU2LjU5NzY1N3YtNDIuNTk3NjU3bC41OTc2NTYuNTk3NjU3IDU5LjY5OTIxOS01Ni42OTkyMTkgMjAuNDAyMzQ0IDIxLjYwMTU2Mi01OC41IDU1Ljc5Njg3NXptMCAwIi8+PHBhdGggZD0ibTM2MS4zNzUgNTAyLjMxNjQwNi0xMzcuNDMzNTk0LTM2NC43NTM5MDYgMjguMDcwMzEzLTEwLjYzMjgxMiAxMzcuNDI5Njg3IDM2NC43NTM5MDZ6bTAgMCIvPjwvZz48cGF0aCBkPSJtODkuNDQxNDA2IDUwMi4zMTY0MDYtMjguMDY2NDA2LTEwLjYzMjgxMiAxMzcuNDI5Njg4LTM2NC43NTM5MDYgMjguMDcwMzEyIDEwLjYzMjgxMnptMCAwIiBmaWxsPSIjNWE1YTVhIi8+PHBhdGggZD0ibTIxMC40MTAxNTYgMGgzMHY3NWgtMzB6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjxwYXRoIGQ9Im0yMjUuNDEwMTU2IDBoMTV2NzVoLTE1em0wIDAiIGZpbGw9IiM0NDQiLz48cGF0aCBkPSJtMzguMTI4OTA2IDIwOS45MTAxNTZjLTUwLjE3MTg3NS02MC43ODkwNjItNTAuMTcxODc1LTE0OS4wMzEyNSAwLTIwOS44MjAzMTIybDIzLjE0NDUzMiAxOS4xMDE1NjIyYy00MS4wNDY4NzYgNDkuNzE0ODQ0LTQxLjA0Njg3NiAxMjEuOTAyMzQ0IDAgMTcxLjYyMTA5NHptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTQxMi42ODc1IDIwOS45MTAxNTYtMjMuMTQ0NTMxLTE5LjEwMTU2MmM0MS4wNDY4NzUtNDkuNzE0ODQ0IDQxLjA0Njg3NS0xMjEuOTAyMzQ0IDAtMTcxLjYyMTA5NGwyMy4xNDQ1MzEtMTkuMDk3NjU2MmM1MC4xNzE4NzUgNjAuNzg5MDYyMiA1MC4xNzE4NzUgMTQ5LjAzMTI1MDIgMCAyMDkuODIwMzEyMnptMCAwIiBmaWxsPSIjNzZlMmY4Ii8+PHBhdGggZD0ibTEyOC4wNzAzMTIgMTMwLjA2MjVjLTYuOTYwOTM3LTEwLjMyODEyNS0xNC4yMjY1NjItMzMuMjM4MjgxIDIuNjIxMDk0LTUzLjYxMzI4MWwyMy4xMTMyODIgMTkuMTAxNTYyYy02LjM5ODQzOCA3Ljc1LTIuMjM4MjgyIDE1LjYxNzE4OC0uODA0Njg4IDE3LjgyODEyNXptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTc4LjM4MjgxMiAxNjMuNjk1MzEyYy0xNi4zMjAzMTItMjQuMTQwNjI0LTMzLjM5ODQzNy03Ny43MTA5MzcgNi4wNTA3ODItMTI1LjQ2NDg0M2wyMy4xMTMyODEgMTkuMTA1NDY5Yy0zNS4yNTc4MTMgNDIuNjk5MjE4LTUuNTkzNzUgODcuNjUyMzQzLTQuMzIwMzEzIDg5LjU0Mjk2OHptMCAwIiBmaWxsPSIjYThlYmZhIi8+PHBhdGggZD0ibTMyMC4xMDkzNzUgMTMzLjU2MjUtMjMuMTEzMjgxLTE5LjEwMTU2MmMzLjEzMjgxMi0zLjgwODU5NCA1LjcyNjU2Mi0xMS45ODA0NjkgMC0xOC45MjU3ODJsMjMuMTEzMjgxLTE5LjEwMTU2MmMxNS41IDE4Ljc1MzkwNiAxMS43MzQzNzUgNDIuOTM3NSAwIDU3LjEyODkwNnptMCAwIiBmaWxsPSIjNzZlMmY4Ii8+PHBhdGggZD0ibTM2Ni4zOTg0MzggMTcxLjc2OTUzMS0yMy4xNDQ1MzItMTkuMTA1NDY5YzIyLjgwODU5NC0yNy42MDkzNzQgMjIuODA4NTk0LTY3LjcwMzEyNCAwLTk1LjMyODEyNGwyMy4xNDQ1MzItMTkuMTA1NDY5YzMxLjkzMzU5MyAzOC42ODc1IDMxLjkzMzU5MyA5NC44NTE1NjIgMCAxMzMuNTM5MDYyem0wIDAiIGZpbGw9IiM3NmUyZjgiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiA2MGMtMjQuOTAyMzQ0IDAtNDUgMjAuMDk3NjU2LTQ1IDQ1IDAgMjQuODk4NDM4IDIwLjA5NzY1NiA0NSA0NSA0NSAyNC44OTg0MzggMCA0NS0yMC4xMDE1NjIgNDUtNDUgMC0yNC45MDIzNDQtMjAuMTAxNTYyLTQ1LTQ1LTQ1em0wIDAiIGZpbGw9IiM3NmUyZjgiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiAxNTB2LTkwYzI0Ljg5ODQzOCAwIDQ1IDIwLjA5NzY1NiA0NSA0NSAwIDI0Ljg5ODQzOC0yMC4xMDE1NjIgNDUtNDUgNDV6bTAgMCIgZmlsbD0iIzI1ZDlmOCIvPjxwYXRoIGQ9Im0zMC40MTAxNTYgNDgyaDM5MHYzMGgtMzkwem0wIDAiIGZpbGw9IiM2ZTZlNmUiLz48cGF0aCBkPSJtMjI1LjQxMDE1NiA0ODJoMTk1djMwaC0xOTV6bTAgMCIgZmlsbD0iIzVhNWE1YSIvPjwvc3ZnPgo=', // load your own custom marker image here
+              iconSize: [56, 56],
+              iconAnchor: [28, 28],
+              popupAnchor: [0, -34]
+        })).bindPopup('<button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeMarker('+markerIndex+')">Удалить</button>');
+        
+        L.marker(pos,{icon: icon}).addTo(map);
+        markerArray.push(marker);
+        markerIndex += 1;
+      });
+
+      $('.leaflet-control a').remove();
+    }
+    
+    $(document).ready(function(){  
+        $.post('/getMapPoint', function(res){
+            data = res.data;
+            mapConstructor();
+        });        
+    });
 </script>
-<script src="assets/js/line-chart.js"></script>
-<script src="assets/js/pie-chart.js"></script>
+
+<!-- others plugins -->
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script src="assets/js/methods.js"></script>
+<script type="text/javascript">
+    var posivka = '<%= sessionPoziv %>';
+    $.post('/getUserAva', {user: posivka},function(res){
+        $('#AVATAR').attr({"src":"../../../data/avatars/"+res.ava})
+    });
+</script>
 </body>
 
 </html>

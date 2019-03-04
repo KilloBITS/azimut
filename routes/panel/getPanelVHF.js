@@ -23,26 +23,30 @@ router.get('/*', function(req, res, next){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
 			const news = db.collection("NEWS");
+			const reviews = db.collection("REVIEWS");
+			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
+				conf.find().toArray(function(err, resultDB){
+					news.find({type:"VHF"}).toArray(function(err, result_news){
+						var current_page = page;
+						var paginator = new pagination.SearchPaginator({prelink: '/PanelVHF?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
+						var p = paginator.getPaginationData();
 
-			conf.find().toArray(function(err, resultDB){
-				news.find({type:"VHF"}).toArray(function(err, result_news){
-					var current_page = page;
-					var paginator = new pagination.SearchPaginator({prelink: '/PanelVHF?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
-					var p = paginator.getPaginationData();
-
-					res.render('panel/VHF_panel.ejs',
-					{
-						sessionUser: req.session.user,
-						sessionPoziv: req.session.poziv,
-						isAdm: req.session.admin,
-						locator: resultDB[0].LOCATOR,
-						newsData: result_news.slice(otNews, doNews),
-						offLength: result_news.length,
-						isPage: page,
-						paginate: p
-					});  
-				});   
-			});   
+						res.render('panel/VHF_panel.ejs',
+						{
+							sessionUser: req.session.user,
+							sessionPoziv: req.session.poziv,
+							isAdm: req.session.admin,
+							locator: resultDB[0].LOCATOR,
+							newsData: result_news.slice(otNews, doNews),
+							offLength: result_news.length,
+							isPage: page,
+							paginate: p,
+							message: result_reviews
+						});  
+					});   
+				}); 
+			});
+  
 		});  
 	}else{
 		res.redirect('/');

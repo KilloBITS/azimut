@@ -7,7 +7,7 @@ const pagination = require('pagination');
 
 router.use(cookieParser());
 
-router.get('/', function(req, res, next){
+router.get('/*', function(req, res, next){
   var page = req.url.split('page=')[1];
   if(parseInt(page) === 1){
     var otNews = 0;

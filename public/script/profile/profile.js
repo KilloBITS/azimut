@@ -193,5 +193,13 @@ var openDialog = function(user){
 
 
 var saveMyInfo = function(){
-	
+	var dataUser = {
+		name: $('#myUserName').val(),
+		email: $('#myUserEmail').val(),
+		phone: $('#myUserPhone').val(),
+		text: $('#textMe').val()
+	}
+	$.post('/saveMyInfo', dataUser, function(res){
+		console.log(res);
+	});
 }

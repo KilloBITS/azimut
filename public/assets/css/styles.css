@@ -709,21 +709,22 @@ ul.breadcrumbs {
     display: -ms-flexbox;
     display: flex;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
+    flex-wrap: wrap;
+    background: -webkit-linear-gradient(left, #ffffff 0%, #303641 100%);
+    background: linear-gradient(to right, #ffffff 0%, #303641 100%);
     padding: 17px 38px;
     position: relative;
 }
 
 .user-profile img.avatar {
-    height: 35px;
-    width: 35px;
+    /* height: 35px; */
+    /* width: 35px; */
     border-radius: 50%;
     margin-right: 12px;
+    max-width: 35px;
 }
 
 .user-name {
@@ -2904,4 +2905,33 @@ p.card-text.tovarText{
     background-repeat: no-repeat;
     background-position: 4px 11px;
     background-size: 16px;
+}
+
+.modalWin{
+    position: fixed;
+    background-color: #ff4444;
+    left: 50%;
+    top: 50%;
+    color: white;
+    padding: 16px 70px 60px 70px;
+    border-radius: 4px;
+    font-size: 18px;
+    border: 1px solid #f53c4e;
+    box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.66);
+    z-index: 10;
+}
+
+.modalWin span{
+    position: absolute;
+    left: calc(50% + 70px);
+    width: 100%;
+    transform: translate(-50%, 0);
+    bottom: 10px;
+    font-size: 14px;
+    color: silver;
+}
+
+#map {
+    width: 100%;
+    height: 385px;
 }

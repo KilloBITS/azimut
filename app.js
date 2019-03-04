@@ -78,7 +78,7 @@ app.use('/calendar', calendar);
 app.use('/activity*', activ);
 app.use('/rules', rules);
 app.use('/technikal', technikal);
-app.use('/others', others);
+app.use('/others*', others);
 app.use('/numeral*', numeral);
 app.use('/communities*', сommunities);
 app.use('/newtovar', newtovar);
@@ -111,6 +111,8 @@ const getPanelAbout = require('./routes/panel/getPanelAbout');
 const getPanelGallery = require('./routes/panel/getPanelGallery');
 const getPanelDB = require('./routes/panel/getPanelDB');
 const getPanelContacts = require('./routes/panel/getPanelContacts');
+const getPanelOthers = require('./routes/panel/getPanelOthers');
+const getEditNews = require('./routes/panel/getEditNews');
 
 app.use('/PanelCalendar', getPanelCalendar);
 app.use('/PanelIndex', getPanelIndex);
@@ -126,10 +128,12 @@ app.use('/PanelGallery', getPanelGallery);
 app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
 app.use('/PanelContacts', getPanelContacts);
+app.use('/PanelOthers', getPanelOthers)
+app.use('/editNews*', getEditNews)
 
 app.use('*', get404);
-/* POSTS */
 
+/* POSTS */
 app.post('/checkedCaptcha', function(req, res){
 	if(req.body.currentCaptcha === req.session.captcha){
 		res.send({code: 500});
@@ -175,30 +179,45 @@ app.post('/newTovar', newTovar);
 //Получить данные календаря
 const calendarData = require('./controllers/getCalendarController');
 app.post('/getCalendar', calendarData);
+//Обратная связь сообщения
+const userMessagePostController = require('./controllers/userMessagePostController');
+app.post('/userMessagePost', userMessagePostController);
+//сохранение инфы о себе
+const saveMyInfo = require('./controllers/saveMyInfoController');
+app.post('/saveMyInfo', saveMyInfo);
+
 
 /** Panel POST **/
 const panelAbout = require('./controllers/panelControllers/aboutController');
 app.post('/saveAboutText', panelAbout);
+app.post('/setMapPoint', panelAbout);
+app.post('/getMapPoint', panelAbout);
+app.post('/removeMapPoint', panelAbout);
 
 const marketAbout = require('./controllers/panelControllers/marketController');
 app.post('/setRemoveTovar', marketAbout);
 app.post('/setCancelTovar', marketAbout);
 app.post('/setGoodTovar', marketAbout);
 
+const galleryPanelPosts = require('./controllers/panelControllers/galleryController');
+app.post('/addPhotoGallery', galleryPanelPosts);
+app.post('/removedPhotoGallery', galleryPanelPosts);
+
 const newsPanel = require('./controllers/panelControllers/newsController');
 app.post('/setNewNews', newsPanel);
+app.post('/setRemoveNews', newsPanel);
 
 const calendarPanel = require('./controllers/panelControllers/calendarController');
 app.post('/setNewCalendar', calendarPanel);
 app.post('/setDeleteCalendar', calendarPanel);
 
-const numeralPanel = require('./controllers/panelControllers/numeralController');
-app.post('/setNewNews', numeralPanel);
-
 const usersPanelMethods = require('./controllers/panelControllers/usersController');
 app.post('/setAdmUser', usersPanelMethods);
 app.post('/deleteUser', usersPanelMethods);
 app.post('/blockUser', usersPanelMethods);
+
+const DBPanel = require('./controllers/panelControllers/DBController');
+app.post('/setDbParams', DBPanel);
 
 
 function sravnenie(arr, arr2){
@@ -217,23 +236,27 @@ function sravnenie(arr, arr2){
 
 /* Started server */
 app.listen(4334,function(){
-	global.baseName = 'AZIMUT';
-	global.baseIP = 'mongodb://localhost:27017/';
-	global.online = 0;
-	var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];
-	var currentCollections = [];
-	mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
-		const db = client.db(global.baseName);
-		db.listCollections().toArray(function(err, collections){
-			for(let ic = 0; ic < collections.length; ic++){
-				currentCollections.push(collections[ic].name);
-			}
-			if(sravnenie(currentCollections, defaultCollections)){
-				console.log('Проверка базы завершена, все таблицы присутствуют')
-			} 
-		});
-	});
+	fs.readFile('./settings.json', 'utf8', function(err, settings_file) {
+		var params = JSON.parse(settings_file);
+	    global.baseName = params.database_name;
+		global.baseIP = 'mongodb://'+params.database_ip+':'+params.database_port+'/';
+		global.online = 0;
 
-	global.sendMail("Система АЗИМУТ","Сервер азимут был запущен!", 'mr.kalinuk@gmail.com');
-	console.log('Started server on "Azimut" from port: 4334');
+		var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];
+		var currentCollections = [];
+		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
+			const db = client.db(global.baseName);
+			db.listCollections().toArray(function(err, collections){
+				for(let ic = 0; ic < collections.length; ic++){
+					currentCollections.push(collections[ic].name);
+				}
+				if(sravnenie(currentCollections, defaultCollections)){
+					console.log('Проверка базы завершена, все таблицы присутствуют')
+				} 
+			});
+		});
+
+		global.sendMail("Система АЗИМУТ","Сервер азимут был запущен!", 'mr.kalinuk@gmail.com');
+		console.log('Started server on "Azimut" from port: 4334');
+	});	
 });

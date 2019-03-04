@@ -121,10 +121,10 @@
 							<input type="file" id="tFile" style="display: none;">
 						</div>
 
-						<div class="dataText tName">Ваше имя: <input type="text" name="username" value="<%= USER.name %>"></div>
+						<div class="dataText tName">Ваше имя: <input type="text" name="username" id="myUserName" value="<%= USER.name %>"></div>
 						<div class="dataText tPoziv">Ваш позывной: <%= USER.pozivnoy %></div>
-						<div class="dataText tMail">Ваш e-mail: <input type="text" name="username" value="<%= USER.email %>"></div>
-						<div class="dataText tNumb">Ваш телефон: <input type="text" name="username" value="<%= USER.phone_number %>"></div>
+						<div class="dataText tMail">Ваш e-mail: <input type="text" name="username" value="<%= USER.email %>" id="myUserEmail"></div>
+						<div class="dataText tNumb">Ваш телефон: <input type="text" name="username" value="<%= USER.phone_number %>" id="myUserPhone"></div>
 
 						<div class="socialUserBtn" id="forMyVK"></div>
 						<div class="socialUserBtn" id="forMyInsta"></div>
@@ -133,7 +133,7 @@
 
 					<div class="fullBlock" style="margin-top: 15px;">
 						<div class="paramTitle">Вкратце обо мне</div>
-						<textarea id="textMe"><%= USER.info %></textarea>
+						<textarea id="textMe"><%= USER.text %></textarea>
 					</div>			
 					<div class="saveBtn" onclick="saveMyInfo()">Сохранить</div>
 				</div>

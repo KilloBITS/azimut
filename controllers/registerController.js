@@ -30,11 +30,6 @@ router.post('/signup', function(req, res, next){
 				}
 				today = mm + '-' + dd + '-' + yyyy;
 
-				var NEW_LOGS = {};
-				NEW_LOGS.date = today;
-				NEW_LOGS.type = 'Новый пользователь';
-				NEW_LOGS.text = 'Зарегистрирован новый пользователь: '+req.body.email.split('@')[0];
-				LOGS.insertOne(NEW_LOGS);
 				var bEnc = base64.encode('azimut_'+req.body.poziv+today);
 				var mainData = req.body;
 				var NEW_USER = {};
@@ -64,11 +59,13 @@ router.post('/signup', function(req, res, next){
 
 				users.insertOne(NEW_USER);
 
-				//create folder
-				var dir = './publick/data/avatars/'+req.body.poziv;
-				if (!fs.existsSync(dir)){
-					fs.mkdirSync(dir);
-				}
+				// //create folder
+				// var dir = './publick/data/avatars/'+req.body.poziv;
+
+				// if (!fs.existsSync(dir)){
+				// 	fs.mkdirSync(dir);
+				// }
+				
 				global.sendMail("Регистрация","Вы успешно зарегистрировались на сайте http://ur4wwr.org/ ерейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, req.body.email);
 				res.send({code: 500, data: NEW_USER});	
 

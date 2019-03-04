@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/script/jquery-ui.js"></script>
 	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/script/pagination.full.min.js"></script>
 
 	<script type="text/javascript" src="/script/index.js"></script>
 	<script type="text/javascript" src="/script/global.socket.js"></script>
@@ -87,10 +88,61 @@
 		</div>
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
-			<a href="/about" id="nav_about" class="navigator_btn selected_nav"><%= page.left_menu[4] %></a>
+			<a href="/about" id="nav_about" class="navigator_btn selected_nav"><%= page.left_menu[6] %></a>
 		</div>	
 		<section id="section_01" class="section_data RT">
-			<h2><%= page.others.title %></h2>				
+			<% if(NEWS.length > 0){ %>
+			<% for(var i = 0; i < NEWS.length; i++){ %>
+			<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
+				<h2><a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title[numberLanguage] %></a></h2>
+				<p>
+					<% if(NEWS[i].NEWS_LOGO !== undefined){ %>
+					<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
+					<% } %>			
+					<%= NEWS[i].TEXT[numberLanguage] %>
+					<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
+				</p>			
+				<div class="section_date">
+					<%= NEWS[i].DATE %>
+					<span><%= NEWS[i].AUTHOR %></span>
+				</div>
+			</section>	
+			<% } %>
+			<% }else{ %>
+			<div class="NoDataPage" style="text-align: center;">
+				<img src="../../../img/no-data.png">
+				<h2><%= page.notdata %></h2>
+			</div>
+			<% } %>
+			
+			<% if(offLength > 12){ %>
+			<div id="pagination" class="mt-2 mb-2"></div>
+			<script type="text/javascript">
+				(function() {
+					var translations = {
+						'PREVIOUS' : '<',
+						'NEXT' : '>',
+						'FIRST' : '<<',
+						'LAST' : '>>',
+						'CURRENT_PAGE_REPORT' : 'Показано от {FromResult} до {ToResult} из {TotalResult} новостей'
+					};
+					var paginator = new pagination.ItemPaginator({prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+						return translations[str];
+					}
+				});
+					var html = paginator.render();
+					var paginator = pagination.create('search', {prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+						return translations[str];
+					}
+				});
+					console.log(paginator)
+					html += paginator.render();
+					document.getElementById("pagination").innerHTML = html;
+
+					
+				})();
+			</script>
+			<% } %>
 			
 		</section>		
 	</main>

@@ -11,19 +11,23 @@ router.get('/', function(req, res, next){
 		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
-			const users = db.collection("USERS");
-
-			conf.find().toArray(function(err, resultDB){
-				users.find().toArray(function(err, resultUSERS){
+			const reviews = db.collection("REVIEWS");
+			
+			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
+				conf.find().toArray(function(err, resultDB){
+					console.log(resultDB[0].CONTACTS_EMAIL)
 					res.render('panel/contacts_panel.ejs',
 					{
 						sessionUser: req.session.user,
 						sessionPoziv: req.session.poziv,
 						isAdm: req.session.admin,
 						locator: resultDB[0].LOCATOR,
-						users: resultUSERS
+						listContact: resultDB[0].RU.admins,
+						C_EMAIL: resultDB[0].CONTACTS_EMAIL,
+						CONTACTS_FORM: resultDB[0].CONTACTS_FORM_ACTIVE,
+						message: result_reviews
 					});  
-				});   
+				});
 			});   
 		});  
 	}else{

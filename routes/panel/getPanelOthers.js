@@ -20,23 +20,23 @@ router.get('/*', function(req, res, next){
 		mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
-			const news = db.collection("NEWS");
+			const others = db.collection("NEWS");
 			const reviews = db.collection("REVIEWS");
 			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
 				conf.find().toArray(function(err, resultDB){
-					news.find({type:"ALL"}).toArray(function(err, result_news){
+					others.find({type:"OTHERS"}).toArray(function(err, result_others){
 						var current_page = page;
-						var paginator = new pagination.SearchPaginator({prelink: '/PanelNews?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
+						var paginator = new pagination.SearchPaginator({prelink: '/PanelOthers?' , current: current_page, rowsPerPage: 12, totalResult: result_others.length-1});
 						var p = paginator.getPaginationData();
 
-						res.render('panel/news_panel.ejs',
+						res.render('panel/others_panel.ejs',
 						{
 							sessionUser: req.session.user,
 							sessionPoziv: req.session.poziv,
 							isAdm: req.session.admin,
 							locator: resultDB[0].LOCATOR,
-							newsData: result_news.slice(otNews, doNews),
-							offLength: result_news.length,
+							othersData: result_others.slice(otNews, doNews),
+							offLength: result_others.length,
 							isPage: page,
 							paginate: p,
 							message: result_reviews

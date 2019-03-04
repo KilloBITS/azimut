@@ -1,6 +1,1 @@
-{
-  "database_ip": "localhost",
-  "database_port": "27017",
-  "database_nick": null,
-  "databale_password": null,
-}
+{"database_ip":"localhost","database_port":"27017","database_name":"AZIMUT","database_nick":"","databale_password":""}

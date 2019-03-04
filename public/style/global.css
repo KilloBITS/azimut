@@ -648,6 +648,7 @@ footer {
     border-radius: 3px;
     text-align: center;
     padding: 5px;
+    font: 16px 'Didact Gothic';
 }
 
 a.NewPassLink{

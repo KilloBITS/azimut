@@ -12,19 +12,23 @@ router.get('/', function(req, res, next){
 			const db = client.db(global.baseName);
 			const conf = db.collection("CONFIG");
 			const users = db.collection("USERS");
-
-			conf.find().toArray(function(err, resultDB){
-				users.find().toArray(function(err, resultUSERS){
-					res.render('panel/users_panel.ejs',
-					{
-						sessionUser: req.session.user,
-						sessionPoziv: req.session.poziv,
-						isAdm: req.session.admin,
-						locator: resultDB[0].LOCATOR,
-						users: resultUSERS
-					});  
-				});   
-			});   
+			const reviews = db.collection("REVIEWS");
+			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
+				conf.find().toArray(function(err, resultDB){
+					users.find().toArray(function(err, resultUSERS){
+						res.render('panel/users_panel.ejs',
+						{
+							sessionUser: req.session.user,
+							sessionPoziv: req.session.poziv,
+							isAdm: req.session.admin,
+							locator: resultDB[0].LOCATOR,
+							users: resultUSERS,
+							message: result_reviews
+						});  
+					});   
+				}); 
+			});
+  
 		});  
 	}else{
 		res.redirect('/');

@@ -97,7 +97,7 @@
 		</div>
 		<div class="contacts_data">
 			<h2 class="contacts_block_title"><%= page.imaps %></h2>
-			<div class="map_block" id="map"></div>	
+			<div class="map_block" id="map"></div>
 		</div>	
 
 		<div class="contacts_data" id="myContacts">
@@ -154,7 +154,7 @@
 				<div class="inner contact">
 					<div class="contact-form">
 						<!-- Form -->
-						<form id="contact-us" method="post" action="#">
+						<!-- <form id="contact-us" method="post" action="#"> -->
 							<!-- Left Inputs -->
 							<div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
 								<!-- Name -->
@@ -172,11 +172,11 @@
 							<!-- Bottom Submit -->
 							<div class="relative fullwidth col-xs-12">
 								<!-- Send Button -->
-								<button type="submit" id="submit" name="submit" class="form-btn semibold"><%= page.sendmessage %></button> 
+								<button type="submit" id="submit" name="submit" class="form-btn semibold" onclick="sendmessageToYou()"><%= page.sendmessage %></button> 
 							</div><!-- End Bottom Submit -->
 							<!-- Clear -->
 							<div class="clear"></div>
-						</form>
+						<!-- </form> -->
 
 						<!-- Your Mail Message -->
 						<div class="mail-message-area">

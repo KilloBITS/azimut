@@ -1,0 +1,15 @@
+<i class="fa fa-envelope-o dropdown-toggle" data-toggle="dropdown"><span><%= message.length %></span></i>
+<div class="dropdown-menu notify-box nt-enveloper-box">
+    <span class="notify-title">Получено <%= message.length %> новых сообщения <a href="#">Показать все</a></span>
+    <div class="nofity-list">
+		<% for(let i = 0; i < message.length; i++){ %>
+		<a href="#" class="notify-item">
+		    <div class="notify-text">
+		        <p><%= message[i].name %></p>
+		        <span class="msg"><%= message[i].msg.substr(0,25) %>...</span>
+		        <span><%= message[i].user %></span>
+		    </div>
+		</a>
+		<% } %>
+	</div>
+</div>
