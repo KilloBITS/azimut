@@ -2,28 +2,32 @@ var file;
 var currentImage = 0;
 var GLOBAL_FILE = [];
 $(document).ready(function(){
-	file = document.getElementById('tFile');
-	file.addEventListener('change', function () {
-	$(".newPhotoClick:eq("+currentImage+") img").attr("src","../../../img/spinner-preloader.gif")
-	  function setupReader(file, ci){
-	    var name = file.name;
-	    var reader = new FileReader();
-	    reader.onload = function (e) {
-	    	GLOBAL_FILE.push(e.target.result);
-	    	$(".newPhotoClick:eq("+ci+") img").attr("src",e.target.result);	  
-	    	$(".newPhotoClick:eq("+ci+")").addClass('settingImages');
-	    	$(".newPhotoClick:eq("+ci+") img").addClass('settingImages');
-	    };
-	    reader.readAsDataURL(file);	    
-	  }
-	  for (var i = 0; i < this.files.length; i++) {
-	      setupReader(this.files[i], currentImage);
-	      currentImage += 1;
-	  }
-	  file.value ='';
-	}, false);
+	try{
+		file = document.getElementById('tFile');
+		file.addEventListener('change', function () {
+		$(".newPhotoClick:eq("+currentImage+") img").attr("src","../../../img/spinner-preloader.gif")
+		  function setupReader(file, ci){
+		    var name = file.name;
+		    var reader = new FileReader();
+		    reader.onload = function (e) {
+		    	GLOBAL_FILE.push(e.target.result);
+		    	$(".newPhotoClick:eq("+ci+") img").attr("src",e.target.result);	  
+		    	$(".newPhotoClick:eq("+ci+")").addClass('settingImages');
+		    	$(".newPhotoClick:eq("+ci+") img").addClass('settingImages');
+		    };
+		    reader.readAsDataURL(file);	    
+		  }
+		  for (var i = 0; i < this.files.length; i++) {
+		      setupReader(this.files[i], currentImage);
+		      currentImage += 1;
+		  }
+		  file.value ='';
+		}, false);
+	}catch(e){
+		console.log('Неиспользуемый скрипт')
+	}
+	
 });
-
 var addNewTovar = function(){
 	$('.addTovarData').fadeIn(300);
 	$('.newTovarLoader').show();
