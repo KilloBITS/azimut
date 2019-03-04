@@ -25,7 +25,7 @@ router.post('/newComment', function(req, res, next){
 				NEW_COMMENT.user = req.session.user;
 				NEW_COMMENT.newsAI = req.headers.referer.split('ai=')[1];
 				NEW_COMMENT.text = req.body.text;
-				NEW_COMMENT.date = today;		
+				// NEW_COMMENT.date = today;		
 				NEW_COMMENT.AI = NEXT_AI;			
 				comments.insertOne(NEW_COMMENT);
 
