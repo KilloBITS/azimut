@@ -134,8 +134,8 @@ var saveNewTechnical = function(){
 
 var removeTechnical = function(a,e){
 	$('.preloaderBlock').fadeIn(100);
-	$.post('/setRemoveNews', {a: a}, function(res){
-		$(e).parent().parent().parent().parent().parent().fadeOut('slow', function() { $(this).remove(); });
+	$.post('/setRemoveTechnical', {a: a}, function(res){
+		$(e).parent().parent().parent().parent().fadeOut('slow', function() { $(this).remove(); });
 		locationReload(res.message, false);
 	})
 }
