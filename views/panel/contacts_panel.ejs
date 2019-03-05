@@ -162,9 +162,9 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <button type="button" class="btn btn-info mb-2 col-12" data-toggle="modal" data-target="#exampleModalCenter">Добавить</button>
+                                        <button type="button" class="btn btn-info mb-2 col-12" data-toggle="modal" data-target=".bd-example-modal-lg">Добавить</button>
                                         
-                                        <div class="modal fade" id="exampleModalCenter">
+                                        <div class="modal fade bd-example-modal-lg">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -177,7 +177,6 @@
                                                                 <thead class="bg-light text-capitalize">
                                                                     <tr>
                                                                         <th>ФИО</th>
-                                                                        <th>Должность</th>
                                                                         <th>Номер</th>
                                                                         <th>EMAIL</th>
                                                                         <th>Позывной</th>                                               
@@ -185,16 +184,14 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>                                 
-                                                                    <% for(var i = 0; i < listContact.length; i++){ %>
+                                                                    <% for(var ii = 0; ii < userList.length; ii++){ %>
                                                                     <tr>
-                                                                        <td><%= listContact[i].name %></td>
-                                                                        <td><%= listContact[i].rank %></td>
-                                                                        <td><%= listContact[i].number %></td>
-                                                                        <td><%= listContact[i].email %></td>
-                                                                        <td><%= listContact[i].pozivnoy %></td>                                                     
+                                                                        <td><%= userList[ii].name %></td>
+                                                                        <td><%= userList[ii].phone_number %></td>
+                                                                        <td><%= userList[ii].email %></td>
+                                                                        <td><%= userList[ii].pozivnoy %></td>                                                     
                                                                         <td>
-                                                                            <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('<%= listContact[i].pozivnoy %>')">Редактировать</button> 
-                                                                            <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('<%= listContact[i].pozivnoy %>')">Удалить</button> 
+                                                                            <button type="button" class="btn btn-primary btn-xs mb-3" onclick="selectedUserContacts('<%= userList[ii].pozivnoy %>')">Выбрать</button> 
                                                                         </td>  
                                                                     </tr>                                                
                                                                     <% } %>

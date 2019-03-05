@@ -14,7 +14,7 @@ router.post('/changePass', function(req, res, next){
 			const user = db.collection("USERS");
 
 			if(err) return console.log(err);	
-			if(req.body.a === req.body.b){
+			if(req.body.c === req.body.b){
 				user.find({pozivnoy: req.session.poziv}).toArray(function(err, resUser){
 					if(resUser[0].password === req.body.a){
 						user.update({ pozivnoy: req.session.poziv },{$set: {password: req.body.c}});
