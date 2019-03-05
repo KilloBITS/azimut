@@ -17,34 +17,29 @@ router.get('/*', function(req, res, next) {
         conf.find().toArray(function(err, resultDB){
           if((resUser.length > 0) || (resUser[0].pozivnoy === req.session.poziv)){
             tovar.find({User: resUser[0].pozivnoy}).sort({AI: -1}).toArray(function(err, resTov){  
-          //парссинг друзей
-          var usersFriendArray = [];
-          user.find().toArray(function(err, friends ){
-            for(var f = 0; f < friends.length; f++){
-              for(var f2 = 0; f2 < resUser[0].friend.length; f2++ ){
-                if((friends[f].pozivnoy).indexOf(resUser[0].friend[f2]) >= 0){
-                  usersFriendArray.push(friends[f]);    
+            //парссинг друзей
+              var usersFriendArray = [];
+              user.find().toArray(function(err, friends ){
+                for(var f = 0; f < friends.length; f++){
+                  for(var f2 = 0; f2 < resUser[0].friend.length; f2++ ){
+                    if((friends[f].pozivnoy).indexOf(resUser[0].friend[f2]) >= 0){
+                      usersFriendArray.push(friends[f]);    
+                    }
+                  }              
                 }
-              }              
-            }
-
-
-              res.render('profile.ejs',
-              {
-               USER: resUser[0],
-               tovar: resTov,
-               sessionUser: req.session.user,
-               sessionPoziv: req.session.poziv,
-               isAdm: req.session.admin,
-               locator: resultDB[0].LOCATOR,
-               FRIEND: usersFriendArray,
-               page: resultDB[0][global.parseLanguage(req)]
-             }); 
-         
-            
-
-          });
-        }); 
+                res.render('profile.ejs',
+                {
+                   USER: resUser[0],
+                   tovar: resTov,
+                   sessionUser: req.session.user,
+                   sessionPoziv: req.session.poziv,
+                   isAdm: req.session.admin,
+                   locator: resultDB[0].LOCATOR,
+                   FRIEND: usersFriendArray,
+                   page: resultDB[0][global.parseLanguage(req)]
+                });
+              });
+            }); 
           }else{
             res.redirect('/')
           }        

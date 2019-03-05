@@ -20,8 +20,11 @@ router.post('/setNewCalendar', function(req, res, next){
 				if(req.body.title.length < 3 || req.body.text.length < 5 || !isNaN(new Date(req.body.start))){
 					var calendarNewData = req.body;
 					calendarNewData.AI = results_news.length+1;
-					calendar.insertOne(calendarNewData);	
-					res.send({code: 500, className: 'nSuccess', message: 'Информация была успешно добавлена!'});	
+					calendar.insertOne(calendarNewData);
+
+					calendar.find().toArray(function(err, results_calendar_end){
+						res.send({code: 500, className: 'nSuccess', message: 'Информация была успешно добавлена!', data: results_calendar_end});	
+					});					
 				}else{
 					res.send({code: 450, className: 'nError', message: 'Неверные данные'})
 				}							
@@ -41,7 +44,10 @@ router.post('/setDeleteCalendar', function(req, res, next){
 			if(err) return console.log(err);
 			
 			calendar.remove({ AI: parseInt(req.body.a)});
-			res.send({code: 500, className: 'nSuccess', message: 'Информация была успешно удалена!'});	
+
+			calendar.find().toArray(function(err, results_calendar_end){
+				res.send({code: 500, className: 'nSuccess', message: 'Информация была успешно удалена!', data: results_calendar_end});	
+			});	
 		});		
 	}else{
 		res.send({code: 403, className: 'nError', message: 'У вас нет доступа!'})

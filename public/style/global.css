@@ -1773,3 +1773,9 @@ div.settingImages{
 .settingImages .removePhoto{
     display: block;
 }
+
+#aprs_block{
+    background-image: url(../../../img/aprs.png);
+    min-height: 130px;
+    background-size: cover;
+}

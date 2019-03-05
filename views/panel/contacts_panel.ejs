@@ -73,7 +73,8 @@
                                     <li><a href="#">Настройки</a></li>
                                     <li><a href="/PanelDB">База данных</a></li>
                                 </ul>
-                            </li>                                                    
+                            </li>
+                            <li><a href="/" target="_blank" style="color: #e9eabf;"><i class="fa fa-desktop"  style="color: #e9eabf;"></i><span style="color: #e9eabf;">Вернутся на сайт</span></a></li>                                                    
                       </ul>
                   </nav>
               </div>
@@ -127,6 +128,9 @@
                         <div class="col-12 mt-5">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="preloaderBlock" style="display: none;">
+                                        <div class="loader"></div>
+                                    </div>
                                     <div class="card-body">
                                         <h4 class="header-title">Список контактов</h4>
                                         <div class="data-tables">
@@ -158,7 +162,52 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <a href="#"><button type="button" class="btn btn-info mb-2 col-12" onclick="addUserContacts()">Добавить</button></a>
+                                        <button type="button" class="btn btn-info mb-2 col-12" data-toggle="modal" data-target="#exampleModalCenter">Добавить</button>
+                                        
+                                        <div class="modal fade" id="exampleModalCenter">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Выбрать пользователя</h5>
+                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="data-tables">
+                                                            <table id="dataTable" class="text-center">
+                                                                <thead class="bg-light text-capitalize">
+                                                                    <tr>
+                                                                        <th>ФИО</th>
+                                                                        <th>Должность</th>
+                                                                        <th>Номер</th>
+                                                                        <th>EMAIL</th>
+                                                                        <th>Позывной</th>                                               
+                                                                        <th>Действия</th>                                               
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>                                 
+                                                                    <% for(var i = 0; i < listContact.length; i++){ %>
+                                                                    <tr>
+                                                                        <td><%= listContact[i].name %></td>
+                                                                        <td><%= listContact[i].rank %></td>
+                                                                        <td><%= listContact[i].number %></td>
+                                                                        <td><%= listContact[i].email %></td>
+                                                                        <td><%= listContact[i].pozivnoy %></td>                                                     
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('<%= listContact[i].pozivnoy %>')">Редактировать</button> 
+                                                                            <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('<%= listContact[i].pozivnoy %>')">Удалить</button> 
+                                                                        </td>  
+                                                                    </tr>                                                
+                                                                    <% } %>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>                             
                                 </div>
                             </div>
@@ -173,6 +222,9 @@
                         <div class="col-12 mt-5">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="preloaderBlock" style="display: none;">
+                                        <div class="loader"></div>
+                                    </div>
                                     <h4 class="header-title">Настройки обратной связи</h4>
                                     <p class="text-muted font-14 mb-4">Форма обратной связи на странице контакты</p>
 
@@ -196,6 +248,9 @@
                         <div class="col-12 mt-5">
                             <div class="card">
                                 <div class="card-body">
+                                    <div class="preloaderBlock" style="display: none;">
+                                        <div class="loader"></div>
+                                    </div>
                                     <h4 class="header-title">Настройки карты</h4>
                                     <div class="map_block" id="map"></div>
                                 </div>
@@ -240,8 +295,8 @@
     var map;
     var markerArray = [];
 
-
     var removeMarker = function(e){
+        $('.preloaderBlock:eq(2)').fadeIn(100);
         map.removeLayer(markerArray[e]);   
         $.post('/removeMapPoint', {a: e}, function(res){
             locationReload(res.message, false);
@@ -252,31 +307,24 @@
     function onMapClick(e) {
         var isConfirm = confirm("Вы действительно хотите добавить метку по координатам: " + e.latlng);
         if(isConfirm){
+            $('.preloaderBlock:eq(2)').fadeIn(100);
             data.push({iconclass: 'A', lat: parseFloat(e.latlng.lat.toFixed(4)), lon: parseFloat(e.latlng.lng.toFixed(4))});
             $.post('/setMapPoint', {a: data}, function(res){
-                locationReload(res.message);
+                createPoints();
+                locationReload(res.message, false);
             })
         }
     }
 
-    var mapConstructor = function(){
+    var createPoints = function(){
+        // for(let ml = 0; ml < markerArray.length; ml++){
+        //     map.removeLayer(markerArray[ml]);
+        // }
         var markerIndex = 0;
         var iconclasses = {
             exclamation: 'font-size: 22px;',
             A: 'font-size: 22px;'
         };
-        map = new L.Map('map', {
-            center: [data[0].lat,data[0].lon],
-            zoom: 13,
-            zoomControl:false,
-            leafletControl: false
-        });
-       
-
-        map.on('click', onMapClick);
-
-        L.tileLayer('http://maps.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i375060738!3m9!2spl!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0').addTo(map);
-
         data.forEach(function(row){
             var pos = new L.LatLng(row.lat,row.lon);
             var iconclass = iconclasses[row.iconclass]?row.iconclass:'';
@@ -301,6 +349,23 @@
         markerArray.push(marker);
         markerIndex += 1;
       });
+    };
+
+    var mapConstructor = function(){
+        
+        map = new L.Map('map', {
+            center: [data[0].lat,data[0].lon],
+            zoom: 13,
+            zoomControl:false,
+            leafletControl: false
+        });
+       
+        createPoints()
+        map.on('click', onMapClick);
+
+        L.tileLayer('http://maps.google.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i375060738!3m9!2spl!3sUS!5e18!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e0').addTo(map);
+
+        
 
       $('.leaflet-control a').remove();
     }

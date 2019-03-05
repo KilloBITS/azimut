@@ -7,6 +7,7 @@ var locationReload =  function(text, reload){
 	modalWin.className = 'modalWin';
 	modalWin.innerHTML = text;
 	$('body').append(modalWin);
+	$('.preloaderBlock').fadeOut(100);
 	if(reload){
 		$(modalWin).append('<span>Страница будет обновлена через 3 секунды</span>');
 		var defInt = 3;
@@ -20,30 +21,34 @@ var locationReload =  function(text, reload){
 		}, 1000)
 	}else{
 		setTimeout(function(){
-			$(modalWin).remove()
+			$(modalWin).fadeOut('slow', function() { $(this).remove(); }); //
 		},3000)
 	}
 }
 
 var saveAboutText = function(a,b){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/saveAboutText',{a:a,b:b}, (res) => {
 		locationReload(res.message, false)
 	});
 }
 
 var setRemoveTovar = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setRemoveTovar',{a:a}, (res) => {
 		locationReload(res.message, true)
 	});
 }
 
 var setCancelTovar = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setCancelTovar',{a:a}, (res) => {
 		locationReload(res.message, true)
 	});
 }
 
 var setGoodTovar = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setGoodTovar',{a:a}, (res) => {
 		locationReload(res.message, true)
 	});
@@ -83,6 +88,7 @@ var selectNewsContentImage = function(e,i){
 }
 
 var saveNewNews = function(){
+	$('.preloaderBlock').fadeIn(100);
 	var NN = {
 		title:  [
 			$('#example-text-input-RU').val(),
@@ -105,6 +111,7 @@ var saveNewNews = function(){
 }
 
 var newCalendarDate = function(){
+	$('.preloaderBlock').fadeIn(100);
 	if(isNaN(new Date($("#example-datetime-local-input-end").val()))){
 		var data = null;
 	}else{
@@ -117,45 +124,69 @@ var newCalendarDate = function(){
 		text: $("#example-text-input2").val(),
 		title: $("#example-text-input").val()
 	}
-
 	$.post('/setNewCalendar', ND, function(res){
-		locationReload(res.message, true)
+		var table = $('#dataTable').DataTable(); 
+		table.row.add( [
+            ND.title,
+            ND.start,
+            ND.end,
+            '<a href="#" class="btn btn-danger btn-xs mb-3" onclick="setRemoveCalendar('+($("#dataTable tbody tr").size()+1)+')">Удалить</a>'
+        ] ).draw( false );
+		locationReload(res.message, false);
 	})
 }
 
-var setRemoveCalendar = function(ai){
+var setRemoveCalendar = function(ai, e){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setDeleteCalendar', {a: ai}, function(res){
-		locationReload(res.message, true)
+		var table = $('#dataTable').DataTable();
+		table.clear();
+
+		for(let i = 0; i < res.data.length; i++){
+			table.row.add( [
+	            res.data[i].title,
+	            res.data[i].start,
+	            res.data[i].end,
+	            '<a href="#" class="btn btn-danger btn-xs mb-3" onclick="setRemoveCalendar('+i+')">Удалить</a>'
+	        ] ).draw( false );
+		}
+
+		locationReload(res.message, false)
 	})
 }
 
 var blockUser = function(a,b){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/blockUser', {a: a, b: b}, function(res){
 		locationReload(res.message, true)
 	})
 }
 
 var removeUser = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/deleteUser', {a: a}, function(res){
 		locationReload(res.message, true)
 	})
 }
 
 var setAdminUser = function(a,b){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setAdmUser', {a: a, b: b}, function(res){
 		locationReload(res.message, true)
 	})
 }
 
 var removedPhotoGallery = function(a,b){
-	$(b).parent().parent().parent().fadeOut(100)
+	$('.preloaderBlock').fadeIn(100);
+	$(b).parent().parent().parent().fadeOut(100);
 	$.post('/removedPhotoGallery', {a: a}, function(res){
 		$(b).parent().parent().parent().remove();
 		locationReload(res.message, false);
 	})
 }
 
-var addPhotoGallery = function(a){	
+var addPhotoGallery = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	var file = document.querySelector('#inputGroupFileGallery').files[0];
 	const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -167,14 +198,15 @@ var addPhotoGallery = function(a){
 }
 
 var saveFormMessage = function(){
-
+$('.preloaderBlock').fadeIn(100);
 }
 
 var removeUserContacts =  function(){
-
+$('.preloaderBlock').fadeIn(100);
 }
 
 var saveDBParams = function(){
+	$('.preloaderBlock').fadeIn(100);
 	var isSecure = confirm("Неправильные данные могут привести к поломке всего проекта!\nТакие изминения лучше вводить разработчикам!\nВы уверены что хотите сохранить ?");
 	if(isSecure){
 		var DBP = {
@@ -191,6 +223,7 @@ var saveDBParams = function(){
 }
 
 var removeNews = function(a){
+	$('.preloaderBlock').fadeIn(100);
 	$.post('/setRemoveNews', {a: a}, function(res){
 		locationReload(res.message, true);
 	})
