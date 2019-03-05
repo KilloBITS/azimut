@@ -192,16 +192,42 @@ var addPhotoGallery = function(a){
     reader.readAsDataURL(file);
     reader.onload = function(data){
     	$.post('/addPhotoGallery', {a: data.target.result}, function(res){
-			locationReload(res.message, true)
+			locationReload(res.message, true);
 		})
     }	
 }
 
 var saveFormMessage = function(){
-$('.preloaderBlock').fadeIn(100);
+	$('.preloaderBlock').fadeIn(100);
 }
 
+var removeUserContacts =  function(a){
+	$('.preloaderBlock').fadeIn(100);
+	$.post('/removeContactsUser', {a: a}, function(res){
+		var table = $('#dataTable').DataTable();
+		table.clear();
+
+		for(let i = 0; i < res.data.RU.admins.length; i++){
+			table.row.add( [
+	            res.data.RU.admins[i].name,
+	            res.data.RU.admins[i].rank,
+	            res.data.RU.admins[i].number,
+	            res.data.RU.admins[i].email,
+	            res.data.RU.admins[i].pozivnoy,
+	            ' <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
+	        ] ).draw( false );
+		}
+		locationReload(res.message, false);
+
+	})
+}
+
+var contactsEdited = false;
+var editContactIndex = 0;
+
 var editedUserContacts = function(a){
+	contactsEdited = true;
+	editContactIndex = parseInt(a);
 	$('.modalPreloader').show();
 	$.post('/editedContactsUser', {a: a}, function(res){
 		$(".ruClass#example-text-input-FIO").val(res.data.RU.name);
@@ -220,19 +246,85 @@ var editedUserContacts = function(a){
 		$(".enClass#example-text-input-RANK").val(res.data.EN.rank);
 		$(".enClass#example-text-input-NUMBER").val(res.data.EN.number);
 		$(".enClass#example-text-input-EMAIL").val(res.data.EN.email);
-		$(".enClass#example-text-input-POZIV").val(res.data.EN.pozivnoy);
-
-
-		
+		$(".enClass#example-text-input-POZIV").val(res.data.EN.pozivnoy);		
 		locationReload(res.message, false)
 	})
 }
 
-var removeUserContacts =  function(a){
-	$('.preloaderBlock').fadeIn(100);
-	$.post('/removeContactsUser', {a: a}, function(res){
-		locationReload(res.message, false)
-	})
+
+var newContacts = function(){
+	contactsEdited = false;
+	editContactIndex = -1;
+	$(".ruClass, .uaClass, .enClass").val('');	
+}
+
+var savecontacts = function(){
+	$('.modalPreloader').show();
+	var Params = {
+		a: editContactIndex,
+		RU: {
+			name: $(".ruClass#example-text-input-FIO").val(),
+			rank: $(".ruClass#example-text-input-RANK").val(),
+			number: $(".ruClass#example-text-input-NUMBER").val(),
+			email: $(".ruClass#example-text-input-EMAIL").val(),
+			pozivnoy: $(".ruClass#example-text-input-POZIV").val()
+		},
+		UA: {
+			name: $(".uaClass#example-text-input-FIO").val(),
+			rank: $(".uaClass#example-text-input-RANK").val(),
+			number: $(".uaClass#example-text-input-NUMBER").val(),
+			email: $(".uaClass#example-text-input-EMAIL").val(),
+			pozivnoy: $(".uaClass#example-text-input-POZIV").val()
+		},
+		EN: {
+			name: $(".enClass#example-text-input-FIO").val(),
+			rank: $(".enClass#example-text-input-RANK").val(),
+			number: $(".enClass#example-text-input-NUMBER").val(),
+			email: $(".enClass#example-text-input-EMAIL").val(),
+			pozivnoy: $(".enClass#example-text-input-POZIV").val()
+		}
+	}
+
+	if(!contactsEdited){ 
+		//Cохранение нового	
+		$.post('/saveNewContacts', Params, function(res){
+			console.log(res)
+			var table = $('#dataTable').DataTable();
+			table.clear();
+
+			for(var i = 0; i < res.data[0].RU.admins.length; i++){
+				table.row.add( [
+		            res.data[0].RU.admins[i].name,
+		            res.data[0].RU.admins[i].rank,
+		            res.data[0].RU.admins[i].number,
+		            res.data[0].RU.admins[i].email,
+		            res.data[0].RU.admins[i].pozivnoy,
+		            ' <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
+		        ] ).draw( false );
+			}
+		 	$('#closeThisModal').click()
+			locationReload(res.message, false)
+		})
+	}else{ 
+	//Сохранение отредактированого
+		$.post('/saveOldContacts', Params, function(res){
+			console.log(res)
+			var table = $('#dataTable').DataTable();
+			table.clear();
+			for(var i = 0; i < res.data[0].RU.admins.length; i++){
+				table.row.add( [
+		            res.data[0].RU.admins[i].name,
+		            res.data[0].RU.admins[i].rank,
+		            res.data[0].RU.admins[i].number,
+		            res.data[0].RU.admins[i].email,
+		            res.data[0].RU.admins[i].pozivnoy,
+		            '<button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
+		        ] ).draw( false );
+			}
+			$('#closeThisModal').click()
+			locationReload(res.message, false)
+		})
+	}
 }
 
 var saveDBParams = function(){

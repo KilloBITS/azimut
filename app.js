@@ -226,6 +226,8 @@ app.post('/setDbParams', DBPanel);
 const contactsPanel = require('./controllers/panelControllers/contactsController');
 app.post('/editedContactsUser', contactsPanel);
 app.post('/removeContactsUser', contactsPanel);
+app.post('/saveOldContacts', contactsPanel);
+app.post('/saveNewContacts', contactsPanel);
 
 const roundtablesPanel = require('./controllers/panelControllers/roundtablesController');
 app.post('/removeRoundtables', roundtablesPanel);
