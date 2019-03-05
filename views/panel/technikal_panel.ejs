@@ -121,34 +121,43 @@
           <!-- Тут будет контент -->
           <div class="row">
             <a class="btn btn-primary col-lg-12 mt-2 mb-2" href="/newTechnical">Добавить запись</a>
-            <% if(techData.length > 0){ %>
-            <% for(var i = 0; i < techData.length; i++) { %>
-            <div class="col-lg-12 mt-3">
+            
+            <div id="accordion1" class="according accordion-s3 gradiant-bg col-lg-12 mt-3">
+                <% if(techData.length > 0){ %>
+                <% for(var i = 0; i < techData.length; i++) { %>
                 <div class="card">
-                    <div class="card-body">
-                        <div class="media mb-5">
-                            <img class="img-fluid mr-4" src="<%= techData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
-                            <div class="media-body">
-                                <h4 class="mb-3"><%= techData[i].title[0] %></h4> 
-                                <%= techData[i].TEXT[0] %>
-                            </div>
-                        </div> 
-                        <div class="media">
-                            <button type="submit" class="btn btn-danger col-lg-6 mb-3" onclick="removeTechnical('<%= techData[i].AI %>', this)">Удалить</button>
-                            <!-- <a href="/editNews?news=<%= techData[i].AI %>" class="btn btn-success col-lg-6 mb-3">Редактировать</a> -->
-                        </div>                              
+                    <div class="card-header">
+                        <a class="collapsed card-link" data-toggle="collapse" href="#accordion<%= i %>">• <%= techData[i].title[0] %> <small>(<%= techData[i].DATE %>)</small></a>
                     </div>
+                    <div id="accordion<%= i %>" class="collapse" data-parent="#accordion1">
+                        <div class="card-body">
+                            <p>
+                                <% if(techData[i].NEWS_LOGO !== undefined) { %>
+                                <img class="img-fluid mr-4" src="<%= techData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
+                                <% } %>
+                                <%= techData[i].TEXT[0] %>
+                            </p>
+                            <div class="media">
+                                <div class="col-lg-6 mt-3">
+                                    <button type="submit" class="btn btn-danger col-lg-12 mb-3" onclick="removeNews('<%= techData[i].AI %>', this)">Удалить</button>
+                                </div>
+                                <div class="col-lg-6 mt-3">
+                                    <a href="/editNews?news=<%= techData[i].AI %>" class="btn btn-success col-lg-12 mb-3">Редактировать</a>
+                                </div>
+                            </div>    
+                        </div>
+                    </div>
+                </div>                    
+                <% } %>
+                <% }else{ %>
+                <div class="alert alert-primary col-lg-12" role="alert">
+                    <h4 class="alert-heading">Новости данного типа отстутствуют!</h4>
+                    <p>Как видно новости в данной категории отсутствуют</p>
+                    <hr>
+                    <p class="mb-0">Вы можете <a href="/newNews">Создать новость</a></p>
                 </div>
+                <% } %>                    
             </div>
-            <% } %>
-            <% }else{ %>
-            <div class="alert alert-primary col-lg-12" role="alert">
-                <h4 class="alert-heading">Данные отсутствуют!</h4>
-                <p>Данные в этом разделе отстутствуют или не заполнены администратором</p>
-                <hr>
-                <p class="mb-0">Вы можете <a href="/newTechnical">Добавить запись</a></p>
-            </div>
-            <% } %>
 
             <% if(offLength > 12){ %>
             <div id="pagination" class="mt-2 mb-2">
