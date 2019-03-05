@@ -88,12 +88,61 @@
 		</div>
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
-			<a href="/technikal" id="nav_about" class="navigator_btn selected_nav"><%= page.technikal.title %></a>
+			<a href="/technikal?page=1" id="nav_about" class="navigator_btn selected_nav"><%= page.technikal.title %></a>
 		</div>	
-		<section id="section_01" class="section_data RT">
-			<h2><%= page.technikal.title %></h2>
+		<%= TECH.length  %>
+		<% if(TECH.length > 0){ %>
+			<% for(var i = 0; i < TECH.length; i++){ %>
+			<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
+				<h2><a class="title_news_link" href="/detailstech?ai=<%= TECH[i].AI %>"><%= TECH[i].title[numberLanguage] %></a></h2>
+				<p>
+					<% if(TECH[i].NEWS_LOGO !== undefined){ %>
+					<img class="alignleft size-thumbnail wp-image-622" src="<%= TECH[i].NEWS_LOGO %>" alt="" width="150" height="104">
+					<% } %>			
+					<%= TECH[i].TEXT[numberLanguage] %>
+					<div class="shadow_transparent"><a href="/detailstech?ai=<%= TECH[i].AI %> %>"><%= page.read %></a></div>
+				</p>			
+				<div class="section_date">
+					<%= TECH[i].DATE %>
+					<span><%= TECH[i].AUTHOR %></span>
+				</div>
+			</section>	
+			<% } %>
+		<% }else{ %>
+		<div class="NoDataPage" style="text-align: center;">
+			<img src="../../../img/no-data.png">
+			<h2><%= page.notdata %></h2>
+		</div>
+		<% } %>
+		
+		<% if(offLength > 12){ %>
+		<div id="pagination" class="mt-2 mb-2"></div>
+		<script type="text/javascript">
+			(function() {
+				var translations = {
+					'PREVIOUS' : '<',
+					'NEXT' : '>',
+					'FIRST' : '<<',
+					'LAST' : '>>',
+					'CURRENT_PAGE_REPORT' : 'Показано от {FromResult} до {ToResult} из {TotalResult} новостей'
+				};
+				var paginator = new pagination.ItemPaginator({prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				var html = paginator.render();
+				var paginator = pagination.create('search', {prelink: '<%= paginate.prelink %>', slashSeparator: false, current: <%= paginate.current %>, rowsPerPage: 12, totalResult: parseInt(<%= paginate.totalResult %>)-1, translator : function(str) {
+					return translations[str];
+				}
+			});
+				console.log(paginator)
+				html += paginator.render();
+				document.getElementById("pagination").innerHTML = html;
 
-		</section>		
+				
+			})();
+		</script>
+		<% } %>
 	</main>
 	<div id="stop" class="scrollTop"></div>
 	<%- include ./includes/footer.ejs %>

@@ -110,6 +110,36 @@ var saveNewNews = function(){
 	})
 }
 
+var saveNewTechnical = function(){
+	$('.preloaderBlock').fadeIn(100);
+	var NN = {
+		title:  [
+			$('#example-text-input-RU').val(),
+			$('#example-text-input-UA').val(),
+			$('#example-text-input-EN').val()
+		],
+		TEXT:  [
+			$('#example-textarea-input-RU').val(),
+			$('#example-textarea-input-UA').val(),
+			$('#example-textarea-input-EN').val()
+		],
+		DATE:  $('#example-date-input').val(),
+		NEWS_LOGO: NEWSFILELOGO,
+		CONTENT_IMAGE: NEWSFILECONTENTIMAGE,
+	}
+	$.post('/setNewTechnical', NN, function(res){
+		locationReload(res.message, true)
+	})
+}
+
+var removeTechnical = function(a,e){
+	$('.preloaderBlock').fadeIn(100);
+	$.post('/setRemoveNews', {a: a}, function(res){
+		$(e).parent().parent().parent().parent().parent().fadeOut('slow', function() { $(this).remove(); });
+		locationReload(res.message, false);
+	})
+}
+
 var newCalendarDate = function(){
 	$('.preloaderBlock').fadeIn(100);
 	if(isNaN(new Date($("#example-datetime-local-input-end").val()))){
@@ -141,7 +171,6 @@ var setRemoveCalendar = function(ai, e){
 	$.post('/setDeleteCalendar', {a: ai}, function(res){
 		var table = $('#dataTable').DataTable();
 		table.clear();
-
 		for(let i = 0; i < res.data.length; i++){
 			table.row.add( [
 	            res.data[i].title,
@@ -150,7 +179,6 @@ var setRemoveCalendar = function(ai, e){
 	            '<a href="#" class="btn btn-danger btn-xs mb-3" onclick="setRemoveCalendar('+i+')">Удалить</a>'
 	        ] ).draw( false );
 		}
-
 		locationReload(res.message, false)
 	})
 }

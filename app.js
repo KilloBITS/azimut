@@ -77,7 +77,7 @@ app.use('/HF', hf);
 app.use('/calendar', calendar);
 app.use('/activity*', activ);
 app.use('/rules', rules);
-app.use('/technikal', technikal);
+app.use('/technikal*', technikal);
 app.use('/others*', others);
 app.use('/numeral*', numeral);
 app.use('/communities*', сommunities);
@@ -107,6 +107,7 @@ const getPanelHF = require('./routes/panel/getPanelHF');
 const getPanelNumeral = require('./routes/panel/getPanelNumeral');
 const getPanelUsers = require('./routes/panel/getPanelUsers');
 const getNewNews = require('./routes/panel/getNewNews');
+const getNewTechnical = require('./routes/panel/getNewTechnical');
 const getPanelAbout = require('./routes/panel/getPanelAbout');
 const getPanelGallery = require('./routes/panel/getPanelGallery');
 const getPanelDB = require('./routes/panel/getPanelDB');
@@ -129,6 +130,7 @@ app.use('/PanelAbout', getPanelAbout);
 app.use('/PanelGallery', getPanelGallery);
 app.use('/PanelDB', getPanelDB);
 app.use('/newNews', getNewNews);
+app.use('/newTechnical', getNewTechnical);
 app.use('/PanelContacts', getPanelContacts);
 app.use('/PanelOthers', getPanelOthers)
 app.use('/editNews*', getEditNews)
@@ -210,6 +212,10 @@ app.post('/removedPhotoGallery', galleryPanelPosts);
 const newsPanel = require('./controllers/panelControllers/newsController');
 app.post('/setNewNews', newsPanel);
 app.post('/setRemoveNews', newsPanel);
+
+const technicalPanel = require('./controllers/panelControllers/technicalController');
+app.post('/setNewTechnical', technicalPanel);
+app.post('/setRemoveTechnical', technicalPanel);
 
 const calendarPanel = require('./controllers/panelControllers/calendarController');
 app.post('/setNewCalendar', calendarPanel);
