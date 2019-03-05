@@ -146,7 +146,7 @@
                                                 <div class="card-body">
                                                     <h4 class="header-title">Объявления которые ожидают модерации</h4>
                                                     <div class="data-tables">
-                                                        <table id="dataTable" class="text-center">
+                                                        <table id="dataTableRM" class="text-center">
                                                             <thead class="bg-light text-capitalize">
                                                                 <tr>
                                                                     <th>Заголовок</th>
@@ -194,7 +194,7 @@
                                                 <div class="card-body">
                                                     <h4 class="header-title">Список активных объявлений</h4>
                                                     <div class="data-tables">
-                                                        <table id="dataTable" class="text-center">
+                                                        <table id="dataTableRG" class="text-center">
                                                             <thead class="bg-light text-capitalize">
                                                                 <tr>
                                                                     <th>Заголовок</th>
@@ -240,7 +240,7 @@
                                                 <div class="card-body">
                                                     <h4 class="header-title">Список активных объявлений</h4>
                                                     <div class="data-tables">
-                                                        <table id="dataTable" class="text-center">
+                                                        <table id="dataTableRS" class="text-center">
                                                             <thead class="bg-light text-capitalize">
                                                                 <tr>
                                                                     <th>Заголовок</th>
@@ -267,7 +267,7 @@
                                                                 </tr>                                                
                                                                 <% } %>
                                                             </tbody>
-                                                        </table>
+                                                        </table>                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -312,6 +312,18 @@
         <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+
+        <script type="text/javascript">
+            $('#dataTableRS').DataTable({
+                responsive: true
+            });
+            $('#dataTableRG').DataTable({
+                responsive: true
+            });
+             $('#dataTableRM').DataTable({
+                responsive: true
+            });
+        </script>
         <!-- others plugins -->
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/scripts.js"></script>

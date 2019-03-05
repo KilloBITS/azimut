@@ -252,10 +252,11 @@ var saveDBParams = function(){
 	}
 }
 
-var removeNews = function(a){
+var removeNews = function(a,e){
 	$('.preloaderBlock').fadeIn(100);
 	$.post('/setRemoveNews', {a: a}, function(res){
-		locationReload(res.message, true);
+		$(e).parent().parent().parent().parent().parent().fadeOut('slow', function() { $(this).remove(); });
+		locationReload(res.message, false);
 	})
 }
 

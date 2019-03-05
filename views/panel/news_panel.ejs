@@ -134,7 +134,7 @@
                         </div> 
                         <div class="media">
                             <div class="col-lg-6 mt-3">
-                                <button type="submit" class="btn btn-danger col-lg-12 mb-3" onclick="removeNews('<%= newsData[i].AI %>')">Удалить</button>
+                                <button type="submit" class="btn btn-danger col-lg-12 mb-3" onclick="removeNews('<%= newsData[i].AI %>', this)">Удалить</button>
                             </div>
                             <div class="col-lg-6 mt-3">
                                 <a href="/editNews?news=<%= newsData[i].AI %>" class="btn btn-success col-lg-12 mb-3">Редактировать</a>

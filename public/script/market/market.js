@@ -68,7 +68,7 @@ var getNewPostTovar = function(){
 		console.log(res);
 		if(res.code === 500){
 			createError(res.className, res.message)
-			window.location.reload();
+			// window.location.reload();
 		}else{
 			createError(res.className, res.message)
 		}
