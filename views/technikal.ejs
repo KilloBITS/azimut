@@ -90,7 +90,6 @@
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
 			<a href="/technikal?page=1" id="nav_about" class="navigator_btn selected_nav"><%= page.technikal.title %></a>
 		</div>	
-		<%= TECH.length  %>
 		<% if(TECH.length > 0){ %>
 			<% for(var i = 0; i < TECH.length; i++){ %>
 			<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
