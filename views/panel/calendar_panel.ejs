@@ -77,7 +77,9 @@
                                     <li><a href="#">База данных</a></li>
                                 </ul>
                             </li>  
-                            <li><a href="/" target="_blank" style="color: #e9eabf;"><i class="fa fa-desktop"  style="color: #e9eabf;"></i><span style="color: #e9eabf;">Вернутся на сайт</span></a></li>                        
+                            <li><a href="/" target="_blank" style="color: #e9eabf;"><i class="fa fa-desktop"  style="color: #e9eabf;"></i><span style="color: #e9eabf;">Вернутся на сайт</span></a></li>
+                            <li><a href="#" style="color: red;" data-toggle="modal" data-target="#devmessagemodal"><i class="fa fa-exclamation" style="color: red;"></i><span style="color: red;">Пожаловатся разработчику</span></a></li>
+                                           
                         </ul>
                     </nav>
                 </div>
@@ -206,6 +208,7 @@
            </div>
        </div>
    </div>
+   <%- include ./panel_includes/dev_message.ejs %>     
    <footer>
     <div class="footer-area">
         <p>© Copyright 2019. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>

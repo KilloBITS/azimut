@@ -191,6 +191,9 @@ app.post('/userMessagePost', userMessagePostController);
 //сохранение инфы о себе
 const saveMyInfo = require('./controllers/saveMyInfoController');
 app.post('/saveMyInfo', saveMyInfo);
+//сообщение разработчику
+const developerController = require('./controllers/panelControllers/developerController');
+app.post('/developerMessage', developerController);
 
 
 /** Panel POST **/

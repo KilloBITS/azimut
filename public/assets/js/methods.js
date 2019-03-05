@@ -380,3 +380,18 @@ var addnewroundtables = function(){
 		locationReload(res.message, false)
 	})
 }
+
+
+var messageToDeveloper = function(){
+	$('.preloaderBlockMSG').fadeIn(100);
+	var newMessageData = {
+		a: $('#themeMessage').val(),
+		b: $('#textMessage').val(),
+		c: $('#linkMessage').val()
+	}
+
+	$.post('/developerMessage', newMessageData, function(res){
+		$('#themeMessage,#textMessage,#linkMessage').val('')
+		locationReload(res.message, false);
+	})
+}
