@@ -50,6 +50,7 @@ router.post('/signup', function(req, res, next){
 				NEW_USER.activity = false;
 				NEW_USER.onlineSession = false;
 				NEW_USER.friend = ['SUPPORT'];
+				NEW_USER.info = '...'
 
 				NEW_USER.isOnline = true;
 				NEW_USER.isPozivnoy = true;
