@@ -24,7 +24,7 @@ router.get('/*', function(req, res, next){
 			const reviews = db.collection("REVIEWS");
 			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
 				conf.find().toArray(function(err, resultDB){
-					news.find({type:"ALL"}).toArray(function(err, result_news){
+					news.find({type:"ALL"}).sort({AI: -1}).toArray(function(err, result_news){
 						var current_page = page;
 						var paginator = new pagination.SearchPaginator({prelink: '/PanelNews?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
 						var p = paginator.getPaginationData();

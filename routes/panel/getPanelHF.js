@@ -27,7 +27,7 @@ router.get('/*', function(req, res, next){
 						
 			reviews.find({new: true}).sort({AI: -1}).toArray(function(err, result_reviews){
 				conf.find().toArray(function(err, resultDB){
-					news.find({type:"HF"}).toArray(function(err, result_news){
+					news.find({type:"HF"}).sort({AI: -1}).toArray(function(err, result_news){
 						var current_page = page;
 						var paginator = new pagination.SearchPaginator({prelink: '/PanelHF?' , current: current_page, rowsPerPage: 12, totalResult: result_news.length-1});
 						var p = paginator.getPaginationData();
