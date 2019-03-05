@@ -49,10 +49,10 @@
                                 </ul>
                             </li>         
                             <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
-                            <li class="active">
+                            <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                                 <ul class="collapse">
-                                    <li class="active"><a href="/PanelNews?page=1">Новости</a></li>                                   
+                                    <li><a href="/PanelNews?page=1">Новости</a></li>                                   
                                     <li><a href="/PanelVHF?page=1">VHF</a></li>
                                     <li><a href="/PanelHF?page=1">HF</a></li>
                                     <li><a href="/PanelNumeral?page=1">Цифра</a></li>
@@ -62,7 +62,7 @@
                             <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                             <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
                             <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
-                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                             
+                            <li class="active"><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
                             <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -108,7 +108,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Новости</h4>
+                        <h4 class="page-title pull-left">Технический раздел</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
@@ -133,8 +133,8 @@
                             </div>
                         </div> 
                         <div class="media">
-                            <button type="submit" class="btn btn-danger col-lg-6 mb-3" onclick="removeNews('<%= techData[i].AI %>')">Удалить</button>
-                            <a href="/editNews?news=<%= techData[i].AI %>" class="btn btn-success col-lg-6 mb-3">Редактировать</a>
+                            <button type="submit" class="btn btn-danger col-lg-6 mb-3" onclick="removeTechnikal('<%= techData[i].AI %>')">Удалить</button>
+                            <!-- <a href="/editNews?news=<%= techData[i].AI %>" class="btn btn-success col-lg-6 mb-3">Редактировать</a> -->
                         </div>                              
                     </div>
                 </div>

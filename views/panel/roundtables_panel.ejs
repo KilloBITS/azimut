@@ -128,6 +128,9 @@
                 <div class="col-12 mt-5">
                     <div class="card">
                         <div class="card-body">
+                            <div class="preloaderBlock" style="display: none;">
+                                <div class="loader"></div>
+                            </div>
                             <h4 class="header-title">Список круглых столов</h4>
                             <div class="data-tables">
                                 <table id="dataTable" class="text-center">
@@ -146,7 +149,7 @@
                                             <td><%= rt[i].date %></td>
                                             <td><%= rt[i].time %></td>
                                             <td>
-                                                <button type="button" class="btn btn-danger btn-xs mb-3">Удалить</button>
+                                                <button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeRoundtables('<%= rt[i].name %>')">Удалить</button>
                                             </td>  
                                         </tr>                                                
                                         <% } %>
@@ -162,8 +165,38 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="header-title">Добавить круглый стол</h4>
-
-
+                            <div class="col-3 mt-5">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Название</label>
+                                    <input class="form-control" type="text" id="example-text-input_RTN">
+                                </div>
+                            </div>
+                            <div class="col-3 mt-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">День недели</label>
+                                    <select class="custom-select" id="newRoundDay">
+                                        <option value="(Спринт-группа)" selected="selected">(Спринт-группа)</option>
+                                        <option value="Понедельник">Понедельник</option>
+                                        <option value="Вторник">Вторник</option>
+                                        <option value="Среда">Среда</option>
+                                        <option value="Четверг">Четверг</option>
+                                        <option value="Пятница">Пятница</option>
+                                        <option value="Суббота">Суббота</option>
+                                        <option value="Воскресенье">Воскресенье</option>                                        
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3 mt-5">
+                                <div class="form-group">
+                                    <label for="example-time-input" class="col-form-label">Время</label>
+                                    <input class="form-control" type="time" value="13:45:00" id="example-time-input_TIME">
+                                </div>
+                            </div>
+                            <div class="col-2 mt-5">
+                                <div class="form-group">
+                                    <button class="btn btn-primary col-12" type="submit" onclick="addnewroundtables()">Добавить</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

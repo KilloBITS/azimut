@@ -258,3 +258,45 @@ var removeNews = function(a){
 		locationReload(res.message, true);
 	})
 }
+
+var removeRoundtables = function(a){
+	$('.preloaderBlock').fadeIn(100);
+	$.post('/removeRoundtables', {a: a}, function(res){
+		var table = $('#dataTable').DataTable();
+		table.clear();
+
+		for(let i = 0; i < res.data.length; i++){
+			table.row.add( [
+	            res.data[i].name,
+	            res.data[i].date,
+	            res.data[i].time,
+	            '<a href="#" class="btn btn-danger btn-xs mb-3" onclick="removeRoundtables("'+res.data[i].name+'">Удалить</a>'
+	        ] ).draw( false );
+		}
+		locationReload(res.message, false);
+	})
+}
+
+var addnewroundtables = function(){
+	$('.preloaderBlock').fadeIn(100);
+	var DBP = {
+		name: $('#example-text-input_RTN').val(),
+		date: $('#newRoundDay').val(),
+		time: $('#example-time-input_TIME').val()
+	}
+	$.post('/addnewroundtables', DBP, function(res){
+		var table = $('#dataTable').DataTable();
+		table.clear();
+
+		for(let i = 0; i < res.data.length; i++){
+			table.row.add( [
+	            res.data[i].name,
+	            res.data[i].date,
+	            res.data[i].time,
+	            '<a href="#" class="btn btn-danger btn-xs mb-3" onclick="removeRoundtables("'+res.data[i].name+'">Удалить</a>'
+	        ] ).draw( false );
+		}
+		$('#example-text-input_RTN').val('')
+		locationReload(res.message, false)
+	})
+}

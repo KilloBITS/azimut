@@ -227,6 +227,10 @@ const contactsPanel = require('./controllers/panelControllers/contactsController
 app.post('/editedContactsUser', contactsPanel);
 app.post('/removeContactsUser', contactsPanel);
 
+const roundtablesPanel = require('./controllers/panelControllers/roundtablesController');
+app.post('/removeRoundtables', roundtablesPanel);
+app.post('/addnewroundtables', roundtablesPanel);
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false
