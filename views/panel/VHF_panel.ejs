@@ -128,9 +128,9 @@
                     <% for(var i = 0; i < newsData.length; i++) { %>
                     <div class="card">
                         <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#accordion<%= newsData[i].AI %>">• <%= newsData[i].title[0] %> <small>(<%= newsData[i].DATE %>)</small></a>
+                            <a class="collapsed card-link" data-toggle="collapse" href="#accordion<%= newsData[i].AI %>a">• <%= newsData[i].title[0] %> <small>(<%= newsData[i].DATE %>)</small></a>
                         </div>
-                        <div id="accordion<%= newsData[i].AI %>" class="collapse" data-parent="#accordion1">
+                        <div id="accordion<%= newsData[i].AI %>a" class="collapse" data-parent="#accordion1">
                             <div class="card-body">
                                 <p>
                                     <% if(newsData[i].NEWS_LOGO !== undefined) { %>

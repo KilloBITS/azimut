@@ -127,13 +127,13 @@
                     <% for(var i = 0; i < othersData.length; i++) { %>
                     <div class="card">
                         <div class="card-header">
-                            <a class="collapsed card-link" data-toggle="collapse" href="#accordion<%= othersData[i].AI %>">• <%= othersData[i].title[0] %> <small>(<%= othersData[i].DATE %>)</small></a>
+                            <a class="collapsed card-link" data-toggle="collapse" href="#accordion<%= othersData[i].AI %>a">• <%= othersData[i].title[0] %> <small>(<%= othersData[i].DATE %>)</small></a>
                         </div>
-                        <div id="accordion<%= othersData[i].AI %>" class="collapse" data-parent="#accordion1">
+                        <div id="accordion<%= othersData[i].AI %>a" class="collapse" data-parent="#accordion1">
                             <div class="card-body">
                                 <p>
-                                    <% if(newsData[i].NEWS_LOGO !== undefined) { %>
-                                    <img class="img-fluid mr-4" src="<%= newsData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
+                                    <% if(othersData[i].NEWS_LOGO !== undefined) { %>
+                                    <img class="img-fluid mr-4" src="<%= othersData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
                                     <% } %>
                                     <%= othersData[i].TEXT[0] %>
                                 </p>
