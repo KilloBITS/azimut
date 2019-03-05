@@ -16,10 +16,10 @@ router.post('/setNewCalendar', function(req, res, next){
 
 			if(err) return console.log(err);
 
-			calendar.find().toArray(function(err, results_news){
+			calendar.find().sort({AI: -1}).limit(1).toArray(function(err, results_news){
 				if(req.body.title.length < 3 || req.body.text.length < 5 || !isNaN(new Date(req.body.start))){
 					var calendarNewData = req.body;
-					calendarNewData.AI = results_news.length+1;
+					calendarNewData.AI = parseInt(results_news[0].AI)+1;
 					calendar.insertOne(calendarNewData);
 
 					calendar.find().toArray(function(err, results_calendar_end){

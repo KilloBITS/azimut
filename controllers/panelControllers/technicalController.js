@@ -16,8 +16,8 @@ router.post('/setNewTechnical', function(req, res, next){
 
 			if(err) return console.log(err);
 
-			news.find().toArray(function(err, results_news){
-				var newAI = results_news.length + 1;
+			news.find().sort({AI: -1}).limit(1).toArray(function(err, results_news){
+				var newAI = parseInt(results_news[0].AI) + 1;
 				var DATA = req.body;
 				DATA.AI = newAI;
 				DATA.AUTHOR = req.session.poziv; 

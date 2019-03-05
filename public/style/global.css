@@ -676,6 +676,8 @@ a.NewPassLink{
 .section_data h2{
     margin-top: 0px;
     margin-bottom: -20px;
+    line-height: 45px;
+    margin-bottom: 12px;
 }
 
 .section_data{
