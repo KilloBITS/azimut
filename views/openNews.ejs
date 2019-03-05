@@ -93,7 +93,24 @@
 		</div>
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
-			<a href="/news" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+
+			<% if(NEWS.type === 'ALL'){ %>
+			<a href="/news?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<% } >
+			<% if(NEWS.type === 'VHF'){ %>
+			<a href="/VHF?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<% } >
+			<% if(NEWS.type === 'HF'){ %>
+			<a href="/HF?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<% } >
+			<% if(NEWS.type === 'NUMERIC'){ %>
+			<a href="/numeral?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<% } >
+			<% if(NEWS.type === 'OTHERS'){ %>
+			<a href="/others?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<% } >
+			
+			
 			<a href="#" id="nav_news" class="navigator_btn selected_nav"><%= NEWS.title[numberLanguage] %></a>
 		</div>	
 		<section id="section_0" class="section_data">
