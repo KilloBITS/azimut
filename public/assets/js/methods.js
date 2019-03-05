@@ -204,21 +204,7 @@ var saveFormMessage = function(){
 var removeUserContacts =  function(a){
 	$('.preloaderBlock').fadeIn(100);
 	$.post('/removeContactsUser', {a: a}, function(res){
-		var table = $('#dataTable').DataTable();
-		table.clear();
-
-		for(let i = 0; i < res.data.RU.admins.length; i++){
-			table.row.add( [
-	            res.data.RU.admins[i].name,
-	            res.data.RU.admins[i].rank,
-	            res.data.RU.admins[i].number,
-	            res.data.RU.admins[i].email,
-	            res.data.RU.admins[i].pozivnoy,
-	            ' <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
-	        ] ).draw( false );
-		}
-		locationReload(res.message, false);
-
+		locationReload(res.message, true);
 	})
 }
 
@@ -288,41 +274,14 @@ var savecontacts = function(){
 	if(!contactsEdited){ 
 		//Cохранение нового	
 		$.post('/saveNewContacts', Params, function(res){
-			console.log(res)
-			var table = $('#dataTable').DataTable();
-			table.clear();
-
-			for(var i = 0; i < res.data[0].RU.admins.length; i++){
-				table.row.add( [
-		            res.data[0].RU.admins[i].name,
-		            res.data[0].RU.admins[i].rank,
-		            res.data[0].RU.admins[i].number,
-		            res.data[0].RU.admins[i].email,
-		            res.data[0].RU.admins[i].pozivnoy,
-		            ' <button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
-		        ] ).draw( false );
-			}
 		 	$('#closeThisModal').click()
-			locationReload(res.message, false)
+			locationReload(res.message, true)
 		})
 	}else{ 
 	//Сохранение отредактированого
 		$.post('/saveOldContacts', Params, function(res){
-			console.log(res)
-			var table = $('#dataTable').DataTable();
-			table.clear();
-			for(var i = 0; i < res.data[0].RU.admins.length; i++){
-				table.row.add( [
-		            res.data[0].RU.admins[i].name,
-		            res.data[0].RU.admins[i].rank,
-		            res.data[0].RU.admins[i].number,
-		            res.data[0].RU.admins[i].email,
-		            res.data[0].RU.admins[i].pozivnoy,
-		            '<button type="button" class="btn btn-primary btn-xs mb-3" onclick="editedUserContacts('+i+')"  data-toggle="modal" data-target=".bd-example-modal-lg">Редактировать</button><button type="button" class="btn btn-danger btn-xs mb-3" onclick="removeUserContacts('+i+')">Удалить</button> '
-		        ] ).draw( false );
-			}
 			$('#closeThisModal').click()
-			locationReload(res.message, false)
+			locationReload(res.message, true)
 		})
 	}
 }

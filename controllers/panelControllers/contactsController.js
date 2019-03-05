@@ -21,10 +21,10 @@ router.post('/saveNewContacts', function(req, res, next){
 			config_data.EN.admins.push(req.body.EN);
 			conf.remove();
 			conf.insertOne(config_data);
-			
-			conf.find().toArray(function(err, res_conf2){
-				res.send({code: 500, className: 'nSuccess', message: 'Новый контакт успешно добавлен', data: res_conf2});
-			});
+
+			// conf.find().toArray(function(err, res_conf2){
+				res.send({code: 500, className: 'nSuccess', message: 'Новый контакт успешно добавлен'});
+			// });
 		});		
 	});
 });
@@ -44,9 +44,9 @@ router.post('/saveOldContacts', function(req, res, next){
 			conf.remove();
 			conf.insertOne(config_data);
 
-			conf.find().toArray(function(err, res_conf2){
-				res.send({code: 500, className: 'nSuccess', message: 'Изменения успешно сохранены!', data: res_conf2});
-			});	
+			// conf.find().toArray(function(err, res_conf2){
+				res.send({code: 500, className: 'nSuccess', message: 'Изменения успешно сохранены!'});
+			// });	
 		});		
 	});
 });
@@ -66,9 +66,9 @@ router.post('/removeContactsUser', function(req, res, next){
 			config_data.EN.admins.splice(parseInt(req.body.a), 1);
 			conf.remove();
 			conf.insertOne(config_data);
-			conf.find().toArray(function(err, res_conf2){
-				res.send({code: 500, className: 'nSuccess', message: 'Контакт успешно удален', data: res_conf2});
-			});
+			// conf.find().toArray(function(err, res_conf2){
+				res.send({code: 500, className: 'nSuccess', message: 'Контакт успешно удален'});
+			// });
 		});		
 	});
 });
