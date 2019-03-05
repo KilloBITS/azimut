@@ -223,6 +223,10 @@ app.post('/blockUser', usersPanelMethods);
 const DBPanel = require('./controllers/panelControllers/DBController');
 app.post('/setDbParams', DBPanel);
 
+const contactsPanel = require('./controllers/panelControllers/contactsController');
+app.post('/editedContactsUser', contactsPanel);
+app.post('/removeContactsUser', contactsPanel);
+
 
 function sravnenie(arr, arr2){
 	if(arr.length != arr2.length) return false

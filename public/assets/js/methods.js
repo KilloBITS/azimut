@@ -201,8 +201,38 @@ var saveFormMessage = function(){
 $('.preloaderBlock').fadeIn(100);
 }
 
-var removeUserContacts =  function(){
-$('.preloaderBlock').fadeIn(100);
+var editedUserContacts = function(a){
+	$('.modalPreloader').show();
+	$.post('/editedContactsUser', {a: a}, function(res){
+		$(".ruClass#example-text-input-FIO").val(res.data.RU.name);
+		$(".ruClass#example-text-input-RANK").val(res.data.RU.rank);
+		$(".ruClass#example-text-input-NUMBER").val(res.data.RU.number);
+		$(".ruClass#example-text-input-EMAIL").val(res.data.RU.email);
+		$(".ruClass#example-text-input-POZIV").val(res.data.RU.pozivnoy);
+
+		$(".uaClass#example-text-input-FIO").val(res.data.UA.name);
+		$(".uaClass#example-text-input-RANK").val(res.data.UA.rank);
+		$(".uaClass#example-text-input-NUMBER").val(res.data.UA.number);
+		$(".uaClass#example-text-input-EMAIL").val(res.data.UA.email);
+		$(".uaClass#example-text-input-POZIV").val(res.data.UA.pozivnoy);
+
+		$(".enClass#example-text-input-FIO").val(res.data.EN.name);
+		$(".enClass#example-text-input-RANK").val(res.data.EN.rank);
+		$(".enClass#example-text-input-NUMBER").val(res.data.EN.number);
+		$(".enClass#example-text-input-EMAIL").val(res.data.EN.email);
+		$(".enClass#example-text-input-POZIV").val(res.data.EN.pozivnoy);
+
+
+		
+		locationReload(res.message, false)
+	})
+}
+
+var removeUserContacts =  function(a){
+	$('.preloaderBlock').fadeIn(100);
+	$.post('/removeContactsUser', {a: a}, function(res){
+		locationReload(res.message, false)
+	})
 }
 
 var saveDBParams = function(){

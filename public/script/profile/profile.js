@@ -200,6 +200,6 @@ var saveMyInfo = function(){
 		text: $('#textMe').val()
 	}
 	$.post('/saveMyInfo', dataUser, function(res){
-		console.log(res);
+		createError(res.className, res.message);
 	});
 }
