@@ -34,4 +34,46 @@
 		user-select: none;
 		font-size: 14px;
 	}
+	.chatbox{
+	    padding: 0px 10px;
+	}
+	.PN_Nav_btn{
+		font-size: 14px;
+	}
+	.modal__sidebar {
+	    flex: none;
+	    background-color: #eff0f5;
+	    position: absolute;
+	    height: 100%;
+	    z-index: 1;
+	    left: 0;
+	    width: 280px;
+	    border-right: 2px solid #e6e6e6;
+	    box-shadow: 2px 0px 9px rgba(0, 0, 0, 0.44);
+	}
+
+	.sidebar_open_button{
+	    display: block;
+	    position: absolute;
+	    right: -40px;
+	    top: 0;
+	    width: 40px;
+	    height: 40px;
+	    background-color: #eff0f5;
+	    border-radius: 0 0 8px 0;
+	    box-shadow: 3px 2px 7px -1px rgba(0, 0, 0, 0.44);
+	    cursor: pointer;
+	    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDEyNCAxMjQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDEyNCAxMjQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIiBjbGFzcz0iIj48Zz48Zz4KCTxwYXRoIGQ9Ik0xMTIsNkgxMkM1LjQsNiwwLDExLjQsMCwxOHM1LjQsMTIsMTIsMTJoMTAwYzYuNiwwLDEyLTUuNCwxMi0xMlMxMTguNiw2LDExMiw2eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojOTU5NTk1IiBkYXRhLW9sZF9jb2xvcj0iIzk3OTY5NiI+PC9wYXRoPgoJPHBhdGggZD0iTTExMiw1MEgxMkM1LjQsNTAsMCw1NS40LDAsNjJjMCw2LjYsNS40LDEyLDEyLDEyaDEwMGM2LjYsMCwxMi01LjQsMTItMTJDMTI0LDU1LjQsMTE4LjYsNTAsMTEyLDUweiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojOTU5NTk1IiBkYXRhLW9sZF9jb2xvcj0iIzk3OTY5NiI+PC9wYXRoPgoJPHBhdGggZD0iTTExMiw5NEgxMmMtNi42LDAtMTIsNS40LTEyLDEyczUuNCwxMiwxMiwxMmgxMDBjNi42LDAsMTItNS40LDEyLTEyUzExOC42LDk0LDExMiw5NHoiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSJhY3RpdmUtcGF0aCIgc3R5bGU9ImZpbGw6Izk1OTU5NSIgZGF0YS1vbGRfY29sb3I9IiM5Nzk2OTYiPjwvcGF0aD4KPC9nPjwvZz4gPC9zdmc+);
+		background-size: 24px;
+    	background-repeat: no-repeat;
+    	background-position: center;
+	}
+
+	.modal__sidebar{
+		left: -280px;
+	}
+
+	section.tovarData{
+	    background-color: rgba(255, 255, 246, 0.56);
+	}
 }

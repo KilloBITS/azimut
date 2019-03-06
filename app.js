@@ -15,6 +15,7 @@ const MongoStore = require('connect-mongo')(session);
 require('./controllers/parseLanguageController')
 require('./controllers/mailController')
 require('./controllers/logsController')
+require('./viber/viberController')
 
 app.use(session({
 	secret: '2C44-4D44-WppQ38S',
@@ -34,7 +35,7 @@ app.use(bParser.json());
 app.use(express.static(__dirname + '/public/'));
 app.use(cookieParser());
 app.use(bParser.raw({limit: '50mb'}));
-
+// app.use("/viber/webhook", bot.middleware());
 //routes pages
 const get404 = require('./routes/get404');
 const index = require('./routes/getIndex');
@@ -283,3 +284,8 @@ app.listen(4334,function(){
 		console.log('Started server on "Azimut" from port: 4334');
 	});	
 });
+
+
+
+
+	// authToken: '4954bb0bca27d096-98852c322a8d5be9-ffaa98d477cf7a3',

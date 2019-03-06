@@ -106,9 +106,9 @@ io.sockets.on('connection', function (client) {
     	});        
     });
 
-    client.on('writing', function(MD){     	
-    	try{
-    		console.log(MD.user)
+    client.on('writing', function(MD){  
+    console.log(MD.user)   	
+    	try{    		
 			io.sockets.connected[users[MD.user]].emit('writing', {code: 500, user: MD.my});  
 		}catch(e){
 			console.log('Сообщение не отправлено, пользователь не в сети')

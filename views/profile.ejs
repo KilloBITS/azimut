@@ -127,6 +127,10 @@
 						<div class="dataText tMail">Ваш e-mail: <input type="text" name="username" value="<%= USER.email %>" id="myUserEmail"></div>
 						<div class="dataText tNumb">Ваш телефон: <input type="text" name="username" value="<%= USER.phone_number %>" id="myUserPhone"></div>
 
+						<div class="mySocials" style="display: none;">
+							
+						</div>
+
 						<div class="socialUserBtn" id="forMyVK"></div>
 						<div class="socialUserBtn" id="forMyInsta"></div>
 						<div class="socialUserBtn" id="forMyFacebook"></div>
@@ -250,12 +254,17 @@
 				<div class="TAB">
 					<div class="mini_title">Тут отображается список ваших объявлений</div>
 					<a href="/newtovar" target="_blank"><div class="addNewTovar" id="addNewTovar"><%= page.postads %></div></a>
-					<div class="fullBlock" style="padding-top: 30px; overflow: scroll; overflow-x: hidden; height: 100%; margin-top: 20px;">
+					<div class="fullBlock" style="overflow: scroll; overflow-x: hidden; height: 100%;">
 						<% if(tovar.length > 0){ %>
 						<% for(var i = 0; i < tovar.length; i++){ %>
 						<!-- <a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank"> -->
-							<section id="section_<%= i %>" class="tovarData">				
-								<div class="preImage" style="background-image: url(<%= tovar[i].Images[0] %>)"></div>
+							<section id="section_<%= i %>" class="tovarData">
+								<% if( tovar[i].Images[0] !== undefined){ %>
+								<div class="preImage" style="background-image: url(../../data/tovar<%= tovar[i].Images[0] %>)"></div>
+								<% } else { %>
+								<div class="preImage" style="background-image: url(https://www.freeiconspng.com/uploads/no-image-icon-6.png)"></div>
+								<% } %>			
+								
 								<h4><%= tovar[i].Title %></h4>
 								<div class="description"><%= tovar[i].Description %></div>
 								<% if(tovar[i].Type === 'Куплю'){ %>
@@ -278,6 +287,7 @@
 				<div class="TAB">
 					<div class="modal__content chat">
 						<div class="modal__sidebar">
+							<div class="sidebar_open_button"></div>
 							<div class="chat__search search">
 								<div class="search">
 									<div class="search__icon">
@@ -318,9 +328,6 @@
 							<div class="chatbox">
 								<div class="chatbox__row">
 									<div class="head">
-										<div class="head__avatar avatar avatar_larger">
-											<a href="#" class="avatar__wrap"></a>
-										</div>
 										<div class="head__title">...</div>
 									</div>
 								</div>
@@ -347,6 +354,7 @@
 									
 								</div>
 								<div class="chatbox__row">
+									<input type="file" name="openImage" style="display: none;" id="openMsgImage">
 									<div class="enter">
 										<div class="enter__submit">
 											<button class="button button_id_submit" type="submit" onclick="sendMessage()"></button>
@@ -355,12 +363,18 @@
 											<textarea name="enterMessage" id="enterMessage" cols="30" rows="2" placeholder="ведите ваше сообщение..." onkeyup="writingMessage()"></textarea>
 										</div>
 										<div class="enter__icons">
-											<a href="#" class="enter__icon">
+											<div class="enter__icon">
 												<i class="fa fa-paperclip" aria-hidden="true"></i>
-											</a>
-											<a href="#" class="enter__icon">
+											</div>
+											<div class="enter__icon">
 												<i class="fa fa-smile-o" aria-hidden="true"></i>
-											</a>
+											</div>
+											<div class="enter__icon" onclick="openImage();">
+												<i class="fa fa-picture-o" aria-hidden="true"></i>
+											</div>
+											<div class="enter__icon">
+												<i class="fa fa-microphone" aria-hidden="true"></i>
+											</div>
 										</div>
 									</div>
 								</div>

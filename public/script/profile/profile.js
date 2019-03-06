@@ -4,10 +4,19 @@ var file;
 var GlobalObj = {};
 var audioMsg = new Audio();
     audioMsg.src='../../../audio/message.mp3';
-
+var frindsMenu = false;
 
 
 $(document).ready(function(){
+	$('.sidebar_open_button').click(function(){
+		if(frindsMenu){
+			$('.modal__sidebar').css({"left":"-280px"});
+			frindsMenu = false;
+		}else{
+			$('.modal__sidebar').css({"left":"0"});
+			frindsMenu = true;
+		}
+	})
 	file = document.getElementById('tFile');
 	file.addEventListener('change', function () {
 		$(".avatara_big").css({"background-image":"url(../../../img/spinner-preloader.gif)"})
@@ -29,6 +38,44 @@ $(document).ready(function(){
 		}
 	}, false);
 
+	//для отправки изображения другому юзеру
+	photoMSG = document.getElementById('openMsgImage');
+	photoMSG.addEventListener('change', function () {
+
+		var fullPathphotoMSG = photoMSG.value;
+		var startIndexphotoMSG = (fullPathphotoMSG.indexOf('\\') >= 0 ? fullPathphotoMSG.lastIndexOf('\\') : fullPathphotoMSG.lastIndexOf('/'));
+		var filenamephotoMSG = fullPathphotoMSG.substring(startIndexphotoMSG);
+		if (filenamephotoMSG.indexOf('\\') === 0 || filenamephotoMSG.indexOf('/') === 0) {
+			filenamephotoMSG = filenamephotoMSG.substring(1);
+		}
+		if (this.files && this.files[0]) {
+			var reader2 = new FileReader();
+			reader2.onload = function (e) {
+				$.post('/sendMessage',{a: OPEN_DLG, b: e.target.result, t:'image'},function(res){
+					var msgclass = 'touser image';
+					var MSG = '<div class="message '+msgclass+'">'+
+					'<div class="message__head">'+									
+					'<span class="message__note">'+
+					res.data.date + ' ('+ res.data.time + ')' +
+					'</span> </div> <div class="message__base">'+
+					'<div class="message__textbox">'+
+					'<span class="message__text">'+
+					'<img src="'+e.target.result+'" style="max-width: 150px; max-height: 150px;">' +
+					'</span> </div> '+
+					'<div class="message__avatar avatar">'+
+					'</div></div> </div>';
+					GlobalObj.socket.emit("messages",{user: OPEN_DLG, my: MYNICK, resDlg: e.target.result, t: 'image'});
+					$("#chatbox__content").append(MSG);
+					$('#enterMessage').val('');
+					$('.button_id_submit').removeClass('loadBtn');
+					$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
+					
+				});
+			};
+			reader2.readAsDataURL(this.files[0]);
+		}
+	}, false);
+
 	GlobalObj.socket = io.connect(location.hostname + ':4335');
 
 	GlobalObj.socket.emit('clientConnect', {
@@ -43,11 +90,11 @@ $(document).ready(function(){
 	});
 
     GlobalObj.socket.on('getonline', function (data) {	
-    	for(var i = 0; i < data.data.length; i++){
-    		if(data.data[i].onlineSession){
-    			$('.'+data.data[0].pozivnoy).fadeIn(200);
+    	for(var il = 0; il < data.data.length; il++){
+    		if(data.data[il].onlineSession){
+    			$('.'+data.data[il].pozivnoy).show(200);
     		}else{
-				$('.'+data.data[0].pozivnoy).fadeOut(200);
+				$('.'+data.data[il].pozivnoy).hide(200);
     		}
     	}	
 	});
@@ -69,18 +116,13 @@ var sendMessage =  function(){
 		var MSG = '<div class="message '+msgclass+'">'+
 		'<div class="message__head">'+
 		'<span class="message__note">'+
-		'Princess Murphy'+
-		'</span> <span class="message__note">'+
 		res.data.date + ' ('+ res.data.time + ')' +
 		'</span> </div> <div class="message__base">'+
 		'<div class="message__textbox">'+
 		'<span class="message__text">'+
 		res.data.text +
 		'</span> </div> '+
-		'<div class="message__avatar avatar">'+
-		'<a href="#" class="avatar__wrap">'+
-		'<img class="avatar__img" src="http://placehold.it/35x35" width="35" height="35" alt="avatar image">'+
-		'</a> </div></div> </div>';
+		'</div> </div>';
 		GlobalObj.socket.emit("messages",{user: OPEN_DLG, my: MYNICK, resDlg:$('#enterMessage').val()});
 		$("#chatbox__content").append(MSG);
 		$('#enterMessage').val('');
@@ -126,40 +168,55 @@ var clickTab = function(el){
 };
 
 var shablonMessage = function(iam, data){
-	console.log(data);
 	if(data.to !== iam){
 		var msgclass = 'touser';
 		return '<div class="message '+msgclass+'">'+
 		'<div class="message__head">'+
 		'<span class="message__note">'+
-		'Princess Murphy'+
-		'</span> <span class="message__note">'+
 		data.date + ' ('+ data.time + ')' +
 		'</span> </div> <div class="message__base">'+
 		'<div class="message__textbox">'+
 		'<span class="message__text">'+
 		data.text +
 		'</span> </div> '+
-		'<div class="message__avatar avatar">'+
-		'<a href="#" class="avatar__wrap">'+
-		'<img class="avatar__img" src="http://placehold.it/35x35" width="35" height="35" alt="avatar image">'+
-		'</a> </div></div> </div>';
+		'</div> </div>';
 	}else{
 		var msgclass = 'tome';
 		return '<div class="message '+msgclass+'">'+
 		'<div class="message__head">'+
 		'<span class="message__note">'+
-		'Princess Murphy'+
-		'</span> <span class="message__note">'+
 		data.date + ' ('+ data.time + ')' +
 		'</span> </div> <div class="message__base">'+
-		'<div class="message__avatar avatar">'+
-		'<a href="#" class="avatar__wrap">'+
-		'<img class="avatar__img" src="http://placehold.it/35x35" width="35" height="35" alt="avatar image">'+
-		'</a> </div> <div class="message__textbox">'+
+		'<div class="message__textbox">'+
 		'<span class="message__text">'+
 		data.text +
 		'</span> </div> </div> </div>';
+	}	
+};
+
+var shablonImage = function(iam, data){
+	console.log(data);
+	if(data.to !== iam){
+		var msgclass = 'touser image';
+		return '<div class="message '+msgclass+'">'+
+		'<div class="message__head">'+
+		'<span class="message__note">'+
+		data.date + ' ('+ data.time + ')' +
+		'</span> </div> <div class="message__base">'+
+		'<div class="message__textbox">'+
+		'<img src="'+data.text+'" style="max-width: 150px; max-height: 150px;">' +
+		'</div> '+
+		'</div> </div>';
+	}else{
+		var msgclass = 'tome image';
+		return '<div class="message '+msgclass+'">'+
+		'<div class="message__head">'+
+		'<span class="message__note">'+
+		data.date + ' ('+ data.time + ')' +
+		'</span> </div> <div class="message__base">'+
+		'<div class="message__textbox">'+
+		'<img src="'+data.text+'" style="max-width: 150px; max-height: 150px;">' +
+		'</div> </div> </div>';
 	}	
 };
 
@@ -175,7 +232,11 @@ var openDialog = function(user){
 
 		$('.head__title').html('Диалог с - '+user)
 		for(var i = 0; i < dlg.data.length; i++){
-			$("#chatbox__content").append(shablonMessage(user,dlg.data[i]));
+			if(dlg.data[i].text.slice(0,10) === 'data:image'){
+				$("#chatbox__content").append(shablonImage(user,dlg.data[i]));
+			}else{
+				$("#chatbox__content").append(shablonMessage(user,dlg.data[i]));
+			}
 		}		
 		$('#chatbox__content,.enter').fadeIn(100);
 		$('.head').css({"display":"inline-flex"})
@@ -184,12 +245,19 @@ var openDialog = function(user){
 	});
 	
 	GlobalObj.socket.on('messages', function (data) {		
-		$("#chatbox__content").append(shablonMessage(user, data.data));
+		if(data.data.text.slice(0,10) === 'data:image'){
+			$("#chatbox__content").append(shablonImage(user,data.data));
+		}else{
+			$("#chatbox__content").append(shablonMessage(user,data.data));
+		}
 		$(".chatbox__row_fullheight").animate({ scrollTop: 9999 }, 'slow');
 		audioMsg.play();
 	});
 }
 
+var openImage = function(){
+	$("#openMsgImage").click();
+}
 
 
 var saveMyInfo = function(){
