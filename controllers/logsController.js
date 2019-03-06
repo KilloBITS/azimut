@@ -31,6 +31,7 @@ global.setLog = function(type, subject, textData, user){
 			case 1: var typeLog = 'warning'; break;
 			case 2: var typeLog = 'message'; break;
 			case 3: var typeLog = 'good'; break;
+			case 4: var typeLog = 'good'; break;
 		}
 
 		var NEW_LOGS = {};
