@@ -2947,3 +2947,58 @@ p.card-text.tovarText{
     background: #fff;
     display: flex;
 }
+
+.addEditImage{
+    width: 30px;
+    height: 30px;
+    background-image: url(../../../img/addimage.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    cursor: default;
+    position: absolute;
+    z-index: 12;
+    right: 76px;
+    top: 8px;
+}
+.openedImage{
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    bottom: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;    
+}
+.addEditImage:hover .openedImage{
+    display: block;
+}
+
+.custom-file-label::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: calc(calc(2.25rem + 2px) - 1px * 2);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    content: "";
+    background-color: #e9ecef;
+    border-left: 1px solid #ced4da;
+    border-radius: 0 .25rem .25rem 0;
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQyIDQyIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MiA0MjsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxsaW5lIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlOiMyM0EyNEQ7c3Ryb2tlLXdpZHRoOjI7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiB4MT0iMjEiIHkxPSIwIiB4Mj0iMjEiIHkyPSI0MiIvPgo8bGluZSBzdHlsZT0iZmlsbDpub25lO3N0cm9rZTojMjNBMjREO3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgeDE9IjQyIiB5MT0iMjEiIHgyPSIwIiB5Mj0iMjEiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+    background-size: 27px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+    width: 50px;
+}
+
+.custom-file-input:lang(en)~.custom-file-label::after {
+    content: "";
+}

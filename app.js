@@ -215,6 +215,7 @@ app.post('/removedPhotoGallery', galleryPanelPosts);
 
 const newsPanel = require('./controllers/panelControllers/newsController');
 app.post('/setNewNews', newsPanel);
+app.post('/saveEditNews', newsPanel);
 app.post('/setRemoveNews', newsPanel);
 
 const technicalPanel = require('./controllers/panelControllers/technicalController');

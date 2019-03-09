@@ -94,11 +94,16 @@
 			<% for(var i = 0; i < TECH.length; i++){ %>
 			<section id="section_<%= i %>" class="section_data"  data-aos="fade-down">
 				<h2><a class="title_news_link" href="/detailstech?ai=<%= TECH[i].AI %>"><%= TECH[i].title[numberLanguage] %></a></h2>
+				<textarea class="hideText" id="text<%= i %>" style="display: none;">
+					<%= TECH[i].TEXT[numberLanguage] %>
+				</textarea>
 				<p>
 					<% if(TECH[i].NEWS_LOGO !== undefined){ %>
 					<img class="alignleft size-thumbnail wp-image-622" src="<%= TECH[i].NEWS_LOGO %>" alt="" width="150" height="104">
-					<% } %>			
-					<%= TECH[i].TEXT[numberLanguage] %>
+					<% } %>		
+					<script type="text/javascript">
+						$("#section_<%= i %> p").append($("#text<%= i %>").val());
+					</script>	
 					<div class="shadow_transparent"><a href="/detailstech?ai=<%= TECH[i].AI %> %>"><%= page.read %></a></div>
 				</p>			
 				<div class="section_date">

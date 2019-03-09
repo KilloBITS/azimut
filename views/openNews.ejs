@@ -99,16 +99,16 @@
 			<a href="/news?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
 			<% } %>
 			<% if(NEWS.type === 'VHF'){ %>
-			<a href="/VHF?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<a href="/VHF?page=1" id="nav_news" class="navigator_btn">VHF</a>
 			<% } %>
 			<% if(NEWS.type === 'HF'){ %>
-			<a href="/HF?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<a href="/HF?page=1" id="nav_news" class="navigator_btn">HF</a>
 			<% } %>
 			<% if(NEWS.type === 'NUMERIC'){ %>
-			<a href="/numeral?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<a href="/numeral?page=1" id="nav_news" class="navigator_btn"><%= page.numeral.title %></a>
 			<% } %>
 			<% if(NEWS.type === 'OTHERS'){ %>
-			<a href="/others?page=1" id="nav_news" class="navigator_btn"><%= page.news.title %></a>
+			<a href="/others?page=1" id="nav_news" class="navigator_btn"><%= page.others.title %></a>
 			<% } %>
 			
 			
@@ -116,9 +116,16 @@
 		</div>	
 		<section id="section_0" class="section_data">
 			<h2><%= NEWS.title[numberLanguage] %></h2>
+			<textarea class="hideText" id="textNone" style="display: none;">
+				<%= NEWS.TEXT[numberLanguage] %>
+			</textarea>
 			<p>
+				<% if(NEWS.NEWS_LOGO !== undefined){ %>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS.NEWS_LOGO %>" alt="" width="150" height="104">
-				<%= NEWS.TEXT[numberLanguage] %>					
+				<% } %>
+				<script type="text/javascript">
+					$("#section_0 p").append($("#textNone").val());
+				</script>								
 			</p>
 			<% for(var ii = 0; ii < NEWS.CONTENT_IMAGE.length; ii++){ %>
 			<img src="<%= NEWS.CONTENT_IMAGE[ii] %>">

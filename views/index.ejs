@@ -108,11 +108,17 @@
 			<h2>
 				<a class="title_news_link" href="/detailsnews?ai=<%= NEWS[i].AI %>"><%= NEWS[i].title[numberLanguage] %></a>
 			</h2>
+			<textarea class="hideText" id="text<%= i %>" style="display: none;">
+				<%= NEWS[i].TEXT[numberLanguage] %>
+			</textarea>
 			<p>
 				<% if(NEWS[i].NEWS_LOGO !== undefined){ %>
 				<img class="alignleft size-thumbnail wp-image-622" src="<%= NEWS[i].NEWS_LOGO %>" alt="" width="150" height="104">
 				<% } %>
-				<%= NEWS[i].TEXT[numberLanguage] %>	
+				<script type="text/javascript">
+					$("#section_<%= i %> p").append($("#text<%= i %>").val());
+				</script>
+				
 				<div class="shadow_transparent"><a href="/detailsnews?ai=<%= NEWS[i].AI %> %>"><%= page.read %></a></div>
 			</p>			
 			<div class="section_date">

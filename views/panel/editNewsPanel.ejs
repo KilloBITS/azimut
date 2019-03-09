@@ -14,15 +14,17 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
+
+    <!-- summernote css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
+
+    
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
-    <script type="text/javascript" src="/script/pagination.full.min.js"></script>
 </head>
 <body>
     <div id="preloader">
@@ -39,46 +41,45 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">         
-                            <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>     
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
-                                <ul class="collapse" style="height: 0px;">
-                                    <li><a href="/PanelAbout">Информация</a></li>
-                                    <li><a href="/PanelGallery">Фотогалерея</a></li>
-                                    <li><a href="/PanelContacts">Контакты</a></li>
-                                </ul>
-                            </li>         
-                            <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
-                                <ul class="collapse">
-                                    <li class="active"><a href="/PanelNews?page=1">Новости</a></li>                                   
-                                    <li><a href="/PanelVHF?page=1">VHF</a></li>
-                                    <li><a href="/PanelHF?page=1">HF</a></li>
-                                    <li><a href="/PanelNumeral?page=1">Цифра</a></li>
-                                    <li><a href="/PanelOthers?page=1">Разное</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
-                            <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>                            
-                            <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
-                            <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
-                            <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
-                                <ul class="collapse" style="height: 0px;">
-                                    <li><a href="#">Настройки</a></li>
-                                    <li><a href="/PanelDB">База данных</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/" target="_blank" style="color: #e9eabf;"><i class="fa fa-desktop"  style="color: #e9eabf;"></i><span style="color: #e9eabf;">Вернутся на сайт</span></a></li>
-                            <li><a href="#" style="color: red;" data-toggle="modal" data-target="#devmessagemodal"><i class="fa fa-exclamation" style="color: red;"></i><span style="color: red;">Пожаловатся разработчику</span></a></li>
-                            
-                        </ul>
-                    </nav>
-                </div>
+                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>    
+                          <li>
+                            <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
+                            <ul class="collapse" style="height: 0px;">
+                                <li><a href="/PanelAbout">Информация</a></li>
+                                <li><a href="/PanelGallery">Фотогалерея</a></li>
+                                <li><a href="/PanelContacts">Контакты</a></li>
+                            </ul>
+                        </li>          
+                        <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
+                        <li class="active">
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
+                            <ul class="collapse">
+                                <li><a href="/PanelNews?page=1">Новости</a></li>
+                                <li><a href="/PanelNews?page=1">VHF</a></li>
+                                <li><a href="/PanelNews?page=1">HF</a></li>
+                                <li><a href="/PanelNumeral?page=1">Цифра</a></li>
+                                <li><a href="/PanelOthers?page=1">Разное</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
+                        <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
+                        <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
+                        <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                    
+                        <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
+                            <ul class="collapse" style="height: 0px;">
+                                <li><a href="#">Настройки</a></li>
+                                <li><a href="/PanelDB">База данных</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/" target="_blank" style="color: #e9eabf;"><i class="fa fa-desktop"  style="color: #e9eabf;"></i><span style="color: #e9eabf;">Вернутся на сайт</span></a></li>
+                        <li><a href="#" style="color: red;" data-toggle="modal" data-target="#devmessagemodal"><i class="fa fa-exclamation" style="color: red;"></i><span style="color: red;">Пожаловатся разработчику</span></a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
+    </div>
     <div class="main-content">
         <div class="header-area">
             <div class="row align-items-center">
@@ -101,7 +102,7 @@
                         <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                         <li class="dropdown">
                             <%- include ./panel_includes/panel_notify.ejs %> 
-                        </li>                        
+                        </li>                            
                     </ul>
                 </div>
             </div>
@@ -110,7 +111,7 @@
             <div class="row align-items-center">
                 <div class="col-sm-6">
                     <div class="breadcrumbs-area clearfix">
-                        <h4 class="page-title pull-left">Редактирование: <%= NEWS.title[0] %></h4>
+                        <h4 class="page-title pull-left">Редактирование новостей</h4>
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
@@ -119,87 +120,292 @@
             </div>
         </div>
         <div class="main-content-inner">
-        <!-- Тут будет контент -->
-            <div class="row">
-                <div class="col-lg-6 mt-5">
-                    <div class="row">
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Заголовок</h4>                        
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Русский</label>
-                                        <input class="form-control" type="text" id="example-text-input" value="<%= NEWS.title[0] %>">
+          <!-- Тут будет контент -->
+          <div class="row">
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <!-- Textual inputs start -->
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Редактирование новости: <%= NEWS.title[0] %></h4>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="col-form-label">Заголовок</label>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <!-- <div class="card-body"> -->
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Русский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Украинский</a>
+                                                        </li>
+                                                        <li class="nav-item">
+                                                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Английский</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content mt-3" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введите заголовок на Русском языке</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-RU" placeholder="Введите текст"><%= NEWS.title[0] %></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Введіть заголовок на Українській мові</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-UA" placeholder="Введите текст"><%= NEWS.title[1] %></textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                                            <div class="form-group">
+                                                                <label for="example-textarea-input" class="col-form-label">Write title for English language</label>
+                                                                <textarea class="form-control" aria-label="With textarea" id="example-text-input-EN" placeholder="Введите текст"><%= NEWS.title[2] %></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <!-- </div> -->
+                                            </div>
+                                        </div>
                                     </div>
+                                </div>                                  
 
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Украинский</label>
-                                        <input class="form-control" type="text" id="example-text-input1" value="<%= NEWS.title[1] %>">
-                                    </div>
+                                <div class="form-group">
+                                    <label for="example-date-input" class="col-form-label">Дата</label>
+                                    <input class="form-control" type="date" value="<%= NEWS.DATE %>" id="example-date-input" readonly>
+                                </div>                               
 
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Английский</label>
-                                        <input class="form-control" type="text" id="example-text-input2" value="<%= NEWS.title[2] %>">
+                                <div class="form-group">
+                                    <label class="col-form-label">Выберите тип новости</label>                                    
+                                    <select class="form-control" id="example-type-input">
+                                        <option value="ALL">Общая</option>
+                                        <option value="HF">HF</option>
+                                        <option value="VHF">VHF</option>
+                                        <option value="NUMERIC">Цифра</option>
+                                        <option value="OTHERS">Разное</option>
+                                    </select>
+                                    <script type="text/javascript">
+                                        document.getElementById('example-type-input').value = '<%= NEWS.type %>';
+                                    </script>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Введите текст на Русском языке</label>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="card">
+                                                <ul class="nav nav-tabs" id="myTab2" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" id="home-tab1" data-toggle="tab" href="#home1" role="tab" aria-controls="home" aria-selected="true">Русский</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="profile-tab1" data-toggle="tab" href="#profile1" role="tab" aria-controls="profile" aria-selected="false">Украинский</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" id="contact-tab1" data-toggle="tab" href="#contact1" role="tab" aria-controls="contact" aria-selected="false">Английский</a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content mt-3" id="myTabContent">
+                                                    <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+                                                        <div class="form-group">
+                                                            <label for="example-textarea-input" class="col-form-label">Введите текст на Русском языке</label>
+                                                             <textarea class="form-control" id="code_preview0" name="" style="height: 300px;">
+                                                                 <%= NEWS.TEXT[0] %>
+                                                             </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
+                                                        <div class="form-group">
+                                                            <label for="example-textarea-input" class="col-form-label">Введіть текст на Українській мові</label>
+                                                            <textarea class="form-control" id="code_preview1" name="" style="height: 300px;">
+                                                                <%= NEWS.TEXT[1] %>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
+                                                        <div class="form-group">
+                                                            <label for="example-textarea-input" class="col-form-label">Write text for English language</label>
+                                                            <textarea class="form-control" id="code_preview2" name="" style="height: 300px;">
+                                                                <%= NEWS.TEXT[2] %>
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>                                        
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Логотип новости</label>                                     
+                                    <div class="custom-file">
+                                        <% if(NEWS.NEWS_LOGO !== undefined){ %>
+                                        <div class="addEditImage" id="logoOfNews" style="background-image: url(<%= NEWS.NEWS_LOGO %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.NEWS_LOGO %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="selectNewsLogo()">
+                                        <label class="custom-file-label" for="inputGroupFile01">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="logoOfNews"></div>
+                                        <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="selectNewsLogo()">
+                                        <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>                                  
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-6 mt-5">
-                    <div class="row">
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Описание</h4>                        
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Русский</label>
-                                        <textarea class="form-control" id="example-text-input3"><%= NEWS.TEXT[0] %></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Украинский</label>
-                                        <textarea class="form-control" id="example-text-input4"><%= NEWS.TEXT[1] %></textarea>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="example-text-input" class="col-form-label">Английский</label>
-                                        <textarea class="form-control" id="example-text-input5"><%= NEWS.TEXT[2] %></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6 mt-5">
-                    <div class="row">
-                        <div class="col-12 mt-5">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="header-title">Логотип новости</h4>
-                                    <img src="<%= NEWS.NEWS_LOGO %>">                                                      
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12 mt-5">
-                    <div class="row">
-                        <div class="col-12 mt-5">
-                            <button type="button" class="btn btn-success mb-3 col-lg-12" onclick="editSaveNews('<%= NEWS.AI %>')">Сохранить</button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
+
+            <div class="col-lg-6 col-ml-12">
+                <div class="row">
+                    <div class="col-12 mt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Добавить изображения</h4>
+                                <p class="text-muted font-14 mb-4">Выберите изображения для новости</p>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[0] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews1" style="background-image: url(<%= NEWS.CONTENT_IMAGE[0] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[0] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage1" onchange="selectNewsContentImage(this,0)">
+                                        <label class="custom-file-label" for="newsImage1">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews1"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage1" onchange="selectNewsContentImage(this,0)">
+                                        <label class="custom-file-label" for="newsImage1">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[1] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews2" style="background-image: url(<%= NEWS.CONTENT_IMAGE[1] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[1] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage2" onchange="selectNewsContentImage(this,1)">
+                                        <label class="custom-file-label" for="newsImage2">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews2"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage2" onchange="selectNewsContentImage(this,1)">
+                                        <label class="custom-file-label" for="newsImage2">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[2] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews3" style="background-image: url(<%= NEWS.CONTENT_IMAGE[2] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[2] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage3" onchange="selectNewsContentImage(this,2)">
+                                        <label class="custom-file-label" for="newsImage3">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews3"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage3" onchange="selectNewsContentImage(this,2)">
+                                        <label class="custom-file-label" for="newsImage3">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[3] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews4" style="background-image: url(<%= NEWS.CONTENT_IMAGE[3] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[3] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage4" onchange="selectNewsContentImage(this,3)">
+                                        <label class="custom-file-label" for="newsImage4">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews4"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage4" onchange="selectNewsContentImage(this,3)">
+                                        <label class="custom-file-label" for="newsImage4">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[4] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews5" style="background-image: url(<%= NEWS.CONTENT_IMAGE[4] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[4] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage5" onchange="selectNewsContentImage(this,4)">
+                                        <label class="custom-file-label" for="newsImage5">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews5"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage5" onchange="selectNewsContentImage(this,4)">
+                                        <label class="custom-file-label" for="newsImage5">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[5] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews6" style="background-image: url(<%= NEWS.CONTENT_IMAGE[5] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[5] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage6" onchange="selectNewsContentImage(this,5)">
+                                        <label class="custom-file-label" for="newsImage6">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews6"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage6" onchange="selectNewsContentImage(this,5)">
+                                        <label class="custom-file-label" for="newsImage6">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[6] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews7" style="background-image: url(<%= NEWS.CONTENT_IMAGE[6] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[6] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage7" onchange="selectNewsContentImage(this,6)">
+                                        <label class="custom-file-label" for="newsImage7">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews7"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage7" onchange="selectNewsContentImage(this,6)">
+                                        <label class="custom-file-label" for="newsImage7">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <% if(NEWS.CONTENT_IMAGE[7] !== ""){ %>
+                                        <div class="addEditImage" id="imgOfNews8" style="background-image: url(<%= NEWS.CONTENT_IMAGE[7] %>); opacity: 1">
+                                            <div class="openedImage" style="background-image: url(<%= NEWS.CONTENT_IMAGE[7] %>)"></div>
+                                        </div>
+                                        <input type="file" class="custom-file-input" id="newsImage8" onchange="selectNewsContentImage(this,7)">
+                                        <label class="custom-file-label" for="newsImage8">Заменить</label>
+                                        <% }else{ %>
+                                        <div class="addEditImage" id="imgOfNews8"></div>
+                                        <input type="file" class="custom-file-input" id="newsImage8" onchange="selectNewsContentImage(this,7)">
+                                        <label class="custom-file-label" for="newsImage8">Выбрать файл</label>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Textual inputs end -->
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-ml-12 mt-5">
+                <div class="row">
+                    <button type="button" class="btn btn-success mb-2 col-12" onclick="saveEditNews('<%= NEWS.AI %>')">Сохранить</button>
+                </div>
+            </div>
+
         </div>
+
     </div>
-    <%- include ./panel_includes/dev_message.ejs %>
-    <%- include ./panel_includes/panel_footer.ejs %>
 </div>
+<%- include ./panel_includes/dev_message.ejs %>
+<%- include ./panel_includes/panel_footer.ejs %>
+</div>
+<script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
@@ -217,6 +423,15 @@
 <script src="assets/js/pie-chart.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#code_preview0').summernote({height: 300});
+    $('#code_preview1').summernote({height: 300});
+    $('#code_preview2').summernote({height: 300});
+    });
+</script>
+
 <script src="assets/js/methods.js"></script>
 <script type="text/javascript">
     var posivka = '<%= sessionPoziv %>';

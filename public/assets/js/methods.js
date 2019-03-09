@@ -80,7 +80,10 @@ var selectNewsContentImage = function(e,i){
 
 	        var file = document.querySelector('#'+$(e).attr('id')).files[0];
 			getBase64(file).then(
-			  data => NEWSFILECONTENTIMAGE[i] = data
+			  function(data){
+			  	NEWSFILECONTENTIMAGE[i] = data;
+			  	$(".addEditImage:eq("+(i+1)+")").css({"background-image":"url("+data+")","opacity":"1"}).html('').append('<div class="openedImage" style="background-image: url('+data+')"></div>')
+			  }
 			);
 	    }
 	    $(e).parent().children()[1].innerHTML = filename
@@ -96,9 +99,9 @@ var saveNewNews = function(){
 			$('#example-text-input-EN').val()
 		],
 		TEXT:  [
-			$('#example-textarea-input-RU').val(),
-			$('#example-textarea-input-UA').val(),
-			$('#example-textarea-input-EN').val()
+			$('#home1 .note-editable').html(),
+			$('#profile1 .note-editable').html(),
+			$('#contact1 .note-editable').html()
 		],
 		DATE:  $('#example-date-input').val(),
 		type:  $('#example-type-input').val(),
@@ -106,6 +109,30 @@ var saveNewNews = function(){
 		CONTENT_IMAGE: NEWSFILECONTENTIMAGE,
 	}
 	$.post('/setNewNews', NN, function(res){
+		locationReload(res.message, true)
+	})
+}
+
+var saveEditNews = function(a){
+	$('.preloaderBlock').fadeIn(100);
+	var NN = {
+		a: a,
+		title:  [
+			$('#example-text-input-RU').val(),
+			$('#example-text-input-UA').val(),
+			$('#example-text-input-EN').val()
+		],
+		TEXT:  [
+			$('#home1 .note-editable').html(),
+			$('#profile1 .note-editable').html(),
+			$('#contact1 .note-editable').html()
+		],
+		DATE:  $('#example-date-input').val(),
+		type:  $('#example-type-input').val(),
+		NEWS_LOGO: NEWSFILELOGO,
+		CONTENT_IMAGE: NEWSFILECONTENTIMAGE,
+	}
+	$.post('/saveEditNews', NN, function(res){
 		locationReload(res.message, true)
 	})
 }

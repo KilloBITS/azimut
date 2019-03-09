@@ -14,7 +14,11 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
+
+    <!-- summernote css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
+
+    
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -208,19 +212,19 @@
                                                         <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
                                                             <div class="form-group">
                                                                 <label for="example-textarea-input" class="col-form-label">Введите текст на Русском языке</label>
-                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-RU" placeholder="Введите текст"></textarea>
+                                                                 <textarea class="form-control" id="code_preview0" name="" style="height: 300px;"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane fade" id="profile1" role="tabpanel" aria-labelledby="profile-tab">
                                                             <div class="form-group">
                                                                 <label for="example-textarea-input" class="col-form-label">Введіть текст на Українській мові</label>
-                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-UA" placeholder="Введите текст"></textarea>
+                                                                <textarea class="form-control" id="code_preview1" name="" style="height: 300px;"></textarea>
                                                             </div>
                                                         </div>
                                                         <div class="tab-pane fade" id="contact1" role="tabpanel" aria-labelledby="contact-tab">
                                                             <div class="form-group">
                                                                 <label for="example-textarea-input" class="col-form-label">Write text for English language</label>
-                                                                <textarea class="form-control" aria-label="With textarea" id="example-textarea-input-EN" placeholder="Введите текст"></textarea>
+                                                                <textarea class="form-control" id="code_preview2" name="" style="height: 300px;"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -232,6 +236,7 @@
                                 <div class="form-group">
                                     <label class="col-form-label">Логотип новости</label>
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="logoOfNews"></div>
                                         <input type="file" class="custom-file-input" id="inputGroupFile01" onchange="selectNewsLogo()">
                                         <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
                                     </div>
@@ -253,48 +258,56 @@
                                 <p class="text-muted font-14 mb-4">Выберите изображения для новости</p>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews1"></div>
                                         <input type="file" class="custom-file-input" id="newsImage1" onchange="selectNewsContentImage(this,0)">
                                         <label class="custom-file-label" for="newsImage1">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews2"></div>
                                         <input type="file" class="custom-file-input" id="newsImage2" onchange="selectNewsContentImage(this,1)">
                                         <label class="custom-file-label" for="newsImage2">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews3"></div>
                                         <input type="file" class="custom-file-input" id="newsImage3" onchange="selectNewsContentImage(this,2)">
                                         <label class="custom-file-label" for="newsImage3">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews4"></div>
                                         <input type="file" class="custom-file-input" id="newsImage4" onchange="selectNewsContentImage(this,3)">
                                         <label class="custom-file-label" for="newsImage4">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews5"></div>
                                         <input type="file" class="custom-file-input" id="newsImage5" onchange="selectNewsContentImage(this,4)">
                                         <label class="custom-file-label" for="newsImage5">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews6"></div>
                                         <input type="file" class="custom-file-input" id="newsImage6" onchange="selectNewsContentImage(this,5)">
                                         <label class="custom-file-label" for="newsImage6">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews7"></div>
                                         <input type="file" class="custom-file-input" id="newsImage7" onchange="selectNewsContentImage(this,6)">
                                         <label class="custom-file-label" for="newsImage7">Выбрать файл</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="custom-file">
+                                        <div class="addEditImage" id="imgOfNews8"></div>
                                         <input type="file" class="custom-file-input" id="newsImage8" onchange="selectNewsContentImage(this,7)">
                                         <label class="custom-file-label" for="newsImage8">Выбрать файл</label>
                                     </div>
@@ -337,6 +350,15 @@
 <script src="assets/js/pie-chart.js"></script>
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#code_preview0').summernote({height: 300});
+    $('#code_preview1').summernote({height: 300});
+    $('#code_preview2').summernote({height: 300});
+    });
+</script>
+
 <script src="assets/js/methods.js"></script>
 <script type="text/javascript">
     var posivka = '<%= sessionPoziv %>';

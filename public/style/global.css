@@ -680,6 +680,22 @@ a.NewPassLink{
     margin-bottom: 12px;
 }
 
+.section_data p a{
+    color: blue;
+}
+
+.section_data p a:after{
+    content: '';
+    width: 5px;
+    height: 5px;
+    background-color: rgba(25, 0, 255, 0.23);
+    border-radius: 10px;
+    display: inline-block;
+    position: relative;
+    top: -8px;
+    right: -3px;
+}
+
 .section_data{
     text-align: center;
     position: relative;
@@ -760,7 +776,7 @@ select {
 }
 
 #en{
-    background-image: url(https://png.pngtree.com/element_origin_min_pic/31/03/20/1656fccf18e9d8e.jpg);
+    background-image: url(https://feakuru.github.io/static/media/gb-flag.862addde.png);
 }
 
 select:-moz-focusring {
@@ -782,9 +798,8 @@ select:-moz-focusring {
 .section_data p {
     text-align: left;
     line-height: 26px;
-    overflow: hidden;
+    overflow: unset;
 }
-
 .title_news_link{
     color: black;
     transition: 0.3s;
@@ -1781,3 +1796,4 @@ div.settingImages{
     min-height: 130px;
     background-size: cover;
 }
+
