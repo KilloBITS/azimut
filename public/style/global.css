@@ -799,6 +799,7 @@ select:-moz-focusring {
     text-align: left;
     line-height: 26px;
     overflow: unset;
+    margin: 0;
 }
 .title_news_link{
     color: black;
