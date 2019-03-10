@@ -2909,7 +2909,8 @@ p.card-text.tovarText{
 
 .modalWin{
     position: fixed;
-    background-color: #ff4444;
+    /*background-color: #ff4444;*/
+    background: -webkit-linear-gradient(291deg, rgb(5, 176, 133) 0%, rgb(27, 212, 166) 59%);
     left: 20px;
     bottom: 20px;
     color: #ffffff;
