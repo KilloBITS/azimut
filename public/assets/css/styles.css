@@ -2929,7 +2929,7 @@ p.card-text.tovarText{
     width: 100%;
     bottom: 10px;
     font-size: 14px;
-    color: silver;
+    color: white;
     float: left;
 }
 
@@ -3002,4 +3002,11 @@ p.card-text.tovarText{
 
 .custom-file-input:lang(en)~.custom-file-label::after {
     content: "";
+}
+
+.note-popover .popover .popover-content .dropdown-menu, .note-toolbar .dropdown-menu {
+    min-width: 90px;
+    width: 180px;
+    text-align: center;
+    padding: 10px 0 10px 0;
 }

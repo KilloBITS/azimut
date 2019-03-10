@@ -264,10 +264,12 @@
 }
 
 .description{
-  float: left;
-  width: calc(100% - 200px);
-  padding: 10px;
-  color: black;
+    float: left;
+    width: calc(100% - 200px);
+    padding: 10px;
+    color: black;
+    max-height: 160px;
+    overflow: hidden;
 }
 
 .typeMar{
@@ -299,14 +301,6 @@
 
 button{
   cursor: pointer;
-}
-
-.removeTovar{
-
-}
-
-.pauseTovar{
-
 }
 
 .button_id_submit {
@@ -1038,11 +1032,15 @@ button.button_id_submit.loadBtn{
   min-height: 180px;
   border-bottom: 1px solid #f3f3f3;
 }
+
 .removeTovar {
-  position: absolute;
-  right: 5px;
-  bottom: 45px;
-  width: 150px;
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    width: 150px;
+    border: 1px solid black;
+    padding: 5px 20px;
+    background-color: transparent;
 }
 
 .tovarData a{
@@ -1078,4 +1076,14 @@ button.button_id_submit.loadBtn{
 
 .message.touser{
   float: left;
+}
+
+a.editedTovarBtn {
+    border: 1px solid black;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    left: 10px;
+    bottom: 30px;
+    right: auto;
+    width: 150px;
 }

@@ -258,7 +258,7 @@
 						<% if(tovar.length > 0){ %>
 						<% for(var i = 0; i < tovar.length; i++){ %>
 						<!-- <a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank"> -->
-							<section id="section_<%= i %>" class="tovarData">
+							<section id="section_<%= i %>" class="tovarData" style="min-height: 280px;">
 								<% if( tovar[i].Images[0] !== undefined){ %>
 								<div class="preImage" style="background-image: url(../../data/tovar<%= tovar[i].Images[0] %>)"></div>
 								<% } else { %>
@@ -274,6 +274,7 @@
 								<% } %>
 								<div class="dateMar"><%= tovar[i].Date %></div>
 								<div class="statusTovar <%= tovar[i].status %>"></div>
+								<a href="/editTovar?ai=<%= tovar[i].AI %>" class="editedTovarBtn">Редактировать</a>
 								<button class="removeTovar" onclick="setParamTovar('<%= tovar[i].AI %>', 0)">Удалить</button>
 								<a href="/getDetailsTovar?AI=<%= tovar[i].AI %>" target="_blank" style="position: absolute; bottom: 20px; left: 50%; color: red;">Перейти к объявлению...</a>
 							</section>

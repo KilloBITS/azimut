@@ -1798,3 +1798,8 @@ div.settingImages{
     background-size: cover;
 }
 
+.editedTovarBtn{
+    border: 1px solid black;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+}

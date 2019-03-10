@@ -63,9 +63,11 @@ var getNewPostTovar = function(){
 	objectNewTovar.info = tovarData;
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
 	objectNewTovar.image = GLOBAL_FILE; 
+	objectNewTovar.Price = $('#setNewPriceTovar').val();
+
+	console.log(objectNewTovar)
 
 	$.post("/newTovar", objectNewTovar, function(res){
-		console.log(res);
 		if(res.code === 500){
 			createError(res.className, res.message)
 			// window.location.reload();

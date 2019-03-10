@@ -352,10 +352,59 @@
 <script src="assets/js/scripts.js"></script>
 <script type="text/javascript" src="script/summernote.min.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#code_preview0').summernote({height: 300});
-    $('#code_preview1').summernote({height: 300});
-    $('#code_preview2').summernote({height: 300});
+$('#code_preview0,#code_preview1,#code_preview2').summernote({
+        height: 300,
+        toolbar: [
+            // [groupName, [list of button]]
+            ['header', ['style']],           
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ["fontname"]],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table',['table']],
+            ['object', ['link', 'picture', 'hr', 'video']],
+            ['undoreedo', ['undo', 'redo']],
+            ['code',['codeview']]
+        ]
+    });
+
+
+    var options = {
+      "indent":"auto",
+      "indent-spaces":2,
+      "wrap":80,
+      "markup":true,
+      "output-xml":false,
+      "numeric-entities":true,
+      "quote-marks":true,
+      "quote-nbsp":false,
+      "show-body-only":true,
+      "quote-ampersand":false,
+      "break-before-br":true,
+      "uppercase-tags":false,
+      "uppercase-attributes":false,
+      "drop-font-tags":true,
+      "tidy-mark":false
+    }
+
+
+    $('.note-code').on('click', function(e){
+        locationReload('Идет форматирование кода', false);
+        var index = $('.note-code').index(this);
+        if($('.note-editor:eq('+index+')').hasClass('note-editor')){
+            $('.note-editor:eq('+index+')').css({"opacity":"0.5"})
+            setTimeout(function(){
+                locationReload('Форматирование завершено', false);  
+                $('.note-editor:eq('+index+')').css({"opacity":"1"})          
+                console.log(index)
+                var html = $('.note-codable:eq('+index+')').val();
+                console.log(html)
+                var result = tidy_html5(html, options);
+                $('.note-codable:eq('+index+')').val(result)
+            },1000)
+        }      
     });
 </script>
 

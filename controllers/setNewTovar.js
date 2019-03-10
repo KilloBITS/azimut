@@ -34,17 +34,19 @@ router.post('/newTovar', function(req, res, next){
 				
 				var NEW_TOVAR = {};
 				NEW_TOVAR.Title = req.body.info[0];
-				NEW_TOVAR.Description = req.body.info[3];
+				NEW_TOVAR.Description = req.body.info[4];
 				NEW_TOVAR.Number = req.body.info[1];
 				NEW_TOVAR.Email = req.body.info[2];		
 				NEW_TOVAR.Type = req.body.type;			
-				NEW_TOVAR.User = req.session.poziv;			
+				NEW_TOVAR.User = req.session.poziv;						
 				NEW_TOVAR.Date = datetime;			
 				NEW_TOVAR.AI = NEXT_AI;			
 				NEW_TOVAR.status = 'moderation';
 				if(req.body.type !== 'Отдам'){
-					NEW_TOVAR.Price = req.body.info[4];
-				}				
+					NEW_TOVAR.Price = req.body.Price;
+				}else{
+					NEW_TOVAR.Price = '0';
+				}			
 				NEW_TOVAR.Images = [];
 
 				if(req.body.image !== undefined && req.body.image.length > 0){

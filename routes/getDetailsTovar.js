@@ -18,6 +18,11 @@ router.get('/*', function(req, res, next) {
 
     news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){       
       conf.find().toArray(function(err, resultDB){
+        if(resNews[0].User === req.session.poziv){
+          var editable = true;
+        }else{
+          var editable = false;
+        }
         res.render('getDetailsTovar.ejs',
         {
           TOVAR: resNews[0],
@@ -25,7 +30,8 @@ router.get('/*', function(req, res, next) {
           sessionPoziv: req.session.poziv,
           isAdm: req.session.admin,
           locator: resultDB[0].LOCATOR,
-          page: resultDB[0][global.parseLanguage(req)]
+          page: resultDB[0][global.parseLanguage(req)],
+          edit: editable
         });  
       }); 
     });   

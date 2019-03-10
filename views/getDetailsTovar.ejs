@@ -26,6 +26,14 @@
   <% if(sessionUser === undefined){ %>
   <script type="text/javascript" src="/script/loginMethod.js"></script> 
   <% } %>
+  <style type="text/css">
+    .section_data p {
+      text-align: left;
+      line-height: 26px;
+      overflow: unset;
+      margin: 20px 0 10px 0;
+    }
+  </style>
 </head>
 <body>  
   <%- include ./includes/mini_panel.ejs %>
@@ -97,6 +105,11 @@
     </div>  
     <section id="section_0" class="section_data" style="box-shadow: none;">
       <h2><%= TOVAR.Title %></h2>
+
+      <% if(edit){ %>
+      <a href="/editTovar?ai=<%= TOVAR.AI %>" class="editedTovarBtn">Редактировать</a>
+      <% } %>
+
       <p>
         <%= TOVAR.Description %>          
       </p>

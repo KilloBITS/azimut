@@ -131,12 +131,18 @@
                         </div>
                         <div id="accordion<%= i %>a" class="collapse" data-parent="#accordion1">
                             <div class="card-body">
+                                <textarea class="hideText" id="text<%= i %>" style="display: none;">
+                                    <%= newsData[i].TEXT[0] %>
+                                </textarea>
                                 <p>
                                     <% if(newsData[i].NEWS_LOGO !== undefined) { %>
                                     <img class="img-fluid mr-4" src="<%= newsData[i].NEWS_LOGO %>" alt="image" style="max-width: 140px; max-height: 120px;">
                                     <% } %>
                                     
-                                    <%= newsData[i].TEXT[0] %>
+                                    <script type="text/javascript">
+                                        console.log($("#text<%= i %>").val())
+                                        $("#accordion<%= newsData[i].AI %>a .card-body p").append($("#text<%= i %>").val());
+                                    </script>
                                 </p>
                                 <div class="media">
                                     <div class="col-lg-6 mt-3">
