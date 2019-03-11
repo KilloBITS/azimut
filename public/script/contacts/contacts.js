@@ -37,7 +37,6 @@ $(document).ready(function(){
       L.marker(pos,{icon: icon}).addTo(map);
 
     });
-
     $('.leaflet-control a').remove();
   });
 });
