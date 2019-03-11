@@ -305,5 +305,21 @@
 		-webkit-box-shadow: none;
 		box-shadow: none;
 	}
-
+	.dateMarDetails {
+	    position: relative;
+	    left: 0;
+	    top: 0;
+	    opacity: 1;
+	    text-align: left;
+	}
+  	.typeMar {
+      position: absolute;
+      right: 10px;
+      padding: 5px 20px;
+      background-color: #9bff9b;
+      top: 9px;
+      border: 1px solid white;
+      border-radius: 3px;
+      color: #737373;
+	}
 }
