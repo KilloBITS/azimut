@@ -15,9 +15,7 @@ router.get('/*', function(req, res, next) {
     const db = client.db(global.baseName);
     const news = db.collection("MARKET");
     const conf = db.collection("CONFIG");
-    console.log(getNews)
-    news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){    
-    console.log(resNews)   
+    news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){     
       conf.find().toArray(function(err, resultDB){
         if(resNews[0].User === req.session.poziv){
           var editable = true;
