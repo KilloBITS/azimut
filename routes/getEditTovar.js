@@ -10,23 +10,22 @@ router.get('/*', function(req, res, next) {
     case 'EN': var lang = 'EN' ;break;
     default: var lang = 'EN'
   }
-  var getNews = req.url.split('=')[1]; 
+  var tovAI = req.url.split('=')[1]; 
   mongoClient.connect(global.baseIP,{ useNewUrlParser: true }, function(err, client){
     const db = client.db(global.baseName);
-    const news = db.collection("MARKET");
+    const tov = db.collection("MARKET");
     const conf = db.collection("CONFIG");
-    console.log(getNews)
-    news.find({AI: parseInt(getNews)}).toArray(function(err, resNews){    
-    console.log(resNews)   
+
+    tov.find({AI: parseInt(tovAI)}).toArray(function(err, resTovar){       
       conf.find().toArray(function(err, resultDB){
-        if(resNews[0].User === req.session.poziv){
+        if(resTovar[0].User === req.session.poziv && req.session.admin){
           var editable = true;
         }else{
           var editable = false;
         }
-        res.render('getDetailsTovar.ejs',
+        res.render('editTovar.ejs',
         {
-          TOVAR: resNews[0],
+          TOVAR: resTovar[0],
           sessionUser: req.session.user,
           sessionPoziv: req.session.poziv,
           isAdm: req.session.admin,

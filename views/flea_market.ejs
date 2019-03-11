@@ -78,7 +78,7 @@
 		<div class="nav_menu right usersnavmenu">
 			<%- include ./includes/user_block.ejs %>
 
-			<div class="nav_wrapper">
+			<!-- <div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.filter %></div>
 				<div class="pre_line"></div>
 				<div class="selectLabel"><%= page.typeob %>:</div>
@@ -110,7 +110,7 @@
 					<option value="16">• КЛЮЧИ</option>
 					<option value="17">• ЛИТЕРАТУРА, ДИСКИ</option>
 				</select>
-			</div>
+			</div> -->
 			<div class="nav_wrapper" id="aprs_block">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -134,7 +134,7 @@
 			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
 				<section id="section_<%= i %>" class="section_data">				
 					<div class="preImage" style="background-image: url(../../../data/tovar<%= TOVAR[i].Images[0] %>)"></div>
-					<h4><%= TOVAR[i].Title %></h4>
+					<h4 style="margin: 0;"><%= TOVAR[i].Title %></h4>
 					<div class="description"><%= TOVAR[i].Description %></div>
 					<% if(TOVAR[i].Type === 'Куплю'){ %>
 					<div class="typeMar"><%= TOVAR[i].Type %></div>

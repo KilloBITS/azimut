@@ -60,6 +60,7 @@ const technikal = require('./routes/getTechnikal');
 const others = require('./routes/getOthers');
 const сommunities = require('./routes/getCommunities');
 const newtovar = require('./routes/getNewTovar');
+const edittovar = require('./routes/getEditTovar');
 
 app.use('/', index);
 app.use('/register', register);
@@ -83,6 +84,7 @@ app.use('/others*', others);
 app.use('/numeral*', numeral);
 app.use('/communities*', сommunities);
 app.use('/newtovar', newtovar);
+app.use('/editTovar*', edittovar);
 
 app.get('/logout', function(req, res) {
 	req.session.destroy(function(err) {})
@@ -183,6 +185,7 @@ app.post('/newtovarautodata', newtovardataController);
 //Добавить обхявление товара
 const newTovar = require('./controllers/setNewTovar');
 app.post('/newTovar', newTovar);
+app.post('/setEditTovar', newTovar);
 //Получить данные календаря
 const calendarData = require('./controllers/getCalendarController');
 app.post('/getCalendar', calendarData);

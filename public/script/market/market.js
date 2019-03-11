@@ -75,6 +75,28 @@ var getNewPostTovar = function(){
 			createError(res.className, res.message)
 		}
 	})
-	
+}
 
+var getEditPostTovar = function(a){
+	var tovarData = [];
+	var objectNewTovar = {}
+	for(let i = 0; i < $('.lineOftovar input[type=text]').size(); i++){
+		tovarData.push($('.lineOftovar:eq('+i+') input[type=text]').val());
+	}
+	tovarData.push($('.lineOftovar textarea').val());
+	objectNewTovar.info = tovarData;
+	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
+	objectNewTovar.image = GLOBAL_FILE; 
+	objectNewTovar.Price = $('#setNewPriceTovar').val();
+	objectNewTovar.AI = a;
+
+	$.post("/setEditTovar", objectNewTovar, function(res){
+		if(res.code === 500){
+			createError(res.className, res.message)
+			// window.location.reload();
+			window.location.href = "/getDetailsTovar?AI="+a;
+		}else{
+			createError(res.className, res.message)
+		}
+	})
 }

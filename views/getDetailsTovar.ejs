@@ -32,6 +32,8 @@
       line-height: 26px;
       overflow: unset;
       margin: 20px 0 10px 0;
+      border-top: 1px solid #c0c0c059;
+      padding-top: 15px;
     }
   </style>
 </head>
@@ -100,21 +102,35 @@
     </div>
     <div class="navigator">
       <a href="/" id="nav_home" class="navigator_btn">Главная</a>
-      <a href="/market" id="nav_market" class="navigator_btn">Барахолка</a>
+      <a href="/market?page=1" id="nav_market" class="navigator_btn">Барахолка</a>
       <a href="#" id="nav_news" class="navigator_btn selected_nav"><%= TOVAR.Title %></a>
     </div>  
     <section id="section_0" class="section_data" style="box-shadow: none;">
       <h2><%= TOVAR.Title %></h2>
 
-      <% if(edit){ %>
+      <% if(edit && isAdm){ %>
       <a href="/editTovar?ai=<%= TOVAR.AI %>" class="editedTovarBtn">Редактировать</a>
       <% } %>
+
+      <% if(TOVAR.Type === 'Куплю'){ %>
+        <div class="typeMar kuplyu"><%= TOVAR.Type %></div>
+      <% } %>
+
+      <% if(TOVAR.Type === 'Продам'){ %>
+        <div class="typeMar prodam"><%= TOVAR.Type %></div>
+      <% } %>
+
+      <% if(TOVAR.Type === 'Отдам'){ %>
+        <div class="typeMar otdam"><%= TOVAR.Type %></div>
+      <% } %>
+         
 
       <p>
         <%= TOVAR.Description %>          
       </p>
       <div class="cashData">Цена: <%= TOVAR.Price %> ГРН</div>
       <div class="authorData">Автор объявления: <%= TOVAR.User %></div>
+      <div class="dateMarDetails"><%= TOVAR.Date %></div>
       <% if(sessionUser === undefined){ %>
       <div class="NumberData" secret="null" onclick="modalAuth()">Нужно авторизироваться</div>
       <div class="EmailData" secret="null" onclick="modalAuth()">Нужно авторизироваться</div>

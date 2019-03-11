@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="Description" content="Радиоклуб АЗИМУТ">
+	<title><%= TOVAR.Title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="/style/loader.css">
+	<link rel="stylesheet" type="text/css" href="/style/global.css">
+	<link rel="stylesheet" type="text/css" href="/style/global.min.css">
+	<link rel="stylesheet" type="text/css" href="/style/market/style.market.css">
+	<link rel="stylesheet" type="text/css" href="/style/market/style.market.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="./data/header.json"></script>
+	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="/script/jquery-ui.js"></script>
+	<script type="text/javascript" src="/script/jquery.cookie.js"></script>
+	<script type="text/javascript" src="/script/index.js"></script>
+	<script type="text/javascript" src="/script/socket.io.js"></script>
+	<script type="text/javascript" src="/script/global.socket.js"></script>
+	<script type="text/javascript" src="/script/market/market.js"></script>
+	<% if(sessionUser === undefined){ %>
+	<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<% } %>
+	<style type="text/css">
+	h2 {
+		margin: 0;
+		position: relative;
+	}
+</style>
+</head>
+<body onload="addNewTovar()">	
+	<%- include ./includes/mini_panel.ejs %>
+	<div class="wrapper">
+		<div id="loader-wrapper">
+			<div id="loader">
+				<div class="pulse"></div>
+			</div>
+			<div class="loader-section section-left"></div>
+			<div class="loader-section section-right"></div>
+		</div>
+	</div>
+	<header>	
+		<canvas id="canvas"></canvas>
+		<canvas id="spectr"></canvas>
+		<img src="../../../img/logo1.png" id="logotype">		
+		<h1><%= TOVAR.Title %></h1>		
+		<div class="toScroll">
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+			<div class="scroll-arrow"></div>
+		</div>		
+		<div id="head_banner"><%= locator %></div>
+		<nav> 
+			<h1><%= TOVAR.Title %></h1>	
+			<div class="mobileWrapper">
+				<a class="menu-2" data-menu="2"></a>
+			</div>
+			<a href="/"><%= page.top_menu[0] %></a>
+			<a href="/about"><%= page.top_menu[1] %></a> 
+			<a href="/news?page=1"><%= page.top_menu[2] %></a> 
+			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
+			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
+			<a href="#"><%= page.top_menu[5] %></a> 
+			<a href="/market?page=1"><%= page.top_menu[6] %></a> 
+			<a href="/contacts"><%= page.top_menu[7] %></a> 
+		</nav>
+	</header>
+	<main class="wrapper">
+		<div class="nav_menu left">
+			<div class="nav_wrapper">
+				<div class="wrapper_title"><%= page.navigation %></div>
+				<div class="pre_line"></div>
+				<%- include ./includes/left_nav.ejs %>				
+			</div>
+			<div class="nav_wrapper">
+				<div class="wrapper_title"><%= page.information %></div>
+				<div class="pre_line"></div>				
+				<%- include ./includes/information.ejs %>
+			</div>
+		</div>
+		<div class="nav_menu right usersnavmenu">
+			<%- include ./includes/user_block.ejs %> 
+			
+			<div class="nav_wrapper" id="aprs_block">
+				<div class="wrapper_title">APRS</div>
+				<div class="pre_line"></div>
+				<a class="none_text" href="https://www.aprsdirect.com/center/49.82786,24.03119/zoom/11/time/60" target="_blank">
+					<img src="../../../img/aprs.png" width="228">
+					<div class="a_btn"><%= page.openMap %></div>
+				</a>
+			</div>
+		</div>
+		<div class="navigator">
+			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
+			<a href="/market?page=1" id="nav_market" class="navigator_btn"><%= page.top_menu[6] %></a>
+			<a href="#" id="nav_edit_tovar" class="navigator_btn selected_nav"><%= TOVAR.Title %></a>
+		</div>	
+
+		<div class="market_data">
+			<% if(sessionUser !== undefined){ %>
+			<div class="addTovarData">
+				<h2 class="editTitle"><%= TOVAR.Title %></h2>
+				<div class="newTovarLoader"></div>
+				<div class="lineOftovar">
+					<div class="titleOfNewTovar"><%= page.productname %></div>
+					<input type="text" name="newTovarTitle" placeholder="<%= page.productname %>" value="<%= TOVAR.Title %>">
+				</div>
+
+				<div class="lineOftovar">
+					<div class="titleOfNewTovar"><%= page.contactphone %></div>
+					<input type="text" name="newTovarNumber" id="setNewNumTovar" placeholder="<%= page.contactphone %>" value="<%= TOVAR.Number %>">
+				</div>
+				<div class="lineOftovar">
+					<div class="titleOfNewTovar"><%= page.email %></div>
+					<input type="text" name="newTovarEmail" id="setNewEmailTovar" placeholder="<%= page.email %>" value="<%= TOVAR.Email %>">
+				</div>
+				<div class="lineOftovar">
+					<div class="titleOfNewTovar"><%= page.productdescription %></div>
+					<textarea placeholder="<%= page.productdescription %>"><%= TOVAR.Description %></textarea>
+				</div>
+				<div class="lineOftovar">
+					<div class="titleOfNewTovar"><%= page.typeob %>: </div>
+					<label class="buttonOfRadio radioactive" for="prodam" onclick="clickLabelType(this)"><%= page.iwillsell %></label>
+					<label class="buttonOfRadio" for="kuplyu" onclick="clickLabelType(this)"><%= page.buy %></label>
+					<label class="buttonOfRadio" for="otdam" onclick="clickLabelType(this)"><%= page.iwillgiveagift %></label>
+					<input type="radio" name="newTovarType" value="Куплю" id="kuplyu" class="hiddenradio" checked>
+					<input type="radio" name="newTovarType" value="Продам" id="prodam" class="hiddenradio">
+					<input type="radio" name="newTovarType" value="Отдам" id="otdam" class="hiddenradio">
+				</div>
+				<div class="lineOftovar" id="priceOfTovarBlock">
+					<div class="titleOfNewTovar"><%= page.price %></div>
+					<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="<%= page.price %>" value="<%= TOVAR.Price %>">		
+				</div>	
+
+				<h3>Добавить изображения</h3>
+				<input type="file" name="file" id="tFile" required multiple>
+				<div class="AddPhotoBlock">
+					<div class="newPhotoClick" onclick="addPhoto(this)">
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+					<div class="newPhotoClick" onclick="addPhoto(this)">
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+					<div class="newPhotoClick" onclick="addPhoto(this)">
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+					<div class="newPhotoClick" onclick="addPhoto(this)">
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+					<div class="newPhotoClick" onclick="addPhoto(this)"> 
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+					<div class="newPhotoClick" onclick="addPhoto(this)">
+						<img src="../../../img/image.svg">
+						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
+					</div>
+				</div>
+				<div class="SavingBtnNewTovar" onclick="getEditPostTovar('<%= TOVAR.AI %>')">Сохранить изминения</div>
+			</div>
+
+			<script type="text/javascript">
+				function toDataURL(url, callback) {
+					var xhr = new XMLHttpRequest();
+					xhr.onload = function() {
+						var reader = new FileReader();
+						reader.onloadend = function() {
+							callback(reader.result);
+						}
+						reader.readAsDataURL(xhr.response);
+					};
+					xhr.open('GET', url);
+					xhr.responseType = 'blob';
+					xhr.send();
+				}
+
+				$(document).ready(function(){
+					$('.hiddenradio').on('change',function(){
+						if(document.querySelector('input[name="newTovarType"]:checked').value === 'Отдам'){
+							$('#priceOfTovarBlock').hide();
+						}else{
+							$('#priceOfTovarBlock').show();
+						}
+					});		
+					var imgArray = '<%= TOVAR.Images %>'.split(',')
+					console.log(imgArray)
+					for(var img = 0; img < imgArray.length; img++){
+						$('.newPhotoClick:eq('+img+') img').attr('src','../../../data/tovar'+imgArray[img]);
+						$('.newPhotoClick:eq('+img+')').addClass('settingImages');						
+						toDataURL('../../../data/tovar'+imgArray[img], function(dataUrl) {
+							GLOBAL_FILE.push(dataUrl);
+							currentImage = img
+						});					
+					}
+				});
+			</script>
+			<% } %>
+		</div>
+		
+		
+	</main>
+	<div id="stop" class="scrollTop"></div>
+	<%- include ./includes/footer.ejs %>
+	<div class="notifications"></div> 
+</body>
+</html>

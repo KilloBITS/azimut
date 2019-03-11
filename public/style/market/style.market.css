@@ -44,28 +44,7 @@
     color: black;
 }
 
-.typeMar{
-    position: absolute;
-    right: 10px;
-    padding: 5px 20px;
-    background-color: #9bff9b;
-    top: 9px;
-    border: 1px solid white;
-    border-radius: 3px;
-    color: #737373;
-}
 
-.dateMar{
-    position: absolute;
-    font-size: 12px;
-    right: 5px;
-    bottom: 3px;
-    color: silver;
-}
-
-.prodam{
-    background-color: #fea9a9;
-}
 
 .market_data{
     min-height: 1000px;
