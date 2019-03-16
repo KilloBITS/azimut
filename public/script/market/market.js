@@ -19,7 +19,7 @@ $(document).ready(function(){
 		  }
 		  for (var i = 0; i < this.files.length; i++) {
 		      setupReader(this.files[i], currentImage);
-		      currentImage += 1;
+		      // currentImage += 1;
 		  }
 		  file.value ='';
 		}, false);
@@ -43,14 +43,18 @@ var clickLabelType = function(e){
 	$(e).addClass('radioactive');
 }
 
-var addPhoto = function(e){
+var addPhoto = function(e, a){
+	currentImage = a
 	if(!$(e).hasClass('settingImages')){
 		$('#tFile').click()
 	}	
 }
 
-var thisRemovePhoto = function(e){
-
+var thisRemovePhoto = function(a,b){
+	$('.newPhotoClick:eq('+b+') img').attr('src','../../../img/image.svg');
+	$('.newPhotoClick:eq('+b+')').removeClass('settingImages');
+	GLOBAL_FILE.splice(b, 1);
+	return;
 }
 
 var getNewPostTovar = function(){
@@ -64,8 +68,6 @@ var getNewPostTovar = function(){
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
 	objectNewTovar.image = GLOBAL_FILE; 
 	objectNewTovar.Price = $('#setNewPriceTovar').val();
-
-	console.log(objectNewTovar)
 
 	$.post("/newTovar", objectNewTovar, function(res){
 		if(res.code === 500){

@@ -30,7 +30,6 @@ $(document).ready(function(){
 			var reader = new FileReader();
 			reader.onload = function (e) {
 				$.post('/updateAvaUser',{newAva: e.target.result}, function(res){
-					console.log(res);
 					$(".avatara_big").css({"background-image":"url("+res.img+")"})
 				});
 			};

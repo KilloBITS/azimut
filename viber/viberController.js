@@ -1,53 +1,37 @@
 //4954bf9dc4e7d1f7-c074598b3d833fa5-453eb3b04f521449
-const http = require('http');
-const ViberBot = require('viber-bot').Bot;
-const BotEvents = require('viber-bot').Events;
-const TextMessage = require('viber-bot').Message.Text;
-var request = require('request');
+//'UakWjwPVd8Dj2dVWag5CTw=='
+const fs = require('fs');
 const webhookUrl = 'https://chatapi.viber.com/pa/set_webhook';
+// const webhookUrl = 'http://localhost:4334/set_webhook';
 const express = require('express');
 const app = express();
+//______________________________________________________________________________________________________
+//Рабочий
+// const { ViberClient } = require('messaging-api-viber');
+// const client = ViberClient.connect('4954bf9dc4e7d1f7-48c99ebc7901f555-c3c348d5b3bf0135');
+// client.setWebhook(webhookUrl).catch(error => {
+//   // console.log(error); // formatted error message
+//   // console.log(error.stack); // error stack trace
+//   // console.log(error.config); // axios request config
+//   // console.log(error.request); // HTTP request
+//   // console.log(error.response); // HTTP response
+// });
 
+// client.getAccountInfo().then(info => {
+//   console.log(info);
+// });
 
-var bot = new ViberBot({
-	authToken: '4954bf9dc4e7d1f7-63f14c65d241b347-b3ec6f1293615a66',
-	name: "Azimuth NEWS",
-	avatar: "http://viber.com/avatar.jpg" // It is recommended to be 720x720, and no more than 100kb.
-});
-bot.setWebhook("https://chatapi.viber.com/pa/set_webhook").then(() => yourBot.doSomething()).catch(err => console.log(err));
+// client.broadcastText(['UakWjwPVd8Dj2dVWag5CTw=='],'test test test').then(result => {console.log(result) });
 
+// client.sendPicture('SN-CHAT-47_', {
+//   text: 'Photo description',
+//   media: 'http://www.images.com/img.jpg',
+//   thumbnail: 'http://www.images.com/thumb.jpg',
+// });
+// client.sendText('UakWjwPVd8Dj2dVWag5CTw==', 'Hello'); //
+//______________________________________________________________________________________________________
 
-bot.on(BotEvents.MESSAGE_RECEIVED, (message, response) => {
-	response.send(`Thanks for subscribing, ${response.userProfile.name}`)
-} );
-
-
-http.createServer(bot.middleware()).listen(4337, function(){
-	bot.setWebhook(webhookUrl)
-});
-
-
-
-bot.on(BotEvents.SUBSCRIBED, response =>
-    response.send(`Thanks for subscribing, ${response.userProfile.name}`));
-// request.post({
-// 	url:'https://chatapi.viber.com/pa/send_message', 
-// 	data: {
-// 		"auth_token": "4954bf9dc4e7d1f7-c074598b3d833fa5-453eb3b04f521449",
-// 	   "receiver":"01234567890A=",
-// 	   "min_api_version":1,
-// 	   "sender":{
-// 	      "name":"John McClane",
-// 	      "avatar":"http://avatar.example.com"
-// 	   },
-// 	   "tracking_data":"tracking data",
-// 	   "type":"text",
-// 	   "text":"Hello world!"
-// 	}
-// }, function(err,httpResponse,body){ 
-// 	console.log(1111111111111111111111111111111)
-// 	console.log(body)
-// })
+ 
 
 
 /******************/

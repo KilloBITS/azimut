@@ -37,7 +37,7 @@ router.post('/signup', function(req, res, next){
 				NEW_USER.name =  req.body.name,
 				NEW_USER.email = req.body.email,
 				NEW_USER.phone_number = req.body.phone_number,
-				NEW_USER.secret = null,
+				NEW_USER.secret = req.body.secretString,
 				NEW_USER.password = req.body.password,
 				NEW_USER.rank = 0,
 				NEW_USER.stars = 0,
@@ -60,13 +60,6 @@ router.post('/signup', function(req, res, next){
 				NEW_USER.isSecurity = false;				
 
 				users.insertOne(NEW_USER);
-
-				// //create folder
-				// var dir = './publick/data/avatars/'+req.body.poziv;
-
-				// if (!fs.existsSync(dir)){
-				// 	fs.mkdirSync(dir);
-				// }
 				
 				global.sendMail("Регистрация","Вы успешно зарегистрировались на сайте http://ur4wwr.org/ перейдите по сысылке для активации аккаунта - http://ur4wwr.org/activate-accaunt?akeyAct="+bEnc, req.body.email);
 				res.send({code: 500, data: NEW_USER});	

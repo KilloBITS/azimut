@@ -298,8 +298,6 @@ var createError = function(type, text){
   setTimeout(function(){
     $(pop).remove();
   },5000)
-
-  console.log(text);
 }
 
 

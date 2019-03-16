@@ -191,7 +191,7 @@ contact{
 }
 
 .userContact{
-    display: inline-block;
+    display: inline-grid;
     width: calc(33%);
     text-align: center;
 }

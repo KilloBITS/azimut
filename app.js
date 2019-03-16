@@ -199,6 +199,10 @@ app.post('/saveMyInfo', saveMyInfo);
 const developerController = require('./controllers/panelControllers/developerController');
 app.post('/developerMessage', developerController);
 
+const forgotpass = require('./controllers/forgotPasswordController');
+app.post('/forgotsecret', forgotpass);
+app.post('/forgotemail', forgotpass);
+app.post('/getPassEmail', forgotpass);
 
 /** Panel POST **/
 const panelAbout = require('./controllers/panelControllers/aboutController');

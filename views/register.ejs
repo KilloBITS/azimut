@@ -152,8 +152,7 @@
 							Повторите пароль<small>*</small>
 							<input class="c-input" type="password" class="checkYou" id="checkPass2"/>
 						</label>
-						<div id="password-strength2">  
-							
+						<div id="password-strength2">
 							<!-- Strength Boxes: Box1 -->
 							<div class="box box1">
 								<div class="bar-text"></div>
@@ -181,6 +180,14 @@
 					Номер телефона<small>*</small>
 					<input class="c-input" type="text" id="checkNumber">
 				</label>
+
+				<label class="c-label">
+					Секретное слово<small>*</small>
+					<input class="c-input" type="password" id="secretSlovo">
+					<div class="visualSecret visSecOFF" onclick="visualSecret(this)"></div>
+				</label>
+
+
 				<label class="c-label" style="text-align: center;">
 					<small>* - Обозначены поля обязательные к заполнению!</small>
 				</label>
@@ -227,7 +234,8 @@
 										NEW_USER.password = $('#checkPass').val();
 										NEW_USER.poziv = $('#checkPoziv').val();
 										NEW_USER.currentCaptcha = $('#captchaText').val();
-
+										NEW_USER.secretString = $("#secretSlovo").val();
+										
 										$.post('/checkedCaptcha', {currentCaptcha: $('#captchaText').val()}, function(res){
 											if(res.code === 500){
 												$.post('/signup', NEW_USER, function(res){
