@@ -271,7 +271,7 @@ app.listen(4334,function(){
 	fs.readFile('./settings.json', 'utf8', function(err, settings_file) {
 		var params = JSON.parse(settings_file);
 	    global.baseName = params.database_name;
-		global.baseIP = 'mongodb://'+params.database_ip+':'+params.database_port+'/';
+		global.baseIP = 'mongodb://admin:!QAZ2wsx@localhost:27017/';
 		global.online = 0;
 
 		var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];

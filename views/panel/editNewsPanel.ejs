@@ -14,19 +14,45 @@
     <link rel="stylesheet" href="assets/css/slicknav.min.css">
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-
     <!-- summernote css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
-
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />    
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/codemirror/3.21.0/codemirror.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 
     <script src='http://lovasoa.github.io/tidy-html5/tidy.js'></script>
+
+    <style type="text/css">
+        
+.box pre       { color: white; }
+.cm-keyword    { color: #ddca7e; }
+.cm-atom       { color: #ddca7e; }
+.cm-number     { color: #d0782a; }
+.cm-unit       { color: #d0782a; }
+.cm-def        { color: #809bbd; }
+.cm-variable   { color: #ddca7e; }
+.cm-variable-2 { color: #809bbd; }
+.cm-property   { color: #9a8297; }
+.cm-operator   { color: #cccccc; }
+.cm-comment    { color: #666666; }
+.cm-string     { color: #96b38a; }
+.cm-string-2   { color: #FFFFFF; }
+.cm-meta       { color: #9a8297; }
+.cm-header     { color: #ff6400; }
+#html .cm-tag  { color: #9a6e35; }
+#css .cm-tag   { color: #ddca7e; }
+.cm-attribute  { color: #ddca7e; }
+.cm-strong     { color: #ddca7e; }
+.cm-em         { color: #ddca7e; }
+.cm-qualifier  { color: #ddca7e; }
+.cm-builtin    { color: #ddca7e; }
+.box-html .cm-atom { color: #96b38a; }
+.box-css .cm-tag { color: #ddca7e; }
+    </style>
 </head>
 <body>
     <div id="preloader">
@@ -408,6 +434,8 @@
 <%- include ./panel_includes/panel_footer.ejs %>
 </div>
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://raw.githubusercontent.com/emmetio/textarea/master/emmet.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
 <script src="assets/js/popper.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/owl.carousel.min.js"></script>
@@ -432,7 +460,6 @@ $(document).ready(function() {
     $('#code_preview0,#code_preview1,#code_preview2').summernote({
         height: 300,
         toolbar: [
-            // [groupName, [list of button]]
             ['header', ['style']],           
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['font', ["fontname"]],
