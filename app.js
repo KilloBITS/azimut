@@ -270,8 +270,8 @@ function sravnenie(arr, arr2){
 app.listen(4334,function(){
 	fs.readFile('./settings.json', 'utf8', function(err, settings_file) {
 		var params = JSON.parse(settings_file);
-	    global.baseName = params.database_name;
-		global.baseIP = 'mongodb://AZIMUTSITE:qazwsx@localhost:27017/';
+	    global.baseName = "AZIMUT";
+		global.baseIP = 'mongodb://admin:!QAZ2wsx@localhost:27017/';
 		global.online = 0;
 
 		var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];
