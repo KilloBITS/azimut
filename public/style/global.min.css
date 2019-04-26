@@ -60,7 +60,17 @@
 	.nav_menu {
 		position: static;
 		width: 100%;
-		display: none;
+		/*display: none;*/
+	}
+
+	.ii_div {
+	    float: left;
+	    padding: 0px 10px;
+	    font-size: 14px;
+	    display: inline-block;
+	    font-style: italic;
+	    margin-bottom: 5px;
+	    width: 100%;
 	}
 
 	.left {
@@ -72,7 +82,25 @@
 	}
 
 	.nav_wrapper{
-		border: 0;
+	    border: 0;
+	    height: 40px; 
+	    overflow: hidden;
+	    padding-bottom: 0;
+	    margin-bottom: 0;
+	    transition: 0.3s;
+	}
+
+	.openwrapper{
+		height: auto;
+		transition: 0.3s;
+	}
+
+	.info_div {
+	    padding-left: 10px;
+	    margin-top: 10px;
+	    float: left;
+	    font-size: 18px;
+	    font-weight: bold;
 	}
 
 	.wrapper_title {    
@@ -182,7 +210,7 @@
 	}
 
 	header nav {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		overflow: hidden;
 		height: 64px;

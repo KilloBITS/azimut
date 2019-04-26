@@ -22,6 +22,7 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true,
 	store: new MongoStore({
+		// url: 'mongodb://localhost:27017/AZIMUT'
 		url: 'mongodb://AZIMUTSITE:qazwsx@localhost:27017/AZIMUT'
 	}),
 	cookie: {
@@ -272,6 +273,7 @@ app.listen(4334,function(){
 		var params = JSON.parse(settings_file);
 	    global.baseName = "AZIMUT";
 		global.baseIP = 'mongodb://admin:!QAZ2wsx@localhost:27017/';
+		// global.baseIP = 'mongodb://localhost:27017/';
 		global.online = 0;
 
 		var defaultCollections = ['COMMENTS','CONFIG','LOGS','MARKET','NEWS','USERS','sessions','MESSAGE'];

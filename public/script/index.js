@@ -100,7 +100,7 @@ $(document).ready(function(){
     location.reload();
   });
 
-    if ($(window).width() <= 812) {
+  if ($(window).width() <= 812) {
     $('header').css({
       width: $(window).width() + 'px',
       height: $(window).height() + 'px'
@@ -117,6 +117,14 @@ $(document).ready(function(){
         $('nav').removeClass('openNav');
       }
     }) 
+
+    $(".nav_wrapper .wrapper_title").click(function(){
+      $(".nav_wrapper").removeClass("openwrapper");
+      $(this).parent().addClass('openwrapper');
+      $('html,body').animate({
+        scrollTop: $(this).offset().top - 80
+      }, 'slow');
+    });
   }
 
   $(window).scroll(function(){
