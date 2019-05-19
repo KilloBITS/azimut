@@ -89,7 +89,7 @@ var getEditPostTovar = function(a){
 	objectNewTovar.info = tovarData;
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
 	objectNewTovar.image = GLOBAL_FILE; 
-	objectNewTovar.Price = $('#setNewPriceTovar').val();
+	objectNewTovar.Price = $('#setNewPriceTovar').val() +  $('#pricesValute').val();
 	objectNewTovar.AI = a;
 
 	$.post("/setEditTovar", objectNewTovar, function(res){
