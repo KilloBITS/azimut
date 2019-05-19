@@ -132,7 +132,12 @@
 				</div>
 				<div class="lineOftovar" id="priceOfTovarBlock">
 					<div class="titleOfNewTovar"><%= page.price %></div>
-					<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="<%= page.price %>" value="<%= TOVAR.Price %>">		
+					<input type="text" name="newTovarNumber" id="setNewPriceTovar" placeholder="<%= page.price %>" value="<%= TOVAR.Price %>">
+					<select class="pricesValute" id="pricesValute">
+						<option value="$">$</option>
+						<option value="₴">₴</option>
+						<option value="€">€</option>
+					</select>
 				</div>	
 
 				<h3>Добавить изображения</h3>
