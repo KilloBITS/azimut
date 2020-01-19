@@ -11,11 +11,11 @@ $(document).ready(function(){
 		    var reader = new FileReader();
 		    reader.onload = function (e) {
 		    	GLOBAL_FILE.push(e.target.result);
-		    	$(".newPhotoClick:eq("+ci+") img").attr("src",e.target.result);	  
+		    	$(".newPhotoClick:eq("+ci+") img").attr("src",e.target.result);
 		    	$(".newPhotoClick:eq("+ci+")").addClass('settingImages');
 		    	$(".newPhotoClick:eq("+ci+") img").addClass('settingImages');
 		    };
-		    reader.readAsDataURL(file);	    
+		    reader.readAsDataURL(file);
 		  }
 		  for (var i = 0; i < this.files.length; i++) {
 		      setupReader(this.files[i], currentImage);
@@ -26,7 +26,7 @@ $(document).ready(function(){
 	}catch(e){
 		console.log('Неиспользуемый скрипт')
 	}
-	
+
 });
 var addNewTovar = function(){
 	$('.addTovarData').fadeIn(300);
@@ -35,7 +35,7 @@ var addNewTovar = function(){
 		$('#setNewNumTovar').val(res.data.phone_number);
 		$('#setNewEmailTovar').val(res.data.email);
 		$('.newTovarLoader').hide();
-	});	
+	});
 };
 
 var clickLabelType = function(e){
@@ -47,7 +47,7 @@ var addPhoto = function(e, a){
 	currentImage = a
 	if(!$(e).hasClass('settingImages')){
 		$('#tFile').click()
-	}	
+	}
 }
 
 var thisRemovePhoto = function(a,b){
@@ -56,27 +56,35 @@ var thisRemovePhoto = function(a,b){
 	GLOBAL_FILE.splice(b, 1);
 	return;
 }
-
+var postTovarLoad = false;
 var getNewPostTovar = function(){
-	var tovarData = [];
-	var objectNewTovar = {}
-	for(let i = 0; i < $('.lineOftovar input[type=text]').size(); i++){
-		tovarData.push($('.lineOftovar:eq('+i+') input[type=text]').val());
-	}
-	tovarData.push($('.lineOftovar textarea').val());
-	objectNewTovar.info = tovarData;
-	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
-	objectNewTovar.image = GLOBAL_FILE; 
-	objectNewTovar.Price = $('#setNewPriceTovar').val() +  $('#pricesValute').val();
-
-	$.post("/newTovar", objectNewTovar, function(res){
-		if(res.code === 500){
-			createError(res.className, res.message)
-			// window.location.reload();
-		}else{
-			createError(res.className, res.message)
+	if(!postTovarLoad){
+		postTovarLoad = true;
+		$("#newTovarButtonID").addClass('disabled');
+		var tovarData = [];
+		var objectNewTovar = {}
+		for(let i = 0; i < $('.lineOftovar input[type=text]').size(); i++){
+			tovarData.push($('.lineOftovar:eq('+i+') input[type=text]').val());
 		}
-	})
+		objectNewTovar.info = tovarData;
+		objectNewTovar.text = $("#newTovarText").code();
+		objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
+		objectNewTovar.image = GLOBAL_FILE;
+		objectNewTovar.Price = $('#setNewPriceTovar').val() +  $('#pricesValute').val();
+
+		$.post("/newTovar", objectNewTovar, function(res){
+			if(res.code === 500){
+				createError(res.className, res.message)
+				// window.location.reload();
+			}else{
+				createError(res.className, res.message)
+			}
+			postTovarLoad = false;
+			$("#newTovarButtonID").removeClass('disabled');
+		})
+	}else{
+
+	}
 }
 
 var getEditPostTovar = function(a){
@@ -88,7 +96,7 @@ var getEditPostTovar = function(a){
 	tovarData.push($('.lineOftovar textarea').val());
 	objectNewTovar.info = tovarData;
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
-	objectNewTovar.image = GLOBAL_FILE; 
+	objectNewTovar.image = GLOBAL_FILE;
 	objectNewTovar.Price = $('#setNewPriceTovar').val() +  $('#pricesValute').val();
 	objectNewTovar.AI = a;
 

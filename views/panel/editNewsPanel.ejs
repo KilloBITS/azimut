@@ -15,7 +15,7 @@
     <!-- amchart css -->
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- summernote css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/typography.css">
     <link rel="stylesheet" href="assets/css/default-css.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -27,7 +27,7 @@
     <script src='http://lovasoa.github.io/tidy-html5/tidy.js'></script>
 
     <style type="text/css">
-        
+
 .box pre       { color: white; }
 .cm-keyword    { color: #ddca7e; }
 .cm-atom       { color: #ddca7e; }
@@ -68,8 +68,8 @@
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
-                        <ul class="metismenu" id="menu">         
-                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>    
+                        <ul class="metismenu" id="menu">
+                          <li><a href="/PanelIndex"><i class="fa fa-home"></i> <span>Главная</span></a></li>
                           <li>
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-info"></i><span>О нас</span></a>
                             <ul class="collapse" style="height: 0px;">
@@ -77,8 +77,8 @@
                                 <li><a href="/PanelGallery">Фотогалерея</a></li>
                                 <li><a href="/PanelContacts">Контакты</a></li>
                             </ul>
-                        </li>          
-                        <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>                            
+                        </li>
+                        <li><a href="/PanelMarket"><i class="fa fa-shopping-cart"></i><span>Барахолка</span></a></li>
                         <li class="active">
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-newspaper-o"></i><span>Новости</span></a>
                             <ul class="collapse">
@@ -92,7 +92,7 @@
                         <li><a href="/PanelRoundTables"><i class="fa fa-language"></i><span>Круглые столы</span></a></li>
                         <li><a href="/PanelLanguage"><i class="fa fa-language"></i><span>Локализация</span></a></li>
                         <li><a href="/PanelCalendar"><i class="fa fa-calendar"></i><span>Календарь</span></a></li>
-                        <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>                    
+                        <li><a href="/PanelTechnical?page=1"><i class="fa fa-cubes"></i><span>Технический раздел</span></a></li>
                         <li><a href="/PanelUsers"><i class="fa fa-users"></i><span>Пользователи</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="false"><i class="fa fa-gear"></i><span>Система</span></a>
@@ -129,8 +129,8 @@
                         <li id="full-view"><i class="ti-fullscreen"></i></li>
                         <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                         <li class="dropdown">
-                            <%- include ./panel_includes/panel_notify.ejs %> 
-                        </li>                            
+                            <%- include ./panel_includes/panel_notify.ejs %>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 clearfix">
-                    <%- include ./panel_includes/panel_session.ejs %> 
+                    <%- include ./panel_includes/panel_session.ejs %>
                 </div>
             </div>
         </div>
@@ -198,15 +198,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>                                  
+                                </div>
 
                                 <div class="form-group">
                                     <label for="example-date-input" class="col-form-label">Дата</label>
                                     <input class="form-control" type="date" value="<%= NEWS.DATE %>" id="example-date-input" readonly>
-                                </div>                               
+                                </div>
 
                                 <div class="form-group">
-                                    <label class="col-form-label">Выберите тип новости</label>                                    
+                                    <label class="col-form-label">Выберите тип новости</label>
                                     <select class="form-control" id="example-type-input">
                                         <option value="ALL">Общая</option>
                                         <option value="HF">HF</option>
@@ -259,13 +259,13 @@
                                                             </textarea>
                                                         </div>
                                                     </div>
-                                                </div>                                        
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label">Логотип новости</label>                                     
+                                    <label class="col-form-label">Логотип новости</label>
                                     <div class="custom-file">
                                         <% if(NEWS.NEWS_LOGO !== undefined){ %>
                                         <div class="addEditImage" id="logoOfNews" style="background-image: url(<%= NEWS.NEWS_LOGO %>); opacity: 1">
@@ -279,7 +279,7 @@
                                         <label class="custom-file-label" for="inputGroupFile01">Выбрать файл</label>
                                         <% } %>
                                     </div>
-                                </div>                                  
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -460,7 +460,7 @@ $(document).ready(function() {
     $('#code_preview0,#code_preview1,#code_preview2').summernote({
         height: 300,
         toolbar: [
-            ['header', ['style']],           
+            ['header', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
             ['font', ["fontname"]],
             ['fontsize', ['fontsize']],
@@ -500,17 +500,17 @@ $(document).ready(function() {
         if($('.note-editor:eq('+index+')').hasClass('note-editor')){
             $('.note-editor:eq('+index+')').css({"opacity":"0.5"})
             setTimeout(function(){
-                locationReload('Форматирование завершено', false);  
-                $('.note-editor:eq('+index+')').css({"opacity":"1"})          
+                locationReload('Форматирование завершено', false);
+                $('.note-editor:eq('+index+')').css({"opacity":"1"})
                 console.log(index)
                 var html = $('.note-codable:eq('+index+')').val();
                 console.log(html)
                 var result = tidy_html5(html, options);
                 $('.note-codable:eq('+index+')').val(result)
             },1000)
-        }      
+        }
     });
-    
+
     NEWSFILECONTENTIMAGE = [
         '<%= NEWS.CONTENT_IMAGE[0] %>',
         '<%= NEWS.CONTENT_IMAGE[1] %>',

@@ -24,7 +24,7 @@
   <script type="text/javascript" src="/script/gallery-slide.js"></script>
 
   <% if(sessionUser === undefined){ %>
-  <script type="text/javascript" src="/script/loginMethod.js"></script> 
+  <script type="text/javascript" src="/script/loginMethod.js"></script>
   <% } %>
   <style type="text/css">
     .section_data p {
@@ -41,7 +41,7 @@
     }
   </style>
 </head>
-<body>  
+<body>
   <%- include ./includes/mini_panel.ejs %>
   <div class="wrapper">
     <div id="loader-wrapper">
@@ -53,30 +53,30 @@
 
     </div>
   </div>
-  <header>  
+  <header>
     <canvas id="canvas"></canvas>
     <canvas id="spectr"></canvas>
-    <img src="../../../img/logo1.png" id="logotype">    
-    <h1><%= TOVAR.Title %></h1>    
+    <img src="../../../img/logo1.png" id="logotype">
+    <h1><%= TOVAR.Title %></h1>
     <div class="toScroll">
       <div class="scroll-arrow"></div>
       <div class="scroll-arrow"></div>
       <div class="scroll-arrow"></div>
     </div>
     <div id="head_banner"><%= locator %></div>
-    <nav> 
-      <h1>Радиоклуб <b>Азимут</b></h1>  
+    <nav>
+      <h1>Радиоклуб <b>Азимут</b></h1>
       <div class="mobileWrapper">
         <a class="menu-2" data-menu="2"></a>
       </div>
       <a href="/"><%= page.top_menu[0] %></a>
-      <a href="/about"><%= page.top_menu[1] %></a> 
-      <a href="/news?page=1"><%= page.top_menu[2] %></a> 
-      <a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
-      <a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
-      <a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a> 
-      <a href="/market?page=1"><%= page.top_menu[6] %></a> 
-      <a href="/contacts"><%= page.top_menu[7] %></a>  
+      <a href="/about"><%= page.top_menu[1] %></a>
+      <a href="/news?page=1"><%= page.top_menu[2] %></a>
+      <a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a>
+      <a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a>
+      <a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a>
+      <a href="/market?page=1"><%= page.top_menu[6] %></a>
+      <a href="/contacts"><%= page.top_menu[7] %></a>
     </nav>
   </header>
   <main class="wrapper">
@@ -84,17 +84,17 @@
       <div class="nav_wrapper">
         <div class="wrapper_title"><%= page.navigation %></div>
         <div class="pre_line"></div>
-        <%- include ./includes/left_nav.ejs %> 
+        <%- include ./includes/left_nav.ejs %>
       </div>
       <div class="nav_wrapper">
         <div class="wrapper_title"><%= page.information %></div>
-        <div class="pre_line"></div>        
+        <div class="pre_line"></div>
         <%- include ./includes/information.ejs %>
       </div>
     </div>
     <div class="nav_menu right usersnavmenu">
-      <%- include ./includes/user_block.ejs %> 
-      
+      <%- include ./includes/user_block.ejs %>
+
       <div class="nav_wrapper" id="aprs_block">
         <div class="wrapper_title">APRS</div>
         <div class="pre_line"></div>
@@ -108,7 +108,7 @@
       <a href="/" id="nav_home" class="navigator_btn">Главная</a>
       <a href="/market?page=1" id="nav_market" class="navigator_btn">Барахолка</a>
       <a href="#" id="nav_news" class="navigator_btn selected_nav"><%= TOVAR.Title %></a>
-    </div>  
+    </div>
     <section id="section_0" class="section_data" style="box-shadow: none;">
       <h2><%= TOVAR.Title %></h2>
 
@@ -127,10 +127,15 @@
       <% if(TOVAR.Type === 'Отдам'){ %>
         <div class="typeMar otdam"><%= TOVAR.Type %></div>
       <% } %>
-         
 
-      <p>
-        <%= TOVAR.Description %>          
+      <textarea class="hideText" id="TovarDescription" style="display: none;">
+				<%= TOVAR.Description %>
+			</textarea>
+
+      <p id="text_new_">
+        <script type="text/javascript">
+					$("#section_0 p").append($("#TovarDescription").val());
+				</script>
       </p>
       <div class="cashData">Цена: <%= TOVAR.Price %></div>
       <div class="authorData">Автор объявления: <%= TOVAR.User %></div>
@@ -144,7 +149,7 @@
           $('#users_wraper').addClass('blink');
           $('html, body').animate({
             scrollTop: 0
-          }, 800);                  
+          }, 800);
           setTimeout(function(){
             $('#users_wraper').removeClass('blink');
           },6000);
@@ -166,7 +171,7 @@
               $(secret).parent().attr('href', 'tel:'+$(secret).attr('secret'));
             }else{
               $(secret).parent().attr('href', 'mailto:'+$(secret).attr('secret'));
-            }   
+            }
           }
 
         };
@@ -183,7 +188,7 @@
                   <img src="../../../data/tovar<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
-              <% } %>           
+              <% } %>
             </div>
             <div class="swiper-pagination"></div>
           </div>
@@ -197,7 +202,7 @@
                   <img src="../../../data/tovar<%= TOVAR.Images[ii] %>">
                 </div>
               </div>
-              <% } %> 
+              <% } %>
             </div>
           </div>
         </div>
@@ -214,7 +219,7 @@
             <img src="../../../data/tovar<%= TOVAR.Images[ii] %>" draggable="false" ondragstart="return false;">
           </div>
         </div>
-        <% } %> 
+        <% } %>
       </div>
       <div class="swiper-button-next swiper-button-white">
         <svg fill="#FFFFFF" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -262,15 +267,15 @@
       </div>
 
 
-      
+
       <div class="section_date">
         <%= TOVAR.Date %>
         <span><%= TOVAR.User %></span>
       </div>
-    </section>      
+    </section>
   </main>
   <div id="stop" class="scrollTop"></div>
   <%- include ./includes/footer.ejs %>
-  <div class="notifications"></div> 
+  <div class="notifications"></div>
 </body>
 </html>

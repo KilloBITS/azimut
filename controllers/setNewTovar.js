@@ -23,30 +23,30 @@ router.post('/newTovar', function(req, res, next){
 					var NEXT_AI = 1;
 				}
 
-				var currentdate = new Date(); 
+				var currentdate = new Date();
 				var datetime = currentdate.getDate() + "-"
-				+ (currentdate.getMonth()+1)  + "-" 
-				+ currentdate.getFullYear() + "-"  
-				+ currentdate.getHours() + "-"  
-				+ currentdate.getMinutes() + "-" 
+				+ (currentdate.getMonth()+1)  + "-"
+				+ currentdate.getFullYear() + "-"
+				+ currentdate.getHours() + "-"
+				+ currentdate.getMinutes() + "-"
 				+ currentdate.getSeconds();
-	
-				
+
+
 				var NEW_TOVAR = {};
 				NEW_TOVAR.Title = req.body.info[0];
-				NEW_TOVAR.Description = req.body.info[4];
+				NEW_TOVAR.Description = req.body.text;
 				NEW_TOVAR.Number = req.body.info[1];
-				NEW_TOVAR.Email = req.body.info[2];		
-				NEW_TOVAR.Type = req.body.type;			
-				NEW_TOVAR.User = req.session.poziv;						
-				NEW_TOVAR.Date = datetime;			
-				NEW_TOVAR.AI = NEXT_AI;			
+				NEW_TOVAR.Email = req.body.info[2];
+				NEW_TOVAR.Type = req.body.type;
+				NEW_TOVAR.User = req.session.poziv;
+				NEW_TOVAR.Date = datetime;
+				NEW_TOVAR.AI = NEXT_AI;
 				NEW_TOVAR.status = 'moderation';
 				if(req.body.type !== 'Отдам'){
 					NEW_TOVAR.Price = req.body.Price;
 				}else{
 					NEW_TOVAR.Price = '0';
-				}			
+				}
 				NEW_TOVAR.Images = [];
 
 				if(req.body.image !== undefined && req.body.image.length > 0){
@@ -57,7 +57,6 @@ router.post('/newTovar', function(req, res, next){
 					}
 					var forImage = [];
 					for(let i = 0; i < req.body.image.length; i++){
-						console.log(i);
 						forImage.push("/"+NEXT_AI+"/"+i+".jpg");
 				    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
 			    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
@@ -66,12 +65,12 @@ router.post('/newTovar', function(req, res, next){
 				   	}
 				   	NEW_TOVAR.Images = forImage;
 				}
-				
-				
+
+
 				market.insertOne(NEW_TOVAR);
 				res.send({code: 500, className:'nSuccess', message: 'Ваше объявление отправленно на модерацию!'});
-				global.setLog(3, 'Добавление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);		
-			});			
+				global.setLog(3, 'Добавление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);
+			});
 		});
 	}else{
 		res.send({code: 403, className:'nError', message: 'Ошибка!'})
@@ -87,31 +86,31 @@ router.post('/setEditTovar', function(req, res, next){
 			const LOGS = db.collection("LOGS");
 			if(err) return console.log(err);
 
-			
-			var currentdate = new Date(); 
+
+			var currentdate = new Date();
 			var datetime = currentdate.getDate() + "-"
-			+ (currentdate.getMonth()+1)  + "-" 
-			+ currentdate.getFullYear() + "-"  
-			+ currentdate.getHours() + "-"  
-			+ currentdate.getMinutes() + "-" 
+			+ (currentdate.getMonth()+1)  + "-"
+			+ currentdate.getFullYear() + "-"
+			+ currentdate.getHours() + "-"
+			+ currentdate.getMinutes() + "-"
 			+ currentdate.getSeconds();
 
-			
+
 			var NEW_TOVAR = {};
 			NEW_TOVAR.Title = req.body.info[0];
 			NEW_TOVAR.Description = req.body.info[4];
 			NEW_TOVAR.Number = req.body.info[1];
-			NEW_TOVAR.Email = req.body.info[2];		
-			NEW_TOVAR.Type = req.body.type;			
-			NEW_TOVAR.User = req.session.poziv;						
-			NEW_TOVAR.Date = datetime;			
-			NEW_TOVAR.AI = parseInt(req.body.AI);			
+			NEW_TOVAR.Email = req.body.info[2];
+			NEW_TOVAR.Type = req.body.type;
+			NEW_TOVAR.User = req.session.poziv;
+			NEW_TOVAR.Date = datetime;
+			NEW_TOVAR.AI = parseInt(req.body.AI);
 			NEW_TOVAR.status = 'good';
 			if(req.body.type !== 'Отдам'){
 				NEW_TOVAR.Price = req.body.Price;
 			}else{
 				NEW_TOVAR.Price = '0';
-			}				
+			}
 			NEW_TOVAR.Images = [];
 
 			if(req.body.image !== undefined && req.body.image.length > 0){
@@ -131,12 +130,12 @@ router.post('/setEditTovar', function(req, res, next){
 			   	}
 			   	NEW_TOVAR.Images = forImage;
 			}
-			
+
 			console.log(NEW_TOVAR)
 			market.updateOne({AI: parseInt(req.body.AI)} ,{$set: NEW_TOVAR});
 			res.send({code: 500, className:'nSuccess', message: 'Объявление успешно обновлено!'});
-			// global.setLog(3, 'Обновление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);		
-						
+			// global.setLog(3, 'Обновление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);
+
 		});
 	}else{
 		res.send({code: 403, className:'nError', message: 'Ошибка!'})

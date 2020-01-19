@@ -22,10 +22,10 @@
 	<script type="text/javascript" src="/script/global.socket.js"></script>
 	<script type="text/javascript" src="/script/market/market.js"></script>
 	<% if(sessionUser === undefined){ %>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>
 	<% } %>
 </head>
-<body>	
+<body>
 	<%- include ./includes/mini_panel.ejs %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
@@ -36,30 +36,30 @@
 			<div class="loader-section section-right"></div>
 		</div>
 	</div>
-	<header>	
+	<header>
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
-		<img src="../../../img/logo1.png" id="logotype">		
-		<h1><%= page.market.title %></h1>		
+		<img src="../../../img/logo1.png" id="logotype">
+		<h1><%= page.market.title %></h1>
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
-		</div>		
+		</div>
 		<div id="head_banner"><%= locator %></div>
-		<nav> 
-			<h1><%= page.market.title %></h1>	
+		<nav>
+			<h1><%= page.market.title %></h1>
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
 			<a href="/"><%= page.top_menu[0] %></a>
-			<a href="/about"><%= page.top_menu[1] %></a> 
-			<a href="/news?page=1"><%= page.top_menu[2] %></a> 
-			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
-			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
-			<a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a> 
-			<a href="/market?page=1"><%= page.top_menu[6] %></a> 
-			<a href="/contacts"><%= page.top_menu[7] %></a> 
+			<a href="/about"><%= page.top_menu[1] %></a>
+			<a href="/news?page=1"><%= page.top_menu[2] %></a>
+			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a>
+			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a>
+			<a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a>
+			<a href="/market?page=1"><%= page.top_menu[6] %></a>
+			<a href="/contacts"><%= page.top_menu[7] %></a>
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -67,11 +67,11 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.navigation %></div>
 				<div class="pre_line"></div>
-				<%- include ./includes/left_nav.ejs %>				
+				<%- include ./includes/left_nav.ejs %>
 			</div>
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.information %></div>
-				<div class="pre_line"></div>				
+				<div class="pre_line"></div>
 				<%- include ./includes/information.ejs %>
 			</div>
 		</div>
@@ -123,8 +123,8 @@
 		<div class="navigator">
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
 			<a href="/market" id="nav_market" class="navigator_btn selected_nav"><%= page.top_menu[6] %></a>
-		</div>	
-		<div class="tovarLength"><%= page.found %>: <%= TOVAR.length %> <%= page.ads %></div>		
+		</div>
+		<div class="tovarLength"><%= page.found %>: <%= TOVAR.length %> <%= page.ads %></div>
 		<div class="market_data">
 			<% if(sessionUser !== undefined){ %>
 			<a href="/newtovar" target="_blank"><div class="addNewTovar" id="addNewTovar"><%= page.postads %></div></a>
@@ -132,27 +132,36 @@
 			<% if(TOVAR.length > 0){ %>
 			<% for(var i = 0; i < TOVAR.length; i++){ %>
 			<a href="/getDetailsTovar?AI=<%= TOVAR[i].AI %>">
-				<section id="section_<%= i %>" class="section_data">				
+				<section id="section_<%= i %>" class="section_data">
 					<div class="preImage" style="background-image: url(../../../data/tovar<%= TOVAR[i].Images[0] %>)"></div>
 					<h4 style="margin: 0;"><%= TOVAR[i].Title %></h4>
-					<div class="description"><%= TOVAR[i].Description %></div>
+					<textarea class="hideText" id="TovarDescription_<%= i %>" style="display: none;">
+						<%= TOVAR[i].Description %>
+					</textarea>
+
+		      <div class="description _description_<%= i %>">
+		        <script type="text/javascript">
+							$("#section_<%= i %> ._description_<%= i %>").append($("#TovarDescription_<%= i %>").val());
+						</script>
+		      </div>
+
 					<% if(TOVAR[i].Type === 'Куплю'){ %>
 					<div class="typeMar"><%= TOVAR[i].Type %></div>
 					<% } else { %>
 					<div class="typeMar prodam"><%= TOVAR[i].Type %></div>
-					<% } %>					
+					<% } %>
 					<div class="dateMar"><%= TOVAR[i].Date %></div>
 				</section>
-			</a>			
+			</a>
 			<% } %>
 			<% }else{ %>
 			<div class="NoDataPage" style="text-align: center;">
 				<img src="../../../img/no-data.png">
 				<h2><%= page.ANNOUNCEMENTSAREABSENT %></h2>
 			</div>
-			<% } %>		
+			<% } %>
 		</div>
-		
+
 		<% if(offLength > 12){ %>
 		<div id="pagination" class="mt-2 mb-2"></div>
 		<script type="text/javascript">
@@ -177,13 +186,13 @@
 				html += paginator.render();
 				document.getElementById("pagination").innerHTML = html;
 
-				
+
 			})();
 		</script>
 		<% } %>
 	</main>
 	<div id="stop" class="scrollTop"></div>
 	<%- include ./includes/footer.ejs %>
-	<div class="notifications"></div> 
+	<div class="notifications"></div>
 </body>
 </html>

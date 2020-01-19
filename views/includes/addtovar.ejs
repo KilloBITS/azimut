@@ -1,4 +1,15 @@
 <% if(sessionUser !== undefined){ %>
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/css/metisMenu.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/slicknav.min.css">
+	<!-- amchart css -->
+	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+	<!-- summernote css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
+
 <div class="addTovarData">
 	<h2><%= page.createanad.title %></h2>
 	<div class="newTovarLoader"></div>
@@ -17,7 +28,12 @@
 	</div>
 	<div class="lineOftovar">
 		<div class="titleOfNewTovar"><%= page.productdescription %></div>
-		<textarea placeholder="<%= page.productdescription %>"></textarea>
+
+		<textarea class="form-control about_text" id="newTovarText" aria-label="With textarea" placeholder="<%= page.productdescription %>" >
+
+		</textarea>
+
+
 	</div>
 	<div class="lineOftovar">
 		<div class="titleOfNewTovar"><%= page.typeob %>: </div>
@@ -36,7 +52,7 @@
 			<option value="₴">₴</option>
 			<option value="€">€</option>
 		</select>
-	</div>	
+	</div>
 
 	<h3>Добавить изображения</h3>
 	<input type="file" name="file" id="tFile" required multiple>
@@ -57,7 +73,7 @@
 			<img src="../../../img/image.svg">
 			<div class="removePhoto" onclick="thisRemovePhoto(this,3)" title="<%= page.remove %>"></div>
 		</div>
-		<div class="newPhotoClick" onclick="addPhoto(this,4)"> 
+		<div class="newPhotoClick" onclick="addPhoto(this,4)">
 			<img src="../../../img/image.svg">
 			<div class="removePhoto" onclick="thisRemovePhoto(this,4)" title="<%= page.remove %>"></div>
 		</div>
@@ -66,8 +82,33 @@
 			<div class="removePhoto" onclick="thisRemovePhoto(this,5)" title="<%= page.remove %>"></div>
 		</div>
 	</div>
-	<div class="SavingBtnNewTovar" onclick="getNewPostTovar()"><%= page.postads %></div>
+	<div class="SavingBtnNewTovar" id="newTovarButtonID" onclick="getNewPostTovar()"><%= page.postads %></div>
 </div>
+
+
+<script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://raw.githubusercontent.com/emmetio/textarea/master/emmet.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/metisMenu.min.js"></script>
+<script src="assets/js/jquery.slimscroll.min.js"></script>
+<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<script src="assets/js/line-chart.js"></script>
+<script src="assets/js/pie-chart.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
+<script src="assets/js/methods.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -77,7 +118,26 @@
 			}else{
 				$('#priceOfTovarBlock').show();
 			}
-		});		
+		});
+
+		$('#newTovarText').summernote({
+				height: 300,
+				toolbar: [
+						['header', ['style']],
+						['style', ['bold', 'italic', 'underline', 'clear']],
+						['font', ["fontname"]],
+						['fontsize', ['fontsize']],
+						['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['height', ['height']],
+						['table',['table']],
+						['object', ['link', 'picture', 'hr', 'video']],
+						['undoreedo', ['undo', 'redo']],
+						['code',['codeview']]
+				]
+		});
 	});
+
+
 </script>
 <% } %>

@@ -1855,3 +1855,9 @@ div.settingImages{
     top: 30px;
     opacity: 0.3;
 }
+
+
+.disabled{
+	filter: blur(1px) grayscale(0.5);
+	pointer-events: none;
+}
