@@ -98,7 +98,7 @@ router.post('/setEditTovar', function(req, res, next){
 
 			var NEW_TOVAR = {};
 			NEW_TOVAR.Title = req.body.info[0];
-			NEW_TOVAR.Description = req.body.info[4];
+			NEW_TOVAR.Description = req.body.text;
 			NEW_TOVAR.Number = req.body.info[1];
 			NEW_TOVAR.Email = req.body.info[2];
 			NEW_TOVAR.Type = req.body.type;
@@ -113,29 +113,30 @@ router.post('/setEditTovar', function(req, res, next){
 			}
 			NEW_TOVAR.Images = [];
 
-			if(req.body.image !== undefined && req.body.image.length > 0){
-				var dir = './public/data/tovar/'+req.body.AI;
+			try{
+				if(req.body.image !== undefined && req.body.image.length > 0){
+					var dir = './public/data/tovar/'+req.body.AI;
 
-				if (!fs.existsSync(dir)){
-					fs.mkdirSync(dir);
+					if (!fs.existsSync(dir)){
+						fs.mkdirSync(dir);
+					}
+
+					var forImage = [];
+					for(let i = 0; i < req.body.image.length; i++){
+						forImage.push("/"+req.body.AI+"/"+i+".jpg");
+				    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
+			    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
+			    			forImage.push("/"+i+".jpg");
+				    	});
+				   	}
+				   	NEW_TOVAR.Images = forImage;
 				}
-				var forImage = [];
-				for(let i = 0; i < req.body.image.length; i++){
-					console.log(i);
-					forImage.push("/"+req.body.AI+"/"+i+".jpg");
-			    	var base64Data = req.body.image[i].replace(/^data:image\/(png|gif|jpeg|jpg);base64,/,'');
-		    		require("fs").writeFile(dir + "/"+i+".jpg", base64Data, 'base64', function(err) {
-		    			forImage.push("/"+i+".jpg");
-			    	});
-			   	}
-			   	NEW_TOVAR.Images = forImage;
+			}catch(e){
+				console.log('image error')
 			}
 
-			console.log(NEW_TOVAR)
 			market.updateOne({AI: parseInt(req.body.AI)} ,{$set: NEW_TOVAR});
 			res.send({code: 500, className:'nSuccess', message: 'Объявление успешно обновлено!'});
-			// global.setLog(3, 'Обновление товара', 'Подача объявления на барахолке: '+req.session.poziv, req.session.poziv);
-
 		});
 	}else{
 		res.send({code: 403, className:'nError', message: 'Ошибка!'})

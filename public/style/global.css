@@ -1806,18 +1806,6 @@ div.settingImages{
     color: #3c3c3c;
 }
 
-.editTitle::after{
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUyOC44OTkgNTI4Ljg5OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTI4Ljg5OSA1MjguODk5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PGc+PGc+Cgk8cGF0aCBkPSJNMzI4Ljg4Myw4OS4xMjVsMTA3LjU5LDEwNy41ODlsLTI3Mi4zNCwyNzIuMzRMNTYuNjA0LDM2MS40NjVMMzI4Ljg4Myw4OS4xMjV6IE01MTguMTEzLDYzLjE3N2wtNDcuOTgxLTQ3Ljk4MSAgIGMtMTguNTQzLTE4LjU0My00OC42NTMtMTguNTQzLTY3LjI1OSwwbC00NS45NjEsNDUuOTYxbDEwNy41OSwxMDcuNTlsNTMuNjExLTUzLjYxMSAgIEM1MzIuNDk1LDEwMC43NTMsNTMyLjQ5NSw3Ny41NTksNTE4LjExMyw2My4xNzd6IE0wLjMsNTEyLjY5Yy0xLjk1OCw4LjgxMiw1Ljk5OCwxNi43MDgsMTQuODExLDE0LjU2NWwxMTkuODkxLTI5LjA2OSAgIEwyNy40NzMsMzkwLjU5N0wwLjMsNTEyLjY5eiIgZGF0YS1vcmlnaW5hbD0iIzAwMDAwMCIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBzdHlsZT0iZmlsbDojQkRCQkJCIiBkYXRhLW9sZF9jb2xvcj0iI0JDQjdCNyI+PC9wYXRoPgo8L2c+PC9nPiA8L3N2Zz4=);
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 1;
-    top: 10px;
-}
-
 .typeMar{
     position: absolute;
     right: 10px;

@@ -95,6 +95,7 @@ var getEditPostTovar = function(a){
 	}
 	tovarData.push($('.lineOftovar textarea').val());
 	objectNewTovar.info = tovarData;
+	objectNewTovar.text = $("#newTovarText").code();
 	objectNewTovar.type = document.querySelector('input[name="newTovarType"]:checked').value;
 	objectNewTovar.image = GLOBAL_FILE;
 	objectNewTovar.Price = $('#setNewPriceTovar').val() +  $('#pricesValute').val();

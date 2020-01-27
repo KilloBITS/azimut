@@ -12,6 +12,18 @@
 	<link rel="stylesheet" type="text/css" href="/style/market/style.market.css">
 	<link rel="stylesheet" type="text/css" href="/style/market/style.market.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/themify-icons.css">
+	<link rel="stylesheet" href="assets/css/metisMenu.css">
+	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="assets/css/slicknav.min.css">
+	<!-- amchart css -->
+	<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+	<!-- summernote css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.6.6/summernote.min.css" type="text/css" media="all" />
+
 	<script type="text/javascript" src="./data/header.json"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="/script/jquery-3.2.1.min.js"></script>
@@ -22,7 +34,7 @@
 	<script type="text/javascript" src="/script/global.socket.js"></script>
 	<script type="text/javascript" src="/script/market/market.js"></script>
 	<% if(sessionUser === undefined){ %>
-	<script type="text/javascript" src="/script/loginMethod.js"></script>	
+	<script type="text/javascript" src="/script/loginMethod.js"></script>
 	<% } %>
 	<style type="text/css">
 	h2 {
@@ -31,7 +43,7 @@
 	}
 </style>
 </head>
-<body onload="addNewTovar()">	
+<body onload="addNewTovar()">
 	<%- include ./includes/mini_panel.ejs %>
 	<div class="wrapper">
 		<div id="loader-wrapper">
@@ -42,30 +54,30 @@
 			<div class="loader-section section-right"></div>
 		</div>
 	</div>
-	<header>	
+	<header>
 		<canvas id="canvas"></canvas>
 		<canvas id="spectr"></canvas>
-		<img src="../../../img/logo1.png" id="logotype">		
-		<h1><%= TOVAR.Title %></h1>		
+		<img src="../../../img/logo1.png" id="logotype">
+		<h1><%= TOVAR.Title %></h1>
 		<div class="toScroll">
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
 			<div class="scroll-arrow"></div>
-		</div>		
+		</div>
 		<div id="head_banner"><%= locator %></div>
-		<nav> 
-			<h1><%= TOVAR.Title %></h1>	
+		<nav>
+			<h1><%= TOVAR.Title %></h1>
 			<div class="mobileWrapper">
 				<a class="menu-2" data-menu="2"></a>
 			</div>
 			<a href="/"><%= page.top_menu[0] %></a>
-			<a href="/about"><%= page.top_menu[1] %></a> 
-			<a href="/news?page=1"><%= page.top_menu[2] %></a> 
-			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a> 
-			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a> 
-			<a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a> 
-			<a href="/market?page=1"><%= page.top_menu[6] %></a> 
-			<a href="/contacts"><%= page.top_menu[7] %></a> 
+			<a href="/about"><%= page.top_menu[1] %></a>
+			<a href="/news?page=1"><%= page.top_menu[2] %></a>
+			<a href="/VHF?page=1" class="menu_to_left"><%= page.top_menu[3] %></a>
+			<a href="/HF?page=1" class="menu_to_right"><%= page.top_menu[4] %></a>
+			<a href="https://forum.ur4wwr.org"><%= page.top_menu[5] %></a>
+			<a href="/market?page=1"><%= page.top_menu[6] %></a>
+			<a href="/contacts"><%= page.top_menu[7] %></a>
 		</nav>
 	</header>
 	<main class="wrapper">
@@ -73,17 +85,17 @@
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.navigation %></div>
 				<div class="pre_line"></div>
-				<%- include ./includes/left_nav.ejs %>				
+				<%- include ./includes/left_nav.ejs %>
 			</div>
 			<div class="nav_wrapper">
 				<div class="wrapper_title"><%= page.information %></div>
-				<div class="pre_line"></div>				
+				<div class="pre_line"></div>
 				<%- include ./includes/information.ejs %>
 			</div>
 		</div>
 		<div class="nav_menu right usersnavmenu">
-			<%- include ./includes/user_block.ejs %> 
-			
+			<%- include ./includes/user_block.ejs %>
+
 			<div class="nav_wrapper" id="aprs_block">
 				<div class="wrapper_title">APRS</div>
 				<div class="pre_line"></div>
@@ -97,7 +109,7 @@
 			<a href="/" id="nav_home" class="navigator_btn"><%= page.top_menu[0] %></a>
 			<a href="/market?page=1" id="nav_market" class="navigator_btn"><%= page.top_menu[6] %></a>
 			<a href="#" id="nav_edit_tovar" class="navigator_btn selected_nav"><%= TOVAR.Title %></a>
-		</div>	
+		</div>
 
 		<div class="market_data">
 			<% if(sessionUser !== undefined){ %>
@@ -119,7 +131,9 @@
 				</div>
 				<div class="lineOftovar">
 					<div class="titleOfNewTovar"><%= page.productdescription %></div>
-					<textarea placeholder="<%= page.productdescription %>"><%= TOVAR.Description %></textarea>
+					<textarea class="form-control about_text" id="newTovarText" aria-label="With textarea" placeholder="<%= page.productdescription %>" >
+						<%= TOVAR.Description %>
+					</textarea>
 				</div>
 				<div class="lineOftovar">
 					<div class="titleOfNewTovar"><%= page.typeob %>: </div>
@@ -138,7 +152,7 @@
 						<option value="₴">₴</option>
 						<option value="€">€</option>
 					</select>
-				</div>	
+				</div>
 
 				<h3>Добавить изображения</h3>
 				<input type="file" name="file" id="tFile" required multiple>
@@ -159,7 +173,7 @@
 						<img src="../../../img/image.svg">
 						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 					</div>
-					<div class="newPhotoClick" onclick="addPhoto(this)"> 
+					<div class="newPhotoClick" onclick="addPhoto(this)">
 						<img src="../../../img/image.svg">
 						<div class="removePhoto" onclick="thisRemovePhoto(this)" title="<%= page.remove %>"></div>
 					</div>
@@ -193,26 +207,80 @@
 						}else{
 							$('#priceOfTovarBlock').show();
 						}
-					});		
+					});
 					var imgArray = '<%= TOVAR.Images %>'.split(',')
-					console.log(imgArray)
 					for(var img = 0; img < imgArray.length; img++){
 						$('.newPhotoClick:eq('+img+') img').attr('src','../../../data/tovar'+imgArray[img]);
-						$('.newPhotoClick:eq('+img+')').addClass('settingImages');						
+						$('.newPhotoClick:eq('+img+')').addClass('settingImages');
 						toDataURL('../../../data/tovar'+imgArray[img], function(dataUrl) {
 							GLOBAL_FILE.push(dataUrl);
 							currentImage = img
-						});					
+						});
 					}
 				});
 			</script>
 			<% } %>
 		</div>
-		
-		
+
+
 	</main>
 	<div id="stop" class="scrollTop"></div>
 	<%- include ./includes/footer.ejs %>
-	<div class="notifications"></div> 
+	<div class="notifications"></div>
 </body>
+
+<script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://raw.githubusercontent.com/emmetio/textarea/master/emmet.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/highlight.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/metisMenu.min.js"></script>
+<script src="assets/js/jquery.slimscroll.min.js"></script>
+<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<script src="assets/js/line-chart.js"></script>
+<script src="assets/js/pie-chart.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/scripts.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
+<script src="assets/js/methods.js"></script>
+<script type="text/javascript" src="script/summernote.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.hiddenradio').on('change',function(){
+			if(document.querySelector('input[name="newTovarType"]:checked').value === 'Отдам'){
+				$('#priceOfTovarBlock').hide();
+			}else{
+				$('#priceOfTovarBlock').show();
+			}
+		});
+
+		$('#newTovarText').summernote({
+				height: 300,
+				toolbar: [
+						['header', ['style']],
+						['style', ['bold', 'italic', 'underline', 'clear']],
+						['font', ["fontname"]],
+						['fontsize', ['fontsize']],
+						['color', ['color']],
+						['para', ['ul', 'ol', 'paragraph']],
+						['height', ['height']],
+						['table',['table']],
+						['object', ['link', 'picture', 'hr', 'video']],
+						['undoreedo', ['undo', 'redo']],
+						['code',['codeview']]
+				]
+		});
+	});
+
+
+</script>
 </html>
